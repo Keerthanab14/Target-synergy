@@ -8,9 +8,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { CardActionArea, GridList } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
-import polls from '../images/polls.png'
+import polls from '../images/polling.png'
 import opinion from '../images/opinion.png'
-import feedback from '../images/feedback.png'
+import feedback from '../images/feedback_1.png'
 import '../MainCards/MainCard.css'
 const useStyles = makeStyles({
   root: {
@@ -31,7 +31,7 @@ function MainCards() {
                 justify="flex-start"
                 alignItems="flex-start"
         >
-        <Grid item md={3} spacing={8} >
+        <Grid item md={2} spacing={8} >
 
         <CardActionArea>
           <CardMedia
@@ -52,7 +52,7 @@ function MainCards() {
           </CardContent>
         </CardActionArea>
         </Grid>
-        <Grid item md={3} spacing={8}>
+        <Grid item md={2} spacing={8}>
 
         <CardActionArea>
           <CardMedia
@@ -74,7 +74,7 @@ function MainCards() {
           </CardContent>
         </CardActionArea>
         </Grid>
-        <Grid item md={3} spacing={8}>
+        <Grid item md={2} spacing={8}>
 
         <CardActionArea>
           <CardMedia

@@ -1,6 +1,7 @@
 .MuiCardMedia-media {
-   width: 100%;
-   height: 250px;
+    margin: auto;
+   width: 100px !important;
+   height: 100px;
 }
 
 .MuiCard-root {
