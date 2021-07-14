@@ -56,8 +56,8 @@ export default function Service() {
       <Button
         aria-controls="customized-menu"
         aria-haspopup="true"
-        variant="contained"       
-        style={{backgroundColor: "#cc0000", color:"white"}}
+        variant="contained"
+        style={{ backgroundColor: "#cc0000", color: "white" }}
         onClick={handleClick}
       >
         Services

@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
+import Home from './Home'
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -88,6 +89,7 @@ function Header() {
                     <img src={logo} alt="logo" className={classes.logo} />
 
                     <Typography className={classes.title} variant="h6" noWrap >
+                        <Home />
                         <Service />
 
                     </Typography>

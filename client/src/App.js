@@ -7,16 +7,16 @@ import Header from './components/Header/Header';
 function App() {
   return (
     <div className="App">
-      <Header/>
-      
-     
-      <Main/>
-      
-      <MainCards/>
-      
-   
+      <Header />
+
+
+      <Main />
+
+      <MainCards />
+
+
     </div>
-    
+
   );
 }
 
