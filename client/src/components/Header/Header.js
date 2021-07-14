@@ -10,6 +10,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
+import Service from './Service'
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -43,26 +44,17 @@ const useStyles = makeStyles((theme) => ({
             width: 'auto',
         },
     },
-    /* searchIcon: {
-       padding: theme.spacing(0, 2),
-       height: '100%',
-       position: 'absolute',
-       pointerEvents: 'none',
-       display: 'flex',
-       alignItems: 'center',
-       justifyContent: 'center',
-     },*/
-    inputRoot: {
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-    },
+
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
+        color: "white",
+        textAlign: "center",
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            width: '12ch',
+            width: '20ch',
             '&:focus': {
                 width: '20ch',
             },
@@ -90,13 +82,14 @@ function Header() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
 
                     <img src={logo} alt="logo" className={classes.logo} />
 
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
+                    <Typography className={classes.title} variant="h6" noWrap >
+                        <Service />
+
                     </Typography>
                     <div className={classes.search}>
 
@@ -135,8 +128,8 @@ function Header() {
                                 open={open}
                                 onClose={handleClose}
                             >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
+                                <MenuItem onClick={handleClose}>Sign in</MenuItem>
+                                <MenuItem onClick={handleClose}>Sign up</MenuItem>
                             </Menu>
                         </div>
                     )}
