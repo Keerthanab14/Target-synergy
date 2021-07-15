@@ -12,7 +12,8 @@ function Home() {
                           color: "white", 
                           float: "left",
                           border: "1px solid white",
-                          margin: "1px 5rem"
+                        margin: "1px 5rem",
+                        position: "relative"
                     }
                   }
             >Home</Button>

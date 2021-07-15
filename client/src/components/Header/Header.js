@@ -13,6 +13,7 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Home from './Home'
 import Submit from './Submit'
+import { positions } from '@material-ui/system';
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -105,13 +106,18 @@ function Header() {
                             inputProps={{ 'aria-label': 'Enter code' }}
                             style={
                                 {
-                                    border: "1px solid white"
-                                }
-                            }
-                        />
+                                    border: " 1px solid white",
+                                    position: "relative",
+                                  
+                   }
+               }
+           />
                     </div>
+                    &nbsp;
                     <Submit />
+                     &nbsp; &nbsp;
                     {auth && (
+                    
                         <div>
                             <IconButton
                                 aria-label="account of current user"
@@ -120,6 +126,9 @@ function Header() {
                                 onClick={handleMenu}
                                 color="inherit"
                             >
+                               
+                                
+
                                 <AccountCircle />
                             </IconButton>
                             <Menu
