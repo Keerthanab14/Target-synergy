@@ -7,7 +7,14 @@ function Home() {
             <Button
                 variant="contained"
                 onClick={() => {/*link to main.js*/ }}
-                style={{ backgroundColor: "#cc0000", color: "white" }}
+                style={
+                    { backgroundColor: "#cc0000", 
+                          color: "white", 
+                          float: "left",
+                          border: "1px solid white",
+                          margin: "1px 5rem"
+                    }
+                  }
             >Home</Button>
         </div>
     )

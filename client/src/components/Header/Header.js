@@ -102,6 +102,11 @@ function Header() {
                                 input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'Enter code' }}
+                            style={
+                                { 
+                                    border: "1px solid white"
+                                }
+                            }
                         />
                     </div>
                     {auth && (
