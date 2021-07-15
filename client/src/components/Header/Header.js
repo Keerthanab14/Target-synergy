@@ -12,6 +12,7 @@ import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
 import Home from './Home'
+import Submit from './Submit'
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -103,12 +104,13 @@ function Header() {
                             }}
                             inputProps={{ 'aria-label': 'Enter code' }}
                             style={
-                                { 
+                                {
                                     border: "1px solid white"
                                 }
                             }
                         />
                     </div>
+                    <Submit />
                     {auth && (
                         <div>
                             <IconButton

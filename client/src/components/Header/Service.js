@@ -58,11 +58,12 @@ export default function Service() {
         aria-haspopup="true"
         variant="contained"
         style={
-          { backgroundColor: "#cc0000", 
-                color: "white", 
-                float: "left",
-                border: "1px solid white",
-                margin: "1px 10px"
+          {
+            backgroundColor: "#cc0000",
+            color: "white",
+            float: "left",
+            border: "1px solid white",
+            margin: "1px 10px"
           }
         }
         onClick={handleClick}
@@ -74,7 +75,7 @@ export default function Service() {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}   
+        onClose={handleClose}
       >
         <StyledMenuItem>
           <ListItemIcon>
