@@ -13,7 +13,8 @@ function Home() {
                         color: "white",
                         position: "relative",
                         border: "1px solid white",
-                        margin: "1px"
+                        margin: "3px",
+                        
                     }
                 }
             >Submit</Button>

@@ -32,9 +32,15 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     '&:focus': {
-      backgroundColor: theme.palette.primary.main,
+        _backgroundColor: "#cc0000",
+        get backgroundColor() {
+            return this._backgroundColor;
+        },
+        set backgroundColor(value) {
+            this._backgroundColor = value;
+        },
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        color: theme.palette.common.white,
+          color: theme.palette.common.white,
       },
     },
   },
@@ -77,8 +83,8 @@ export default function Service() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <ListItemIcon>
+              <StyledMenuItem>
+                  <ListItemIcon>         
             <PollIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Polls" />
