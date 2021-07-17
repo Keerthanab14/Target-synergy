@@ -5,13 +5,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
-import Home from './Home'
+import GoogleLogin from 'react-google-login';
+import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -80,6 +81,11 @@ function Header() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    //google-login
+    const responseGoogle= (response) =>{
+        console.log(response);
+        console.log(response.profileObj);
+    }
 
     return (
         <div className={classes.root}>
@@ -89,7 +95,6 @@ function Header() {
                     <img src={logo} alt="logo" className={classes.logo} />
 
                     <Typography className={classes.title} variant="h6" noWrap >
-                        <Home />
                         <Service />
 
                     </Typography>
@@ -104,10 +109,26 @@ function Header() {
                             inputProps={{ 'aria-label': 'Enter code' }}
                             style={
                                 { 
-                                    border: "1px solid white"
+                                    border: "1px solid white",
+                                    width: "250px"
                                 }
                             }
                         />
+                        
+                    </div>
+                    <div>
+                    <Button
+                            variant="contained"
+                            onClick={() => {/*submit*/ }}
+                            style={
+                                { backgroundColor: "#cc0000", 
+                                    color: "white", 
+                                    float: "left",
+                                    border: "1px solid white",
+                                    margin: "1px 1.5rem"
+                                }
+                            }
+                        >Submit</Button>
                     </div>
                     {auth && (
                         <div>
@@ -134,9 +155,28 @@ function Header() {
                                 }}
                                 open={open}
                                 onClose={handleClose}
+                                style={{
+                                    marginTop:"48px"
+                                }}
                             >
-                                <MenuItem onClick={handleClose}>Sign in</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign up</MenuItem>
+                                {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
+                                <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
+                                <MenuItem onClick={handleClose} >
+                                    <div>
+                                        <GoogleLogin
+                                            clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                                            buttonText="Gmail Login"
+                                            onSuccess={()=> responseGoogle}
+                                            onFailure={() => responseGoogle}
+                                            cookiePolicy={'single_host_origin'}
+                                            uxMode="redirect"
+                                            redirect_uri="http://localhost:3000/"
+                                        >
+                                        </GoogleLogin>
+                                    </div>
+
+                                </MenuItem>
+                                
                             </Menu>
                         </div>
                     )}
