@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -13,7 +12,8 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Home from './Home'
 import Submit from './Submit'
-import { positions } from '@material-ui/system';
+import GoogleLogin from 'react-google-login';
+
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -83,6 +83,12 @@ function Header() {
         setAnchorEl(null);
     };
 
+    //google-login
+    const responseGoogle= (response) =>{
+        console.log(response);
+        console.log(response.profileObj);
+    }
+
     return (
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
@@ -145,9 +151,29 @@ function Header() {
                                 }}
                                 open={open}
                                 onClose={handleClose}
+                                style={
+                                    {
+                                        marginTop:"48px"
+                                    }
+                                }
                             >
-                                <MenuItem onClick={handleClose}>Sign in</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign up</MenuItem>
+                                {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
+                                <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
+                                <MenuItem onClick={handleClose}>
+                                    <div>
+                                        <GoogleLogin
+                                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                                        buttonText="Gmail Login"
+                                        onSuccess={()=> responseGoogle}
+                                        onFailure={() => responseGoogle}
+                                        cookiePolicy={'single_host_origin'}
+                                        uxMode="redirect"
+                                        redirect_uri="http://localhost:3000/"
+                                        >
+                                        
+                                        </GoogleLogin>
+                                    </div>
+                                    </MenuItem>
                             </Menu>
                         </div>
                     )}
