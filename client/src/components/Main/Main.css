@@ -1,9 +1,11 @@
-.main{
+.main {
     margin-top: 20px;
+    font-family: 'Helvetica';
 }
 
 .heading{
     font-size: 4rem; 
+    font-family: 'Helvetica';
 }
 
 .tagline{
