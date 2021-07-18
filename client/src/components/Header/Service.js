@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import PollIcon from '@material-ui/icons/Poll';
 import CreateIcon from '@material-ui/icons/Create';
 import PeopleIcon from '@material-ui/icons/People';
+import { Link } from 'react-router-dom';
 
 const StyledMenu = withStyles({
   paper: {
@@ -89,24 +90,33 @@ export default function Service() {
         }
       >
               <StyledMenuItem>
+                
                   <ListItemIcon>         
-            <PollIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Polls" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <PeopleIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Opinions" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <CreateIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Feedback" />
-        </StyledMenuItem>
-      </StyledMenu>
+                    <PollIcon fontSize="small" />
+                  </ListItemIcon>
+                  <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
+                    <ListItemText primary="Polls" /> 
+                  </Link>
+              </StyledMenuItem>
+              <StyledMenuItem>
+                  <ListItemIcon>
+                    <PeopleIcon fontSize="small" />
+                  </ListItemIcon>
+                  <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
+                  <ListItemText primary="Opinions" />
+                  </Link>
+                  
+              </StyledMenuItem>
+              <StyledMenuItem>
+                  <ListItemIcon>
+                    <CreateIcon fontSize="small" />
+                  </ListItemIcon>
+                  <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
+                  <ListItemText primary="Feedback" />
+                  </Link>
+                  
+              </StyledMenuItem>
+          </StyledMenu>
     </div>
   );
 }
