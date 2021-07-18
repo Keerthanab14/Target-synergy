@@ -13,6 +13,8 @@ import Service from './Service'
 import Home from './Home'
 import Submit from './Submit'
 import GoogleLogin from 'react-google-login';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const useStyles = makeStyles((theme) => ({
     logo: {
@@ -88,8 +90,9 @@ function Header() {
         console.log(response);
         console.log(response.profileObj);
     }
-
+    const { loginWithRedirect } = useAuth0();
     return (
+        
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
@@ -135,46 +138,12 @@ function Header() {
                                
                                 
 
-                                <AccountCircle />
+                                <AccountCircle onClick={() => loginWithRedirect()}/>
+                                
                             </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={open}
-                                onClose={handleClose}
-                                style={
-                                    {
-                                        marginTop:"48px"
-                                    }
-                                }
-                            >
-                                {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
-                                <MenuItem onClick={handleClose}>
-                                    <div>
-                                        <GoogleLogin
-                                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
-                                        buttonText="Gmail Login"
-                                        onSuccess={()=> responseGoogle}
-                                        onFailure={() => responseGoogle}
-                                        cookiePolicy={'single_host_origin'}
-                                        uxMode="redirect"
-                                        redirect_uri="http://localhost:3000/"
-                                        >
-                                        
-                                        </GoogleLogin>
-                                    </div>
-                                    </MenuItem>
-                            </Menu>
+
+                           
+                                
                         </div>
                     )}
                 </Toolbar>
