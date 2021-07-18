@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -15,6 +14,9 @@ import Service from './Service'
 import Submit from './Submit'
 import { positions } from '@material-ui/system';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
+import { useAuth0 } from "@auth0/auth0-react";
+
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -84,8 +86,16 @@ function Header() {
         setAnchorEl(null);
     };
 
+    //google-login
+    const responseGoogle= (response) =>{
+        console.log(response);
+        console.log(response.profileObj);
+    }
+    const { loginWithRedirect } = useAuth0();
     return (
+
         <Router>
+
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
@@ -134,26 +144,12 @@ function Header() {
                                
                                 
 
-                                <AccountCircle />
+                                <AccountCircle onClick={() => loginWithRedirect()}/>
+                                
                             </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={open}
-                                onClose={handleClose}
-                            >
-                                <MenuItem onClick={handleClose}>Sign in</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign up</MenuItem>
-                            </Menu>
+
+                           
+                                
                         </div>
                     )}
                 </Toolbar>
