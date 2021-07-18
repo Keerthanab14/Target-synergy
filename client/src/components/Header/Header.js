@@ -10,11 +10,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
-import Home from './Home'
+//import Home from './Home'
 import Submit from './Submit'
+import { positions } from '@material-ui/system';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 const useStyles = makeStyles((theme) => ({
     logo: {
@@ -92,15 +93,20 @@ function Header() {
     }
     const { loginWithRedirect } = useAuth0();
     return (
-        
+
+        <Router>
+
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
+                
+                    <Link to ="public\App.js">
 
                     <img src={logo} alt="logo" className={classes.logo} />
-
+                    </Link>
+                    &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
-                        <Home />
+                   
                         <Service />
 
                     </Typography>
@@ -149,6 +155,7 @@ function Header() {
                 </Toolbar>
             </AppBar>
         </div>
+        </Router>
     );
 }
 export default Header
