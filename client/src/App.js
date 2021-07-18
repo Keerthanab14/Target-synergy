@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Opinions from './components/Opinions/Opinions';
 import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import CreatePoll from './components/Poll/CreatePoll';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-        </Switch>
-        
+          <Route path="/create-poll" component={CreatePoll}/>
+        </Switch> 
     </div>
     </BrowserRouter>
 

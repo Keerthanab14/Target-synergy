@@ -1,0 +1,19 @@
+.bx{
+    width: 70%;
+    margin: auto;
+    padding-top: 6rem;
+}
+
+.bx h1{
+    margin: 2rem;
+    text-align: center;
+}
+.accessCode{
+    margin-top: 2.5rem;
+}
+
+.btnn{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 2rem;
+}
