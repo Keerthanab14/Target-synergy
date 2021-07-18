@@ -6,15 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
-//import Home from './Home'
 import Submit from './Submit'
-import { positions } from '@material-ui/system';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
@@ -86,23 +81,17 @@ function Header() {
         setAnchorEl(null);
     };
 
-    //google-login
-    const responseGoogle= (response) =>{
-        console.log(response);
-        console.log(response.profileObj);
-    }
     const { loginWithRedirect } = useAuth0();
     return (
 
-        <Router>
+        
 
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
                 
-                    <Link to ="public\App.js">
-
-                    <img src={logo} alt="logo" className={classes.logo} />
+                    <Link to ="/">
+                        <img src={logo} alt="logo" className={classes.logo} />
                     </Link>
                     &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
@@ -155,7 +144,7 @@ function Header() {
                 </Toolbar>
             </AppBar>
         </div>
-        </Router>
+    
     );
 }
 export default Header

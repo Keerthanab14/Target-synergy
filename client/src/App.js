@@ -1,21 +1,26 @@
 import React from 'react'
 import './App.css';
 import Main from './components/Main/Main';
-import MainCards from './components/MainCards/MainCards';
+import Poll from './components/Poll/Poll';
 import Header from './components/Header/Header';
+import Opinions from './components/Opinions/Opinions';
+import Feedback from './components/Feedback/Feedback';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <Header />
-
-
-      <Main />
-
-      <MainCards />
-
-
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Main}/>
+          <Route path="/polls" component={Poll}/>
+          <Route path="/opinions" component={Opinions}/>
+          <Route path="/feedback" component={Feedback}/>
+        </Switch>
+        
     </div>
+    </BrowserRouter>
 
   );
 }
