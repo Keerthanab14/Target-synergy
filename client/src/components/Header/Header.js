@@ -11,9 +11,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
-import Home from './Home'
+//import Home from './Home'
 import Submit from './Submit'
 import { positions } from '@material-ui/system';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -84,14 +85,18 @@ function Header() {
     };
 
     return (
+        <Router>
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
+                
+                    <Link to ="public\App.js">
 
                     <img src={logo} alt="logo" className={classes.logo} />
-
+                    </Link>
+                    &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
-                        <Home />
+                   
                         <Service />
 
                     </Typography>
@@ -154,6 +159,7 @@ function Header() {
                 </Toolbar>
             </AppBar>
         </div>
+        </Router>
     );
 }
 export default Header
