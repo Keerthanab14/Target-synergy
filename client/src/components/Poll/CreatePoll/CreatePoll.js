@@ -4,7 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
-import '../Poll/CreatePoll.css'
+import '../CreatePoll/CreatePoll.css';
+import { Link, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
 
 const CreatePoll = () => {
     const classes = useStyles();
+    const history = useHistory();
+    
+    function handleClick(path) {
+        history.push(path);
+    }
+
     return (
         <div className='bx'>
             <div className={classes.root}>
@@ -67,24 +74,26 @@ const CreatePoll = () => {
                     </div>
                     
                     <div className='btnn'>
-                        <Button
-                                variant="contained"
-                                onClick={() => {/*link to respective poll.js*/ }}
-                                style={
-                                    {
-                                        backgroundColor: "#cc0000",
-                                        color: "white",
-                                        position: "relative",
-                                        border: "1px solid white",
-                                        margin: "3px",
-                                        
+                            <Button
+                                    variant="contained"
+                                    onClick={() => {handleClick("/create-poll/type") }}
+                                    style={
+                                        {
+                                            backgroundColor: "#cc0000",
+                                            color: "white",
+                                            position: "relative",
+                                            border: "1px solid white",
+                                            margin: "3px",
+                                            
+                                        }
                                     }
-                                }
-                            >Create Poll
-                        </Button>
+                                >Create Poll
+                            </Button>
+
+                        
                         <Button
                                 variant="contained"
-                                onClick={() => {/*link to respective poll.js*/ }}
+                                onClick={() => {handleClick("/polls") }}
                                 style={
                                     {
                                         backgroundColor: "#ffffff",
