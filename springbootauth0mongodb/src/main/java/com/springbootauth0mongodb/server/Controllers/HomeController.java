@@ -8,7 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "Springbootauth0mongodb";
+        return "Auth0 home page";
     }
 
 }

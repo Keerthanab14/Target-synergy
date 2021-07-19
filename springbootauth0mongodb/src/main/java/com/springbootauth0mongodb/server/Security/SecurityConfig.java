@@ -24,21 +24,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Allow Swagger to be accessed publicly
-        http.authorizeRequests().antMatchers("/v2/api-docs", "/swagger-ui/**", "/swagger-resources",
-                "/swagger-resources/configuration/ui", "/swagger-resources/configuration/security").permitAll();
+       // http.authorizeRequests().antMatchers("/v2/api-docs", "/swagger-ui/**", "/swagger-resources",
+        //        "/swagger-resources/configuration/ui", "/swagger-resources/configuration/security").permitAll();
 
         // Only allow GET requests to '/' to be permitted
-        http.authorizeRequests().mvcMatchers(HttpMethod.GET, "/").permitAll().anyRequest().authenticated().and()
-                .oauth2ResourceServer().jwt();
+        http.authorizeRequests()
+                .mvcMatchers("/api/public").permitAll()
+                .mvcMatchers("/api/private").authenticated()
+                .mvcMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")
+                .and().cors()
+                .and().oauth2ResourceServer().jwt();
     }
 
     JwtDecoder jwtDecoder() {
-        OAuth2TokenValidator<Jwt> withAudience = new AudienceValidator(audience);
-        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
-        OAuth2TokenValidator<Jwt> validator = new DelegatingOAuth2TokenValidator<>(withAudience, withIssuer);
+        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
+                JwtDecoders.fromOidcIssuerLocation(issuer);
 
-        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) JwtDecoders.fromOidcIssuerLocation(issuer);
-        jwtDecoder.setJwtValidator(validator);
+        OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(audience);
+        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
+        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
+
+        jwtDecoder.setJwtValidator(withAudience);
+
         return jwtDecoder;
     }
 }
