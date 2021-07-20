@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Breadcrumbs, Typography } from '@material-ui/core';
+
 import "../Poll/Poll.css";
 import { Link } from 'react-router-dom';
 
@@ -16,13 +18,26 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.secondary,
     },
   }));
+  
 
 const Poll = () => {
     const classes = useStyles();
     return (
         <div className="polls">
             <div className={classes.root}>
-                <h1>Service - Polls</h1>
+
+
+            <Breadcrumbs aria-label="breadcrumb">
+            
+             <Link to="/" style={{color:"black", textDecoration:"none" }} >
+                    Services
+             </Link>
+             <Typography>
+                   Polls
+             </Typography>
+            </Breadcrumbs>
+            
+
                 <Grid container spacing={3} style={{margin: "10px"}}>
                     <Grid item xs={6} sm={3}>
                     <Paper className={classes.paper} 
