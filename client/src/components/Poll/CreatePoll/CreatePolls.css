@@ -6,15 +6,6 @@
     
 }
 .Sidebar{
-<<<<<<< HEAD
-   padding-top:1rem;
-   font-family:  Helvetica;
-   height: 100%;
-   width: 20%;
-   order: 5;
-   flex-direction: row;
-   justify-content: flex-evenly;
-=======
   float: left;
   font-family:  Helvetica;
   height: 100%;
@@ -24,7 +15,6 @@
   
   
    /* : flex-evenly; */
->>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
 }
 .PollType{
   position: relative;
@@ -37,7 +27,6 @@
     
 } 
 
-<<<<<<< HEAD
 .present{
   padding-top:1rem;
    font-family:  Helvetica;
@@ -60,9 +49,6 @@
 }
 
 #menu li {
-=======
-#menu li {  /* button list custom styling*/
->>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
     float: left;
     
     position: relative;

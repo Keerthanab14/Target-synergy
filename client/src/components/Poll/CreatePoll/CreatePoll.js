@@ -24,11 +24,7 @@ const CreatePoll = () => {
     
     function handleClick(path) {
        history.push(path);
-<<<<<<< HEAD
-    }
-=======
    }
->>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
 
     return (
         <div className='bx'>
