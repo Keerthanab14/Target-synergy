@@ -4,7 +4,7 @@
     font-family: helvetica;
 }
 .Sidebar{
-    padding-top:1rem;
+   padding-top:1rem;
    font-family:  Helvetica;
    height: 100%;
    width: 20%;
@@ -19,6 +19,27 @@ ul {
     list-style-type: none;
     padding-inline: 10px;
     order: 5;
+}
+
+.present{
+  padding-top:1rem;
+   font-family:  Helvetica;
+   height: 100%;
+   width: 55%;
+   order: 5;
+   flex-direction: row;
+   justify-content: flex-evenly;
+  
+}
+
+.slide{
+  padding-top:1rem;
+   font-family:  Helvetica;
+   height: 100%;
+   width: 20%;
+   order: 5;
+   flex-direction: row;
+   justify-content: flex-evenly;
 }
 
 #menu li {

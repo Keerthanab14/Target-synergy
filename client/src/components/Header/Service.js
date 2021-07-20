@@ -89,7 +89,7 @@ export default function Service() {
           }
         }
       >
-              <StyledMenuItem>
+              <StyledMenuItem onClick={handleClose}>
                 
                   <ListItemIcon>         
                     <PollIcon fontSize="small" />
@@ -98,7 +98,7 @@ export default function Service() {
                     <ListItemText primary="Polls" /> 
                   </Link>
               </StyledMenuItem>
-              <StyledMenuItem>
+              <StyledMenuItem onClick={handleClose}>
                   <ListItemIcon>
                     <PeopleIcon fontSize="small" />
                   </ListItemIcon>
@@ -107,7 +107,7 @@ export default function Service() {
                   </Link>
                   
               </StyledMenuItem>
-              <StyledMenuItem>
+              <StyledMenuItem onClick={handleClose}>
                   <ListItemIcon>
                     <CreateIcon fontSize="small" />
                   </ListItemIcon>
