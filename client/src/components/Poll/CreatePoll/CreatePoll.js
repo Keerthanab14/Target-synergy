@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
 
 const CreatePoll = () => {
     const classes = useStyles();
-    const history = useHistory();
+    //const history = useHistory();
     
-    function handleClick(path) {
-        history.push(path);
-    }
+    //function handleClick(path) {
+     //   history.push(path);
+   // }
 
     return (
         <div className='bx'>
@@ -76,7 +76,7 @@ const CreatePoll = () => {
                     <div className='btnn'>
                             <Button
                                     variant="contained"
-                                    onClick={() => {handleClick("/create-poll/type") }}
+                                   // onClick={() => {handleClick("/create-poll/type") }}
                                     style={
                                         {
                                             backgroundColor: "#cc0000",
@@ -88,12 +88,12 @@ const CreatePoll = () => {
                                         }
                                     }
                                 >Create Poll
-                            </Button>
+                            </Button> */
 
                         
                         <Button
                                 variant="contained"
-                                onClick={() => {handleClick("/polls") }}
+                               // onClick={() => {handleClick("/polls") }}
                                 style={
                                     {
                                         backgroundColor: "#ffffff",
