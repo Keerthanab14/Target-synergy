@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
 
 const CreatePoll = () => {
     const classes = useStyles();
-    //const history = useHistory();
+    const history = useHistory();
     
-    //function handleClick(path) {
-     //   history.push(path);
-   // }
+    function handleClick(path) {
+       history.push(path);
+   }
 
     return (
         <div className='bx'>
