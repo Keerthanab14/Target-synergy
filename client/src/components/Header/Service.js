@@ -91,8 +91,10 @@ export default function Service() {
       >
               <StyledMenuItem>
                 
-                  <ListItemIcon>         
-                    <PollIcon fontSize="small" />
+                  <ListItemIcon>
+                  <Link to="/polls" style={{color:"black", textDecoration:"none"}}>         
+                    <PollIcon fontSize="small"  />
+                    </Link>
                   </ListItemIcon>
                   <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
                     <ListItemText primary="Polls" /> 
@@ -100,7 +102,9 @@ export default function Service() {
               </StyledMenuItem>
               <StyledMenuItem>
                   <ListItemIcon>
+                  <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
                     <PeopleIcon fontSize="small" />
+                    </Link>
                   </ListItemIcon>
                   <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
                   <ListItemText primary="Opinions" />
@@ -109,7 +113,9 @@ export default function Service() {
               </StyledMenuItem>
               <StyledMenuItem>
                   <ListItemIcon>
+                  <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
                     <CreateIcon fontSize="small" />
+                    </Link>
                   </ListItemIcon>
                   <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
                   <ListItemText primary="Feedback" />
