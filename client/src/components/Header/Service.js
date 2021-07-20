@@ -89,39 +89,38 @@ export default function Service() {
           }
         }
       >
-              <StyledMenuItem>
+              <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
+                <StyledMenuItem>
                 
                   <ListItemIcon>
-                  <Link to="/polls" style={{color:"black", textDecoration:"none"}}>         
+                           
                     <PollIcon fontSize="small"  />
-                    </Link>
+                    
                   </ListItemIcon>
-                  <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
                     <ListItemText primary="Polls" /> 
-                  </Link>
-              </StyledMenuItem>
+                  </StyledMenuItem>
+              </Link>
+              <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
               <StyledMenuItem>
                   <ListItemIcon>
-                  <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
-                    <PeopleIcon fontSize="small" />
-                    </Link>
-                  </ListItemIcon>
-                  <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
-                  <ListItemText primary="Opinions" />
-                  </Link>
+              <PeopleIcon fontSize="small" />
+              </ListItemIcon>
+                  <ListItemText primary="Opinions" />    
+              </StyledMenuItem>
+              </Link>
+              <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
+              <StyledMenuItem>
+                  <ListItemIcon>
                   
-              </StyledMenuItem>
-              <StyledMenuItem>
-                  <ListItemIcon>
-                  <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
                     <CreateIcon fontSize="small" />
-                    </Link>
+                    
                   </ListItemIcon>
-                  <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
+                  
                   <ListItemText primary="Feedback" />
-                  </Link>
+                 
                   
               </StyledMenuItem>
+              </Link>
           </StyledMenu>
     </div>
   );
