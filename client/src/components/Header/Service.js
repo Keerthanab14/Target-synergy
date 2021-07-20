@@ -16,7 +16,7 @@ const StyledMenu = withStyles({
   },
 })((props) => (
   <Menu
-    elevation={0}
+
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: 'bottom',
@@ -89,33 +89,52 @@ export default function Service() {
           }
         }
       >
+<<<<<<< HEAD
               <StyledMenuItem onClick={handleClose}>
+=======
+              <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
+                <StyledMenuItem>
+>>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
                 
-                  <ListItemIcon>         
-                    <PollIcon fontSize="small" />
+                  <ListItemIcon>
+                           
+                    <PollIcon fontSize="small"  />
+                    
                   </ListItemIcon>
-                  <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
                     <ListItemText primary="Polls" /> 
+<<<<<<< HEAD
                   </Link>
               </StyledMenuItem>
               <StyledMenuItem onClick={handleClose}>
+=======
+                  </StyledMenuItem>
+              </Link>
+              <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
+              <StyledMenuItem>
+>>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
                   <ListItemIcon>
-                    <PeopleIcon fontSize="small" />
-                  </ListItemIcon>
-                  <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
-                  <ListItemText primary="Opinions" />
-                  </Link>
+              <PeopleIcon fontSize="small" />
+              </ListItemIcon>
+                  <ListItemText primary="Opinions" />    
+              </StyledMenuItem>
+<<<<<<< HEAD
+              <StyledMenuItem onClick={handleClose}>
+=======
+              </Link>
+              <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
+              <StyledMenuItem>
+>>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
+                  <ListItemIcon>
                   
-              </StyledMenuItem>
-              <StyledMenuItem onClick={handleClose}>
-                  <ListItemIcon>
                     <CreateIcon fontSize="small" />
+                    
                   </ListItemIcon>
-                  <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
+                  
                   <ListItemText primary="Feedback" />
-                  </Link>
+                 
                   
               </StyledMenuItem>
+              </Link>
           </StyledMenu>
     </div>
   );

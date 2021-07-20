@@ -1,41 +1,52 @@
 import React from 'react'
+import { Button } from '@material-ui/core'
+import { createTheme, makeStyles } from '@material-ui/core/styles'
+import { green, purple } from '@material-ui/core/colors'
 import PollType from '../CreatePoll/PollType'
 import Content from '../CreatePoll/Content'
 import Background from '../CreatePoll/Background'
 import '../CreatePoll/CreatePolls.css'
 
-const divStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    
-  };
+const useStyles = makeStyles((theme) => ({
+  
+}));
+
+const theme = createTheme({
+});
 
 const Sidebar = () => {
    const menuItems =[
-   { id: 1, menuname:'Type', source: {PollType}, title:"Type"},
-    {id: 2, menuname:'Content', source: {Content}, title:"Content"},
-    {id: 2, menuname:'Background',source:{Background}, title:"Background" }
+   { component:<PollType />, title:"Type"},
+    { component:<Content />, title:"Content"},
+    { component:<Background />, title:"Background" }
    ];
 
-   const [menuname, setComponent] = React.useState(menuItems[0].menuname);
-
+   const [component, setComponent] = React.useState(menuItems[0].component);
+   const classes = useStyles();
     return (
       <div>
-        <div className="Sidebar">
-            <ul id="menu">
-            <div style={divStyle}>
-                {
-                  menuItems.map((item,i)=>
-                    <li key={i} onClick={()=>setComponent(item.menuname)} className="menu-item">
-                      {item.title} 
-                      &nbsp;
+        <div className="Sidebar"><ul id="menu">
+                { menuItems.map((item,i)=>
+                  <Button  
+                  style={
+                    {
+                      border: "2px",
+                      margin: "0px",
+                      }} > 
+                    <li key={i} onClick={()=>setComponent(item.component)} className="menu-item">
+                     {item.title} 
+                    
+          
+                      
                     </li>
+                   </Button> 
                   )
+                  
                 }
-                </div>
+                
             </ul>
             <div className="container">
-           {menuname}
+              {component}
         </div>
         </div>
         
