@@ -1,0 +1,45 @@
+.CreatePolls{
+    width: 100vw;
+    height: 100vh;
+    font-family: helvetica;
+}
+.Sidebar{
+    padding-top:1rem;
+   font-family:  Helvetica;
+   height: 100%;
+   width: 20%;
+   order: 5;
+   flex-direction: row;
+   justify-content: flex-evenly;
+}
+.body{
+    color: #92a8d1;
+}
+ul {
+    list-style-type: none;
+    padding-inline: 10px;
+    order: 5;
+}
+
+#menu li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color:  #ffffff;
+    margin-right: none;
+    margin-left: 0%;
+    width: 35%;
+    line-height: 60px;
+  }
+  #menu li a {
+    color: #0000;
+    display: block;
+    
+  }
+  
+  #menu li:hover {
+    text-decoration: none;
+    color: #000;
+    background-color: #ff9999;
+    padding: 10px;
+  }
