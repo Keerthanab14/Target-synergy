@@ -69,7 +69,22 @@ const onCopyText = () => {
                         <div className={classes.search}>
                             <CopyToClipboard text={text} onCopy={onCopyText} style={{float: 'right'}}>
                                 <div className="copy-area">
-                                    <button>copy</button>
+                                <Button
+                    variant="contained"
+                    onClick={() => {handleClick("/link") }}
+                             style={
+                                 {
+                                            backgroundColor: "#cc0000",
+                                            color: "white",
+                                            float: "right",
+                                            marginRight: "30px",
+                                            border: "1px solid white",
+                                            margin: "3px",
+                                            
+                                        }
+                                    }
+                                >copy
+                            </Button>
                                 </div>
                             </CopyToClipboard>
 
