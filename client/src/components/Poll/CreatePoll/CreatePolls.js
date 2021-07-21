@@ -9,8 +9,10 @@ import { useHistory } from 'react-router-dom';
        function handleClick(path) {
           history.push(path);
       } 
-    return <div className = 'CreatePolls'> 
+    return (
+    <div className = 'CreatePolls'> 
      <Sidebar /></div>
+    );
 }
 
 export default CreatePolls

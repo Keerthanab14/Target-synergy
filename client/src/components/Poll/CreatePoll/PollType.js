@@ -4,21 +4,33 @@ import { Grid } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
+import CloudIcon from '@material-ui/icons/Cloud';
+import TuneIcon from '@material-ui/icons/Tune';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+const section = {
+  height: "100%",
+};
 const useStyles = makeStyles((theme) => ({
+    h5: {
+     marginTop: '5px',
+     textAlign: 'center',
+    },
     root: {
       flexGrow: 1,
     },
     paper: {
-      margin: '2px',
+      margin: '1px',
+      height: '70px',
       padding: theme.spacing(1),
-      textAlign: 'center',
       color: theme.palette.text.secondary,
     },
     icon: {
-     height: '63%',
+    marginLeft: '35px',
+     height: '70%',
      display: 'block',
     
-    },
+  },
   }));
 const PollType = () => {
     const classes = useStyles();
@@ -27,11 +39,41 @@ const PollType = () => {
       return (
         
         <React.Fragment>
-    <Grid item xs={5} alignItems="center">
-            <Paper variant="outlined" className={classes.paper} ><EqualizerIcon className={classes.icon} />Multiple Choice</Paper>
+    <Grid item xs={6} >
+            <Paper variant="outlined" className={classes.paper} ><EqualizerIcon fontSize="large" className={classes.icon} /><h5 className={classes.h5}>Multiple Choice</h5></Paper>
           </Grid>
-          <Grid item xs={5}>
-            <Paper variant="outlined" className={classes.paper}><PhotoLibraryIcon  className={classes.icon}/>Image Choice</Paper>
+          <Grid item xs={6}>
+            <Paper variant="outlined" className={classes.paper}><PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5 className={classes.h5}>Image Choice</h5></Paper>
+          </Grid>
+            
+        </React.Fragment>
+      );
+    }
+    
+    function FormRow1() {
+      return (
+        
+        <React.Fragment>
+    <Grid item xs={6} alignItems="center">
+            <Paper variant="outlined" className={classes.paper} ><AssignmentRoundedIcon fontSize="large" className={classes.icon} /><h5 className={classes.h5}>Open Ended</h5></Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper variant="outlined" className={classes.paper}><CloudIcon fontSize="large" className={classes.icon}/><h5 className={classes.h5}>Word Cloud</h5></Paper>
+          </Grid>
+            
+        </React.Fragment>
+      );
+    }
+    function FormRow2() {
+      return (
+        
+        <React.Fragment>
+    <Grid item xs={6} >
+    
+            <Paper variant="outlined" className={classes.paper} ><TuneIcon fontSize="large" className={classes.icon} /><h5 className={classes.h5}>Scales</h5></Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper variant="outlined" className={classes.paper}><QuestionAnswerIcon fontSize="large" className={classes.icon}/><h5 className={classes.h5}>QandA</h5></Paper>
           </Grid>
             
         </React.Fragment>
@@ -39,9 +81,16 @@ const PollType = () => {
     }
     return (
         <div className={classes.root}>
-          <Grid container spacing={1} >&nbsp; Questions Type
+          <Grid container spacing={1} style={{paddingTop: '50px',}} >&nbsp; Questions Type
             <Grid container item xs={12} spacing={3} alignItems="center">
               <FormRow />
+            </Grid>
+            <Grid container item xs={12} spacing={3} alignItems="center">
+              <FormRow1 />
+            
+            </Grid>
+            <Grid container item xs={12} spacing={3} alignItems="center">
+              <FormRow2 />
             </Grid>
           </Grid>
         </div>
