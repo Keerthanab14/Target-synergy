@@ -88,12 +88,12 @@ const CreatePoll = () => {
                                         }
                                     }
                                 >Create Poll
-                            </Button> */
+                            </Button> 
 
                         
                         <Button
                                 variant="contained"
-                               // onClick={() => {handleClick("/polls") }}
+                                onClick={() => {handleClick("/create-poll") }}
                                 style={
                                     {
                                         backgroundColor: "#ffffff",
