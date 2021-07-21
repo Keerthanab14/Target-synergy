@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import '../CreatePoll/CreatePoll.css';
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useState } from "react";
 import { Link, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +27,17 @@ const CreatePoll = () => {
     function handleClick(path) {
        history.push(path);
    }
+
+
+    const [text, setText] = useState("");
+    const [isCopied, setIsCopied] = useState(false);
+
+const onCopyText = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+  };
 
     return (
         <div className='bx'>
@@ -54,7 +67,16 @@ const CreatePoll = () => {
                     <div className='accessCode'>
                         <h2>Access Code</h2>
                         <div className={classes.search}>
+                            <CopyToClipboard text={text} onCopy={onCopyText} style={{float: 'right'}}>
+                                <div className="copy-area">
+                                    <button>copy</button>
+                                </div>
+                            </CopyToClipboard>
+
                             <InputBase
+                                type="text"
+                                value={text}
+                                onChange={(event) => setText(event.target.value)}
                                 placeholder="https://targetsynergy.com/CODE"
                                 classes={{
                                     root: classes.inputRoot,
@@ -69,7 +91,9 @@ const CreatePoll = () => {
                                         fontSize: "1.2rem"
                                     }
                                 }
-                            />
+                                />
+                            
+                            
                         </div>
                     </div>
                     
@@ -87,10 +111,9 @@ const CreatePoll = () => {
                                             
                                         }
                                     }
-                                >Create Poll
+                                >Done
                             </Button> 
 
-                        
                         <Button
                                 variant="contained"
                                 onClick={() => {handleClick("/create-poll") }}

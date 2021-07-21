@@ -21,8 +21,6 @@ const Presentation = () => {
     
     return (
         <div>
-            <div className="present">
-            </div>
             
             <div className='slide'>
             <div className={classes.root} >
@@ -31,10 +29,10 @@ const Presentation = () => {
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
-                                width: "900px",
+                                width: "770px",
                                 height: "400px",
-                                
-                                marginLeft: "20px",
+                                marginTop:"25px",
+                                marginLeft: "100px",
 
                     }}>
                     </Paper>
