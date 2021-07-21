@@ -23,8 +23,7 @@ const Sidebar = () => {
    const [component, setComponent] = React.useState(menuItems[0].component);
    const classes = useStyles();
     return (
-      <div>
-        <div className="Sidebar"><ul id="menu" >
+        <div className="Sidebar"><ul id="menu">
                 { menuItems.map((item,i)=>
                   <Button   
                   style={
@@ -34,10 +33,7 @@ const Sidebar = () => {
 
                       }} > 
                     <li key={i} onClick={()=>setComponent(item.component) }  className="menu-item" className={classes.underline}>
-                     {item.title} 
-                    
-          
-                      
+                     {item.title}  
                     </li>
                    </Button> 
                   )
@@ -50,7 +46,7 @@ const Sidebar = () => {
         </div>
         </div>
         
-       </div>
+       
     );
 };
 
