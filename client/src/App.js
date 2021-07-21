@@ -22,7 +22,7 @@ function App() {
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-          {/* <Route path="/create-poll" component={CreatePoll}/> */}
+          <Route path="/link" component={CreatePoll}/> 
           <Route
             path="/create-poll"
             render={({ match: { url } }) => (
