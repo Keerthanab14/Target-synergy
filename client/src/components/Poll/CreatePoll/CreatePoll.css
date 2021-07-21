@@ -17,3 +17,8 @@
     flex-direction: row-reverse;
     margin-top: 2rem;
 }
+
+.copy-area{
+    width: 12%;
+    margin-right: 6rem;
+}

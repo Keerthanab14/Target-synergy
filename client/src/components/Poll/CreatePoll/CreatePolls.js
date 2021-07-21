@@ -40,7 +40,7 @@ import { Row } from "react-bootstrap";
                                             backgroundColor: "#cc0000",
                                             color: "white",
                                             float: "right",
-                                            marginRight: 25,
+                                            marginRight: "30px",
                                             border: "1px solid white",
                                             margin: "3px",
                                             
