@@ -33,9 +33,8 @@ const Presentation = () => {
                                 border: "1px solid black",
                                 width: "900px",
                                 height: "400px",
-                                position: "right",
-                                float: "left",
-                                marginLeft: "270px",
+                                
+                                marginLeft: "20px",
 
                     }}>
                     </Paper>
