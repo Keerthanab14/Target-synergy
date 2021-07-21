@@ -7,11 +7,11 @@ import Background from '../CreatePoll/Background'
 import '../CreatePoll/CreatePolls.css'
 
 const useStyles = makeStyles((theme) => ({
-  
+  underline: {
+    borderBottom: '2px solid black', 
+  }
 }));
 
-const theme = createTheme({
-});
 
 const Sidebar = () => {
    const menuItems =[
@@ -24,15 +24,16 @@ const Sidebar = () => {
    const classes = useStyles();
     return (
       <div>
-        <div className="Sidebar"><ul id="menu">
+        <div className="Sidebar"><ul id="menu" >
                 { menuItems.map((item,i)=>
-                  <Button  
+                  <Button   
                   style={
                     {
                       border: "2px",
                       margin: "0px",
+
                       }} > 
-                    <li key={i} onClick={()=>setComponent(item.component)} className="menu-item">
+                    <li key={i} onClick={()=>setComponent(item.component) }  className="menu-item" className={classes.underline}>
                      {item.title} 
                     
           
