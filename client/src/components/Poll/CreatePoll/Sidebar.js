@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button } from '@material-ui/core'
 import { createTheme, makeStyles } from '@material-ui/core/styles'
-import { green, purple } from '@material-ui/core/colors'
 import PollType from '../CreatePoll/PollType'
 import Content from '../CreatePoll/Content'
 import Background from '../CreatePoll/Background'

@@ -89,12 +89,8 @@ export default function Service() {
           }
         }
       >
-<<<<<<< HEAD
-              <StyledMenuItem onClick={handleClose}>
-=======
               <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
-                <StyledMenuItem>
->>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
+                <StyledMenuItem onClick={handleClose}>
                 
                   <ListItemIcon>
                            
@@ -102,28 +98,18 @@ export default function Service() {
                     
                   </ListItemIcon>
                     <ListItemText primary="Polls" /> 
-<<<<<<< HEAD
-                  </Link>
-              </StyledMenuItem>
-              <StyledMenuItem onClick={handleClose}>
-=======
                   </StyledMenuItem>
               </Link>
               <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
-              <StyledMenuItem>
->>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
+              <StyledMenuItem onClick={handleClose}>
                   <ListItemIcon>
               <PeopleIcon fontSize="small" />
               </ListItemIcon>
                   <ListItemText primary="Opinions" />    
               </StyledMenuItem>
-<<<<<<< HEAD
-              <StyledMenuItem onClick={handleClose}>
-=======
               </Link>
               <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
-              <StyledMenuItem>
->>>>>>> 5abf70fce4e151e7b764a1c06444a1590ee1c3ed
+              <StyledMenuItem onClick={handleClose}>
                   <ListItemIcon>
                   
                     <CreateIcon fontSize="small" />
