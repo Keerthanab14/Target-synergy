@@ -10,7 +10,6 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Submit from './Submit'
 import { Link } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
     logo: {
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1, 1, 1, 0),
         color: "white",
         textAlign: "center",
-        // vertical padding + font size from searchIcon
+       
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -81,7 +80,6 @@ function Header() {
         setAnchorEl(null);
     };
 
-    const { loginWithRedirect } = useAuth0();
     return (
 
         
@@ -133,7 +131,7 @@ function Header() {
                                
                                 
 
-                                <AccountCircle onClick={() => loginWithRedirect()}/>
+                                <AccountCircle/>
                                 
                             </IconButton>
 
