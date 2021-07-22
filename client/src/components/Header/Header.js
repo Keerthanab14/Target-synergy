@@ -10,8 +10,6 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Submit from './Submit'
 import { Link } from 'react-router-dom';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import GoogleLogin from 'react-google-login';
 
 const useStyles = makeStyles((theme) => ({
