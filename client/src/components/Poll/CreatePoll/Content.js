@@ -47,7 +47,7 @@ const Content = () => {
     const classes = useStyles();
 
     return (
-      <div style={{marginTop: '120px', marginLeft:"50px", height:"30rem"}}>
+      <div >
           <form className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Questions</h4>
         <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small"/>
         <h4 className={classes.h}>Options</h4>
