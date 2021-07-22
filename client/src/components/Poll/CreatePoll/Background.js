@@ -48,7 +48,7 @@ const Background = () => {
         }
       };
     return (
-        <div>
+        <div style={{marginTop: '120px', marginLeft:"50px"}}>
             <h4 className={classes.h5}>Style up your slide with colours and images! Your audience will also see the same background on their screen.</h4>
             <h4 className={classes.h}>Text Colour</h4>
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'white', border: '1px solid grey'}}></Button>
