@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { Breadcrumbs, Typography } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 import "../Poll/Poll.css";
 import { Link } from 'react-router-dom';
@@ -27,13 +28,13 @@ const Poll = () => {
             <div className={classes.root}>
 
 
-            <Breadcrumbs aria-label="breadcrumb"
+            <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb"
             style={{ margin:'10px'}}>
             
              <Link to="/" style={{color:"black", textDecoration:"none" }} >
-                    Services
+             <Typography style={{fontSize:"20px"}}> Services</Typography>
              </Link>
-             <Typography>
+             <Typography style={{fontSize:"20px"}}>
                    Polls
              </Typography>
             </Breadcrumbs>
