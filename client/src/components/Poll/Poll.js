@@ -27,7 +27,8 @@ const Poll = () => {
             <div className={classes.root}>
 
 
-            <Breadcrumbs aria-label="breadcrumb">
+            <Breadcrumbs aria-label="breadcrumb"
+            style={{ margin:'10px'}}>
             
              <Link to="/" style={{color:"black", textDecoration:"none" }} >
                     Services
