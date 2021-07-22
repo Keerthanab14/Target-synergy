@@ -23,7 +23,7 @@ const Sidebar = () => {
    const [component, setComponent] = React.useState(menuItems[0].component);
    const classes = useStyles();
     return (
-        <div className="Sidebar"><ul id="menu">
+        <div className="Sidebar"><ul id="menu" style={{marginTop:"40px"}}>
                 { menuItems.map((item,i)=>
                   <Button   
                   style={

@@ -31,7 +31,7 @@ const Presentation = () => {
                                 border: "1px solid black",
                                 width: "770px",
                                 height: "400px",
-                                marginTop:"25px",
+                                marginTop:"40px",
                                 marginLeft: "100px",
 
                     }}>
