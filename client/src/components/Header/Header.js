@@ -10,6 +10,9 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Submit from './Submit'
 import { Link } from 'react-router-dom';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import GoogleLogin from 'react-google-login';
 
 const useStyles = makeStyles((theme) => ({
     logo: {
@@ -49,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1, 1, 1, 0),
         color: "white",
         textAlign: "center",
-       
+
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -79,21 +82,26 @@ function Header() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    //google-login
+    const responseGoogle = (response) => {
+        console.log(response);
+        console.log(response.profileObj);
+    }
 
     return (
 
-        
+
 
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
-                
-                    <Link to ="/">
+
+                    <Link to="/">
                         <img src={logo} alt="logo" className={classes.logo} />
                     </Link>
                     &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
-                   
+
                         <Service />
 
                     </Typography>
@@ -110,16 +118,16 @@ function Header() {
                                 {
                                     border: " 1px solid white",
                                     position: "relative",
-                                  
+
                                 }
                             }
                         />
                     </div>
                     &nbsp;
                     <Submit />
-                     &nbsp; &nbsp;
+                    &nbsp; &nbsp;
                     {auth && (
-                    
+
                         <div>
                             <IconButton
                                 aria-label="account of current user"
@@ -128,21 +136,41 @@ function Header() {
                                 onClick={handleMenu}
                                 color="inherit"
                             >
-                               
-                                
+                                <div>
+                                    <GoogleLogin
+                                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                                        render={renderProps => (
+                                            <AccountCircle onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                            </AccountCircle>
+                                        )}
+                                        buttonText="Gmail Login"
+                                        onSuccess={() => responseGoogle}
+                                        onFailure={() => responseGoogle}
+                                        cookiePolicy={'single_host_origin'}
+                                        uxMode="redirect"
+                                        redirect_uri="http://localhost:3000/"
+                                    >
 
-                                <AccountCircle/>
-                                
+                                    </GoogleLogin>
+                                </div>
+
+
+
+
                             </IconButton>
 
-                           
-                                
+                            {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
+                                <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
+
+
+
+
                         </div>
                     )}
                 </Toolbar>
             </AppBar>
         </div>
-    
+
     );
 }
 export default Header
