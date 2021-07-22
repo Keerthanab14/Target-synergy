@@ -39,7 +39,7 @@ const PollType = () => {
       return (
         
         <React.Fragment>
-    <Grid item xs={6} >
+          <Grid item xs={6} >
             <Paper variant="outlined" className={classes.paper} ><EqualizerIcon fontSize="large" className={classes.icon} /><h5 className={classes.h5}>Multiple Choice</h5></Paper>
           </Grid>
           <Grid item xs={6}>
@@ -54,7 +54,7 @@ const PollType = () => {
       return (
         
         <React.Fragment>
-    <Grid item xs={6} alignItems="center">
+        <Grid item xs={6} alignItems="center">
             <Paper variant="outlined" className={classes.paper} ><AssignmentRoundedIcon fontSize="large" className={classes.icon} /><h5 className={classes.h5}>Open Ended</h5></Paper>
           </Grid>
           <Grid item xs={6}>
@@ -68,7 +68,7 @@ const PollType = () => {
       return (
         
         <React.Fragment>
-    <Grid item xs={6} >
+        <Grid item xs={6} >
     
             <Paper variant="outlined" className={classes.paper} ><TuneIcon fontSize="large" className={classes.icon} /><h5 className={classes.h5}>Scales</h5></Paper>
           </Grid>
@@ -81,7 +81,7 @@ const PollType = () => {
     }
     return (
         <div className={classes.root}>
-          <Grid container spacing={1} style={{paddingTop: '50px',}} >&nbsp; Questions Type
+          <Grid container spacing={1} style={{marginTop: '120px', marginLeft:"50px"}} >&nbsp; Questions Type
             <Grid container item xs={12} spacing={3} alignItems="center">
               <FormRow />
             </Grid>

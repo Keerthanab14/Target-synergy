@@ -42,7 +42,7 @@ import { Row } from "react-bootstrap";
                                             float: "right",
                                             marginRight: "30px",
                                             border: "1px solid white",
-                                            margin: "3px",
+                                            margin: "10px 3px",
                                             
                                         }
                                     }
