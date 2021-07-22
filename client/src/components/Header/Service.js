@@ -32,18 +32,11 @@ const StyledMenu = withStyles({
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
-    '&:focus': {
-        _backgroundColor: "#cc0000",
-        get backgroundColor() {
-            return this._backgroundColor;
-        },
-        set backgroundColor(value) {
-            this._backgroundColor = value;
-        },
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-          color: theme.palette.common.white,
+    '&:hover': {
+      backgroundColor: '#cc0000',
       },
-    },
+    
+  
   },
 }))(MenuItem);
 
