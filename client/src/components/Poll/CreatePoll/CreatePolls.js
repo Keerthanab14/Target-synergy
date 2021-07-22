@@ -20,7 +20,7 @@ import { Row } from "react-bootstrap";
     overflow: 'hidden'
     
   }}> 
-        <Breadcrumbs aria-label="breadcrumb" style={{float: 'left' }}>
+        <Breadcrumbs aria-label="breadcrumb" style={{float: 'left' , margin: "10px" }}>
             
             <Link to="/" style={{color:"black", textDecoration:"none" }} >
                    Services
