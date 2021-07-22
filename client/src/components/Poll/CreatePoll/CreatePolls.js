@@ -5,7 +5,7 @@ import '../CreatePoll/CreatePolls.css'
 import Button from '@material-ui/core/Button';
 import { Link,useHistory } from 'react-router-dom';
 import { Breadcrumbs, Typography } from '@material-ui/core';
-import { Row } from "react-bootstrap";
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 
   function CreatePolls() {
@@ -20,15 +20,15 @@ import { Row } from "react-bootstrap";
     overflow: 'hidden'
     
   }}> 
-        <Breadcrumbs aria-label="breadcrumb" style={{float: 'left' , margin: "10px" }}>
+        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" style={{float: 'left' , margin: "10px" }}>
             
             <Link to="/" style={{color:"black", textDecoration:"none" }} >
-                   Services
+            <Typography style={{fontSize:"20px"}}> Services</Typography>
             </Link>
             <Link to="/polls" style={{color:"black", textDecoration:"none" }} >
-                   Polls
+            <Typography style={{fontSize:"20px"}}>Polls</Typography>
             </Link>
-            <Typography>
+            <Typography style={{fontSize:"20px"}}>
                   Design
             </Typography>
            </Breadcrumbs> 
@@ -40,7 +40,7 @@ import { Row } from "react-bootstrap";
                                             backgroundColor: "#cc0000",
                                             color: "white",
                                             float: "right",
-                                            marginRight: "30px",
+                                            marginRight: "25px",
                                             border: "1px solid white",
                                             margin: "10px 3px",
                                             

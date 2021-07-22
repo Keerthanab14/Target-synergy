@@ -24,21 +24,27 @@ const Presentation = () => {
             
             <div className='slide'>
             <div className={classes.root} >
-            <Grid container spacing={3} style={{margin: "10px"}} style={{float: 'right'}}>
+            <Grid container spacing={3} style={{margin: "10px",float: 'right'}}>
                     <Grid item xs={6} sm={3}>
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
-                                width: "770px",
+                                width: "870px",
                                 height: "400px",
-                                marginTop:"40px",
-                                marginLeft: "100px",
+                                marginTop: '-7px',
+                                marginLeft: "15%",
 
                     }}>
                     </Paper>
+                    <div style={{height:"200px"}} >
+                    
+                  </div>
                     </Grid>
+                    
                 </Grid>
-            </div></div>
+                
+            </div>
+            </div>
         </div>
     );
 }

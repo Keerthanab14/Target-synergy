@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.secondary,
     },
     icon: {
-    marginLeft: '35px',
-     height: '70%',
+    marginLeft: '25px',
+     height: '50%',
      display: 'block',
     
   },
@@ -81,7 +81,7 @@ const PollType = () => {
     }
     return (
         <div className={classes.root}>
-          <Grid container spacing={1} style={{marginTop: '120px', marginLeft:"50px"}} >&nbsp; Questions Type
+          <Grid container spacing={1}  >&nbsp; Questions Type
             <Grid container item xs={12} spacing={3} alignItems="center">
               <FormRow />
             </Grid>
