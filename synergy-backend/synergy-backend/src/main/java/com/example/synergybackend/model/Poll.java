@@ -2,16 +2,21 @@ package com.example.synergybackend.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import com.example.synergybackend.model.Choice;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "polls")
 public class Poll {
+    @Id
+    //auto generate value
     private Long id;
+
     private String question;
     private List<Choice> choices = new ArrayList<>();
+    private Instant expireTime;
 
     public Long getId() {
         return id;
