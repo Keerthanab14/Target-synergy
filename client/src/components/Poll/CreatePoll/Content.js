@@ -7,16 +7,21 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import { Typography } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { Grid } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ({
     root: {
+        flex: 1,
       '& > *': {
         margin: theme.spacing(1),
-        width: '28ch',
+        width: '100%',
+      
       },
     },
     h:{
       fontSize: '15px',
-      marginBottom: '0px',
+      marginBottom: '0',
 
     },
     typography: {
@@ -49,11 +54,18 @@ const Content = () => {
     return (
       <div >
           <form className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Questions</h4>
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small"/>
+      
+        
+        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" style={{width: '94%'}}/>
         <h4 className={classes.h}>Options</h4>
-        <TextField id="outlined-basic" label="Option 1" variant="outlined" size="small" />
-        <TextField id="outlined-basic" label="Option 2" variant="outlined" size="small"/>
-        <TextField id="outlined-basic" label="Option 3" variant="outlined" size="small"/>
+        <Grid container={true}  direction="row"  alignItems="center" 
+>
+
+        <TextField id="outlined-basic" label="Option 1" variant="outlined" size="small" style={{width: '94%'}} /><IconButton aria-label="delete" size="small" >
+        <DeleteIcon/>
+      </IconButton></Grid>
+        <TextField id="outlined-basic" label="Option 2" variant="outlined" size="small"style={{width: '94%'}}/><DeleteIcon />
+        <TextField id="outlined-basic" label="Option 3" variant="outlined" size="small" style={{width: '94%'}}/><DeleteIcon />
         <Button
         style={{ width: "248px" }}
         className={classes.button}

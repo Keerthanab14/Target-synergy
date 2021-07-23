@@ -53,7 +53,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = () => {
+const Sidebar = ({ parentCallback }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -94,7 +94,7 @@ const Sidebar = () => {
           <Content />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <Background />
+          <Background parentCallback={parentCallback}/>
         </TabPanel>
       </SwipeableViews>
                 

@@ -6,14 +6,16 @@ import Button from '@material-ui/core/Button';
 import { Link,useHistory } from 'react-router-dom';
 import { Breadcrumbs, Typography } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Background from './Background';
 
 
   function CreatePolls() {
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
+       
    }
-
+   const [color, setColor] = React.useState('white');
     return (
         <div className= 'CreatePolls'>
   <div className = 'Navbar' style={{
@@ -55,14 +57,15 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
     overflow: 'hidden',
     marginTop: -30
 }}>
-     <Sidebar style={{
+     <Sidebar state={color} parentCallback={setColor}
+     style={{
          float: 'left'
      }}/>
      <Presentation style={
          {position: "relative",
          float: "right",
         }
-     }/>
+     } color={color}/>
      
      </div>
     </div>

@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-const Presentation = () => {
+const Presentation = ({color}) => {
     const classes = useStyles();
     
     return (
         <div>
-            
             <div className='slide'>
             <div className={classes.root} >
             <Grid container spacing={3} style={{margin: "10px",float: 'right'}}>
@@ -33,8 +32,10 @@ const Presentation = () => {
                                 height: "400px",
                                 marginTop: '-7px',
                                 marginLeft: "15%",
+                                backgroundColor: color
 
-                    }}>
+                    }}
+                    >
                     </Paper>
                     <div style={{height:"200px"}} >
                     
