@@ -10,7 +10,8 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Submit from './Submit'
 import { Link } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
     logo: {
@@ -80,15 +81,33 @@ function Header() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    //google-login
-    const responseGoogle = (response) => {
-        console.log(response);
-        console.log(response.profileObj);
+    // // google-login
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    //     console.log(response.profileObj);
+    // }
+    const onSuccess = (res)=>{
+        // console.log(res.profileObj);
+        const data =  {
+            googleId: res.profileObj.googleId,
+            email: res.profileObj.email,
+            name: res.profileObj.name
+            
+          }
+          console.log(data);
+        axios.post("http://localhost:8080/newUser", data)
+            .then(r =>console.log("success"))
+            .catch(err => { 
+            console.error(err);
+          });
     }
+    const onFailure = (res)=>{
+            console.log('login failed', res);
+        }
+
+    
 
     return (
-
-
 
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
@@ -142,14 +161,20 @@ function Header() {
                                             </AccountCircle>
                                         )}
                                         buttonText="Gmail Login"
-                                        onSuccess={() => responseGoogle}
-                                        onFailure={() => responseGoogle}
+                                        onSuccess={onSuccess}
+                                        onFailure={ onFailure}
                                         cookiePolicy={'single_host_origin'}
                                         uxMode="redirect"
                                         redirect_uri="http://localhost:3000/"
+                                        isSignedIn={true}
                                     >
-
                                     </GoogleLogin>
+                                    {/* <GoogleLogout
+                                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                                        buttonTex="Logout"
+                                        onLogoutSuccess={onSuccess}
+                                    >   
+                                    </GoogleLogout> */}
                                 </div>
 
 
