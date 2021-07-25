@@ -13,19 +13,19 @@ import java.util.Objects;
 public class Poll {
 
 
-    @Transient
-    public static final String SEQUENCE_NUMBER ="user_sequence";
+//    @Transient
+//    public static final String SEQUENCE_NUMBER ="user_sequence";
     @Id
-    private int id;
+    private Long id;
     private String question;
     private List<Choice> choices = new ArrayList<>();
 //    private Instant expireTime;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
