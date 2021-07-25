@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './App.css';
 import Main from './components/Main/Main';
 import Poll from './components/Poll/Poll';
@@ -7,15 +7,31 @@ import Opinions from './components/Opinions/Opinions';
 import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
+import Vote from './Vote';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import PollType from './components/Poll/CreatePoll/PollType';
 import Content from './components/Poll/CreatePoll/Content';
 import Background from './components/Poll/CreatePoll/Background';
+import axios from 'axios'
 
 function App() {
+  const [mcq , setmcq] = useState({question:'', choices:[]})
+  const PollsSubmit = () => {
+    axios.get(`http://localhost:8080/polls/231`)
+        .then((res) => {
+          console.log(res)
+          setmcq({
+            question: res.data.main.temp,
+            choices: res.data.main.temp_min,
+            
+        })
+        })
+  }
   return (
     <BrowserRouter>
     <div className="App">
+      <button onClick={PollsSubmit}>Submit</button>
+      {/* <Vote result = {result}/> */}
         <Header />
         <Switch>
           <Route exact path="/" component={Main}/>
