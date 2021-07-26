@@ -8,6 +8,8 @@ import '../CreatePoll/CreatePoll.css';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import axios from 'axios'
+import Vote from "../../../Vote"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +30,6 @@ const CreatePoll = () => {
        history.push(path);
    }
 
-
     const [text, setText] = useState("");
     const [isCopied, setIsCopied] = useState(false);
 
@@ -38,9 +39,23 @@ const onCopyText = () => {
       setIsCopied(false);
     }, 1000);
   };
+//   const [mcq , setmcq] = useState({question:'', choices:[]})
+  const [isVisible , setVisible] = useState(false)
+//   const PollsSubmit = () => {
+//     axios.get(`http://localhost:8080/polls/231`)
+//         .then((res) => {
+//           console.log(res.data.choices[0].text)
+//           setmcq({
+//             question: res.data.question,
+//             choices: res.data.choices,  
+//         })
+//         setVisible(true)
+//         })
+//   }
 
     return (
         <div className='bx'>
+            {!isVisible &&
             <div className={classes.root}>
                 <Grid item xs={12}>
                 <Paper className={classes.paper} style={{border: "1px solid black" , textAlign: 'left', color:"black"}}>
@@ -115,7 +130,7 @@ const onCopyText = () => {
                     <div className='btnn'>
                             <Button
                                     variant="contained"
-                                   // onClick={() => {handleClick("/create-poll/type") }}
+                                    onClick={() => {handleClick("/:id")}}
                                     style={
                                         {
                                             backgroundColor: "#cc0000",
@@ -128,7 +143,7 @@ const onCopyText = () => {
                                     }
                                 >Done
                             </Button> 
-
+                        
                         <Button
                                 variant="contained"
                                 onClick={() => {handleClick("/create-poll") }}
@@ -147,7 +162,8 @@ const onCopyText = () => {
                     </div>
                 </Paper>
                 </Grid>
-            </div>
+            </div>}
+            {/* {isVisible && <Vote mcq={mcq} />} */}
         </div>
     )
 }
