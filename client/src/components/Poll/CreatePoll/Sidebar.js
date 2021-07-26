@@ -12,6 +12,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
  tablabel: {
@@ -68,8 +69,8 @@ const Sidebar = ({ parentCallback, toggleVisibility }) => {
    
    const classes = useStyles();
     return (
-        <div className="Sidebar">
-                  <AppBar position="static" color="default" style={{marginTop: '10%'}}>
+        <Grid className="Sidebar">
+                  <AppBar position="static" color="default" style={{marginTop: '0%'}}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -99,7 +100,7 @@ const Sidebar = ({ parentCallback, toggleVisibility }) => {
       </SwipeableViews>
                 
            
-        </div>
+        </Grid>
         
        
     );

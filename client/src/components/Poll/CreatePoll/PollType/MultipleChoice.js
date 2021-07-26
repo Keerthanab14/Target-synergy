@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Container = styled.div`
   margin: 0px auto;
-  max-width: 800px;
+  max-width: 1000px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -25,8 +25,8 @@ export const BarChartContainer = styled.div`
 `;
 
 export const Chart = css`
-  margin-top: 0%;
-  
+  margin-top: 2%;
+  height: '100%'
   width: 100%;
   max-width: 86px;
   &:hover {

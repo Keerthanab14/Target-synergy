@@ -8,10 +8,10 @@ import WordCloud from './PollType/WordCloud';
 import ImageChoice from './PollType/ImageChoice';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
+    
     paper: {
+      flexGrow: 2,
+      flexShrink: 1,
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
@@ -25,37 +25,28 @@ const Presentation = ({color,isVisible}) => {
     const classes = useStyles();
     
     return (
-        <div>
-            <div className='slide'>
-            <div className={classes.root} >
-            <Grid container spacing={3} style={{margin: "10px",float: 'right'}}>
-                    <Grid item xs={6} sm={3}>
+       
+            
+            
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
-                                width: "870px",
-                                height: "400px",
-                                marginTop: '-7px',
-                                marginLeft: "15%",
+                                width: "60%",
+                                height: "100%",
+                                minWidth: '200px',
+                                minHeight: '500px',
+                    
                                 backgroundColor: color
 
                     }}
                     >
                      
-                      {isVisible && ( <ImageChoice />)}
+                      {isVisible && ( <MultipleChoice />)}
                       {!isVisible && (<WordCloud />)}
                      
                     </Paper>
-                    <div style={{height:"200px"}} >
-                    
-                  </div>
-                    </Grid>
-                    
-                </Grid>
-                
-            </div>
-            </div>
-        </div>
+
+            
     );
 }
 
