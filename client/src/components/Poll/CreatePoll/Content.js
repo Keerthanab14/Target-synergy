@@ -107,7 +107,7 @@ const Content = () => {
         <AddIcon className={classes.addicon} />
         &nbsp;Add
       </Button>
-      <Button>Submit</Button>
+      
       <button>Submit</button>
         <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
