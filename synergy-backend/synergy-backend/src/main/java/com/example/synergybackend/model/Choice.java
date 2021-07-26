@@ -3,57 +3,59 @@ package com.example.synergybackend.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 import java.util.Objects;
-//@Document(collection = "choices")
+@Document(collection = "choices")
 public class Choice {
-        @Id
-        private int id;
-        private String text;
-        private Poll poll;
+    @Id
+    private int id;
 
-        public Choice() {
+    private String text;
 
-        }
+    private Poll poll;
 
-        public Choice(String text) {
-            this.text = text;
-        }
+    public Choice() {
 
-        public int getId() {
-            return id;
-        }
+    }
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    public Choice(String text) {
+        this.text = text;
+    }
 
-        public String getText() {
-            return text;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public void setText(String text) {
-            this.text = text;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        public Poll getPoll() {
-            return poll;
-        }
+    public String getText() {
+        return text;
+    }
 
-        public void setPoll(Poll poll) {
-            this.poll = poll;
-        }
+    public void setText(String text) {
+        this.text = text;
+    }
 
-//        @Override
-//        public boolean equals(Object o) {
-//            if (this == o) return true;
-//            if (o == null || getClass() != o.getClass()) return false;
-//            Choice choice = (Choice) o;
-//            return Objects.equals(id, choice.id);
-//        }
-//
-//        @Override
-//        public int hashCode() {
-//            return Objects.hash(id);
-//        }
+    public Poll getPoll() {
+        return poll;
+    }
+
+    public void setPoll(Poll poll) {
+        this.poll = poll;
+    }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Choice choice = (Choice) o;
+//        return Objects.equals(id, choice.id);
+//    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id);
+//    }
 
 }

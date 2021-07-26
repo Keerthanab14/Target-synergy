@@ -1,17 +1,25 @@
 package com.example.synergybackend.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-import com.example.synergybackend.model.Choice;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "polls")
 public class Poll {
+
+
+//    @Transient
+//    public static final String SEQUENCE_NUMBER ="user_sequence";
+    @Id
     private Long id;
     private String question;
     private List<Choice> choices = new ArrayList<>();
+//    private Instant expireTime;
 
     public Long getId() {
         return id;
@@ -37,14 +45,14 @@ public class Poll {
         this.choices = choices;
     }
 
-    public void addChoice(Choice choice) {
-        choices.add(choice);
-        choice.setPoll(this);
-    }
-
-    public void removeChoice(Choice choice) {
-        choices.remove(choice);
-        choice.setPoll(null);
-    }
+//    public void addChoice(Choice choice) {
+//        choices.add(choice);
+//        choice.setPoll(this);
+//    }
+//
+//    public void removeChoice(Choice choice) {
+//        choices.remove(choice);
+//        choice.setPoll(null);
+//    }
 
 }
