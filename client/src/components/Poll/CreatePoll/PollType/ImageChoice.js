@@ -28,7 +28,7 @@ export const Chart = css`
   margin-top: 0%;
   
   width: 100%;
-  max-width: 86px;
+  max-width: 96px;
   &:hover {
     opacity: 0.8;
   }

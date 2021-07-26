@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import '../CreatePoll/CreatePoll.css';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {

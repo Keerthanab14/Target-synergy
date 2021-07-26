@@ -53,7 +53,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback }) => {
+const Sidebar = ({ parentCallback, toggleVisibility }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -88,7 +88,7 @@ const Sidebar = ({ parentCallback }) => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction} >
-          <PollType />
+          <PollType toggleVisibility={toggleVisibility}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Content />
