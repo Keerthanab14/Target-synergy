@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import Poll from "react-polls";
 import axios from "axios"
 
+const source = axios.CancelToken.source();
 // Declaring poll question and answers
+const id=231
+const path=`http://localhost:8080/polls/${id}`;
+//Vote(path)
 
-
-const Polls = () => {
+const Vote = () => {
   const [mcq , setmcq] = useState({question:'', choices:[]})
   const [isVisible , setVisible] = useState(false)
-    axios.get(`http://localhost:8080/polls/231`)
+    axios.get(`${path}`, {
+     // cancelToken: source.token
+    })//source.cancel();
         .then((res) => {
           console.log(res.data.choices[0].text)
           setmcq({
@@ -39,11 +44,13 @@ const Polls = () => {
 
   //
   return (
+    source.cancel(),
     // const pollAnswers = 
     <div>
+     
       <Poll question={pollQuestion} answers={Answers} onVote={handleVote} />
     </div>
   );
 };
 
-export default Polls;
+export default Vote;
