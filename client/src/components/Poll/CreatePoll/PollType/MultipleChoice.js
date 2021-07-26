@@ -25,8 +25,8 @@ export const BarChartContainer = styled.div`
 `;
 
 export const Chart = css`
-  margin-top: 2%;
-  height: '100%'
+  margin-top: 0%;
+  
   width: 100%;
   max-width: 86px;
   &:hover {
