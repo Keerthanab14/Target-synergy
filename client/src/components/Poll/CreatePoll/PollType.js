@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { ButtonBase, Grid } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper';
+import { Grid } from '@material-ui/core'
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
@@ -11,6 +10,7 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
+import CreatePolls from './CreatePolls';
 
 const useStyles = makeStyles((theme) => ({
     
@@ -35,14 +35,17 @@ const useStyles = makeStyles((theme) => ({
     
   },
   }));
-const PollType = () => {
+const PollType = (props) => {
     const classes = useStyles();
     const [alignment, setAlignment] = React.useState('mc');
-
+    const {toggleVisibility}=props;
     const handleAlignment = (event, newAlignment) => {
       setAlignment(newAlignment);
     };
-    function FormRow() {
+    function FormRow(props) {
+      
+      
+    
       return (
         
         <ToggleButtonGroup
@@ -53,7 +56,8 @@ const PollType = () => {
       style={{marginBottom: '20px'}}
     >
           
-            <ToggleButton  value="mc" aria-label="multiplechoice" className={classes.togglebtn}>
+            <ToggleButton  value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={toggleVisibility}
+          >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </ToggleButton>
          
@@ -64,6 +68,7 @@ const PollType = () => {
             </ToggleButtonGroup>
       );
     }
+
     
     function FormRow1() {
       return (

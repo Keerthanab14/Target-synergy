@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input';
 import { ImageRounded } from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { SketchPicker } from 'react-color'
 
 
 const Background=(props) => {

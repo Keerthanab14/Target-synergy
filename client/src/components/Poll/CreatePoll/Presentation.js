@@ -3,6 +3,9 @@ import '../CreatePoll/CreatePolls.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import MultipleChoice from "./PollType/MultipleChoice";
+import WordCloud from './PollType/WordCloud';
+import ImageChoice from './PollType/ImageChoice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,10 +16,12 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
       color: theme.palette.text.secondary,
     },
+    
   }));
+  
+ 
 
-
-const Presentation = ({color}) => {
+const Presentation = ({color,isVisible}) => {
     const classes = useStyles();
     
     return (
@@ -36,6 +41,10 @@ const Presentation = ({color}) => {
 
                     }}
                     >
+                     
+                      {isVisible && ( <ImageChoice />)}
+                      {!isVisible && (<WordCloud />)}
+                     
                     </Paper>
                     <div style={{height:"200px"}} >
                     

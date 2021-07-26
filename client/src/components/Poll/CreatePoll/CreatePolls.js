@@ -6,16 +6,24 @@ import Button from '@material-ui/core/Button';
 import { Link,useHistory } from 'react-router-dom';
 import { Breadcrumbs, Typography } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Background from './Background';
 
 
+export const typee=[
+    { id: 1, label: 'multiplechoice', checked: false },
+    { id: 2, label: 'imagechoise', checked: false },
+    { id: 3, label: 'openended', checked: false },
+    { id: 4, label: 'wordcloud', checked: false },
+   ];
   function CreatePolls() {
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
        
    }
-   const [color, setColor] = React.useState('white');
+   const [color, setColor] = React.useState('white'); //for background color change in presentation component
+   const [isVisible, setIsVisible] = React.useState(true); // to show and hide type(of sidebar) component in presentation
+   const toggleVisibility = () => setIsVisible(!isVisible);
+  
     return (
         <div className= 'CreatePolls'>
   <div className = 'Navbar' style={{
@@ -57,7 +65,7 @@ import Background from './Background';
     overflow: 'hidden',
     marginTop: -30
 }}>
-     <Sidebar state={color} parentCallback={setColor}
+     <Sidebar state={color} parentCallback={setColor} isVisible={isVisible} toggleVisibility={toggleVisibility}
      style={{
          float: 'left'
      }}/>
@@ -65,7 +73,7 @@ import Background from './Background';
          {position: "relative",
          float: "right",
         }
-     } color={color}/>
+     } color={color} isVisible={isVisible}/>
      
      </div>
     </div>
