@@ -1,30 +1,26 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Poll from "react-polls";
 import axios from "axios"
 
 const source = axios.CancelToken.source();
 // Declaring poll question and answers
-const id=231
-const path=`http://localhost:8080/polls/${id}`;
-//Vote(path)
+// const id=231
+// const path=`http://localhost:8080/polls/${id}`;
+
 
 const Vote = () => {
   const [mcq , setmcq] = useState({question:'', choices:[]})
-  const [isVisible , setVisible] = useState(false)
-    axios.get(`${path}`, {
-     // cancelToken: source.token
-    })//source.cancel();
-        .then((res) => {
-          console.log(res.data.choices[0].text)
-          setmcq({
-            question: res.data.question,
-            choices: res.data.choices,  
-        })
+    useEffect(async () => {
+      var result = await axios.get(`http://localhost:8080/polls/231`)
+      setmcq({
+        question: result.data.question,
+        choices: result.data.choices
       })
-
+      
+    },[])
   const pollQuestion = mcq.question;
-  console.log(mcq)
-  let choice = mcq.choices[0];
+  
+  // let choice = mcq.choices[0];
   //  console.log(choice);
   const pollAnswers = [
     { option: "31" , votes: 1 },
@@ -44,10 +40,7 @@ const Vote = () => {
 
   //
   return (
-    source.cancel(),
-    // const pollAnswers = 
     <div>
-     
       <Poll question={pollQuestion} answers={Answers} onVote={handleVote} />
     </div>
   );
