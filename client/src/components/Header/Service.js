@@ -9,7 +9,7 @@ import PollIcon from '@material-ui/icons/Poll';
 import CreateIcon from '@material-ui/icons/Create';
 import PeopleIcon from '@material-ui/icons/People';
 import { Link } from 'react-router-dom';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
 const StyledMenu = withStyles({
   paper: {

@@ -15,23 +15,12 @@ import Background from './components/Poll/CreatePoll/Background';
 import axios from 'axios'
 
 function App() {
-  const [mcq , setmcq] = useState({question:'', choices:[]})
-  const PollsSubmit = () => {
-    axios.get(`http://localhost:8080/polls/231`)
-        .then((res) => {
-          console.log(res)
-          setmcq({
-            question: res.data.main.temp,
-            choices: res.data.main.temp_min,
-            
-        })
-        })
-  }
+  
   return (
     <BrowserRouter>
     <div className="App">
-      <button onClick={PollsSubmit}>Submit</button>
-      {/* <Vote result = {result}/> */}
+      {/* <button onClick={PollsSubmit}>Submit</button>
+      <Vote result = {result}/> */}
         <Header />
         <Switch>
           <Route exact path="/" component={Main}/>
@@ -50,6 +39,7 @@ function App() {
                       </Switch>
             )}
           />
+          <Route path="/:id" component={Vote}/>
         </Switch> 
     </div>
     </BrowserRouter>
