@@ -35,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
     
   },
   }));
-const PollType = (props) => {
+const PollType = ({handleVisibility, toggleVisibility, isVisibleComponent }) => {
     const classes = useStyles();
     const [alignment, setAlignment] = React.useState('mc');
-    const {toggleVisibility}=props;
+   
     const handleAlignment = (event, newAlignment) => {
       setAlignment(newAlignment);
     };
@@ -49,6 +49,7 @@ const PollType = (props) => {
       return (
         
         <ToggleButtonGroup
+        
       value={alignment}
       exclusive
       onChange={handleAlignment}
@@ -56,12 +57,12 @@ const PollType = (props) => {
       style={{marginBottom: '20px'}}
     >
           
-            <ToggleButton  value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={toggleVisibility}
+            <ToggleButton   value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={()=>{handleVisibility('0');toggleVisibility();}}
           >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </ToggleButton>
          
-          <ToggleButton value="ic" aria-label="imagechoice" className={classes.togglebtn}>
+          <ToggleButton value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={()=>{handleVisibility('1');toggleVisibility();}}>
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </ToggleButton>
             
@@ -86,7 +87,7 @@ const PollType = (props) => {
             </ToggleButton>
   
          
-            <ToggleButton value="wc" aria-label="word cloud" className={classes.togglebtn}>
+            <ToggleButton value="wc" aria-label="word cloud" className={classes.togglebtn}  >
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </ToggleButton>
           

@@ -16,7 +16,9 @@ import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
  tablabel: {
-   minWidth: 75, maxWidth: 400
+   minWidth: 65, maxWidth: 400,
+   flexGrow: 1,
+      flexShrink: 1,
  }
 }));
 function TabPanel(props) {
@@ -54,7 +56,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, toggleVisibility }) => {
+const Sidebar = ({ parentCallback, handleVisibility, toggleVisibility }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -69,7 +71,7 @@ const Sidebar = ({ parentCallback, toggleVisibility }) => {
    
    const classes = useStyles();
     return (
-        <Grid className="Sidebar">
+        <Grid className="Sidebar" style={ { flexGrow: 1, flexShrink: 1}}>
                   <AppBar position="static" color="default" style={{marginTop: '0%'}}>
         <Tabs
           value={value}
@@ -89,7 +91,8 @@ const Sidebar = ({ parentCallback, toggleVisibility }) => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction} >
-          <PollType toggleVisibility={toggleVisibility}  />
+          <PollType toggleVisibility={toggleVisibility}
+          handleVisibility={handleVisibility}   />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Content />

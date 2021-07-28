@@ -24,13 +24,16 @@ export const typee=[
    }
    const [color, setColor] = React.useState('white'); //for background color change in presentation component
    const [isVisible, setIsVisible] = React.useState(true); // to show and hide type(of sidebar) component in presentation
+   const [isVisibleComponent, setIsVisibleComponent]=React.useState('0');
+   const handleVisibility = () => setIsVisibleComponent(isVisibleComponent);
    const toggleVisibility = () => setIsVisible(!isVisible);
+   
 
   
     return (
         <Container className= 'CreatePolls' style={ {marginRight:'0%'}}>
-  <Container className = 'Navbar' style={{
-    overflow: 'hidden'
+  <Container className = 'Navbar' display='flex' jutify='space-between' style={{
+    overflow: 'hidden', 
     
   }}> 
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" style={{float: 'left' , margin: "10px" }}>
@@ -62,26 +65,25 @@ export const typee=[
                             </Container> 
      
        
-                            <Grid
-  container
+                            <Container
+ 
   spacing={0}
-  direction="row"
-  alignItems="space-between"
-  justify="space-between"
-  overflow="hidden"
-  style={{ minHeight: '80vh', minWidth: '100px', maxWidth: '2000px',
-  maxheight: '120vh' }}
+  Flexdirection="row"
+  display="flex"
+  style={{ minHeight: '80vh', maxWidth: '2000px' }}
 >
 
   
-     <Sidebar state={color} parentCallback={setColor} isVisible={isVisible} toggleVisibility={toggleVisibility}
+     <Sidebar state={color} parentCallback={setColor} isVisible={isVisible} toggleVisibility={toggleVisibility} 
+     handleVisibility={handleVisibility} isVisibleComponent={isVisibleComponent}
+     
      style={{
          float: 'left', marginLeft: '0%' }}/>
      <Presentation style={
          { float: "right"}
-     } color={color} isVisible={isVisible}/>
+     } color={color} isVisible={isVisible} isVisibleComponent={isVisibleComponent} />
      
-     </Grid>
+     </Container>
     </Container>
     
     )

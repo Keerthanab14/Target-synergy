@@ -21,8 +21,10 @@ const useStyles = makeStyles((theme) => ({
   
  
 
-const Presentation = ({color,isVisible}) => {
+const Presentation = ({color,isVisible,isVisibleComponent}) => {
     const classes = useStyles();
+ 
+    
     
     return (
        
@@ -31,17 +33,23 @@ const Presentation = ({color,isVisible}) => {
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
-                                width: "870px",
+                                width: "75%",
                                 height: "400px",
-                                marginTop: '-7px',
-                                marginLeft: "42%",
+                                marginLeft: "26%",
                                 backgroundColor: color
 
                     }}
                     >
                      
-                      {isVisible && ( <MultipleChoice />)}
-                      {!isVisible && (<WordCloud />)}
+                  
+                      {isVisibleComponent === '0'? isVisible && (<MultipleChoice />) : null}
+                      {isVisibleComponent === '1'? isVisible && (<WordCloud />) : null}
+                      
+                     
+                    
+                      
+                     
+                      
                      
                     </Paper>
                     
