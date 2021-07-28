@@ -129,7 +129,7 @@ const onCopyText = () => {
                     <div className='btnn'>
                             <Button
                                     variant="contained"
-                                    onClick={() => {handleClick("/:id")}}
+                                    onClick={() => {handleClick("/231")}}
                                     style={
                                         {
                                             backgroundColor: "#cc0000",

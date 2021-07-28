@@ -31,11 +31,10 @@ const Presentation = ({color,isVisible}) => {
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
-                                width: "60%",
-                                height: "100%",
-                                minWidth: '200px',
-                                minHeight: '500px',
-                    
+                                width: "870px",
+                                height: "400px",
+                                marginTop: '-7px',
+                                marginLeft: "42%",
                                 backgroundColor: color
 
                     }}
@@ -45,8 +44,7 @@ const Presentation = ({color,isVisible}) => {
                       {!isVisible && (<WordCloud />)}
                      
                     </Paper>
-
-            
+                    
     );
 }
 
