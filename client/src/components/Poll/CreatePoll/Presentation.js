@@ -36,7 +36,7 @@ const Presentation = ({color,isVisible}) => {
                                 width: "870px",
                                 height: "400px",
                                 marginTop: '-7px',
-                                marginLeft: "15%",
+                                marginLeft: "42%",
                                 backgroundColor: color
 
                     }}
@@ -46,7 +46,7 @@ const Presentation = ({color,isVisible}) => {
                       {!isVisible && (<WordCloud />)}
                      
                     </Paper>
-                    <div style={{height:"200px"}} >
+                    <div>
                     
                   </div>
                     </Grid>
