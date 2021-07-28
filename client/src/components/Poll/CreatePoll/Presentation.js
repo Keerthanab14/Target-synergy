@@ -8,10 +8,10 @@ import WordCloud from './PollType/WordCloud';
 import ImageChoice from './PollType/ImageChoice';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
+    
     paper: {
+      flexGrow: 2,
+      flexShrink: 1,
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
@@ -21,41 +21,38 @@ const useStyles = makeStyles((theme) => ({
   
  
 
-const Presentation = ({color,isVisible}) => {
+const Presentation = ({color,isVisible,isVisibleComponent}) => {
     const classes = useStyles();
+ 
+    
     
     return (
-        <div>
-            <div className='slide'>
-            <div className={classes.root} >
-            <Grid container spacing={3} style={{margin: "10px",float: 'right'}}>
-                    <Grid item xs={6} sm={3}>
+       
+            
+            
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
-                                width: "870px",
+                                width: "75%",
                                 height: "400px",
-                                marginTop: '-7px',
-                                marginLeft: "42%",
+                                marginLeft: "26%",
                                 backgroundColor: color
 
                     }}
                     >
                      
-                      {isVisible && ( <ImageChoice />)}
-                      {!isVisible && (<WordCloud />)}
+                  
+                      {isVisibleComponent === '0'? isVisible && (<MultipleChoice />) : null}
+                      {isVisibleComponent === '1'? isVisible && (<WordCloud />) : null}
+                      
+                     
+                    
+                      
+                     
+                      
                      
                     </Paper>
-                    <div>
                     
-                  </div>
-                    </Grid>
-                    
-                </Grid>
-                
-            </div>
-            </div>
-        </div>
     );
 }
 

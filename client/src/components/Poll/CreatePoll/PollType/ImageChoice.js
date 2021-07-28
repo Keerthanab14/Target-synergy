@@ -27,7 +27,7 @@ export const BarChartContainer = styled.div`
 export const Chart = css`
   margin-top: 0%;
   
-  width: 100%;
+  width: ;
   max-width: 96px;
   &:hover {
     opacity: 0.8;
@@ -78,7 +78,7 @@ export const __DATA__ = [
     },
   ];
   
-function MultipleChoice () {
+function ImageChoice () {
     return(
       <Container>
       <MainContainer>
@@ -95,4 +95,4 @@ function MultipleChoice () {
     </Container>
     );
   } 
-  export default MultipleChoice
+  export default ImageChoice
