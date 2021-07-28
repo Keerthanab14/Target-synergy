@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     togglebtn: {
-      width: '130px',
+      width: '110px',
       margin: '1px' ,
       marginRight: '5px',
-      height: '120px',
+      height: '100px',
       padding: theme.spacing(2),
       color: theme.palette.text.secondary,
       
