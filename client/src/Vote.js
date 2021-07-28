@@ -9,19 +9,16 @@ const source = axios.CancelToken.source();
 
 
 const Vote = () => {
-  const [mcq , setmcq] = useState({question:'', choices:[]})
+  const [mcq , setmcq] = useState({})
     useEffect(async () => {
       var result = await axios.get(`http://localhost:8080/polls/231`)
-      setmcq({
-        question: result.data.question,
-        choices: result.data.choices
-      })
+      setmcq(result.data)
       
     },[])
-  const pollQuestion = mcq.question;
-  
-  // let choice = mcq.choices[0];
-  //  console.log(choice);
+  const pollQuestion = "jj";
+  console.log(typeof mcq.choices[0]);
+  // let choice = JSON.parse( mcq.choices[0]);
+  //  console.log(choice.text);
   const pollAnswers = [
     { option: "31" , votes: 1 },
     { option: "24", votes: 1}

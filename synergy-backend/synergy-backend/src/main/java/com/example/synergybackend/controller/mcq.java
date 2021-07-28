@@ -16,14 +16,16 @@ import java.util.Map;
 public class mcq {
     @Autowired
     private PollRepository pollRepository;
-    @PostMapping("/newPolls")
-    public String saveBook(@RequestBody Map<String, Object> user) {
-        Poll poll=new Poll();
-        poll.setId((long) 2);
-        poll.setQuestion(String.valueOf(user.get("question")));
-       // poll.setChoices();
-        pollRepository.save(poll);
-        System.out.println(user.get("question"));
-        return (String)user.get("data");
-    }
+//    int a = 8900;
+//    @PostMapping("/newPolls")
+//    public String saveBook(@RequestBody Map<String, Object> user) {
+//
+//        Poll poll=new Poll();
+//        poll.setId((long) a++);
+//        poll.setQuestion(String.valueOf(user.get("question")));
+//       // poll.setChoices();
+//        pollRepository.save(poll);
+//        System.out.println(user.get("question"));
+//        return (String)user.get("data");
+//    }
 }
