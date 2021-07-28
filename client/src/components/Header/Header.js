@@ -95,7 +95,7 @@ function Header() {
             
           }
           console.log(data);
-        axios.post("http://localhost:8080/newUser", data)
+            axios.post("http://localhost:8080/newUser", data)
             .then(r =>console.log("success"))
             .catch(err => { 
             console.error(err);

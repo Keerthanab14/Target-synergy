@@ -39,7 +39,7 @@ function App() {
                       </Switch>
             )}
           />
-          <Route path="/:id" component={Vote}/>
+          <Route path="/231" component={Vote}/>
         </Switch> 
     </div>
     </BrowserRouter>
