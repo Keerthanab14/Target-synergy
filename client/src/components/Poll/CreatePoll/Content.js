@@ -52,23 +52,23 @@ const Content = () => {
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/newPolls"
+    const url="http://localhost:8080/polls"
     const[data, setData]=useState({
         question: "",
-        choices0: "",
-        choices1:""
+        choice0: "",
+        choice1:""
     })
 
-    function submit(e){
+    const submit = (e) => {
       e.preventDefault();
-      axios.post(url,{
+      const q ={
         question: data.question,
-        choices0: data.choices0,
-        choices1: data.choices1
-      })
-      .then(res=>{
-        console.log(res.data)
-      })
+        choices: [data.choice0,data.choice1]
+      }
+      axios.post(url, q)
+           .then(res=>{
+              console.log(res.data)
+            })
 
     }
 
@@ -82,7 +82,7 @@ const Content = () => {
 
     return (
       <div >
-          <form onSubmit={(e)=>submit(e)} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Questions</h4>
+          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Questions</h4>
       
      
         <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '94%'}}/>
