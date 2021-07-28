@@ -92,7 +92,6 @@ const onCopyText = () => {
                                             backgroundColor: "#cc0000",
                                             color: "white",
                                             float: "right",
-                                            marginRight: "30px",
                                             border: "1px solid white",
                                             margin: "3px",
                                             
