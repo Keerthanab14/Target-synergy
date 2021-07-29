@@ -15,23 +15,22 @@ const Vote = () => {
         choices: result.data.choices 
       })
     },[])
-     const choice=[];
-    console.log(mcq)
-    console.log(choice);
-    mcq.choices.map(post => (
-    choice.push({option:(post.text), votes:0})
+    // const choice=[];
+ 
+    const [Answers, setAnswers] = useState([]);
+    mcq.choices.map((post,key) => (
+    Answers[key]=({option:(post.text), votes:0})
 ));
-
-console.log(choice)
+// console.log(Answers);
   const pollQuestion = mcq.question;
-  const [Answers, setAnswers] = useState([...choice]);
-  
   const handleVote = (voteAnswer) => {
     const newAnswers = Answers.map((answer) => {
       if (answer.option === voteAnswer) {
           answer.votes++;
       }
+      console.log(answer);
       return answer;
+      
     });
     setAnswers(newAnswers);
   };
