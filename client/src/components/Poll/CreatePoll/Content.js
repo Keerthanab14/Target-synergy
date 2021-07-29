@@ -55,7 +55,8 @@ const Content = () => {
     const url="http://localhost:8080/polls"
     const[data, setData]=useState({
         question: "",
-        choice: []
+        choice0: "",
+        choice1:""
     })
 
     const submit = (e) => {
