@@ -1,18 +1,19 @@
 package com.example.synergybackend.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 import java.util.Objects;
-@Document(collection = "choices")
+//@Document(collection = "choices")
 public class Choice {
-    @Id
-    private int id;
-
+//    @Transient
+//    public static final String SEQUENCE_NUMBER ="user_sequence";
+//    @Id
+//    private int id;
     private String text;
 
-    private Poll poll;
 
     public Choice() {
 
@@ -22,13 +23,13 @@ public class Choice {
         this.text = text;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getText() {
         return text;
@@ -39,13 +40,13 @@ public class Choice {
         this.text = text;
     }
 
-    public Poll getPoll() {
-        return poll;
-    }
-
-    public void setPoll(Poll poll) {
-        this.poll = poll;
-    }
+//    public Poll getPoll() {
+//        return poll;
+//    }
+//
+//    public void setPoll(Poll poll) {
+//        this.poll = poll;
+//    }
 
 //    @Override
 //    public boolean equals(Object o) {
