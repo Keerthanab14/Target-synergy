@@ -10,7 +10,6 @@ import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import Vote from './Vote';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import axios from 'axios'
-
 function App() {
   
   return (
