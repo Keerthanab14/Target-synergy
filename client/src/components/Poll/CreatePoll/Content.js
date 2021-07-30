@@ -65,6 +65,7 @@ const Content = () => {
         question: data.question,
         choices: [data.choice0,data.choice1]
       }
+      console.log(q)
       axios.post(url, q)
            .then(res=>{
               console.log(res.data)
