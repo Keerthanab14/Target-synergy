@@ -15,13 +15,13 @@ const Vote = () => {
         choices: result.data.choices 
       })
     },[])
-    // const choice=[];
- 
-    const [Answers, setAnswers] = useState([]);
+    const choice=[];
     mcq.choices.map((post,key) => (
-    Answers[key]=({option:(post.text), votes:0})
+    choice[key]=({option:(post.text), votes:0})
 ));
-// console.log(Answers);
+console.log(choice);
+let Answers = [...choice];
+console.log(Answers);
   const pollQuestion = mcq.question;
   const handleVote = (voteAnswer) => {
     const newAnswers = Answers.map((answer) => {
@@ -32,7 +32,7 @@ const Vote = () => {
       return answer;
       
     });
-    setAnswers(newAnswers);
+    Answers= newAnswers;
   };
  
   return (
