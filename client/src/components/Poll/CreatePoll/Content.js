@@ -111,7 +111,7 @@ const Content = () => {
 
     return (
       <div >
-          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Questions</h4>
+          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
         <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '94%'}}/>
@@ -134,7 +134,7 @@ const Content = () => {
               onChange={e => handleInputChange(e, i)}
             />
             <div>
-              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white"}}
+              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white", marginRight:"3px"}}
                 className="mr10"
                 onClick={() => handleRemoveClick(i)}/>}
               {inputList.length - 1 === i && <AddIcon style={{background:"#cc0000", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
