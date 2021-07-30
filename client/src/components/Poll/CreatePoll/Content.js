@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import AddIcon from '@material-ui/icons/Add';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -41,12 +42,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Content = () => {
-    const [state, setState] = React.useState({
-        checkedA: false,
-        checkedB: false,
-        checkedC: false,
+     const [state, setState] = React.useState({
+         checkedA: false,
+         checkedB: false,
+         checkedC: false,
       });
     
+      const [inputList, setInputList] = useState([{ choice: "" }]);
+
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+ 
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+ 
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { choice: "" }]);
+  };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
@@ -55,15 +77,19 @@ const Content = () => {
     const url="http://localhost:8080/polls"
     const[data, setData]=useState({
         question: "",
-        choice0: "",
-        choice1:""
+        choice:[]
     })
-
+   
     const submit = (e) => {
+
       e.preventDefault();
+      inputList.map((choicee,key)=>{
+        data.choice[key]=choicee.choice
+      })
+  
       const q ={
         question: data.question,
-        choices: [data.choice0,data.choice1]
+       choices: data.choice
       }
       console.log(q)
       axios.post(url, q)
@@ -73,6 +99,7 @@ const Content = () => {
 
     }
 
+
     function handle(e){
       const newdata={...data}
       newdata[e.target.id]=e.target.value
@@ -80,6 +107,7 @@ const Content = () => {
       console.log(newdata)
 
     }
+
 
     return (
       <div >
@@ -90,26 +118,42 @@ const Content = () => {
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
-
-        <TextField id="outlined-basic" label="Option 1" variant="outlined" size="small" onChange={(e)=>handle(e)} id="choice0" value={data.choices0} type="text" style={{width: '94%'}} />
-        <DeleteIcon/>
-      </Grid>
+{inputList.map((x, i) => {
+        return (
+          <div className="box">
+          
+            <TextField
+            id="outlined-basic"
+            variant="outlined" size="small"
+            id="outlined-basic"
+            style={{width: '96%'}}
+              className="ml10"
+              name="choice"
+   placeholder="Enter choice"
+              value={x.choice}
+              onChange={e => handleInputChange(e, i)}
+            />
+            <div>
+              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white"}}
+                className="mr10"
+                onClick={() => handleRemoveClick(i)}/>}
+              {inputList.length - 1 === i && <AddIcon style={{background:"#cc0000", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
+            </div>
+          </div>
+        );
+      })}
     
-        <TextField id="outlined-basic" label="Option 2" variant="outlined" size="small" onChange={(e)=>handle(e)} id="choice1" value={data.choices1} type="text" style={{width: '94%'}}/><DeleteIcon />
-        <TextField  id="outlined-basic" label="Option 3" variant="outlined" size="small" style={{width: '94%'}}/><DeleteIcon />
-        <Button
-        style={{ width: "248px" }}
+      </Grid>  <Button
+        style={{ width: "248px",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
-        color="primary"
+       // color="primary"
         size="large"
         fullWidth={true}
-      >
-        <AddIcon className={classes.addicon} />
-        &nbsp;Add
+        onClick={submit}
+      >Submit
       </Button>
-      
-      <button>Submit</button>
+  
         <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
          <FormControlLabel

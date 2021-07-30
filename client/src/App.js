@@ -9,9 +9,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import Vote from './Vote';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
-import PollType from './components/Poll/CreatePoll/PollType';
-import Content from './components/Poll/CreatePoll/Content';
-import Background from './components/Poll/CreatePoll/Background';
 import axios from 'axios'
 
 function App() {
