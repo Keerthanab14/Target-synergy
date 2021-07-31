@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import '../CreatePoll/CreatePolls.css'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import AddIcon from '@material-ui/icons/Add';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -41,36 +42,63 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Content = () => {
-    const [state, setState] = React.useState({
-        checkedA: false,
-        checkedB: false,
-        checkedC: false,
+     const [state, setState] = React.useState({
+         checkedA: false,
+         checkedB: false,
+         checkedC: false,
       });
     
+      const [inputList, setInputList] = useState([{ choice: "" }]);
+
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+ 
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+ 
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { choice: "" }]);
+  };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/newPolls"
+    const url="http://localhost:8080/polls"
     const[data, setData]=useState({
         question: "",
-        choices0: "",
-        choices1:""
+        choice:[]
     })
+   
+    const submit = (e) => {
 
-    function submit(e){
       e.preventDefault();
-      axios.post(url,{
+      inputList.map((choicee,key)=>{
+        data.choice[key]=choicee.choice
+      })
+  
+      const q ={
         question: data.question,
-        choices0: data.choices0,
-        choices1: data.choices1
-      })
-      .then(res=>{
-        console.log(res.data)
-      })
+       choices: data.choice
+      }
+      console.log(q)
+      axios.post(url, q)
+           .then(res=>{
+              console.log(res.data)
+            })
 
     }
+
 
     function handle(e){
       const newdata={...data}
@@ -80,35 +108,52 @@ const Content = () => {
 
     }
 
+
     return (
       <div >
-          <form onSubmit={(e)=>submit(e)} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Questions</h4>
+          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
         
         <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} style={{width: '94%'}}/>
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
-
-        <TextField id="outlined-basic" label="Option 1" variant="outlined" size="small" onChange={(e)=>handle(e)} id="choice0" value={data.choices0} style={{width: '94%'}} /><IconButton aria-label="delete" size="small" >
-        <DeleteIcon/>
-      </IconButton></Grid>
-        <TextField id="outlined-basic" label="Option 2" variant="outlined" size="small" onChange={(e)=>handle(e)} id="choice1" value={data.choices1} style={{width: '94%'}}/><DeleteIcon />
-        <TextField id="outlined-basic" label="Option 3" variant="outlined" size="small" style={{width: '94%'}}/><DeleteIcon />
-        <Button
-        style={{ width: "248px" }}
+{inputList.map((x, i) => {
+        return (
+          <div className="box">
+          
+            <TextField
+            id="outlined-basic"
+            variant="outlined" size="small"
+            id="outlined-basic"
+            style={{width: '96%'}}
+              className="ml10"
+              name="choice"
+   placeholder="Enter choice"
+              value={x.choice}
+              onChange={e => handleInputChange(e, i)}
+            />
+            <div>
+              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white", marginRight:"3px"}}
+                className="mr10"
+                onClick={() => handleRemoveClick(i)}/>}
+              {inputList.length - 1 === i && <AddIcon style={{background:"#cc0000", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
+            </div>
+          </div>
+        );
+      })}
+    
+      </Grid>  <Button
+        style={{ width: "248px",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
-        color="primary"
+       // color="primary"
         size="large"
         fullWidth={true}
-      >
-        <AddIcon className={classes.addicon} />
-        &nbsp;Add
+        onClick={submit}
+      >Submit
       </Button>
-        
-        
-      <button>Submit</button>
+  
         <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
          <FormControlLabel

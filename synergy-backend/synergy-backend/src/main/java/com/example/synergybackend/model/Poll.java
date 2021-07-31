@@ -11,21 +11,19 @@ import java.util.Objects;
 
 @Document(collection = "polls")
 public class Poll {
-
-
-//    @Transient
-//    public static final String SEQUENCE_NUMBER ="user_sequence";
+    @Transient
+    public static final String SEQUENCE_NUMBER ="user_sequence";
     @Id
-    private Long id;
+    private int id;
     private String question;
-    private List<Choice> choices = new ArrayList<>();
+    private ArrayList<Choice> choices ;
 //    private Instant expireTime;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -37,11 +35,11 @@ public class Poll {
         this.question = question;
     }
 
-    public List<Choice> getChoices() {
+    public ArrayList<Choice> getChoices() {
         return choices;
     }
 
-    public void setChoices(List<Choice> choices) {
+    public void setChoices(ArrayList<Choice> choices) {
         this.choices = choices;
     }
 

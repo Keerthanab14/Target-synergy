@@ -12,7 +12,6 @@ import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpo
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import axios from 'axios'
-
 function App() {
   
   return (
