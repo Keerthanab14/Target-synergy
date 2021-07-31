@@ -48,7 +48,7 @@ const Content = () => {
          checkedC: false,
       });
     
-      const [inputList, setInputList] = useState([{ choice: "" }]);
+      const [inputList, setInputList] = useState([{ question: "" }]);
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -67,29 +67,29 @@ const Content = () => {
  
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { choice: "" }]);
+    setInputList([...inputList, { question: "" }]);
   };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/polls"
+    const url="http://localhost:8080/QandA"
     const[data, setData]=useState({
-        question: "",
-        choice:[]
+      
+        question:[]
     })
    
     const submit = (e) => {
 
       e.preventDefault();
-      inputList.map((choicee,key)=>{
-        data.choice[key]=choicee.choice
+      inputList.map((questione,key)=>{
+        data.question[key]=questione.question
       })
   
       const q ={
-        question: data.question,
-       choices: data.choice
+        
+       questions: data.question
       }
       console.log(q)
       axios.post(url, q)
@@ -100,22 +100,13 @@ const Content = () => {
     }
 
 
-    function handle(e){
-      const newdata={...data}
-      newdata[e.target.id]=e.target.value
-      setData(newdata)
-      console.log(newdata)
-
-    }
-
 
     return (
       <div >
-          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
+          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
       
      
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '94%'}}/>
-        <h4 className={classes.h}>Options</h4>
+        <h4 className={classes.h}>Please enter the questions</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
 {inputList.map((x, i) => {
@@ -128,9 +119,9 @@ const Content = () => {
             id="outlined-basic"
             style={{width: '96%'}}
               className="ml10"
-              name="choice"
-   placeholder="Enter choice"
-              value={x.choice}
+              name="question"
+   placeholder="Enter question"
+              value={x.question}
               onChange={e => handleInputChange(e, i)}
             />
             <div>
