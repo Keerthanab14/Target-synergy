@@ -60,7 +60,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, clickHandler, toggleVisibility }) => {
+const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -96,14 +96,14 @@ const Sidebar = ({ parentCallback, clickHandler, toggleVisibility }) => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}  >
-          <PollType toggleVisibility={toggleVisibility}
+          <PollType 
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
           <Content />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
-          <Background parentCallback={parentCallback}/>
+          <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup}/>
         </TabPanel >
       </SwipeableViews>
                 

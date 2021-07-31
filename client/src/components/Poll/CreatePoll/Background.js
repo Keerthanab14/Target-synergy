@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
@@ -9,7 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import { SketchPicker } from 'react-color'
 
 
-const Background=(props) => {
+const Background=({parentCallback, setOpacity, togglePopup }) => {
+  
+  
     const useStyles = makeStyles((theme) => ({
         h:{
             fontSize: '15px',
@@ -36,10 +38,12 @@ const Background=(props) => {
 
     const handleSliderChange = (event, newValue) => {
       setValue(newValue);
+      setOpacity(newValue);
     };
     
     const handleInputChange = (event) => {
       setValue(event.target.value === '' ? '' : Number(event.target.value));
+      setOpacity(event.target.value === '' ? '' : Number(event.target.value));
     };
     const handleBlur = () => {
         if (value < 0) {
@@ -49,9 +53,9 @@ const Background=(props) => {
         }
       };
         
-    
+  
       
-       const {parentCallback}=props;
+       
     
 
     return (
@@ -72,7 +76,7 @@ const Background=(props) => {
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'brown', border: '1px solid grey'}} onClick={()=>parentCallback("brown")} ></Button>
             <p style={{color:'slategrey', marginRight: '5px', marginBottom: '2px', fontSize: '13px'}}>Custom</p>
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'white', border: '1px solid grey', marginTop: '5px'}}></Button>
-            <h4 className={classes.h}>Background Image</h4>
+            <h4 className={classes.h} >Background Image</h4>
             <Button variant ="contained" style={{borderRadius: "2em",
                                          backgroundColor: '#1e69d4',  
                                          color: 'white',
@@ -81,7 +85,10 @@ const Background=(props) => {
                                          minWidth: '130px',
                                          textAlign: 'center',
                                          
-                                         }}><ImageRounded />&nbsp;Add Image</Button>
+                                         }} onClick={togglePopup} ><ImageRounded />&nbsp;Add Image</Button>
+                                         <div>
+              
+            </div>
             <Typography id="input-slider" gutterBottom style={{marginTop: '10px', fontSize: '15px', fontWeight: '700'}}>
         Background Visibility
       </Typography>

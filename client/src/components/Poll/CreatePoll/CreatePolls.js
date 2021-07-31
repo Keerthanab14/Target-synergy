@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect, useRef} from "react";
 import Sidebar from "./Sidebar";
 import Presentation from "./Presentation";
 import '../CreatePoll/CreatePolls.css'
@@ -8,6 +8,8 @@ import { Breadcrumbs, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { Container } from "@material-ui/core";
+import CancelIcon from '@material-ui/icons/Cancel';
+
 const useStyles = makeStyles({
 root:{
     flexGrow: 1,
@@ -18,16 +20,23 @@ root:{
 
 
   function CreatePolls() {
+    const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
        
    }
    const [color, setColor] = React.useState('white'); //for background color change in presentation component
-   const [isVisible, setIsVisible] = React.useState(true);
-   const [component, setComponent] = React.useState("multiplechoice")
+   const [opacity, setOpacity]=React.useState(100);
+   const [component, setComponent] = React.useState("multiplechoice");
 
-    function clickHandler(component) {
+   
+
+    const clickHandler=()=> {
         switch (component) {
             case "multiplechoice":
                 setComponent('multiplechoice')
@@ -44,9 +53,18 @@ root:{
                
         }
     }
-   const types = React.createContext(component);
-   const toggleVisibility = () => setIsVisible(!isVisible);
+   
    const classes = useStyles();
+   const Popup = props => {
+    return (
+      <div className="popup-box">
+        <div className="box">
+          <span className="close-icon" onClick={props.handleClose}>x</span>
+          {props.content}
+        </div>
+      </div>
+    );
+  };
 
   
     return (
@@ -95,17 +113,27 @@ root:{
 >
 
   
-     <Sidebar state={color} parentCallback={setColor} isVisible={isVisible} toggleVisibility={toggleVisibility} 
+     <Sidebar state={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
+     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup}
      
      />
-     < types.Provider value={component}>
+     
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} isVisible={isVisible} component={component}  flex='1' />
-     </types.Provider>
+     } color={color} opacity={opacity} component={component}  flex='1' />
      
+     
+    
      </Container>
+     {isOpen && <Popup
+      content={<>
+        <b>Background Images</b>
+       
+        
+      </>}
+      handleClose={togglePopup}
+    />}
     </Container>
    
     
