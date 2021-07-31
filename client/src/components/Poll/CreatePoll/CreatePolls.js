@@ -76,12 +76,12 @@ root:{
   }}> 
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" style={{float: 'left' , margin: "10px" }}>
             <Link to="/" style={{color:"black", textDecoration:"none" }} >
-            <Typography style={{fontSize:"20px"}}> Services</Typography>
+            <Typography style={{fontSize:"18px"}}> Services</Typography>
             </Link>
             <Link to="/polls" style={{color:"black", textDecoration:"none" }} >
-            <Typography style={{fontSize:"20px"}}>Polls</Typography>
+            <Typography style={{fontSize:"18px"}}>Polls</Typography>
             </Link>
-            <Typography style={{fontSize:"20px"}}>
+            <Typography style={{fontSize:"18px"}}>
                   Design
             </Typography>
            </Breadcrumbs> 
@@ -95,6 +95,7 @@ root:{
                                             float: "right",
                                             border: "1px solid white",
                                             margin: "1% 0%",
+                                            marginRight: "-2%"
                                             
                                         }
                                     }

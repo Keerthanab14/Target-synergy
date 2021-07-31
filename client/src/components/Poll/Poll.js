@@ -32,9 +32,9 @@ const Poll = () => {
             style={{ margin:'10px'}}>
             
              <Link to="/" style={{color:"black", textDecoration:"none" }} >
-             <Typography style={{fontSize:"20px"}}> Services</Typography>
+             <Typography style={{fontSize:"18px"}}> Services</Typography>
              </Link>
-             <Typography style={{fontSize:"20px"}}>
+             <Typography style={{fontSize:"18px"}}>
                    Polls
              </Typography>
             </Breadcrumbs>

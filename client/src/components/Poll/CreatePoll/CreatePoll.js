@@ -72,7 +72,7 @@ const onCopyText = () => {
                             style={
                                 {
                                     border: " 1px solid black",
-                                    width: "40rem",
+                                    width: "70%",
                                     padding: "5px",
                                     fontSize: "1.2rem"
                                 }
@@ -85,17 +85,16 @@ const onCopyText = () => {
                             <CopyToClipboard text={text} onCopy={onCopyText} style={{float: 'right'}}>
                                 <div className="copy-area">
                                 <Button
-                    variant="contained"
-                    onClick={() => {handleClick("/link") }}
-                             style={
+                                variant="contained"
+                                onClick={() => {handleClick("/link") }}
+                                style={
                                  {
-                                            backgroundColor: "#cc0000",
-                                            color: "white",
-                                            float: "right",
-                                            border: "1px solid white",
-                                            margin: "3px",
+                                    backgroundColor: "#808080",
+                                    color: "white",
+                                    float: "right",
+                                    margin: "3px",
                                             
-                                        }
+                                }
                                     }
                                 >copy
                             </Button>
@@ -115,7 +114,7 @@ const onCopyText = () => {
                                 style={
                                     {
                                         border: " 1px solid black",
-                                        width: "40rem",
+                                        width: "70%",
                                         padding: "5px",
                                         fontSize: "1.2rem"
                                     }
