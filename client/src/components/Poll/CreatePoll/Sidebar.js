@@ -4,7 +4,7 @@ import { useTheme, makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import PollType from '../CreatePoll/PollType'
-import Content from '../CreatePoll/Content'
+import ContentQandA from '../CreatePoll/ContentQandA'
 import Background from '../CreatePoll/Background'
 import '../CreatePoll/CreatePolls.css'
 import AppBar from '@material-ui/core/AppBar';
@@ -100,7 +100,7 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup }) => {
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-          <Content />
+          <ContentQandA />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
           <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup}/>
