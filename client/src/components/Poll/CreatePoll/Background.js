@@ -6,11 +6,12 @@ import Input from '@material-ui/core/Input';
 import { ImageRounded } from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { SketchPicker } from 'react-color'
+import { SliderPicker } from 'react-color'
 
 
 const Background=({parentCallback, setOpacity, togglePopup }) => {
-  
+  const [color,setColor] = useState('#ffffff')
+  const [showColorPicker, setShowColorPicker] = useState(false)    
   
     const useStyles = makeStyles((theme) => ({
         h:{
@@ -52,11 +53,6 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
           setValue(100);
         }
       };
-        
-  
-      
-       
-    
 
     return (
         <div >
@@ -74,8 +70,18 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
             <Button variant="contained" className={classes.button} style={{backgroundColor: '#005580' /* blue */, border: '1px solid grey'}} onClick={()=>parentCallback("#005580")}></Button>
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'red', border: '1px solid grey'}} onClick={()=>parentCallback("red")}></Button>
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'brown', border: '1px solid grey'}} onClick={()=>parentCallback("brown")} ></Button>
-            <p style={{color:'slategrey', marginRight: '5px', marginBottom: '2px', fontSize: '13px'}}>Custom</p>
-            <Button variant="contained" className={classes.button} style={{backgroundColor: 'white', border: '1px solid grey', marginTop: '5px'}}></Button>
+            <h4 className={classes.h}>Custom Colour</h4>
+            <Button variant="contained" className={classes.button} style={{backgroundColor: 'white', border: '1px solid grey', marginTop: '5px', marginBottom: "5px"}}
+             onClick={()=> setShowColorPicker(showColorPicker=>!showColorPicker)}></Button>
+            { showColorPicker && (
+              <SliderPicker
+               color={color}
+               onChange={updatedColor => setColor(updatedColor.hex)}
+               />
+            )} 
+              <Button style={{backgroundColor: color, border: '1px solid grey', marginTop: '7px'}} onClick={()=> parentCallback(color)}>
+                set</Button>
+
             <h4 className={classes.h} >Background Image</h4>
             <Button variant ="contained" style={{borderRadius: "2em",
                                          backgroundColor: '#1e69d4',  
