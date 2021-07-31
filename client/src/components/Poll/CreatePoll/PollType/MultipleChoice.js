@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: 0px auto;
   max-width: 1000px;
   height: 100%;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -15,6 +16,7 @@ export const MainContainer = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
+  min-height: inherit;
 `;
 
 export const BarChartContainer = styled.div`
@@ -26,7 +28,6 @@ export const BarChartContainer = styled.div`
 
 export const Chart = css`
   margin-top: 0%;
-  
   width: 100%;
   max-width: 86px;
   &:hover {

@@ -5,17 +5,18 @@ import '../CreatePoll/CreatePolls.css'
 import Button from '@material-ui/core/Button';
 import { Link,useHistory } from 'react-router-dom';
 import { Breadcrumbs, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { Container } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+const useStyles = makeStyles({
+root:{
+    flexGrow: 1,
+    flexBasis: 0,
+    flexShrink: 1
+},
+});
 
 
-export const typee=[
-    { id: 1, label: 'multiplechoice', checked: false },
-    { id: 2, label: 'imagechoise', checked: false },
-    { id: 3, label: 'openended', checked: false },
-    { id: 4, label: 'wordcloud', checked: false },
-   ];
   function CreatePolls() {
     let history = useHistory();
     function handleClick(path) {
@@ -23,16 +24,35 @@ export const typee=[
        
    }
    const [color, setColor] = React.useState('white'); //for background color change in presentation component
-   const [isVisible, setIsVisible] = React.useState(true); // to show and hide type(of sidebar) component in presentation
-   const [isVisibleComponent, setIsVisibleComponent]=React.useState('0');
-   const handleVisibility = () => setIsVisibleComponent(isVisibleComponent);
+   const [isVisible, setIsVisible] = React.useState(true);
+   const [component, setComponent] = React.useState("multiplechoice")
+
+    function clickHandler(component) {
+        switch (component) {
+            case "multiplechoice":
+                setComponent('multiplechoice')
+                
+                break
+            case "imagechoice":
+                
+                setComponent('imagechoice')
+                
+                break
+            case "wordcloud":
+               setComponent('wordcloud')
+               break
+               
+        }
+    }
+   const types = React.createContext(component);
    const toggleVisibility = () => setIsVisible(!isVisible);
-   
+   const classes = useStyles();
 
   
     return (
-        <Container className= 'CreatePolls' style={ {marginRight:'0%'}}>
-  <Container className = 'Navbar' display='flex' jutify='space-between' style={{
+        
+        <Container className={classes.root} style={ {marginRight:'0%'}}>
+  <Container className = 'Navbar' display='flex' flex='1' jutify='space-between' style={{
     overflow: 'hidden', 
     
   }}> 
@@ -66,7 +86,8 @@ export const typee=[
      
        
                             <Container
- 
+
+ flex='1'
   spacing={0}
   Flexdirection="row"
   display="flex"
@@ -75,18 +96,20 @@ export const typee=[
 
   
      <Sidebar state={color} parentCallback={setColor} isVisible={isVisible} toggleVisibility={toggleVisibility} 
-     handleVisibility={handleVisibility} isVisibleComponent={isVisibleComponent}
+     component={component} clickHandler={clickHandler}
      
-     style={{
-         float: 'left', marginLeft: '0%' }}/>
+     />
+     < types.Provider value={component}>
      <Presentation style={
-         { float: "right"}
-     } color={color} isVisible={isVisible} isVisibleComponent={isVisibleComponent} />
+         { float: "right", overflow: "hidden", position: "fixed"}
+     } color={color} isVisible={isVisible} component={component}  flex='1' />
+     </types.Provider>
      
      </Container>
     </Container>
+   
     
-    )
+    );
 }
 
 export default CreatePolls

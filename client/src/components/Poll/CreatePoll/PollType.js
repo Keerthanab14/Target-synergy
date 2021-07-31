@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core'
+import { ButtonBase, ButtonGroup, Grid } from '@material-ui/core'
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
@@ -9,8 +9,9 @@ import TuneIcon from '@material-ui/icons/Tune';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-
+import { Button } from '@material-ui/core';
 import CreatePolls from './CreatePolls';
+
 
 const useStyles = makeStyles((theme) => ({
     
@@ -35,20 +36,25 @@ const useStyles = makeStyles((theme) => ({
     
   },
   }));
-const PollType = ({handleVisibility, toggleVisibility, isVisibleComponent }) => {
+const PollType = (props) => {
     const classes = useStyles();
     const [alignment, setAlignment] = React.useState('mc');
    
     const handleAlignment = (event, newAlignment) => {
       setAlignment(newAlignment);
     };
+
+ const {clickHandler}=props;
+
+        
+
     function FormRow(props) {
       
       
     
       return (
         
-        <ToggleButtonGroup
+        <ButtonGroup
         
       value={alignment}
       exclusive
@@ -57,16 +63,16 @@ const PollType = ({handleVisibility, toggleVisibility, isVisibleComponent }) => 
       style={{marginBottom: '20px'}}
     >
           
-            <ToggleButton   value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={()=>{handleVisibility('0');toggleVisibility();}}
+            <Button   value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={() => clickHandler("multiplechoice")}
           >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
-            </ToggleButton>
+            </Button>
          
-          <ToggleButton value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={()=>{handleVisibility('1');toggleVisibility();}}>
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={() => clickHandler("imagechoice")}>
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
-            </ToggleButton>
+            </Button>
             
-            </ToggleButtonGroup>
+            </ButtonGroup>
       );
     }
 
@@ -74,7 +80,7 @@ const PollType = ({handleVisibility, toggleVisibility, isVisibleComponent }) => 
     function FormRow1() {
       return (
         
-        <ToggleButtonGroup
+        <ButtonGroup
         style={{marginBottom: '20px'}}
       value={alignment}
       exclusive
@@ -82,23 +88,23 @@ const PollType = ({handleVisibility, toggleVisibility, isVisibleComponent }) => 
       aria-label="text alignment"
     >
           
-            <ToggleButton value="oe" aria-label="open ended" className={classes.togglebtn}>
+            <Button value="oe" aria-label="open ended" className={classes.togglebtn}>
             <AssignmentRoundedIcon fontSize="large" className={classes.icon} /><h5>Open Ended</h5>
-            </ToggleButton>
+            </Button>
   
          
-            <ToggleButton value="wc" aria-label="word cloud" className={classes.togglebtn}  >
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onCLick={() => clickHandler("imagechoice")}  >
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
-            </ToggleButton>
+            </Button>
           
-          </ToggleButtonGroup>
+          </ButtonGroup>
             );
     }
 
     function FormRow2() {
       return (
          
-        <ToggleButtonGroup
+        <ButtonGroup
         style={{marginBottom: '20px'}}
       value={alignment}
       exclusive
@@ -106,17 +112,17 @@ const PollType = ({handleVisibility, toggleVisibility, isVisibleComponent }) => 
       aria-label="text alignment"
     >
           
-            <ToggleButton value="sc" aria-label="scales" className={classes.togglebtn}>
+            <Button value="sc" aria-label="scales" className={classes.togglebtn}>
        
             <TuneIcon fontSize="large" className={classes.icon} /><h5>Scales</h5>
-           </ToggleButton>
+           </Button>
          
           
-           <ToggleButton value="qa" aria-label="Q and A" className={classes.togglebtn}>
+           <Button value="qa" aria-label="Q and A" className={classes.togglebtn}>
            <QuestionAnswerIcon fontSize="large" className={classes.icon}/><h5>Q and A</h5>
-           </ToggleButton>
+           </Button>
             
-            </ToggleButtonGroup>
+            </ButtonGroup>
       );
     }
     return (

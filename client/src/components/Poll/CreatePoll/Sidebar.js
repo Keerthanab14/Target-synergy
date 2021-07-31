@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
       flexShrink: 1,
  }
 }));
+
+
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -31,6 +34,7 @@ function TabPanel(props) {
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
+      
     >
       {value === index && (
         <Box p={3}>
@@ -56,7 +60,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, handleVisibility, toggleVisibility }) => {
+const Sidebar = ({ parentCallback, clickHandler, toggleVisibility }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -72,13 +76,14 @@ const Sidebar = ({ parentCallback, handleVisibility, toggleVisibility }) => {
    const classes = useStyles();
     return (
         <Grid className="Sidebar" style={ { flexGrow: 1, flexShrink: 1}}>
-                  <AppBar position="static" color="default" style={{marginTop: '0%'}}>
+                  <AppBar position="static" color="default" style={{marginTop: '0%'}} style={{flexGrow: 1, flexShrink: 1}}>
         <Tabs
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
           aria-label="full width tabs example"
+          style={{flex: '1'}}
         >
           <Tab label="Type" {...a11yProps(0)} className={classes.tablabel} />
           <Tab label="Content" {...a11yProps(1)}className={classes.tablabel} />
@@ -90,16 +95,16 @@ const Sidebar = ({ parentCallback, handleVisibility, toggleVisibility }) => {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction} >
+        <TabPanel value={value} index={0} dir={theme.direction}  >
           <PollType toggleVisibility={toggleVisibility}
-          handleVisibility={handleVisibility}   />
+          clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
+        <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
           <Content />
         </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
+        <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
           <Background parentCallback={parentCallback}/>
-        </TabPanel>
+        </TabPanel >
       </SwipeableViews>
                 
            
