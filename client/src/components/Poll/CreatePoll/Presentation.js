@@ -7,10 +7,11 @@ import MultipleChoice from "./PollType/MultipleChoice";
 import WordCloud from './PollType/WordCloud';
 import ImageChoice from './PollType/ImageChoice';
 
+
 const useStyles = makeStyles((theme) => ({
     
     paper: {
-      flexGrow: 2,
+      flexGrow: 1,
       flexShrink: 1,
       padding: theme.spacing(2),
       textAlign: 'center',
@@ -21,8 +22,9 @@ const useStyles = makeStyles((theme) => ({
   
  
 
-const Presentation = ({color,isVisible,isVisibleComponent}) => {
+const Presentation = ({color,isVisible, component}) => {
     const classes = useStyles();
+    
  
     
     
@@ -34,7 +36,8 @@ const Presentation = ({color,isVisible,isVisibleComponent}) => {
                             style={{
                                 border: "1px solid black",
                                 width: "75%",
-                                height: "400px",
+                                maxHeight: "800px",
+                                minHeight: '400px',
                                 marginLeft: "26%",
                                 backgroundColor: color
 
@@ -42,9 +45,9 @@ const Presentation = ({color,isVisible,isVisibleComponent}) => {
                     >
                      
                   
-                      {isVisibleComponent === '0'? isVisible && (<MultipleChoice />) : null}
-                      {isVisibleComponent === '1'? isVisible && (<WordCloud />) : null}
-                      
+         {component === 'multiplechoice' && <MultipleChoice/>}
+         {component === 'imagechoice' && <ImageChoice/>}
+         {component === 'wordcloud' && <WordCloud/>}
                      
                     
                       

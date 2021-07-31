@@ -1,7 +1,12 @@
-.CreatePolls{
+.CreatePolls {
     
     width: 1280px;
+   height: 500px;
     font-family: helvetica;
+    display: flex;
+   
+  flex: 1 1 0;
+  background-color: lightcoral;
     
 }
 .Navbar{
@@ -11,81 +16,26 @@
 .Sidebar{
   float: left;
   font-family:  Helvetica;
-  height: 500px;
-  width: 300px;
+  max-height: 500px;
+  min-width: none;
+  max-width: 300px;
+  overflow-y: scroll;
   display: display-inside;
- 
+  position: relative;
   
+  }
+
+.Presentation{
   
-   /* : flex-evenly; */
+  position: fixed;
+  max-height: 800px;
 }
 .PollType{
   position: relative;
   top:10%;
 }
 
- li {
-    list-style-type: none;
-    padding-inline: 10px;
-    
-} 
 
-.present{
-  padding-top:1rem;
-   font-family:  Helvetica;
-   height: 100%;
-   width: 55%;
-   
-   flex-direction: row;
-   justify-content: flex-evenly;
-  
-}
-
-.slide{
-  padding-top:1rem;
-  position: relative;
-  display: flex;
-   font-family:  Helvetica;
-   height: 100%;
-   width: 20%;
-   justify-content: flex-evenly;
-}
-
-#menu li {
-    float: left;
-    
-    position: relative;
-    list-style: none;
-    text-align: center;
-    background-color:  #ffffff;
-   
-     line-height: 40px; 
-  }
-  #menu li a {
-    color: #0000;
-   
-   text-justify: inter-word; 
-    
-  }
-  
-  #menu li:hover {
-    text-decoration: none;
-    color: #000;
-     background-color: #e7e7e7;
-     
-  }
-  #menu{
-    
-    width: 100%;
-    height: 10%;
-    position: relative;
-  
-    float:left;
-    display: flex;
-    flex-direction: row;
-    flex-flow: row nowrap;
-    margin-left: 0px;
-  }
 .MuiButton-fullWidth{
   width: 28ch;
 }
