@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Content = () => {
+const ContentQandA = () => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -190,4 +190,4 @@ const Content = () => {
 
 
 
-export default Content
+export default ContentQandA
