@@ -93,7 +93,7 @@ const PollType = (props) => {
             </Button>
   
          
-            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onCLick={() => clickHandler("imagechoice")}  >
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onCLick={() => clickHandler("wordcloud")}  >
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </Button>
           

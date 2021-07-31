@@ -22,8 +22,9 @@ const useStyles = makeStyles((theme) => ({
   
  
 
-const Presentation = ({color,isVisible, component}) => {
+const Presentation = ({color, component, opacity}) => {
     const classes = useStyles();
+  
     
  
     
@@ -39,7 +40,8 @@ const Presentation = ({color,isVisible, component}) => {
                                 maxHeight: "800px",
                                 minHeight: '400px',
                                 marginLeft: "26%",
-                                backgroundColor: color
+                                backgroundColor: color,
+                                opacity: opacity/100,
 
                     }}
                     >
