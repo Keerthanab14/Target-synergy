@@ -3,6 +3,7 @@ import React from 'react'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
+import Content from '../CreatePoll/Content'
 import PollType from '../CreatePoll/PollType'
 import ContentQandA from '../CreatePoll/ContentQandA'
 import Background from '../CreatePoll/Background'
@@ -60,7 +61,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup }) => {
+const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, component }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -100,7 +101,9 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup }) => {
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-          <ContentQandA />
+        {component === 'multiplechoice'?  < Content /> : < ContentQandA />}
+          
+          
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
           <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup}/>
