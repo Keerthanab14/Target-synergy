@@ -1,11 +1,10 @@
 import React from 'react'
-
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
-import Content from '../CreatePoll/Content'
 import PollType from '../CreatePoll/PollType'
 import ContentQandA from '../CreatePoll/ContentQandA'
+import Content from '../CreatePoll/Content'
 import Background from '../CreatePoll/Background'
 import '../CreatePoll/CreatePolls.css'
 import AppBar from '@material-ui/core/AppBar';
@@ -62,8 +61,10 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, component }) => {
+
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [type, setType] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -73,6 +74,9 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, compon
     setValue(index);
   };
   
+  const clickHandler = (pType)=>{
+    setType(pType)
+ }
    
    const classes = useStyles();
     return (
@@ -101,9 +105,7 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, compon
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-        {component === 'multiplechoice'?  < Content /> : < ContentQandA />}
-          
-          
+        {(type==="multiplechoice") ? <Content/> : <ContentQandA/>}
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
           <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup}/>
