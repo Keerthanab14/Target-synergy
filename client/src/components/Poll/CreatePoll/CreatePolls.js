@@ -1,14 +1,20 @@
-import React,{useState, useEffect, useRef} from "react";
+import React,{useState} from "react";
 import Sidebar from "./Sidebar";
 import Presentation from "./Presentation";
 import '../CreatePoll/CreatePolls.css'
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { Link,useHistory } from 'react-router-dom';
-import { Breadcrumbs, Typography } from '@material-ui/core';
+import { Breadcrumbs, CardActionArea, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { Container } from "@material-ui/core";
-import CancelIcon from '@material-ui/icons/Cancel';
+import { Container, Grid } from "@material-ui/core";
+
+import Bgimage1 from '../../images/bgimage_1.jpg';
+import Bgimage2 from '../../images/bgimage_2.jpg';
+import Bgimage3 from '../../images/bgimage_3.jpg';
 
 const useStyles = makeStyles({
 root:{
@@ -127,9 +133,54 @@ root:{
      
     
      </Container>
-     {isOpen && <Popup
+     {isOpen && <Popup 
       content={<>
-        <b>Background Images</b>
+        <b style={{color: 'white'}}>Background Images</b>
+        
+        <Grid container spacing={2} style={{margin: "4px"}}>
+        <Grid item xs={6} sm={2} >
+                      <CardActions><Paper>
+                        <Button  ><AddIcon/></Button></Paper>
+                    </CardActions>
+            </Grid>
+                    <Grid item xs={6} sm={2} >
+                      <CardActionArea>
+                    <CardMedia
+              component="img"
+              alt="Image1"
+              height="100"
+              width="250"
+              image={Bgimage1}
+              title="1"
+            /> </CardActionArea>
+            </Grid>
+            
+                    <Grid item xs={6} sm={2} >
+                    <CardActionArea>
+                    <CardMedia
+              component="img"
+              alt="Image2"
+              height="100"
+              width="250"
+              image={Bgimage2}
+              title="2"
+            /> </CardActionArea>
+                    </Grid>
+                   
+           <Grid item xs={6} sm={2} >
+           <CardActionArea >
+          <CardMedia
+              component="img"
+              alt="Image3"
+              height="100"
+              width="250"
+              image={Bgimage3}
+              title="3"
+            /></CardActionArea>
+                    </Grid>
+
+                </Grid>
+           
        
         
       </>}
