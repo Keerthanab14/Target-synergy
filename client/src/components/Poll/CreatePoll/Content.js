@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import '../CreatePoll/CreatePolls.css'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -13,6 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flex: 1,
@@ -113,14 +113,14 @@ const Content = () => {
       <div >
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
-        
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} style={{width: '96%'}}/>
+     
+        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '94%'}}/>
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
 {inputList.map((x, i) => {
         return (
-          <div className="box">
+          <div >
           
             <TextField
             id="outlined-basic"
@@ -190,6 +190,7 @@ const Content = () => {
          label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
        />
        </FormGroup>
+       
        </form>
       </div>
       

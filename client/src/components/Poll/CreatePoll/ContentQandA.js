@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,8 +12,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
-
-const id=27
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,30 +41,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const QandA = () => {
-  const [questions , setQuestions] = useState({questions:[]});
- 
-    useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/QandA/${id}`)
-      setQuestions({
-       
-        questions: result.data.questions 
-      })
-    },[])
-    const qAndA=[];
-    questions.questions.map((post,key) => (
-    qAndA[key]=post.text
-));
-console.log(qAndA);
-
+const ContentQandA = () => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
       });
     
-      const [inputList, setInputList] = useState([{ response: "" }]);
-      
+      const [inputList, setInputList] = useState([{ question: "" }]);
+
   // handle input change
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -75,28 +58,38 @@ console.log(qAndA);
     setInputList(list);
   };
  
-  
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+ 
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { question: "" }]);
+  };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
     
     const classes = useStyles();
-    
+    const url="http://localhost:8080/QandA"
     const[data, setData]=useState({
       
-        response:[]
+        question:[]
     })
-    const url="http://localhost:8080/QandAResponse"
+   
     const submit = (e) => {
 
       e.preventDefault();
-      inputList.map((resp,key)=>{
-        data.response[key]=resp.response
+      inputList.map((questione,key)=>{
+        data.question[key]=questione.question
       })
   
       const q ={
         
-       responses: data.response
+       questions: data.question
       }
       console.log(q)
       axios.post(url, q)
@@ -113,13 +106,13 @@ console.log(qAndA);
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
       
      
-      
+        <h4 className={classes.h}>Please enter the questions</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
-{qAndA.map((x, i) => {
+{inputList.map((x, i) => {
         return (
           <div >
-            <h4 className={classes.h}>{qAndA[i]}</h4>
+          
             <TextField
             id="outlined-basic"
             variant="outlined" size="small"
@@ -127,11 +120,16 @@ console.log(qAndA);
             style={{width: '96%'}}
               className="ml10"
               name="question"
-   placeholder="Enter your answer"
-              value={inputList.response}
-              onChange={e => handleInputChange(e,i)}
-            ></TextField>
-            
+   placeholder="Enter question"
+              value={x.question}
+              onChange={e => handleInputChange(e, i)}
+            />
+            <div>
+              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white", marginRight:"3px"}}
+                className="mr10"
+                onClick={() => handleRemoveClick(i)}/>}
+              {inputList.length - 1 === i && <AddIcon style={{background:"#cc0000", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
+            </div>
           </div>
         );
       })}
@@ -147,7 +145,42 @@ console.log(qAndA);
       >Submit
       </Button>
   
-       
+        <h4 className={classes.h}>Other Settings</h4>
+        <FormGroup row >
+         <FormControlLabel
+         control={
+           <Checkbox
+             checked={state.checkedA}
+             onChange={handleChange}
+             name="checkedA"
+             color="primary"
+           />
+         }
+         label={<Typography className={classes.typography} color="textSecondary">Allow picking more than one options</Typography>}
+       />
+       <FormControlLabel
+         control={
+           <Checkbox
+             checked={state.checkedB}
+             onChange={handleChange}
+             name="checkedB"
+             color="primary"
+           />
+         }
+         label={<Typography className={classes.typography} color="textSecondary">This question has correct answer(s)</Typography>}
+       />
+       <FormControlLabel
+         control={
+           <Checkbox
+             checked={state.checkedC}
+             onChange={handleChange}
+             name="checkedC"
+             color="primary"
+           />
+         }
+         label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
+       />
+       </FormGroup>
        
        </form>
       </div>
@@ -157,4 +190,4 @@ console.log(qAndA);
 
 
 
-export default QandA
+export default ContentQandA

@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import Poll from "react-polls";
 import axios from "axios"
 
-const source = axios.CancelToken.source();
 // Declaring poll question and answers
  const id=21
 const Vote = () => {
