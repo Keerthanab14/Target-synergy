@@ -27,35 +27,17 @@ public class PollController {
     }
     @GetMapping("/polls/{id}")
     public Poll getPollById(@PathVariable("id") Long id){
-
         return PollRepository.findById(id).get();
     }
 
     @PostMapping("/polls")
     public String savePolls(@RequestBody Poll quest) {
         Poll poll=new Poll();
-        poll.setId(service.getSequence(Poll.SEQUENCE_NUMBER));
         poll.setQuestion(String.valueOf(quest.getQuestion()));
         poll.setChoices( quest.getChoices());
-        PollRepository.save(poll);
-//        ArrayList<String> arr = new ArrayList<>();
-//        arr = quest.get("choices");
-//        quest.get("choices");
-        System.out.println(quest);
-        return "choices";
+        Poll savedPoll = PollRepository.save(poll);
+        String url = "http://localhost:8080/polls/"+ savedPoll.getId();
+        return url;
     }
 
-//    @PostMapping
-//    public String savePolls(@RequestBody Example example) {
-//        Poll poll=new Poll();
-//        poll.setId((long) a++);
-//        poll.setQuestion(String.valueOf(quest.get("question")));
-////        poll.setChoices(quest.get("choices"));
-//        PollRepository.save(poll);
-//        ArrayList<String> arr = new ArrayList<>();
-//        arr = quest.get("choices");
-//        quest.get("choices");
-//        System.out.println(quest.get("choices").getClass());
-//        return "choices";
-//    }
 }
