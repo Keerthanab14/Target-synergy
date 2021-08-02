@@ -7,21 +7,17 @@ import Opinions from './components/Opinions/Opinions';
 import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
+import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './Vote';
-<<<<<<< HEAD
-import QandA from './components/Poll/CreatePoll/PollType/QandA'
+import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
-=======
-import QandA from './components/Poll/QandA'
-import Scales from './components/Poll/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
->>>>>>> 2599b94ac65ad696353a30aa4fd3f1b1de198d54
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
-import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
+
 import axios from 'axios'
 function App() {
-  
+  const[id, setId]=useState("")
   return (
     <div>
     <DesktopBreakpoint>
@@ -35,12 +31,12 @@ function App() {
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-          <Route path="/link" component={CreatePoll}/> 
+          <Route path="/link" component={CreatePoll} id={id}/> 
           <Route
             path="/create-poll"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/`} component={CreatePolls} exact />
+                <Route path={`${url}/`} component={CreatePolls} setId={setId}exact />
             { /* <Route path={`${url}/type`} component={PollType} />
                 <Route path={`${url}/content`} component={Content} />
             <Route path={`${url}/background`} component={Background} /> */ }
