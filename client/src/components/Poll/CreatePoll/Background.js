@@ -63,11 +63,11 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
              
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'black', border: '1px solid grey'}} ></Button>
             <h4 className={classes.h}>Base Colour</h4>
-            <Button variant="contained" className={classes.button} style={{backgroundColor: 'white', border: '1px solid grey'}} onClick={()=>parentCallback("white")}></Button>
-            <Button variant="contained" className={classes.button} style={{backgroundColor: 'black'}} onClick={()=>parentCallback("black")}></Button>
-            <Button variant="contained" className={classes.button} style={{backgroundColor: '#99ddff' /* light blue */, border: '1px solid grey'}} onClick={()=>parentCallback("#99ddff")}></Button> 
-            <Button variant="contained" className={classes.button} style={{backgroundColor: '#ffff4d' /* light yellow */, border: '1px solid grey'}} onClick={()=>parentCallback("#ffff4d")}></Button>
-            <Button variant="contained" className={classes.button} style={{backgroundColor: '#005580' /* blue */, border: '1px solid grey'}} onClick={()=>parentCallback("#005580")}></Button>
+            <Button variant="contained" className={classes.button} style={{backgroundColor: 'white', border: '1px solid grey', marginBottom: "5px"}} onClick={()=>parentCallback("white")}></Button>
+            <Button variant="contained" className={classes.button} style={{backgroundColor: 'black', border: '1px solid grey', marginBottom: "5px"}} onClick={()=>parentCallback("black")}></Button>
+            <Button variant="contained" className={classes.button} style={{backgroundColor: '#99ddff' /* light blue */, border: '1px solid grey', marginBottom: "5px"}} onClick={()=>parentCallback("#99ddff")}></Button> 
+            <Button variant="contained" className={classes.button} style={{backgroundColor: '#ffff4d' /* light yellow */, border: '1px solid grey', marginBottom: "5px"}} onClick={()=>parentCallback("#ffff4d")}></Button>
+            <Button variant="contained" className={classes.button} style={{backgroundColor: '#005580' /* blue */, border: '1px solid grey', marginBottom: "5px"}} onClick={()=>parentCallback("#005580")}></Button>
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'red', border: '1px solid grey'}} onClick={()=>parentCallback("red")}></Button>
             <Button variant="contained" className={classes.button} style={{backgroundColor: 'brown', border: '1px solid grey'}} onClick={()=>parentCallback("brown")} ></Button>
             <h4 className={classes.h}>Custom Colour</h4>
@@ -79,8 +79,7 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
                onChange={updatedColor => setColor(updatedColor.hex)}
                />
             )} 
-              <Button style={{backgroundColor: color, border: '1px solid grey', marginTop: '7px'}} onClick={()=> parentCallback(color)}>
-                set</Button>
+            <Button style={{backgroundColor: color, border: '1px solid grey', marginTop: '7px'}} onClick={()=> parentCallback(color)}>set</Button>
 
             <h4 className={classes.h} >Background Image</h4>
             <Button variant ="contained" style={{borderRadius: "2em",
@@ -90,11 +89,10 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
                                          maxWidth: '130px',
                                          minWidth: '130px',
                                          textAlign: 'center',
-                                         
                                          }} onClick={togglePopup} ><ImageRounded />&nbsp;Add Image</Button>
                                          <div>
-              
             </div>
+
             <Typography id="input-slider" gutterBottom style={{marginTop: '10px', fontSize: '15px', fontWeight: '700'}}>
         Background Visibility
       </Typography>
@@ -106,7 +104,6 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
             value={typeof value === 'number' ? value : 0}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
-            
           />
         </Grid>
         <Grid item>
