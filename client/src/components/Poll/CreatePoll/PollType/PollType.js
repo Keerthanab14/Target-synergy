@@ -66,7 +66,11 @@ const PollType = ({clickHandler}) => {
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
+<<<<<<< HEAD:client/src/components/Poll/CreatePoll/PollType.js
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={clickHandler('imagechoice')}>
+=======
           <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={()=>clickHandler("imagechoice")}>
+>>>>>>> shefali:client/src/components/Poll/CreatePoll/PollType/PollType.js
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </Button>
             
@@ -91,7 +95,11 @@ const PollType = ({clickHandler}) => {
             </Button>
   
          
+<<<<<<< HEAD:client/src/components/Poll/CreatePoll/PollType.js
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={clickHandler("wordcloud")}  >
+=======
             <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={()=>clickHandler("wordcloud")}  >
+>>>>>>> shefali:client/src/components/Poll/CreatePoll/PollType/PollType.js
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </Button>
           
