@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { ButtonBase, ButtonGroup, Grid } from '@material-ui/core'
+import { ButtonGroup, Grid } from '@material-ui/core'
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     
   },
   }));
-const PollType = (props) => {
+const PollType = ({clickHandler}) => {
     const classes = useStyles();
     const [alignment, setAlignment] = React.useState('mc');
    
@@ -44,11 +44,11 @@ const PollType = (props) => {
       setAlignment(newAlignment);
     };
 
- const {clickHandler}=props;
+ 
 
         
 
-    function FormRow(props) {
+    function FormRow() {
       
       
     
@@ -63,12 +63,12 @@ const PollType = (props) => {
       style={{marginBottom: '20px'}}
     >
           
-            <Button   value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={clickHandler("multiplechoice")}
+            <Button value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={clickHandler("multiplechoice")}
           >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
-          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={clickHandler("imagechoice")}>
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={clickHandler('imagechoice')}>
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </Button>
             
@@ -93,7 +93,7 @@ const PollType = (props) => {
             </Button>
   
          
-            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onCLick={() => clickHandler("wordcloud")}  >
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onCLick={clickHandler("wordcloud")}  >
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </Button>
           
