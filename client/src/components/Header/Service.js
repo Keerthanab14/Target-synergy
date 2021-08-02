@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import PollIcon from '@material-ui/icons/Poll';
 import CreateIcon from '@material-ui/icons/Create';
 import PeopleIcon from '@material-ui/icons/People';
+import { Link } from 'react-router-dom';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
 const StyledMenu = withStyles({
   paper: {
@@ -15,7 +17,7 @@ const StyledMenu = withStyles({
   },
 })((props) => (
   <Menu
-    elevation={0}
+
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: 'bottom',
@@ -31,18 +33,11 @@ const StyledMenu = withStyles({
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
-    '&:focus': {
-        _backgroundColor: "#cc0000",
-        get backgroundColor() {
-            return this._backgroundColor;
-        },
-        set backgroundColor(value) {
-            this._backgroundColor = value;
-        },
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-          color: theme.palette.common.white,
+    '&:hover': {
+      backgroundColor: '#cc0000',
       },
-    },
+    
+  
   },
 }))(MenuItem);
 
@@ -74,7 +69,7 @@ export default function Service() {
         }
         onClick={handleClick}
       >
-        Services
+        Services<ArrowDropDownIcon/>
       </Button>
       <StyledMenu
         id="customized-menu"
@@ -82,26 +77,45 @@ export default function Service() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        style={
+          {
+            marginTop:"5px"
+          }
+        }
       >
-              <StyledMenuItem>
-                  <ListItemIcon>         
-            <PollIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Polls" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <PeopleIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Opinions" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <CreateIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Feedback" />
-        </StyledMenuItem>
-      </StyledMenu>
+              <Link to="/polls" style={{color:"black", textDecoration:"none"}}>
+                <StyledMenuItem onClick={handleClose}>
+                
+                  <ListItemIcon>
+                           
+                    <PollIcon fontSize="small"  />
+                    
+                  </ListItemIcon>
+                    <ListItemText primary="Polls" /> 
+                  </StyledMenuItem>
+              </Link>
+              <Link to="/opinions" style={{color:"black", textDecoration:"none" }}>
+              <StyledMenuItem onClick={handleClose}>
+                  <ListItemIcon>
+              <PeopleIcon fontSize="small" />
+              </ListItemIcon>
+                  <ListItemText primary="Opinions" />    
+              </StyledMenuItem>
+              </Link>
+              <Link to="/feedback" style={{color:"black" , textDecoration:"none"}}>
+              <StyledMenuItem onClick={handleClose}>
+                  <ListItemIcon>
+                  
+                    <CreateIcon fontSize="small" />
+                    
+                  </ListItemIcon>
+                  
+                  <ListItemText primary="Feedback" />
+                 
+                  
+              </StyledMenuItem>
+              </Link>
+          </StyledMenu>
     </div>
   );
 }

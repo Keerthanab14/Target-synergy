@@ -5,16 +5,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import logo from '../images/logo.jpg'
 import Service from './Service'
-//import Home from './Home'
 import Submit from './Submit'
-import { positions } from '@material-ui/system';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import axios from 'axios'
+
 const useStyles = makeStyles((theme) => ({
     logo: {
         maxWidth: 70,
@@ -53,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1, 1, 1, 0),
         color: "white",
         textAlign: "center",
-        // vertical padding + font size from searchIcon
+
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -83,20 +81,44 @@ function Header() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    // // google-login
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    //     console.log(response.profileObj);
+    // }
+    const onSuccess = (res)=>{
+        // console.log(res.profileObj);
+        const data =  {
+            googleId: res.profileObj.googleId,
+            email: res.profileObj.email,
+            name: res.profileObj.name
+            
+          }
+          console.log(data);
+            axios.post("http://localhost:8080/newUser", data)
+            .then(r =>console.log("success"))
+            .catch(err => { 
+            console.error(err);
+          });
+    }
+    const onFailure = (res)=>{
+            console.log('login failed', res);
+        }
+
+    
 
     return (
-        <Router>
+
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: "#cc0000" }}>
                 <Toolbar>
-                
-                    <Link to ="public\App.js">
 
-                    <img src={logo} alt="logo" className={classes.logo} />
+                    <Link to="/">
+                        <img src={logo} alt="logo" className={classes.logo} />
                     </Link>
                     &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
-                   
+
                         <Service />
 
                     </Typography>
@@ -113,16 +135,16 @@ function Header() {
                                 {
                                     border: " 1px solid white",
                                     position: "relative",
-                                  
-                   }
-               }
-           />
+
+                                }
+                            }
+                        />
                     </div>
                     &nbsp;
                     <Submit />
-                     &nbsp; &nbsp;
+                    &nbsp; &nbsp;
                     {auth && (
-                    
+
                         <div>
                             <IconButton
                                 aria-label="account of current user"
@@ -131,35 +153,47 @@ function Header() {
                                 onClick={handleMenu}
                                 color="inherit"
                             >
-                               
-                                
+                                <div>
+                                    <GoogleLogin
+                                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                                        render={renderProps => (
+                                            <AccountCircle onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                            </AccountCircle>
+                                        )}
+                                        buttonText="Gmail Login"
+                                        onSuccess={onSuccess}
+                                        onFailure={ onFailure}
+                                        cookiePolicy={'single_host_origin'}
+                                        uxMode="redirect"
+                                        redirect_uri="http://localhost:3000/"
+                                        isSignedIn={true}
+                                    >
+                                    </GoogleLogin>
+                                    {/* <GoogleLogout
+                                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                                        buttonTex="Logout"
+                                        onLogoutSuccess={onSuccess}
+                                    >   
+                                    </GoogleLogout> */}
+                                </div>
 
-                                <AccountCircle />
+
+
+
                             </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={open}
-                                onClose={handleClose}
-                            >
-                                <MenuItem onClick={handleClose}>Sign in</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign up</MenuItem>
-                            </Menu>
+
+                            {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
+                                <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
+
+
+
+
                         </div>
                     )}
                 </Toolbar>
             </AppBar>
         </div>
-        </Router>
+
     );
 }
 export default Header

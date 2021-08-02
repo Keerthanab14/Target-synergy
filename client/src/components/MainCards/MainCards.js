@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CardActionArea } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
-import { BrowserRouter as Router,Link, Route, } from "react-router-dom";
+import { Link } from "react-router-dom";
 import polls from '../images/polling.png'
 import opinion from '../images/opinion.png'
 import feedback from '../images/feedback_1.png'
@@ -24,7 +24,7 @@ function MainCards() {
   const classes = useStyles();
 
   return (
-    <Router>
+    
 
     <Card className={classes.root}>
       <Grid
@@ -37,7 +37,7 @@ function MainCards() {
         <Grid item md={2} spacing={8} >
   
    
- <CardActionArea component={Link} to={"/Poll.js"}>
+        <CardActionArea component={Link} to={"/polls"}>
  
             <CardMedia
               component="img"
@@ -60,7 +60,7 @@ function MainCards() {
         </Grid>
         <Grid item md={2} spacing={8}>
 
-          <CardActionArea >
+          <CardActionArea component={Link} to={"/opinions"}>
             <CardMedia
               component="img"
               alt="Polls"
@@ -83,7 +83,7 @@ function MainCards() {
         </Grid>
         <Grid item md={2} spacing={8}>
 
-          <CardActionArea>
+          <CardActionArea component={Link} to={"/feedback"}>
             <CardMedia
               component="img"
               alt="Polls"
@@ -108,7 +108,7 @@ function MainCards() {
 
       </Grid>
     </Card>
-    </Router>
+    
   )
 }
 
