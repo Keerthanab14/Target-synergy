@@ -3,7 +3,7 @@ import Poll from "react-polls";
 import axios from "axios"
 
 // Declaring poll question and answers
- const id=21
+ const id=231
 const Vote = () => {
   const [mcq , setmcq] = useState({question:'', choices:[]})
  

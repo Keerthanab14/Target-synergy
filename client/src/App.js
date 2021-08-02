@@ -10,6 +10,7 @@ import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import Vote from './Vote';
 import QandA from './components/Poll/QandA'
 import Scales from './components/Poll/Scales'
+import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
@@ -42,7 +43,10 @@ function App() {
             )}
           />
          {/* // <Route path="/231" component={Vote}/> */}
-         <Route path="/27" component={Scales}/>
+         <Route path="/231" component={Vote}/>
+         <Route path="/27" component={QandA}/>
+         <Route path="/66" component={WordCloud}/>
+         <Route path="/36" component={Scales}/>
         </Switch> 
     </div>
     </BrowserRouter>
