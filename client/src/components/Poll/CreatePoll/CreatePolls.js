@@ -25,9 +25,10 @@ root:{
 });
 
 
-  function CreatePolls() {
+  const CreatePolls=({imagecall}) => {
     const [isOpen, setIsOpen] = useState(false);
- 
+    const [img,setimg] = useState(null);
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -101,8 +102,7 @@ root:{
                                             float: "right",
                                             border: "1px solid white",
                                             margin: "1% 0%",
-                                            marginRight: "-2%"
-                                            
+                                            marginRight: "0%"
                                         }
                                     }
                                 >Create Link
@@ -122,13 +122,12 @@ root:{
   
      <Sidebar state={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
-     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup}
-     
+     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} imagecall={setimg}
      />
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} opacity={opacity} component={component}  flex='1' />
+     } color={color} opacity={opacity} component={component} img={img} flex='1' />
      
      
     
@@ -140,7 +139,7 @@ root:{
         <Grid container spacing={2} style={{margin: "4px"}}>
         <Grid item xs={6} sm={2} >
                       <CardActions><Paper>
-                        <Button  ><AddIcon/></Button></Paper>
+                        <Button><AddIcon/></Button></Paper>
                     </CardActions>
             </Grid>
                     <Grid item xs={6} sm={2} >
@@ -152,6 +151,7 @@ root:{
               width="250"
               image={Bgimage1}
               title="1"
+              onClick={()=>imagecall(Bgimage1)}
             /> </CardActionArea>
             </Grid>
             
@@ -164,6 +164,7 @@ root:{
               width="250"
               image={Bgimage2}
               title="2"
+              onClick={()=>imagecall(Bgimage2)}
             /> </CardActionArea>
                     </Grid>
                    
@@ -176,13 +177,11 @@ root:{
               width="250"
               image={Bgimage3}
               title="3"
+              onClick={()=>imagecall(Bgimage3)}
             /></CardActionArea>
                     </Grid>
-
                 </Grid>
-           
-       
-        
+  
       </>}
       handleClose={togglePopup}
     />}
