@@ -60,7 +60,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, component }) => {
+const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup, component }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -106,7 +106,7 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, compon
         {(component==="multiplechoice") ? <Content/> : <ContentQandA/>}
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
-          <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup} />
+          <Background parentCallback={parentCallback} color={color} setOpacity={setOpacity} togglePopup={togglePopup} />
         </TabPanel >
       </SwipeableViews>
                 

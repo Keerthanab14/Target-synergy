@@ -25,7 +25,7 @@ root:{
 });
 
 
-  const CreatePolls=({imagecall}) => {
+  const CreatePolls=() => {
     const [isOpen, setIsOpen] = useState(false);
     const [img,setimg] = useState(null);
 
@@ -37,26 +37,28 @@ root:{
        history.push(path);
        
    }
-   const [color, setColor] = React.useState('white'); //for background color change in presentation component
+   const [color, setColor] = React.useState(''); //for background color change in presentation component
    const [opacity, setOpacity]=React.useState(100);
-   const [component, setComponent] = React.useState("multiplechoice");
+   const [component, setComponent] = React.useState('');
 
    
 
-    const clickHandler=()=> {
-        switch (component) {
-            case "multiplechoice":
-                setComponent('multiplechoice')
-                
+    const clickHandler=(e)=> {
+        switch (e) {
+          case "imagechoice":
+                setComponent("imagechoice")
+                console.log(component)
                 break
-            case "imagechoice":
-                
-                setComponent('imagechoice')
-                
+            case "multiplechoice":
+                setComponent("multiplechoice")
+                console.log(component)
                 break
             case "wordcloud":
-               setComponent('wordcloud')
+               setComponent("wordcloud")
+               console.log(component)
                break
+            default :
+              break
                
         }
     }
@@ -120,7 +122,7 @@ root:{
 >
 
   
-     <Sidebar state={color} parentCallback={setColor}
+     <Sidebar color={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} 
      />
@@ -134,13 +136,13 @@ root:{
      </Container>
      {isOpen && <Popup 
       content={<>
-        <b style={{color: 'white'}}>Background Images</b>
+        <b style={{color: 'white', textAlign: 'center' }}>Background Images</b>
         
         <Grid container spacing={2} style={{margin: "4px"}}>
-        <Grid item xs={6} sm={2} >
-                      <CardActions><Paper>
-                        <Button><AddIcon/></Button></Paper>
-                    </CardActions>
+        <Grid item xs={6} sm={2} ><Paper style={{width: '100px', height: '100px', marginTop: '15%', marginLeft: '50%'}}>
+                      <CardActions color='white' style={{height: '80px', marginLeft: '10%'}}>
+                        <Button ><AddIcon/></Button>
+                    </CardActions></Paper>
             </Grid>
                     <Grid item xs={6} sm={2} >
                       <CardActionArea onClick={()=>setimg(Bgimage1)}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
@@ -9,8 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import { SliderPicker } from 'react-color'
 
 
-const Background=({parentCallback, setOpacity, togglePopup }) => {
-  const [color,setColor] = useState('#ffffff')
+const Background=({parentCallback, color, setOpacity, togglePopup }) => {
+  
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
     const useStyles = makeStyles((theme) => ({
@@ -76,7 +76,7 @@ const Background=({parentCallback, setOpacity, togglePopup }) => {
             { showColorPicker && (
               <SliderPicker
                color={color}
-               onChange={updatedColor => setColor(updatedColor.hex)}
+               onChange={updatedColor => parentCallback(updatedColor.hex)}
                />
             )} 
             <Button style={{backgroundColor: color, border: '1px solid grey', marginTop: '7px'}} onClick={()=> parentCallback(color)}>set</Button>
