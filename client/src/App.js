@@ -9,6 +9,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import Vote from './Vote';
 import QandA from './components/Poll/QandA'
+import Scales from './components/Poll/Scales'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
@@ -41,7 +42,7 @@ function App() {
             )}
           />
          {/* // <Route path="/231" component={Vote}/> */}
-         <Route path="/27" component={QandA}/>
+         <Route path="/27" component={Scales}/>
         </Switch> 
     </div>
     </BrowserRouter>

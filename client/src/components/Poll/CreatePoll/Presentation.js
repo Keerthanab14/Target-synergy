@@ -16,23 +16,16 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
+      //backgroundImage: `url(${img})`
     },
     
   }));
-  
- 
 
-const Presentation = ({color, component, opacity}) => {
+const Presentation = ({color, component, opacity, img}) => {
     const classes = useStyles();
-  
-    
- 
-    
-    
+
     return (
        
-            
-            
                     <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
@@ -42,7 +35,7 @@ const Presentation = ({color, component, opacity}) => {
                                 marginLeft: "26%",
                                 backgroundColor: color,
                                 opacity: opacity/100,
-
+                                backgroundImage: img,
                     }}
                     >
                      
@@ -50,12 +43,7 @@ const Presentation = ({color, component, opacity}) => {
          {component === 'multiplechoice' && <MultipleChoice/>}
          {component === 'imagechoice' && <ImageChoice/>}
          {component === 'wordcloud' && <WordCloud/>}
-                     
-                    
-                      
-                     
-                      
-                     
+
                     </Paper>
                     
     );
