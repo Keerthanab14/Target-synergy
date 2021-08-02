@@ -10,7 +10,7 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import { Button } from '@material-ui/core';
-import CreatePolls from './CreatePolls';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -63,12 +63,12 @@ const PollType = (props) => {
       style={{marginBottom: '20px'}}
     >
           
-            <Button   value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={() => clickHandler("multiplechoice")}
+            <Button   value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={clickHandler("multiplechoice")}
           >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
-          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={() => clickHandler("imagechoice")}>
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={clickHandler("imagechoice")}>
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </Button>
             
