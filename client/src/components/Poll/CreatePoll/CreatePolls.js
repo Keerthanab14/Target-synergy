@@ -11,10 +11,10 @@ import { Breadcrumbs, CardActionArea, Paper, Typography } from '@material-ui/cor
 import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { Container, Grid } from "@material-ui/core";
-
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import Bgimage1 from '../../images/bgimage_1.jpg';
 import Bgimage2 from '../../images/bgimage_2.jpg';
-import Bgimage3 from '../../images/bgimage_3.jpg';
+import Bgimage3 from '../../images/bgimage_3.png';
 
 const useStyles = makeStyles({
 root:{
@@ -181,6 +181,11 @@ root:{
               title="3"
              
             /></CardActionArea>
+                    </Grid>
+                    <Grid item xs={6} sm={2} ><Paper style={{width: '100px', height: '100px', marginTop: '15%', marginLeft: '60%'}}>
+           <CardActions color='white' style={{height: '80px', marginLeft: '10%'}} >
+             <Button onClick={()=>setimg(null)} ><NotInterestedIcon /></Button>
+          </CardActions></Paper>
                     </Grid>
                 </Grid>
   
