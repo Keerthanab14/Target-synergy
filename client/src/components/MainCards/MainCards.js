@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     borderSpacing: 2
   },
 });
-function MainCards() {
+function MainCards({check}) {
   const classes = useStyles();
 
   return (
@@ -37,7 +37,7 @@ function MainCards() {
         <Grid item md={2} spacing={8} >
   
    
-        <CardActionArea component={Link} to={"/polls"}>
+        <CardActionArea component={Link} to={"/polls"} >
  
             <CardMedia
               component="img"
