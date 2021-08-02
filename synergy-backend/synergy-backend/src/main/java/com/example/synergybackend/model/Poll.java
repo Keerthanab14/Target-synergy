@@ -11,19 +11,16 @@ import java.util.Objects;
 
 @Document(collection = "polls")
 public class Poll {
-    @Transient
-    public static final String SEQUENCE_NUMBER ="user_sequence";
     @Id
-    private int id;
+    private String id;
     private String question;
     private ArrayList<Choice> choices ;
-//    private Instant expireTime;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -13,7 +13,11 @@ public class Image {
 
     private Binary image;
 
-    public Image(String title) {
+//    public Image(String title) {
+//    }
+
+    public Image() {
+
     }
 
     public String getId() {
