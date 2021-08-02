@@ -103,7 +103,7 @@ const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup,
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-        {(component==="multiplechoice") ? <Content/> : <ContentQandA/>}
+        <Content/> 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
           <Background parentCallback={parentCallback} color={color} setOpacity={setOpacity} togglePopup={togglePopup} />

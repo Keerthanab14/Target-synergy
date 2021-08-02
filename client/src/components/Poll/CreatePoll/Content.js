@@ -79,7 +79,7 @@ const Content = () => {
         question: "",
         choice:[]
     })
-   
+    const[id, setId]=useState("")
     const submit = (e) => {
 
       e.preventDefault();
@@ -94,7 +94,8 @@ const Content = () => {
       console.log(q)
       axios.post(url, q)
            .then(res=>{
-              console.log(res.data)
+              console.log(res)
+              setId(res.data);
             })
 
     }
