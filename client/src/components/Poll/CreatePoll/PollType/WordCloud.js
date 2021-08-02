@@ -1,5 +1,29 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import ReactWordcloud from 'react-wordcloud';
+import axios from 'axios'
+
+const id=66
+const wcr=[];
+const WordCloud=()=>{
+
+
+  
+    useEffect(async () => {
+      var result = await axios.get(`http://localhost:8080/WordCloudResponse/${id}`)
+      console.log(result.data)
+      
+    
+    let i=0
+    Object.entries(result.data).forEach(([key, value]) => {
+  result.value = true;
+  wcr[i]=({text:`${key}`, value:`${value}`})
+  i++
+})
+console.log(wcr)
+},[]);
+let wcrs=[...wcr]
+console.log(wcrs)
+
 const resizeStyle = {
     display: "flex",
     alignItems: "center",
@@ -9,24 +33,6 @@ const resizeStyle = {
     height: '90%',
     marginTop: '5%'
   };
-const words = [
-    {
-      text: 'told',
-      value: 64,
-    },
-    {
-      text: 'mistake',
-      value: 11,
-    },
-    {
-      text: 'thought',
-      value: 16,
-    },
-    {
-      text: 'bad',
-      value: 17,
-    },
-  ];
   const callbacks = {
     getWordColor: word => word.value > 50 ? "blue" : "red",
     onWordClick: console.log,
@@ -50,14 +56,15 @@ const words = [
     transitionDuration: 1000
   };
   const size = [1200, 400];
-  function WordCloud() {
+
     return (
+
         <div style={resizeStyle}>
       <ReactWordcloud
         callbacks={callbacks}
         options={options}
         size={size}
-        words={words}
+        words={wcr}
       />
       </div>
     );
