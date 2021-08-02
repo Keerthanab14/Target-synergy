@@ -7,29 +7,18 @@ import Opinions from './components/Opinions/Opinions';
 import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
-<<<<<<< HEAD
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
-import Vote from './Vote';
+import Vote from './components/Poll/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
-=======
-
-import Vote from './components/Poll/Vote';
-import QandA from './components/Poll/CreatePoll/PollType/QandA'
-import Scales from './components/Poll/CreatePoll/PollType/Scales'
-import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
-import QandA from './components/Poll/QandA'
-import Scales from './components/Poll/Scales'
-import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
-
->>>>>>> 7922b0872d06bf194bc727193994c8d307413cf3
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 
 import axios from 'axios'
 function App() {
   const[id, setId]=useState("")
+  const [ check, setCheck]=useState(false)
   return (
     <div>
     <DesktopBreakpoint>
@@ -37,9 +26,9 @@ function App() {
     <div className="App">
       {/* <button onClick={PollsSubmit}>Submit</button>
       <Vote result = {result}/> */}
-        <Header />
+        <Header setCheck={setCheck} check={check} />
         <Switch>
-          <Route exact path="/" component={Main}/>
+          <Route exact path="/" component={Main} check={check}/>
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>

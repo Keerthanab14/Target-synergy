@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,6 +10,7 @@ import logo from '../images/logo.jpg'
 import Service from './Service'
 import Submit from './Submit'
 import { Link } from 'react-router-dom';
+import User from './User';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import axios from 'axios'
 
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header() {
+function Header({setCheck, check}) {
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -86,6 +87,7 @@ function Header() {
     //     console.log(response);
     //     console.log(response.profileObj);
     // }
+
     const onSuccess = (res)=>{
         // console.log(res.profileObj);
         const data =  {
@@ -100,6 +102,7 @@ function Header() {
             .catch(err => { 
             console.error(err);
           });
+          setCheck(true);
     }
     const onFailure = (res)=>{
             console.log('login failed', res);
@@ -154,10 +157,10 @@ function Header() {
                                 color="inherit"
                             >
                                 <div>
-                                    <GoogleLogin
+                                   { !check && <GoogleLogin
                                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
                                         render={renderProps => (
-                                            <AccountCircle onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                            <AccountCircle onClick={renderProps.onClick  } disabled={renderProps.disabled}>
                                             </AccountCircle>
                                         )}
                                         buttonText="Gmail Login"
@@ -169,6 +172,9 @@ function Header() {
                                         isSignedIn={true}
                                     >
                                     </GoogleLogin>
+                                     }    
+                                     { check && <User />}
+
                                     {/* <GoogleLogout
                                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
                                         buttonTex="Logout"
