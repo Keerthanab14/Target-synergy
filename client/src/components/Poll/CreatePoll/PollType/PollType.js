@@ -7,8 +7,6 @@ import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import CloudIcon from '@material-ui/icons/Cloud';
 import TuneIcon from '@material-ui/icons/Tune';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import { Button } from '@material-ui/core';
 
 
@@ -48,7 +46,7 @@ const PollType = ({clickHandler}) => {
 
         
 
-    function FormRow() {
+    function FormRow({clickHandler}) {
       
       
     
@@ -63,12 +61,16 @@ const PollType = ({clickHandler}) => {
       style={{marginBottom: '20px'}}
     >
           
-            <Button value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={clickHandler("multiplechoice")}
+            <Button value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={()=>clickHandler("multiplechoice")}
           >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
+<<<<<<< HEAD:client/src/components/Poll/CreatePoll/PollType.js
           <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={clickHandler('imagechoice')}>
+=======
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={()=>clickHandler("imagechoice")}>
+>>>>>>> shefali:client/src/components/Poll/CreatePoll/PollType/PollType.js
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </Button>
             
@@ -93,7 +95,11 @@ const PollType = ({clickHandler}) => {
             </Button>
   
          
+<<<<<<< HEAD:client/src/components/Poll/CreatePoll/PollType.js
             <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={clickHandler("wordcloud")}  >
+=======
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={()=>clickHandler("wordcloud")}  >
+>>>>>>> shefali:client/src/components/Poll/CreatePoll/PollType/PollType.js
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </Button>
           
@@ -101,7 +107,7 @@ const PollType = ({clickHandler}) => {
             );
     }
 
-    function FormRow2() {
+    function FormRow2({clickHandler}) {
       return (
          
         <ButtonGroup
@@ -118,8 +124,8 @@ const PollType = ({clickHandler}) => {
            </Button>
          
           
-           <Button value="qa" aria-label="Q and A" className={classes.togglebtn}>
-           <QuestionAnswerIcon fontSize="large" className={classes.icon}/><h5>Q and A</h5>
+           <Button value="qa" aria-label="Q and A" className={classes.togglebtn} onClick={()=>clickHandler("qanda")}>
+           <QuestionAnswerIcon fontSize="large" className={classes.icon}/><h5>Q and A</h5> 
            </Button>
             
             </ButtonGroup>
@@ -129,14 +135,14 @@ const PollType = ({clickHandler}) => {
         <div className={classes.root}>
           <Grid container spacing={1}  ><h4>Questions Type</h4> 
             <Grid container item xs={12} spacing={3} alignItems="center">
-              <FormRow />
+              <FormRow clickHandler={clickHandler} />
             </Grid>
             <Grid container item xs={12} spacing={3} alignItems="center">
-              <FormRow1 />
+              <FormRow1 clickHandler={clickHandler}/>
             
             </Grid>
             <Grid container item xs={12} spacing={3} alignItems="center">
-              <FormRow2 />
+              <FormRow2 clickHandler={clickHandler}/>
             </Grid>
           </Grid>
         </div>

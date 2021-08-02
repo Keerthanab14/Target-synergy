@@ -2,9 +2,10 @@ import React from 'react'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
-import PollType from '../CreatePoll/PollType'
-import ContentQandA from '../CreatePoll/ContentQandA'
-import Content from '../CreatePoll/Content'
+import PollType from './PollType/PollType'
+import ContentQandA from './ContentType/ContentQandA'
+//import ContentImageChoice from './ContentType/ContentImageChoice';
+import Content from './ContentType/Content'
 import Background from '../CreatePoll/Background'
 import '../CreatePoll/CreatePolls.css'
 import AppBar from '@material-ui/core/AppBar';
@@ -103,7 +104,9 @@ const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup,
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-        <Content/> 
+        {component==="multiplechoice" && <Content />}
+        {component==="qanda" && <ContentQandA />}
+
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
           <Background parentCallback={parentCallback} color={color} setOpacity={setOpacity} togglePopup={togglePopup} />

@@ -6,6 +6,7 @@ export const Container = styled.div`
   max-width: 800px;
   height: 100%;
   display: flex;
+  min-height: 400px;
   flex-direction: column;
   justify-content: flex-end;
 `;
@@ -15,6 +16,7 @@ export const MainContainer = styled.div`
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
+  min-height: inherit;
 `;
 
 export const BarChartContainer = styled.div`
@@ -26,8 +28,8 @@ export const BarChartContainer = styled.div`
 
 export const Chart = css`
   margin-top: 0%;
+  width: 100%;
   
-  width: ;
   max-width: 96px;
   &:hover {
     opacity: 0.8;
@@ -85,7 +87,7 @@ function ImageChoice () {
         {__DATA__.map(({ distance, colors }, i) => {
           return (
             <BarChartContainer key={i}>
-              <Number color={colors[1]}>{distance}</Number>
+             <Number color={colors[1]}>{distance}</Number>
               <MakeBar height={distance * 2} colors={colors} />
             </BarChartContainer>
           );
