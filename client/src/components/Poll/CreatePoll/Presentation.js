@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import MultipleChoice from "./PollType/MultipleChoice";
 import WordCloud from './PollType/WordCloud';
 import ImageChoice from './PollType/ImageChoice';
+import Scales from '../Scales';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
       flexShrink: 1,
       padding: theme.spacing(2),
       textAlign: 'center',
-      
     }
   }));
 
@@ -32,14 +32,15 @@ const Presentation = ({color, component, opacity, img}) => {
                                 marginLeft: "26%",
                                 backgroundColor: color,
                                 opacity: opacity/100,
-                                //backgroundImage: img,
+                                backgroundImage: `url(${img})`,
                     }}
                     >
-                     
-                  
-        {component === 'multiplechoice' && <MultipleChoice/>  }
+                   <Scales />  
+     
+       {/* {component === 'multiplechoice' && <MultipleChoice/>  }
          {component === 'imagechoice' && <ImageChoice/>}  
-         {component === 'wordcloud' && <WordCloud/>}
+         {component === 'wordcloud' && <WordCloud/>} */}
+        
 
                     </Paper>
                     

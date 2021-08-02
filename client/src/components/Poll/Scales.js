@@ -13,9 +13,10 @@ const id=27
 const useStyles = makeStyles({
     root: {
       width: '100%',
+      height: '100%'
     },
     input: {
-      width: 42,
+      width: 20,
     },
   });
   
