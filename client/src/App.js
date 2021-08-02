@@ -7,7 +7,7 @@ import Opinions from './components/Opinions/Opinions';
 import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
-import Vote from './Vote';
+import Vote from './components/Poll/Vote';
 import QandA from './components/Poll/QandA'
 import Scales from './components/Poll/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'

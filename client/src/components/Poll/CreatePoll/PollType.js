@@ -68,7 +68,7 @@ const PollType = ({clickHandler}) => {
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
-          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onCLick={clickHandler('imagechoice')}>
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={clickHandler('imagechoice')}>
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </Button>
             
@@ -93,7 +93,7 @@ const PollType = ({clickHandler}) => {
             </Button>
   
          
-            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onCLick={clickHandler("wordcloud")}  >
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={clickHandler("wordcloud")}  >
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </Button>
           
