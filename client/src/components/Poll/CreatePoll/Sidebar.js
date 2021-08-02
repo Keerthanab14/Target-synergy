@@ -60,11 +60,11 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, component, imagecall }) => {
+const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, component }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-  const [type, setType] = React.useState("");
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -74,9 +74,7 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, compon
     setValue(index);
   };
   
-  const clickHandler = (pType)=>{
-    setType(pType)
- }
+  
    
    const classes = useStyles();
     return (
@@ -105,10 +103,10 @@ const Sidebar = ({ parentCallback, clickHandler, setOpacity, togglePopup, compon
           clickHandler={clickHandler} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-        {(type==="multiplechoice") ? <Content/> : <ContentQandA/>}
+        {(component==="multiplechoice") ? <Content/> : <ContentQandA/>}
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
-          <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup} imagecall={imagecall}/>
+          <Background parentCallback={parentCallback} setOpacity={setOpacity} togglePopup={togglePopup} />
         </TabPanel >
       </SwipeableViews>
                 

@@ -122,7 +122,7 @@ root:{
   
      <Sidebar state={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
-     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} imagecall={setimg}
+     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} 
      />
      
      <Presentation style={
@@ -143,7 +143,7 @@ root:{
                     </CardActions>
             </Grid>
                     <Grid item xs={6} sm={2} >
-                      <CardActionArea>
+                      <CardActionArea onClick={()=>setimg(Bgimage1)}>
                     <CardMedia
               component="img"
               alt="Image1"
@@ -151,12 +151,12 @@ root:{
               width="250"
               image={Bgimage1}
               title="1"
-              onClick={()=>imagecall(Bgimage1)}
+              
             /> </CardActionArea>
             </Grid>
             
                     <Grid item xs={6} sm={2} >
-                    <CardActionArea>
+                    <CardActionArea onClick={()=>setimg(Bgimage2)}>
                     <CardMedia
               component="img"
               alt="Image2"
@@ -164,12 +164,12 @@ root:{
               width="250"
               image={Bgimage2}
               title="2"
-              onClick={()=>imagecall(Bgimage2)}
+              
             /> </CardActionArea>
                     </Grid>
                    
            <Grid item xs={6} sm={2} >
-           <CardActionArea >
+           <CardActionArea  onClick={()=>setimg(Bgimage3)} >
           <CardMedia
               component="img"
               alt="Image3"
@@ -177,7 +177,7 @@ root:{
               width="250"
               image={Bgimage3}
               title="3"
-              onClick={()=>imagecall(Bgimage3)}
+             
             /></CardActionArea>
                     </Grid>
                 </Grid>
