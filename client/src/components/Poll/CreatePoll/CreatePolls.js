@@ -57,9 +57,11 @@ root:{
                setComponent("wordcloud")
                console.log(component)
                break
-            default :
+            case "qanda":
+              setComponent("qanda")
+              console.log(component)
               break
-               
+           
         }
     }
    
