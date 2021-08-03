@@ -106,6 +106,7 @@ function Header({setCheck, check}) {
     }
     const onFailure = (res)=>{
             console.log('login failed', res);
+            setCheck(false);
         }
 
     
@@ -172,8 +173,9 @@ function Header({setCheck, check}) {
                                         isSignedIn={true}
                                     >
                                     </GoogleLogin>
-                                     }    
-                                     { check && <User />}
+                                     }
+                                      </div>     
+                                     { check && <User />}</IconButton>
 
                                     {/* <GoogleLogout
                                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
@@ -181,12 +183,12 @@ function Header({setCheck, check}) {
                                         onLogoutSuccess={onSuccess}
                                     >   
                                     </GoogleLogout> */}
-                                </div>
+                               
 
 
 
 
-                            </IconButton>
+                           
 
                             {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
                                 <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
