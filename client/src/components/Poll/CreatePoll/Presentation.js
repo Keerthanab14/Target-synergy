@@ -7,6 +7,7 @@ import WordCloud from './PollType/WordCloud';
 import ImageChoice from './PollType/ImageChoice';
 import Scales from './PollType/Scales';
 import QandA from './PollType/QandA';
+import OpenEnded from './PollType/OpenEnded';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +46,7 @@ const Presentation = ({color, component, opacity, img}) => {
         {component === 'wordcloud' && <WordCloud/>} 
         {component === 'qanda' && <QandA/>} 
         {component === 'scales' && <Scales/>} 
+        {component === 'openended' && <OpenEnded/>}
 
                     </Paper>
                     

@@ -86,7 +86,7 @@ const PollType = ({clickHandler}) => {
       aria-label="text alignment"
     >
           
-            <Button value="oe" aria-label="open ended" className={classes.togglebtn}>
+            <Button value="oe" aria-label="open ended" className={classes.togglebtn} onClick={()=>clickHandler("openended")}>
             <AssignmentRoundedIcon fontSize="large" className={classes.icon} /><h5>Open Ended</h5>
             </Button>
   
