@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -9,6 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import PeopleIcon from '@material-ui/icons/People';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
+import { IconButton } from '@material-ui/core';
 
 
 const StyledMenu = withStyles({
@@ -31,15 +32,19 @@ const StyledMenu = withStyles({
   />
 ));
 
-const StyledMenuItem = withStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    '&:hover': {
-      backgroundColor: '#cc0000',
-      },
     
-  
-  },
-}))(MenuItem);
+    },
+  head: {
+      backgroundColor: '#cc0000',
+      '&:hover': {
+        backgroundColor: '#cc0000',
+        disableRipple: true ,
+        },
+      
+    },
+}))
 
 export default function User() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -51,15 +56,16 @@ export default function User() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const classes = useStyles();
   return (
     <div>
-      <AccountCircle
-       
-        onClick={handleClick}
-      >
-        
-      </AccountCircle>
+    <IconButton 
+    aria-label="account of current user"
+    aria-controls="menu-appbar"
+    aria-haspopup="true"
+    color="inherit"
+     onClick={handleClick}>
+      <AccountCircle /></IconButton>
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -74,7 +80,7 @@ export default function User() {
         }
       >
             {/*  <Link to="/polls" style={{color:"black", textDecoration:"none"}}> */}
-                <StyledMenuItem onClick={handleClose}>
+                <MenuItem className={classes.head}  >
                 
                   <ListItemIcon>
                            
@@ -82,15 +88,28 @@ export default function User() {
                     
                   </ListItemIcon>
                     <ListItemText primary="Settings"   /> 
-                  </StyledMenuItem>
+                  </MenuItem>
               {/*</Link> */}
              {/* <Link to="settingspage" style={{color:"black", textDecoration:"none" }}>*/}
-              <StyledMenuItem onClick={handleClose}>
+                    
+                  <MenuItem className={classes.root} onClick={handleClose}>
+                    <ListItemText primary="Notifications"   /> 
+                  </MenuItem>
+            <MenuItem className={classes.root} onClick={handleClose}>
+                   <ListItemText primary="Logout"   /> 
+                  </MenuItem>
+              <MenuItem className={classes.head} >
                   <ListItemIcon>
               <PeopleIcon fontSize="small" />
               </ListItemIcon>
                   <ListItemText primary="Team Members" />    
-              </StyledMenuItem>
+              </MenuItem>
+              <MenuItem className={classes.root} onClick={handleClose}>
+                   <ListItemText primary="Add New"   /> 
+                  </MenuItem>
+            <MenuItem className={classes.root} onClick={handleClose}>
+              <ListItemText primary="Existing"   /> 
+                  </MenuItem>
              {/* </Link> */}
               
           </StyledMenu>
