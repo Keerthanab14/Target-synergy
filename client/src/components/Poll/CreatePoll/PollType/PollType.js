@@ -34,19 +34,20 @@ const useStyles = makeStyles((theme) => ({
     
   },
   }));
-const PollType = ({clickHandler}) => {
+const PollType = ({clickHandler, handleChangeIndex}) => {
     const classes = useStyles();
     const [alignment, setAlignment] = React.useState('mc');
    
     const handleAlignment = (event, newAlignment) => {
       setAlignment(newAlignment);
     };
+    
 
  
 
         
 
-    function FormRow({clickHandler}) {
+    function FormRow() {
       
       
     
@@ -61,12 +62,12 @@ const PollType = ({clickHandler}) => {
       style={{marginBottom: '20px'}}
     >
           
-            <Button value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={()=>clickHandler("multiplechoice")}
+            <Button value="mc" aria-label="multiplechoice" className={classes.togglebtn} onClick={()=>{clickHandler("multiplechoice"); handleChangeIndex(1)}}
           >
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
-          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={()=>clickHandler("imagechoice")}>
+          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={()=>{clickHandler("imagechoice");handleChangeIndex(1)}}>
             <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
             </Button>
             
@@ -86,12 +87,12 @@ const PollType = ({clickHandler}) => {
       aria-label="text alignment"
     >
           
-            <Button value="oe" aria-label="open ended" className={classes.togglebtn} onClick={()=>clickHandler("openended")}>
+            <Button value="oe" aria-label="open ended" className={classes.togglebtn} onClick={()=>{clickHandler("openended"); handleChangeIndex(1)}}>
             <AssignmentRoundedIcon fontSize="large" className={classes.icon} /><h5>Open Ended</h5>
             </Button>
   
          
-            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={()=>clickHandler("wordcloud")}  >
+            <Button value="wc" aria-label="word cloud" className={classes.togglebtn} onClick={()=>{clickHandler("wordcloud"); handleChangeIndex(1)}}  >
            <CloudIcon fontSize="large" className={classes.icon}/><h5>Word Cloud</h5>
             </Button>
           
@@ -99,7 +100,7 @@ const PollType = ({clickHandler}) => {
             );
     }
 
-    function FormRow2({clickHandler}) {
+    function FormRow2() {
       return (
          
         <ButtonGroup
@@ -110,13 +111,13 @@ const PollType = ({clickHandler}) => {
       aria-label="text alignment"
     >
           
-            <Button value="sc" aria-label="scales" className={classes.togglebtn}>
+            <Button value="sc" aria-label="scales" className={classes.togglebtn} onClick={()=>{clickHandler("scales");handleChangeIndex(1)}}>
        
             <TuneIcon fontSize="large" className={classes.icon} /><h5>Scales</h5>
            </Button>
          
           
-           <Button value="qa" aria-label="Q and A" className={classes.togglebtn} onClick={()=>clickHandler("qanda")}>
+           <Button value="qa" aria-label="Q and A" className={classes.togglebtn} onClick={()=>{clickHandler("qanda");handleChangeIndex(1)}}>
            <QuestionAnswerIcon fontSize="large" className={classes.icon}/><h5>Q and A</h5> 
            </Button>
             
