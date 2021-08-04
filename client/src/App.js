@@ -12,6 +12,7 @@ import Vote from './components/Poll/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
+import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 
@@ -46,9 +47,10 @@ function App() {
           />
          {/* // <Route path="/231" component={Vote}/> */}
          <Route path="/231" component={Vote}/>
-         <Route path="/27" component={QandA}/>
+         {/* <Route path="/27" component={QandA}/> */}
          <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>
+         <Route path="/27" component={OpenEnded}/>
         </Switch> 
     </div>
     </BrowserRouter>

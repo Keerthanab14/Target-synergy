@@ -8,6 +8,7 @@ import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/Input';
+import randomColor from 'randomcolor'
 const id=36
 
 const useStyles = makeStyles({
@@ -36,9 +37,9 @@ const useStyles = makeStyles({
 ));
 console.log(qAndA);
     const classes = useStyles();
+    
+    //const [inputList, setInputList] = useState([{value}]);
     const [value, setValue] = React.useState(30);
-    const [inputList, setInputList] = useState([{value}]);
-  
     const handleSliderChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -77,12 +78,12 @@ console.log(qAndA);
             })
 
     }
-    console.log(inputList)
     return (
       <div>
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
       
 {qAndA.map((x, i) => {
+  var colors=randomColor();
     return(
         <div>
         <Typography id="input-slider" gutterBottom>
@@ -95,6 +96,7 @@ console.log(qAndA);
               value={typeof value === 'number' ? value : 0}
               onChange={handleSliderChange}
               aria-labelledby="input-slider"
+            
             />
           </Grid>
           <Grid item>
