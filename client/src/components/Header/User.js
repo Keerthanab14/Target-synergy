@@ -10,7 +10,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@material-ui/core';
-
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
 
 const StyledMenu = withStyles({
   paper: {
@@ -56,6 +56,10 @@ export default function User() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const onSuccess = (res)=>{
+    console.log("log out");
+  }
   const classes = useStyles();
   return (
     <div>
@@ -96,8 +100,24 @@ export default function User() {
                     <ListItemText primary="Notifications"   /> 
                   </MenuItem>
             <MenuItem className={classes.root} onClick={handleClose}>
-                   <ListItemText primary="Logout"   /> 
-                  </MenuItem>
+              
+            <GoogleLogout
+                        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+                        render={renderProps => (
+                          <ListItemText primary="Logout" onClick={renderProps.onClick  } disabled={renderProps.disabled}>
+                   
+                          </ListItemText>
+                         
+                      )}
+                        onLogoutSuccess={onSuccess}
+                    >   
+                   </GoogleLogout>
+                  </MenuItem >
+                  
+                  
+                  
+                 
+                  
               <MenuItem className={classes.head} >
                   <ListItemIcon>
               <PeopleIcon fontSize="small" />
