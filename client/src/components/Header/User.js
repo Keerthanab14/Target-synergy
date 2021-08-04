@@ -37,9 +37,9 @@ const useStyles = makeStyles(() => ({
     
     },
   head: {
-      backgroundColor: '#cc0000',
+      backgroundColor: '#ff8080',
       '&:hover': {
-        backgroundColor: '#cc0000',
+        backgroundColor: '#ff8080',
         disableRipple: true ,
         },
       
@@ -91,7 +91,7 @@ export default function User() {
                     <SettingsIcon fontSize="small"  />
                     
                   </ListItemIcon>
-                    <ListItemText primary="Settings"   /> 
+                    <ListItemText primary="SETTINGS"   /> 
                   </MenuItem>
               {/*</Link> */}
              {/* <Link to="settingspage" style={{color:"black", textDecoration:"none" }}>*/}
@@ -122,7 +122,7 @@ export default function User() {
                   <ListItemIcon>
               <PeopleIcon fontSize="small" />
               </ListItemIcon>
-                  <ListItemText primary="Team Members" />    
+                  <ListItemText primary="TEAM MEMBERS" />    
               </MenuItem>
               <MenuItem className={classes.root} onClick={handleClose}>
                    <ListItemText primary="Add New"   /> 

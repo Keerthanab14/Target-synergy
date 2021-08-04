@@ -103,7 +103,7 @@ const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup,
       >
         <TabPanel value={value} index={0} dir={theme.direction}  >
           <PollType 
-          clickHandler={clickHandler} style={{flex: '1'}}  />
+          clickHandler={clickHandler} handleChangeIndex={handleChangeIndex} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
         {component==="multiplechoice" && <Content />}
