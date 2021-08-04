@@ -120,7 +120,7 @@ const ContentOpenEnded = () => {
       })}
     
       </Grid>  <Button
-        style={{ width: "248px",background:"#cc0000", color:"white" }}
+        style={{ width: "235px",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
        // color="primary"
@@ -132,7 +132,28 @@ const ContentOpenEnded = () => {
   
         <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
-        
+        <FormControlLabel
+         control={
+           <Checkbox
+             checked={state.checkedA}
+             onChange={handleChange}
+             name="checkedA"
+             color="primary"
+           />
+         }
+         label={<Typography className={classes.typography} color="textSecondary">Allow submitting more than one answers</Typography>}
+       />
+       <FormControlLabel
+         control={
+           <Checkbox
+             checked={state.checkedC}
+             onChange={handleChange}
+             name="checkedC"
+             color="primary"
+           />
+         }
+         label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
+       />
        </FormGroup>
        
        </form>

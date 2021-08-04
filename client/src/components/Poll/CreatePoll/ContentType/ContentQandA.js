@@ -135,7 +135,7 @@ const ContentQandA = () => {
       })}
     
       </Grid>  <Button
-        style={{ width: "248px",background:"#cc0000", color:"white" }}
+        style={{ width: "235px",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
        // color="primary"
@@ -156,18 +156,7 @@ const ContentQandA = () => {
              color="primary"
            />
          }
-         label={<Typography className={classes.typography} color="textSecondary">Allow picking more than one options</Typography>}
-       />
-       <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedB}
-             onChange={handleChange}
-             name="checkedB"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">This question has correct answer(s)</Typography>}
+         label={<Typography className={classes.typography} color="textSecondary">Allow submitting more than one entry</Typography>}
        />
        <FormControlLabel
          control={

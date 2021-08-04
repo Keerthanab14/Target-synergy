@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import PollType from './PollType/PollType'
 import ContentQandA from './ContentType/ContentQandA'
-import ContentWordCloud from './PollType/ContentWordCloud'
- import ContentImageChoice from './ContentType/ContentImageChoice';
+import ContentWordCloud from './ContentType/ContentWordCloud'
+import ContentImageChoice from './ContentType/ContentImageChoice';
 import ContentOpenEnded from './ContentType/ContentOpenEnded';
 import Content from './ContentType/Content'
+import ContentScales from './ContentType/ContentScales';
 import Background from '../CreatePoll/Background'
 import '../CreatePoll/CreatePolls.css'
 import AppBar from '@material-ui/core/AppBar';
@@ -111,6 +112,7 @@ const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup,
         {component==="wordcloud" && <ContentWordCloud />}
         {component==="openended" && <ContentOpenEnded/>}
        {component==="imagechoice" && <ContentImageChoice/>} 
+       {component==="scales" && <ContentScales/>}
 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>

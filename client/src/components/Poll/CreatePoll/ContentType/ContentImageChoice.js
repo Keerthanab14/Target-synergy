@@ -151,7 +151,7 @@ const ContentImageChoice = () => {
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '100%'}}/>
+        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '100%'}}/>
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
@@ -163,7 +163,7 @@ const ContentImageChoice = () => {
           <Button>
         
       </Button>
-          <Button variant ="contained" style={{ width: "235px",background:"#cc0000", color:'white'}}
+          <Button variant ="contained" style={{ width: "230px",background:"#cc0000", color:'white'}}
         className={classes.button}
         
        // color="primary"
@@ -213,10 +213,10 @@ const ContentImageChoice = () => {
         onClick={submit}
       >Submit
       </Button>
-  
-        <h4 className={classes.h}>Other Settings</h4>
+       
+      <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
-         <FormControlLabel
+        <FormControlLabel
          control={
            <Checkbox
              checked={state.checkedA}
@@ -225,18 +225,7 @@ const ContentImageChoice = () => {
              color="primary"
            />
          }
-         label={<Typography className={classes.typography} color="textSecondary">Allow picking more than one options</Typography>}
-       />
-       <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedB}
-             onChange={handleChange}
-             name="checkedB"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">This question has correct answer(s)</Typography>}
+         label={<Typography className={classes.typography} color="textSecondary">Allow selectind more than one options</Typography>}
        />
        <FormControlLabel
          control={
@@ -250,7 +239,7 @@ const ContentImageChoice = () => {
          label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
        />
        </FormGroup>
-       
+
        </form>
       </div>
       
