@@ -1,79 +1,91 @@
 import styled, { css } from "styled-components";
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import randomColor from 'randomcolor'
+import axios from 'axios'
+const id=27
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flex: 1,
+      '& > *': {
+        margin: theme.spacing(1),
+        width: '100%',
+      
+      },
+    },
+    h:{
+      fontSize: '15px',
+      marginBottom: '0',
+
+    },
+    typography: {
+        // for settings
+        fontSize: 12,
+      },
+    button: {
+        margin: theme.spacing(1),
+        borderRadius: "2em",
+        
+      },
+    addicon: {
+        color: 'solid white',
+    },
+}));
 
 export const Container = styled.div`
-  margin: 0px auto;
-  max-width: 1000px;
-  height: 100%;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+inline-size: 150px;
+overflow-wrap: break-word;
+text-align: center;
+float: left;
+  width: 250px;
+  padding: 3px;
+  margin: 3px;
+
 `;
 
-export const MainContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 100%;
-  min-height: inherit;
-`;
 
 export const box = styled.div`
-  height: 10%;
+  height: 1%;
 
 `;
-
-function OpenEnded(){
+const OpenEnded = () => {
+    const [OpenEndedResponses , setOpenEndedResponses] = useState({responses:[]});
+ 
+    useEffect(async () => {
+      var result = await axios.get(`http://localhost:8080/QandA/${id}`)
+      setOpenEndedResponses({
+       
+        responses: result.data.questions 
+      })
+    },[])
+    const responses_OpenEnd=[];
+    OpenEndedResponses.responses.map((post,key) => (
+    responses_OpenEnd[key]=post.text
+));
+console.log(responses_OpenEnd);
+    const classes = useStyles();
+    
+    return (
+        <div >
+            <h1 fontFamily= "Helvetica" justifyContent="left" >What would you like to say?</h1>
+           
+    {responses_OpenEnd.map((x, i) => {
+         var color = randomColor();
     return(
-        <Container marginTop= '10px'>
-          <h1 fontFamily= "Helvetica" justifyContent="left" >What would you like to say?</h1>
-          <div style={{ marginTop: '10px', marginLeft: "10px" , justifyContent: "center", display: "flex", align: "center"}}>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    I would like to thank the presenter for such an informative seminar! Would like to join more such sessions
+       
+       <Container marginTop= '10px'>
+          <div>
+                <Box color="white" bgcolor={color} p={1} fontFamily= "Helvetica" style={{ marginBottom: '5px', marginRight:"10px"}}>
+              {responses_OpenEnd[i]}
                 </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    very intersenting way to conduct the presentation. I appreciste you taking the views from audicence
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    Thank you for the presentation, but can ypu please repeat the last part i didn't get it.
-                </Box>
-            </div>
-            <div style={{ marginTop: '10px', marginLeft: "10px" , justifyContent: "center", display: "flex", align: "center"}}>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    I would like to thank the presenter for such an informative seminar! Would like to join more such sessions
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    very intersenting way to conduct the presentation. I appreciste you taking the views from audicence
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    Thank you for the presentation, but can ypu please repeat the last part i didn't get it.
-                </Box>
-            </div>
-            <div style={{ marginTop: '10px', marginLeft: "10px" , justifyContent: "center", display: "flex", align: "center"}}>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    I would like to thank the presenter for such an informative seminar! Would like to join more such sessions
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    very intersenting way to conduct the presentation. I appreciste you taking the views from audicence
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    Thank you for the presentation, but can ypu please repeat the last part i didn't get it.
-                </Box>
-            </div>
-            <div style={{ marginTop: '10px', marginLeft: "10px" , justifyContent: "center", display: "flex", align: "center"}}>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    I would like to thank the presenter for such an informative seminar! Would like to join more such sessions
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    very intersenting way to conduct the presentation. I appreciste you taking the views from audicence
-                </Box>
-                <Box color="white" bgcolor="#708090" p={1} fontFamily= "Helvetica" style={{ width:"500px", marginBottom: '5px', marginRight:"10px"}}>
-                    Thank you for the presentation, but can ypu please repeat the last part i didn't get it.
-                </Box>
-            </div>
+           </div>
+          
         </Container>
+       
+    )
+    })}
+    </div>
     );
 }
 
