@@ -183,19 +183,7 @@ function Header({setCheck, check}) {
                                         onLogoutSuccess={onSuccess}
                                     >   
                                     </GoogleLogout> */}
-                               
-
-
-
-
-                           
-
-                            {/* <MenuItem onClick={handleClose}>Sign in</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign up</MenuItem> */}
-
-
-
-
+ 
                         </div>
                     )}
                 </Toolbar>
