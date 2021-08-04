@@ -41,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentWordCloud = () => {
+const ContentScales = () => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
       });
     
-     const [inputList, setInputList] = useState([{ question: "" }]);
+      const [inputList, setInputList] = useState([{ choice: "" }]);
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -58,45 +58,65 @@ const ContentWordCloud = () => {
     setInputList(list);
   };
  
-  
+  // handle click event of the Remove button
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+ 
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { choice: "" }]);
+  };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/WordCloud"
+    const url="http://localhost:8080/polls"
     const[data, setData]=useState({
-      
-        question:[]
+        question: "",
+        choice:[]
     })
-   
+    const[id, setId]=useState("")
     const submit = (e) => {
 
       e.preventDefault();
-      inputList.map((questione,key)=>{
-        data.question[key]=questione.question
+      inputList.map((choicee,key)=>{
+        data.choice[key]=choicee.choice
       })
   
       const q ={
-        
-       questions: data.question
+        question: data.question,
+       choices: data.choice
       }
       console.log(q)
       axios.post(url, q)
            .then(res=>{
-              console.log(res.data)
+              console.log(res)
+              setId(res.data);
             })
 
     }
 
 
+    function handle(e){
+      const newdata={...data}
+      newdata[e.target.id]=e.target.value
+      setData(newdata)
+      console.log(newdata)
+
+    }
+
 
     return (
       <div >
-          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
+          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-        <h4 className={classes.h}>Please enter the question</h4>
+        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '100%'}}/>
+        <h4 className={classes.h}>Statments</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
 {inputList.map((x, i) => {
@@ -107,20 +127,25 @@ const ContentWordCloud = () => {
             id="outlined-basic"
             variant="outlined" size="small"
             id="outlined-basic"
-            style={{width: '96%'}}
+            style={{width: '100%'}}
               className="ml10"
-              name="question"
-   placeholder="Enter question"
-              value={x.question}
+              name="choice"
+   placeholder="Enter Statement"
+              value={x.choice}
               onChange={e => handleInputChange(e, i)}
             />
-            
+            <div>
+              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white", marginRight:"3px"}}
+                className="mr10"
+                onClick={() => handleRemoveClick(i)}/>}
+              {inputList.length - 1 === i && <AddIcon style={{background:"#cc0000", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
+            </div>
           </div>
         );
       })}
     
       </Grid>  <Button
-        style={{ width: "248px",background:"#cc0000", color:"white" }}
+        style={{ width: "235px",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
        // color="primary"
@@ -132,7 +157,17 @@ const ContentWordCloud = () => {
   
         <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
-        
+       <FormControlLabel
+         control={
+           <Checkbox
+             checked={state.checkedC}
+             onChange={handleChange}
+             name="checkedC"
+             color="primary"
+           />
+         }
+         label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
+       />
        </FormGroup>
        
        </form>
@@ -143,4 +178,4 @@ const ContentWordCloud = () => {
 
 
 
-export default ContentWordCloud
+export default ContentScales
