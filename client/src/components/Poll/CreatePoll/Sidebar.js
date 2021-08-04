@@ -5,7 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import PollType from './PollType/PollType'
 import ContentQandA from './ContentType/ContentQandA'
 import ContentWordCloud from './PollType/ContentWordCloud'
-// import ContentImageChoice from './ContentType/ContentImageChoice';
+ import ContentImageChoice from './ContentType/ContentImageChoice';
 import ContentOpenEnded from './ContentType/ContentOpenEnded';
 import Content from './ContentType/Content'
 import Background from '../CreatePoll/Background'
@@ -110,7 +110,7 @@ const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup,
         {component==="qanda" && <ContentQandA />}
         {component==="wordcloud" && <ContentWordCloud />}
         {component==="openended" && <ContentOpenEnded/>}
-        {/* {component==="imagechoice" && <ContentImageChoice/>} */}
+       {component==="imagechoice" && <ContentImageChoice/>} 
 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
