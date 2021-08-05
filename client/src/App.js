@@ -16,9 +16,8 @@ import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 
-import axios from 'axios'
+
 function App() {
-  const[id, setId]=useState("")
   const [ check, setCheck]=useState(false)
   return (
     <div>
@@ -33,12 +32,12 @@ function App() {
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-          <Route path="/link" component={CreatePoll} id={id}/> 
+          <Route path="/link" component={CreatePoll} /> 
           <Route
             path="/create-poll"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/`} component={CreatePolls} setId={setId}exact />
+                <Route path={`${url}/`} component={CreatePolls} exact />
             { /* <Route path={`${url}/type`} component={PollType} />
                 <Route path={`${url}/content`} component={Content} />
             <Route path={`${url}/background`} component={Background} /> */ }
