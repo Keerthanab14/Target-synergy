@@ -26,7 +26,7 @@ public class PollController {
         return PollRepository.findAll();
     }
     @GetMapping("/polls/{id}")
-    public Poll getPollById(@PathVariable("id") Long id){
+    public Poll getPollById(@PathVariable("id") String id){
         return PollRepository.findById(id).get();
     }
 
