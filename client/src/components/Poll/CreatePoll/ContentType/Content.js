@@ -75,7 +75,7 @@ const Content = () => {
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/polls"
+    const url="http://localhost:8080/mcq"
     const[data, setData]=useState({
         question: "",
         choice:[]
