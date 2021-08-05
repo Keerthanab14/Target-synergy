@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 });
 function MainCards({setAuth,auth}) {
   const classes = useStyles();
+  
   const onSuccess = (res)=>{
     // console.log(res.profileObj);
     const data =  {
@@ -40,6 +41,7 @@ function MainCards({setAuth,auth}) {
       });
       setAuth(true);
       
+      
 }
 const onFailure = (res)=>{
         console.log('login failed', res);
@@ -50,7 +52,7 @@ const onFailure = (res)=>{
   return (
     
 <div>
-   {!auth &&(<Card className={classes.root}>
+ {!auth && <Card className={classes.root}>
       <Grid
         container
         spacing={3}
@@ -59,11 +61,11 @@ const onFailure = (res)=>{
         alignItems="flex-start"
       >
         <Grid item md={2} spacing={8} >
-  
-        <GoogleLogin
+        
+      <GoogleLogin
         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
         render={renderProps => (
-        <CardActionArea onClick={renderProps.onClick  } disabled={renderProps.disabled}  >
+        <CardActionArea  onClick={renderProps.onClick   } disabled={renderProps.disabled}   >
  
             <CardMedia
               component="img"
@@ -92,8 +94,8 @@ const onFailure = (res)=>{
            redirect_uri="http://localhost:3000/"
            isSignedIn={true}
        >
-       </GoogleLogin>
-        </Grid>
+       </GoogleLogin> 
+       </Grid>
         <Grid item md={2} spacing={8}>
 
           <CardActionArea >
@@ -143,7 +145,7 @@ const onFailure = (res)=>{
         </CardActions>
 
       </Grid>
-    </Card>) }
+    </Card> }
     { auth &&(<Card className={classes.root}>
       <Grid
         container
@@ -225,7 +227,7 @@ const onFailure = (res)=>{
         </CardActions>
 
       </Grid>
-    </Card>) }
+    </Card>)}
     </div>
     
   );
