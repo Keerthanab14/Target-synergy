@@ -1,14 +1,16 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useContext } from "react";
 import Poll from "react-polls";
-import axios from "axios"
+import axios from "axios";
+import { IdContext } from '../../IdContext';
 
 // Declaring poll question and answers
- const id=231
+ 
 const Vote = () => {
   const [mcq , setmcq] = useState({question:'', choices:[]})
- 
+  const id = useContext(IdContext);
+  const url = id.id;
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/polls/${id}`)
+      var result = await axios.get(url)
       setmcq({
         question: result.data.question,
         choices: result.data.choices 
@@ -19,6 +21,7 @@ const Vote = () => {
     choice[key]=({option:(post.text), votes:0})
 ));
 console.log(choice);
+// console.log(id.id);
 let Answers = [...choice];
 console.log(Answers);
   const pollQuestion = mcq.question;

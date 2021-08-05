@@ -15,20 +15,45 @@ import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import Bgimage1 from '../../images/bgimage_1.jpg';
 import Bgimage2 from '../../images/bgimage_2.jpg';
 import Bgimage3 from '../../images/bgimage_3.png';
+import axios from 'axios'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 root:{
     flexGrow: 1,
     flexBasis: 0,
     flexShrink: 1
 },
-});
+button: {
+  margin: theme.spacing(1),
+  borderRadius: "2em",
+},
+}));
 
 
   const CreatePolls=({setId}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [img,setimg] = useState(null);
+    const [state, setState] = React.useState({
+      checkedA: false,
+       checkedB: false,
+     checkedC: false,
+     selectedFile: null
+   });
+ 
+   const onFileChange = (event) => {
+      setState({ selectedFile: event.target.files[0] }); 
+    };
 
+    const fileData = () => {
+    };
+    const [inputList, setInputList] = useState([{ choice: "" }]);
+
+const handleInputChange = (e, index) => {
+  const { name, value } = e.target;
+  const list = [...inputList];
+  list[index][name] = value;
+  setInputList(list);
+};               
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -63,6 +88,10 @@ root:{
               break
             case "openended":
               setComponent("openended")
+              console.log(component)
+              break
+            case "scales":
+              setComponent("scales")
               console.log(component)
               break
            
@@ -147,7 +176,33 @@ root:{
         <Grid container spacing={2} style={{margin: "4px"}}>
         <Grid item xs={6} sm={2} ><Paper style={{width: '100px', height: '100px', marginTop: '15%', marginLeft: '50%'}}>
                       <CardActions color='white' style={{height: '80px', marginLeft: '10%'}}>
-                        <Button ><AddIcon/></Button>
+                      {inputList.map((x, i) => {
+                        return (
+                          <div>
+                        {fileData()}
+                        <Button 
+                        className={classes.button}
+                        size="small"
+                        width="10px"
+                        fullWidth={true}
+                        name="choice"
+                        placeholder="Enter choice"value={x.choice}
+                        onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={onFileChange} />
+                        </Button>
+                        <Button className={classes.button}
+                            style={{borderRadius: "2em",
+                                         size: 'small',
+                                         fontSize: '11px',
+                                         textAlign: 'center',
+                                         position: 'relative',
+                                         width: '8%', background:"#808080",
+                                         color:'white'}}
+                                         onClick={()=>setimg(Bgimage1)}>
+                                           Set
+                        </Button>
+                        </div>
+        );
+      })}
                     </CardActions></Paper>
             </Grid>
                     <Grid item xs={6} sm={2} >

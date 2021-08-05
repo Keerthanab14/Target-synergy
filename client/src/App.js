@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import './App.css';
 import Main from './components/Main/Main';
 import Poll from './components/Poll/Poll';
@@ -15,11 +15,12 @@ import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
+import { IdContext } from './IdContext';
 
-import axios from 'axios'
 function App() {
   const[id, setId]=useState("")
   const [ auth, setAuth]=useState(false)
+  const id = useContext(IdContext);
   return (
     <div>
     <DesktopBreakpoint>
@@ -33,19 +34,18 @@ function App() {
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-          <Route path="/link" component={CreatePoll} id={id}/> 
+          <Route path="/link" component={CreatePoll} /> 
           <Route
             path="/create-poll"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/`} component={CreatePolls} setId={setId}exact />
+                <Route path={`${url}/`} component={CreatePolls} exact />
             { /* <Route path={`${url}/type`} component={PollType} />
                 <Route path={`${url}/content`} component={Content} />
             <Route path={`${url}/background`} component={Background} /> */ }
                       </Switch>
             )}
           />
-         {/* // <Route path="/231" component={Vote}/> */}
          <Route path="/231" component={Vote}/>
          {/* <Route path="/27" component={QandA}/> */}
          <Route path="/66" component={WordCloud}/>
