@@ -29,7 +29,6 @@ const CreatePoll = () => {
        history.push(path);
    }
 
-    const [text, setText] = useState("");
     const [isCopied, setIsCopied] = useState(false);
 
     const onCopyText = () => {
@@ -40,6 +39,7 @@ const CreatePoll = () => {
     };
     const id = useContext(IdContext);
     const uri = id.id;
+    const text = `http://localhost:3000${uri}`
     return (
         <div className='bx'>
             
@@ -91,7 +91,6 @@ const CreatePoll = () => {
                             <InputBase
                                 type="text"
                                 value={text}
-                                onChange={(event) => setText(event.target.value)}
                                 placeholder="https://targetsynergy.com/CODE"
                                 classes={{
                                     root: classes.inputRoot,
@@ -115,7 +114,7 @@ const CreatePoll = () => {
                     <div className='btnn'>
                             <Button
                                     variant="contained"
-                                    onClick={() => {handleClick(`/vote/${uri}`)}}
+                                    onClick={() => {handleClick(`${uri}`)}}
                                     style={
                                         {
                                             backgroundColor: "#cc0000",

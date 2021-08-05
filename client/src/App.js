@@ -47,7 +47,7 @@ function App() {
             )}
           />
           <Route
-            path="/vote"
+            path="/mcq"
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={Vote} exact />
