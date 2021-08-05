@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Document(collection = "polls")
-public class Poll {
+@Document(collection = "mcq")
+public class Mcq {
     @Id
     private String id;
     private String question;
@@ -39,15 +39,5 @@ public class Poll {
     public void setChoices(ArrayList<Choice> choices) {
         this.choices = choices;
     }
-
-//    public void addChoice(Choice choice) {
-//        choices.add(choice);
-//        choice.setPoll(this);
-//    }
-//
-//    public void removeChoice(Choice choice) {
-//        choices.remove(choice);
-//        choice.setPoll(null);
-//    }
 
 }
