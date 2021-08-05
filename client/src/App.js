@@ -46,7 +46,14 @@ function App() {
                       </Switch>
             )}
           />
-         <Route path="/231" component={Vote}/>
+          <Route
+            path="/vote"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={Vote} exact />
+              </Switch>
+            )}
+          />
          {/* <Route path="/27" component={QandA}/> */}
          <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>

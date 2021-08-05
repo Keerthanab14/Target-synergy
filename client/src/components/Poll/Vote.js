@@ -10,7 +10,7 @@ const Vote = () => {
   const id = useContext(IdContext);
   const url = id.id;
     useEffect(async () => {
-      var result = await axios.get(url)
+      var result = await axios.get(`http://localhost:8080/polls/${url}`)
       setmcq({
         question: result.data.question,
         choices: result.data.choices 
@@ -21,7 +21,7 @@ const Vote = () => {
     choice[key]=({option:(post.text), votes:0})
 ));
 console.log(choice);
-// console.log(id.id);
+console.log(id.id);
 let Answers = [...choice];
 console.log(Answers);
   const pollQuestion = mcq.question;
