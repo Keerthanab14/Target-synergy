@@ -10,6 +10,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import { Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
+import { IdContext } from './IdContext';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
 
@@ -79,7 +80,7 @@ const Content = () => {
         question: "",
         choice:[]
     })
-    const[id, setId]=useState("")
+    const id = useContext(IdContext);
     const submit = (e) => {
 
       e.preventDefault();
@@ -95,7 +96,8 @@ const Content = () => {
       axios.post(url, q)
            .then(res=>{
               console.log(res)
-              setId(res.data);
+              id.setId(res.data);
+              console.log(id.id);
             })
 
     }
