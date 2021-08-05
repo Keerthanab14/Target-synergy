@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import './App.css';
 import Main from './components/Main/Main';
 import Poll from './components/Poll/Poll';
@@ -15,10 +15,11 @@ import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
-
+import { IdContext } from './IdContext';
 
 function App() {
-  const [ check, setCheck]=useState(false)
+  const [ check, setCheck]=useState(false);
+  const id = useContext(IdContext);
   return (
     <div>
     <DesktopBreakpoint>
@@ -44,7 +45,6 @@ function App() {
                       </Switch>
             )}
           />
-         {/* // <Route path="/231" component={Vote}/> */}
          <Route path="/231" component={Vote}/>
          {/* <Route path="/27" component={QandA}/> */}
          <Route path="/66" component={WordCloud}/>
