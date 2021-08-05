@@ -46,7 +46,7 @@ const useStyles = makeStyles(() => ({
     },
 }))
 
-export default function User() {
+export default function User({setAuth}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -59,6 +59,8 @@ export default function User() {
 
   const onSuccess = (res)=>{
     console.log("log out");
+    setAuth(false)
+    console.log('set false')
   }
   const classes = useStyles();
   return (
@@ -104,7 +106,7 @@ export default function User() {
             <GoogleLogout
                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
                         render={renderProps => (
-                          <ListItemText primary="Logout" onClick={renderProps.onClick  } disabled={renderProps.disabled}>
+                          <ListItemText primary="Logout" onClick={renderProps.onClick} disabled={renderProps.disabled}>
                    
                           </ListItemText>
                          

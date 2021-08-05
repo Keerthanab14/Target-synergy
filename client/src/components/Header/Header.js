@@ -65,9 +65,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header({setCheck, check}) {
+function Header({setAuth, auth}) {
     const classes = useStyles();
-    const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -102,11 +101,12 @@ function Header({setCheck, check}) {
             .catch(err => { 
             console.error(err);
           });
-          setCheck(true);
+          setAuth(true);
+          console.log(auth)
     }
     const onFailure = (res)=>{
             console.log('login failed', res);
-            setCheck(false);
+            setAuth(false);
         }
 
     
@@ -147,18 +147,18 @@ function Header({setCheck, check}) {
                     &nbsp;
                     <Submit />
                     &nbsp; &nbsp;
-                    {auth && (
+                    
 
                         <div>
-                            <IconButton
+                            { !auth &&<IconButton
                                 aria-label="account of current user"
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
                                 onClick={handleMenu}
                                 color="inherit"
                             >
-                                <div>
-                                   { !check && <GoogleLogin
+                                
+                                    <GoogleLogin
                                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
                                         render={renderProps => (
                                             <AccountCircle onClick={renderProps.onClick  } disabled={renderProps.disabled}>
@@ -173,9 +173,9 @@ function Header({setCheck, check}) {
                                         isSignedIn={true}
                                     >
                                     </GoogleLogin>
+                                     </IconButton>
                                      }
-                                      </div>     
-                                     { check && <User />}</IconButton>
+                                     { auth && <User setAuth={setAuth} />}
 
                                     {/* <GoogleLogout
                                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
@@ -185,7 +185,7 @@ function Header({setCheck, check}) {
                                     </GoogleLogout> */}
  
                         </div>
-                    )}
+                    
                 </Toolbar>
             </AppBar>
         </div>

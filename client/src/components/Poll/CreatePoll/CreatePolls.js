@@ -25,7 +25,7 @@ root:{
 });
 
 
-  const CreatePolls=() => {
+  const CreatePolls=({setId}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [img,setimg] = useState(null);
 
@@ -39,7 +39,7 @@ root:{
    }
    const [color, setColor] = React.useState(''); //for background color change in presentation component
    const [opacity, setOpacity]=React.useState(100);
-   const [component, setComponent] = React.useState('');
+   const [component, setComponent] = React.useState('multiplechoice');
 
    
 

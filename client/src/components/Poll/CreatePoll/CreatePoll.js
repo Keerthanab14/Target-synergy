@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreatePoll = () => {
+const CreatePoll = ({id}) => {
     const classes = useStyles();
     const history = useHistory();
     
@@ -92,7 +92,7 @@ const onCopyText = () => {
                                 type="text"
                                 value={text}
                                 onChange={(event) => setText(event.target.value)}
-                                placeholder="https://targetsynergy.com/CODE"
+                                                                placeholder="https://targetsynergy.com/CODE"
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,

@@ -19,7 +19,7 @@ import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint'
 import axios from 'axios'
 function App() {
   const[id, setId]=useState("")
-  const [ check, setCheck]=useState(false)
+  const [ auth, setAuth]=useState(false)
   return (
     <div>
     <DesktopBreakpoint>
@@ -27,9 +27,9 @@ function App() {
     <div className="App">
       {/* <button onClick={PollsSubmit}>Submit</button>
       <Vote result = {result}/> */}
-        <Header setCheck={setCheck} check={check} />
+        <Header setAuth={setAuth} auth={auth} />
         <Switch>
-          <Route exact path="/" component={Main} check={check}/>
+          <Route exact path="/" component={Main}  setAuth={setAuth} auth={auth}/>
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
