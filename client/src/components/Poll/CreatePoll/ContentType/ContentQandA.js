@@ -125,10 +125,10 @@ const ContentQandA = () => {
               onChange={e => handleInputChange(e, i)}
             />
             <div>
-              {inputList.length !== 1 && <DeleteIcon style={{background:"#cc0000", color:"white", marginRight:"3px"}}
+              {inputList.length !== 1 && <DeleteIcon style={{background:"#C0C0C0", color:"white", marginRight:"3px"}}
                 className="mr10"
                 onClick={() => handleRemoveClick(i)}/>}
-              {inputList.length - 1 === i && <AddIcon style={{background:"#cc0000", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
+              {inputList.length - 1 === i && <AddIcon style={{background:"#C0C0C0", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
             </div>
           </div>
         );
