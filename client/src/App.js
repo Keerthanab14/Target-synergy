@@ -16,9 +16,10 @@ import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 import { IdContext } from './IdContext';
+import GoogleLogin from 'react-google-login';
 
 function App() {
-  const [ check, setCheck]=useState(false);
+  const [ auth, setAuth]=useState(false)
   const id = useContext(IdContext);
   return (
     <div>
@@ -27,10 +28,10 @@ function App() {
     <div className="App">
       {/* <button onClick={PollsSubmit}>Submit</button>
       <Vote result = {result}/> */}
-        <Header setCheck={setCheck} check={check} />
+        <Header setAuth={setAuth} auth={auth} />
         <Switch>
-          <Route exact path="/" component={Main} check={check}/>
-          <Route path="/polls" component={Poll}/>
+          <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} />)} />
+         <Route path="/polls" component={Poll}/> 
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
           <Route path="/link" component={CreatePoll} /> 
@@ -61,7 +62,7 @@ function App() {
       <Vote result = {result}/> */}
         <Header />
         <Switch>
-          <Route exact path="/" component={Main}/>
+          <Route exact path="/" component={Main} />
           <Route path="/polls" component={Poll}/>
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
