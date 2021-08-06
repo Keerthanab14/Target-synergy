@@ -165,15 +165,18 @@ const handleInputChange = (e, index) => {
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
      } color={color} opacity={opacity} component={component} img={img} flex='1' />
-     </Container>
+     
+     
     
+     </Container>
      {isOpen && <Popup 
       content={<>
         <b style={{color: 'black', textAlign: 'center' }}>Background Images</b>
+        
         <Grid container spacing={2} style={{margin: "4px"}}>
         <Grid item xs={6} sm={2} >
-          <h7 style={{color: "black"}}>Add your own image</h7>
-                    {inputList.map((x, i) => {
+        <h7 style={{color: "black"}}>Add your own image</h7>
+                      {inputList.map((x, i) => {
                         return (
                           <div>
                         {fileData()}
@@ -184,8 +187,8 @@ const handleInputChange = (e, index) => {
                         fullWidth={true}
                         name="choice"
                         style={{ width: '190px', position: 'relative', height: '60px', marginTop: '8%', marginLeft: '10%', backgroundColor: "white", color: "black"}}
-                        placeholder="Enter choice" value={x.choice}
-                        onChange={e => handleInputChange(e, i)}><input type="file" onChange={onFileChange} />
+                        placeholder="Enter choice"value={x.choice}
+                        onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={onFileChange} />
                         </Button>
                         <Button className={classes.button}
                             style={{borderRadius: "2em",
@@ -197,12 +200,13 @@ const handleInputChange = (e, index) => {
                                          marginTop: '0px',
                                          width: '8%', background:"white",
                                          color:'black'}}
-                                         onClick={()=>setimg(Bgimage1)}>
+                                         >
                                            Set
                         </Button>
                         </div>
         );
       })}
+                   
             </Grid>
                     <Grid item xs={6} sm={2} >
                       <CardActionArea onClick={()=>setimg(Bgimage1)}>

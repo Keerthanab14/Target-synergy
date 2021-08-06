@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
 import React from 'react'
+import Bgimage1 from '../../../images/bgimage_1.jpg'
+import Bgimage2 from '../../../images/bgimage_2.jpg'
+import Poll from '../../../images/polling.png'
 
 export const Container = styled.div`
   margin: 0px auto;
@@ -64,19 +67,24 @@ export const BlackLine = styled.div`
 export const __DATA__ = [
     {
       distance: 13,
-      colors: ["#ffd847", "#e0a106"]
+      colors: ["#ffd847", "#e0a106"],
+      image: {Bgimage1}
     },
     {
       distance: 20,
-      colors: ["#ff47ab", "#e0064e"]
+      colors: ["#ff47ab", "#e0064e"],
+      image: {Bgimage2}
+
     },
     {
       distance: 16,
-      colors: ["#add9c0", "#1da890"]
+      colors: ["#add9c0", "#1da890"],
+      image: {Poll}
     },
     {
       distance: 30,
-      colors: ["#cbd9ad", "#7ca81d"]
+      colors: ["#cbd9ad", "#7ca81d"],
+      image: {Bgimage1}
     },
   ];
   
@@ -84,10 +92,10 @@ function ImageChoice () {
     return(
       <Container>
       <MainContainer>
-        {__DATA__.map(({ distance, colors }, i) => {
+        {__DATA__.map(({ distance, colors, image }, i) => {
           return (
             <BarChartContainer key={i}>
-             <Number color={colors[1]}>{distance}</Number>
+             <Number color={colors[1]} backgroundImage={image}>{distance}</Number>
               <MakeBar height={distance * 2} colors={colors} />
             </BarChartContainer>
           );
