@@ -11,7 +11,7 @@ import Service from './Service'
 import Submit from './Submit'
 import { Link } from 'react-router-dom';
 import User from './User';
-import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import {GoogleLogin} from 'react-google-login';
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -123,7 +123,7 @@ function Header({setAuth, auth}) {
                     &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
 
-                        <Service />
+                        <Service setAuth={setAuth}  auth={auth}/>
 
                     </Typography>
                     <div className={classes.search}>

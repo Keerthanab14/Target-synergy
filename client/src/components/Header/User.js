@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PeopleIcon from '@material-ui/icons/People';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { IconButton } from '@material-ui/core';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 
@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
 
 export default function User({setAuth}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const history=useHistory();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -60,6 +60,7 @@ export default function User({setAuth}) {
   const onSuccess = (res)=>{
     console.log("log out");
     setAuth(false)
+    history.push("/")
     console.log('set false')
   }
   const classes = useStyles();
@@ -112,6 +113,8 @@ export default function User({setAuth}) {
                          
                       )}
                         onLogoutSuccess={onSuccess}
+                        uxMode="redirect"
+                        redirect_uri="http://localhost:3000/"
                     >   
                    </GoogleLogout>
                   </MenuItem >

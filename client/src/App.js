@@ -10,6 +10,7 @@ import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/PollType/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
+
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
