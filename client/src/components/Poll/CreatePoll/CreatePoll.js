@@ -6,7 +6,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import '../CreatePoll/CreatePoll.css';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import { IdContext } from '../../../IdContext';
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreatePoll = ({id}) => {
+const CreatePoll = () => {
     const classes = useStyles();
     const history = useHistory();
     
@@ -29,17 +29,17 @@ const CreatePoll = ({id}) => {
        history.push(path);
    }
 
-    const [text, setText] = useState("");
     const [isCopied, setIsCopied] = useState(false);
 
-const onCopyText = () => {
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 1000);
-  };
-
-
+    const onCopyText = () => {
+        setIsCopied(true);
+        setTimeout(() => {
+        setIsCopied(false);
+        }, 1000);
+    };
+    const id = useContext(IdContext);
+    const uri = id.id;
+    const text = `http://localhost:3000${uri}`
     return (
         <div className='bx'>
             
@@ -91,8 +91,7 @@ const onCopyText = () => {
                             <InputBase
                                 type="text"
                                 value={text}
-                                onChange={(event) => setText(event.target.value)}
-                                                                placeholder="https://targetsynergy.com/CODE"
+                                placeholder="https://targetsynergy.com/CODE"
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
@@ -115,7 +114,7 @@ const onCopyText = () => {
                     <div className='btnn'>
                             <Button
                                     variant="contained"
-                                    onClick={() => {handleClick("/231")}}
+                                    onClick={() => {handleClick(`${uri}`)}}
                                     style={
                                         {
                                             backgroundColor: "#cc0000",

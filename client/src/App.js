@@ -9,7 +9,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/Vote';
-import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
@@ -46,7 +45,14 @@ function App() {
                       </Switch>
             )}
           />
-         <Route path="/231" component={Vote}/>
+          <Route
+            path="/mcq"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={Vote} exact />
+              </Switch>
+            )}
+          />
          {/* <Route path="/27" component={QandA}/> */}
          <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>

@@ -171,11 +171,11 @@ const handleInputChange = (e, index) => {
      </Container>
      {isOpen && <Popup 
       content={<>
-        <b style={{color: 'white', textAlign: 'center' }}>Background Images</b>
+        <b style={{color: 'black', textAlign: 'center' }}>Background Images</b>
         
         <Grid container spacing={2} style={{margin: "4px"}}>
-        <Grid item xs={6} sm={2} ><Paper style={{width: '100px', height: '100px', marginTop: '15%', marginLeft: '50%'}}>
-                      <CardActions color='white' style={{height: '80px', marginLeft: '10%'}}>
+        <Grid item xs={6} sm={2} >
+        <h7 style={{color: "black"}}>Add your own image</h7>
                       {inputList.map((x, i) => {
                         return (
                           <div>
@@ -186,6 +186,7 @@ const handleInputChange = (e, index) => {
                         width="10px"
                         fullWidth={true}
                         name="choice"
+                        style={{ width: '190px', position: 'relative', height: '60px', marginTop: '8%', marginLeft: '10%', backgroundColor: "white", color: "black"}}
                         placeholder="Enter choice"value={x.choice}
                         onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={onFileChange} />
                         </Button>
@@ -195,15 +196,17 @@ const handleInputChange = (e, index) => {
                                          fontSize: '11px',
                                          textAlign: 'center',
                                          position: 'relative',
-                                         width: '8%', background:"#808080",
-                                         color:'white'}}
+                                         marginLeft: '17px',
+                                         marginTop: '0px',
+                                         width: '8%', background:"white",
+                                         color:'black'}}
                                          >
                                            Set
                         </Button>
                         </div>
         );
       })}
-                    </CardActions></Paper>
+                   
             </Grid>
                     <Grid item xs={6} sm={2} >
                       <CardActionArea onClick={()=>setimg(Bgimage1)}>

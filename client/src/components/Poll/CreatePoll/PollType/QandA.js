@@ -110,8 +110,8 @@ console.log(qAndA);
 
     return (
       <div >
+        <h1 fontFamily= "Helvetica" justifyContent="Left" >What would you like to ask?</h1>
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
-      
      
       
         <Grid container={true}  direction="row"  alignItems="center" 
@@ -127,7 +127,7 @@ console.log(qAndA);
             style={{width: '96%'}}
               className="ml10"
               name="question"
-   placeholder="Enter your answer"
+              placeholder="Enter your answer"
               value={inputList.response}
               onChange={e => handleInputChange(e,i)}
             ></TextField>
@@ -136,18 +136,7 @@ console.log(qAndA);
         );
       })}
     
-      </Grid>  <Button
-        style={{ width: "248px",background:"#cc0000", color:"white" }}
-        className={classes.button}
-        variant="contained"
-       // color="primary"
-        size="large"
-        fullWidth={true}
-        onClick={submit}
-      >Submit
-      </Button>
-  
-       
+      </Grid>  
        
        </form>
       </div>
