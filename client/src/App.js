@@ -8,7 +8,9 @@ import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
-import Vote from './components/Poll/Vote';
+import Vote from './components/Poll/CreatePoll/PollType/Vote';
+import QandA from './components/Poll/CreatePoll/PollType/QandA';
+
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
@@ -25,8 +27,6 @@ function App() {
     <DesktopBreakpoint>
     <BrowserRouter>
     <div className="App">
-      {/* <button onClick={PollsSubmit}>Submit</button>
-      <Vote result = {result}/> */}
         <Header setAuth={setAuth} auth={auth} />
         <Switch>
           <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} />)} />
@@ -34,17 +34,7 @@ function App() {
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
           <Route path="/link" component={CreatePoll} /> 
-          <Route
-            path="/create-poll"
-            render={({ match: { url } }) => (
-             <Switch>
-                <Route path={`${url}/`} component={CreatePolls} exact />
-            { /* <Route path={`${url}/type`} component={PollType} />
-                <Route path={`${url}/content`} component={Content} />
-            <Route path={`${url}/background`} component={Background} /> */ }
-                      </Switch>
-            )}
-          />
+          <Route path="/create-poll" component={CreatePolls} /> 
           <Route
             path="/mcq"
             render={({ match: { url } }) => (
@@ -53,6 +43,23 @@ function App() {
               </Switch>
             )}
           />
+          <Route
+            path="/imageChoice"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={Vote} exact />
+              </Switch>
+            )}
+          />
+          <Route
+            path="/wordCloud"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={WordCloud} exact />
+              </Switch>
+            )}
+          />
+
          {/* <Route path="/27" component={QandA}/> */}
          <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>

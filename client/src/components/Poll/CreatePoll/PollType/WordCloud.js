@@ -1,18 +1,18 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect,useContext} from 'react';
 import ReactWordcloud from 'react-wordcloud';
 import axios from 'axios'
+import { IdContext } from '../../../../IdContext';
 
-const id=66
+
 const wcr=[];
 const WordCloud=()=>{
+  const id = useContext(IdContext);
+  const url = id.id;
 
-
-  
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/WordCloudResponse/${id}`)
+      var result = await axios.get(`http://localhost:8080${url}`)
       console.log(result.data)
-      
-    
+
     let i=0
     Object.entries(result.data).forEach(([key, value]) => {
   result.value = true;

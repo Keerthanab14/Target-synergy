@@ -1,7 +1,7 @@
 import React, { useState,useEffect,useContext } from "react";
 import Poll from "react-polls";
 import axios from "axios";
-import { IdContext } from '../../IdContext';
+import { IdContext } from '../../../../IdContext';
 
 // Declaring poll question and answers
  
@@ -10,7 +10,7 @@ const Vote = () => {
   const id = useContext(IdContext);
   const url = id.id;
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/${url}`)
+      var result = await axios.get(`http://localhost:8080${url}`)
       setTextBased({
         question: result.data.question,
         choices: result.data.choices 

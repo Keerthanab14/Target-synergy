@@ -41,20 +41,15 @@ public class WordCloudResponseController {
                     + "occurs"
                     + ": " + val.getValue() + " times");
         }
-
-      //  WordCloudResponse result= (WordCloudResponse) hm;
         return hm;
     }
-
-
-
     @PostMapping("/WordCloudResponse")
     public String saveResponses(@RequestBody WordCloudResponse quest) {
         WordCloudResponse wordCloudResponse=new WordCloudResponse();
         wordCloudResponse.setId(service.getSequence(WordCloudResponse.SEQUENCE_NUMBER));
         wordCloudResponse.setResponses( quest.getResponses());
         wordCloudResponseRespository.save(wordCloudResponse);
-
-        return "choices";
+        String url = "/wordCloud" + wordCloudResponse.getId();
+        return url;
     }
 }

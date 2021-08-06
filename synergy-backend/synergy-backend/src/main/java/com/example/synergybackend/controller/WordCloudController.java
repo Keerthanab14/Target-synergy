@@ -29,6 +29,7 @@ public class WordCloudController {
         wordCloud.setId(service.getSequence(WordCloud.SEQUENCE_NUMBER));
         wordCloud.setQuestion( quest.getQuestion());
         wordCloudRepository.save(wordCloud);
-        return"successful";
+        String url = "/WordCloud/" + wordCloud.getId();
+        return url;
     }
 }
