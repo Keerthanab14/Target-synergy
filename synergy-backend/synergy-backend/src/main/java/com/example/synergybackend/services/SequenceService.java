@@ -1,3 +1,4 @@
+
 package com.example.synergybackend.services;
 
 import com.example.synergybackend.model.DbSequence;

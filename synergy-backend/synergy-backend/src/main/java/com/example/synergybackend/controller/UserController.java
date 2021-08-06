@@ -1,7 +1,6 @@
 package com.example.synergybackend.controller;
 
 
-import com.example.synergybackend.model.Poll;
 import com.example.synergybackend.model.User;
 import com.example.synergybackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
