@@ -197,7 +197,7 @@ const handleInputChange = (e, index) => {
                                          position: 'relative',
                                          width: '8%', background:"#808080",
                                          color:'white'}}
-                                         onClick={()=>setimg(Bgimage1)}>
+                                         >
                                            Set
                         </Button>
                         </div>

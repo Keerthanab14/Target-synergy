@@ -10,6 +10,8 @@ import CreateIcon from '@material-ui/icons/Create';
 import PeopleIcon from '@material-ui/icons/People';
 import { Link } from 'react-router-dom';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 
 const StyledMenu = withStyles({
   paper: {
@@ -41,7 +43,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function Service() {
+export default function Service({setAuth, auth}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -52,9 +54,32 @@ export default function Service() {
     setAnchorEl(null);
   };
 
+  const onSuccess = (res)=>{
+    // console.log(res.profileObj);
+    const data =  {
+        googleId: res.profileObj.googleId,
+        email: res.profileObj.email,
+        name: res.profileObj.name
+        
+      }
+      console.log(data);
+        axios.post("http://localhost:8080/newUser", data)
+        .then(r =>console.log("success"))
+        .catch(err => { 
+        console.error(err);
+      });
+      setAuth(true);
+      console.log(auth)
+}
+  const onFailure = (res)=>{
+        console.log('login failed', res);
+        setAuth(false);
+    }
+
+
   return (
     <div>
-      <Button
+      { auth? (<Button
         aria-controls="customized-menu"
         aria-haspopup="true"
         variant="contained"
@@ -70,7 +95,33 @@ export default function Service() {
         onClick={handleClick}
       >
         Services<ArrowDropDownIcon/>
-      </Button>
+      </Button>) : 
+      (<GoogleLogin
+        clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
+        render={renderProps => (<Button
+        aria-controls="customized-menu"
+        aria-haspopup="true"
+        variant="contained"
+        style={
+          {
+            backgroundColor: "#cc0000",
+            color: "white",
+            float: "left",
+            border: "1px solid white",
+            margin: "1px 10px"
+          }
+        }
+        onClick={renderProps.onClick  } disabled={renderProps.disabled}>
+        Services
+      </Button>)} 
+      buttonText="Gmail Login"
+      onSuccess={onSuccess}
+      onFailure={ onFailure}
+      cookiePolicy={'single_host_origin'}
+      uxMode="redirect"
+      redirect_uri="http://localhost:3000/"
+      isSignedIn={true}>
+        </GoogleLogin>)}
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
