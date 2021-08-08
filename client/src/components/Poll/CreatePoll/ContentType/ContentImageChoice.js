@@ -43,13 +43,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContentImageChoice = () => {
+  let formData = new FormData();
+       
+  const [inputList, setInputList] = useState([{ choice: "" }]);
       const [state, setState] = React.useState({
         checkedA: false,
          checkedB: false,
        checkedC: false,
        selectedFile: null
      });
-   
+   const images=[];
+   let i=0;
       // On file select (from the pop up)
      const onFileChange = (event) => {
       
@@ -58,33 +62,29 @@ const ContentImageChoice = () => {
       
       };
       
-      // On file upload (click the upload button)
       const onFileUpload = () => {
       
-        // Create an object of formData
-        const formData = new FormData();
-      
-        // Update the formData object
-        formData.append(
-          "myFile",
-          state.selectedFile,
-          state.selectedFile.name
-        );
-      
-        // Details of the uploaded file
+       formData.append(
+        "file",
+        state.selectedFile,
+        state.selectedFile.name
+      );
+        
         console.log(state.selectedFile);
+        console.log(formData);
       
-        // Request made to the backend api
-        // Send formData object
-        axios.post("localhost:8080/", formData);
+        axios.post("http://localhost:8080/file/upload", formData,{headers:{"Content-Type" : "application/json"}})
+        .then(res=>{
+          console.log(res)
+          
+          images[i]=({option:(res.data)})
+          i++
+          console.log(images)
+
+        })
       };
-      
-      // File content to be displayed after
-      // file upload is complete
-      const fileData = () => {
-      
-      };
-      const [inputList, setInputList] = useState([{ choice: "" }]);
+      console.log(images)
+
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -99,7 +99,8 @@ const ContentImageChoice = () => {
     const list = [...inputList];
     list.splice(index, 1);
     setInputList(list);
-  };
+    images[--i]=({})
+ };
  
   // handle click event of the Add button
   const handleAddClick = () => {
@@ -110,38 +111,40 @@ const ContentImageChoice = () => {
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/polls"
-    const[data, setData]=useState({
+     const url="http://localhost:8080/mcq"
+     const[data, setData]=useState({
         question: "",
-        choice:[]
-    })
-    const[id, setId]=useState("")
-    const submit = (e) => {
+         choice:[]
+  })
+  const[id, setId]=useState("")
+ 
+   const submit = (e) => {
 
-      e.preventDefault();
-      inputList.map((choicee,key)=>{
-        data.choice[key]=choicee.choice
-      })
+   e.preventDefault();
+   console.log(images)
+      images.map((choicee,key)=>{
+         data.choice[key]=choicee.option
+       })
   
       const q ={
-        question: data.question,
-       choices: data.choice
-      }
-      console.log(q)
-      axios.post(url, q)
-           .then(res=>{
-              console.log(res)
-              setId(res.data);
-            })
+         question: data.question,
+        choices: data.choice
+   }
+       console.log(q)
+     axios.post(url, q)
+         .then(res=>{
+            console.log(res)
+               setId(res.data);
+             })
 
-    }
+     }
 
 
     function handle(e){
       const newdata={...data}
       newdata[e.target.id]=e.target.value
       setData(newdata)
-      console.log(newdata)
+    
 
     }
 
@@ -159,7 +162,7 @@ const ContentImageChoice = () => {
         return (
           <div >
               
-          {fileData()}
+         
           <Button>
         
       </Button>
@@ -173,7 +176,7 @@ const ContentImageChoice = () => {
               name="choice"
         placeholder="Enter choice"
               value={x.choice}
-              onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={onFileChange} />
+              onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={e => onFileChange(e,i)} />
               </Button>
               <div>
                 

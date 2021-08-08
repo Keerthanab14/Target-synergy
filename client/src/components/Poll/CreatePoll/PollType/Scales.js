@@ -39,13 +39,18 @@ console.log(qAndA);
     const classes = useStyles();
     
     //const [inputList, setInputList] = useState([{value}]);
-    const [value, setValue] = React.useState(30);
+    const [value, setValue] = React.useState();
+    const [inputList, setInputList] = useState([{ choice: "" }]);
     const handleSliderChange = (event, newValue) => {
       setValue(newValue);
     };
   
-    const handleInputChange = (event) => {
+    const handleInputChange = (event,index) => {
       setValue(event.target.value === '' ? '' : Number(event.target.value));
+      const { name, value } = value;
+      const list = [...inputList];
+      list[index][name] = value;
+      setInputList(list);
     };
   
     const handleBlur = () => {
@@ -102,7 +107,7 @@ console.log(qAndA);
           <Grid item>
             <Input
               className={classes.input}
-              value={value}
+              value={qAndA[i]}
               margin="dense"
               onChange={handleInputChange}
               onBlur={handleBlur}

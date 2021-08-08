@@ -18,7 +18,7 @@ import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpo
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 import { IdContext } from './IdContext';
 import GoogleLogin from 'react-google-login';
-
+import ImageMcq from './components/Poll/CreatePoll/PollType/ImageMcq'
 function App() {
   const [ auth, setAuth]=useState(false)
   const id = useContext(IdContext);
@@ -64,6 +64,7 @@ function App() {
          <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>
          <Route path="/27" component={OpenEnded}/>
+         <Route path="/610fbf5066e210524c8325a5" component={ImageMcq}/>
         </Switch> 
     </div>
     </BrowserRouter>
