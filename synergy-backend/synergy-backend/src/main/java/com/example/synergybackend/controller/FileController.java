@@ -28,24 +28,7 @@ public class FileController {
     public ResponseEntity<?> upload(@RequestParam("file")MultipartFile file) throws IOException {
         return new ResponseEntity<>(fileService.addFile(file), HttpStatus.OK);
     }
-    @GetMapping("/getallfiles")
-    public ResponseEntity<?> getListFiles(Model model) {
-        List fileNames = files
-                .stream().map(fileName -> MvcUriComponentsBuilder
-                        .fromMethodName(UploadController.class, "getFile", fileName).build().toString())
-                .collect(Collectors.toList());
 
-        return ResponseEntity.ok().body(fileNames);
-    }
-
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity getFile(@PathVariable String filename) {
-        Resource file = storageService.loadFile(filename);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
-                .body(file);
-    }
     @GetMapping("/download/{id}")
     public ResponseEntity<ByteArrayResource> download(@PathVariable String id) throws IOException {
         LoadFile loadFile = fileService.downloadFile(id);
