@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import React from 'react'
+import { Paper } from "@material-ui/core";
 import Bgimage1 from '../../../images/bgimage_1.jpg'
 import Bgimage2 from '../../../images/bgimage_2.jpg'
 import Poll from '../../../images/polling.png'
@@ -46,6 +47,7 @@ export const Number = styled.span`
   font-size: 1.5rem;
   text-align: center;
   color: ${(props) => props.color};
+  background-image: ${(props)=>props.backgroundImage}
 `;
 
 export const MakeBar = styled.div`
@@ -95,7 +97,8 @@ function ImageChoice () {
         {__DATA__.map(({ distance, colors, image }, i) => {
           return (
             <BarChartContainer key={i}>
-             <Number color={colors[1]} backgroundImage={image}>{distance}</Number>
+              <Paper width='8%' >
+             <Number color={colors[1]} backgroundImage={image} >{distance}</Number></Paper>
               <MakeBar height={distance * 2} colors={colors} />
             </BarChartContainer>
           );
