@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,8 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
-
-const id=27
+import { IdContext } from '../../../../IdContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,10 +43,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const QandA = () => {
+  
+const id = useContext(IdContext);
+const url = id.id;
   const [questions , setQuestions] = useState({questions:[]});
  
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/QandA/${id}`)
+      var result = await axios.get(`http://localhost:8080/QandA/${url}`)
       setQuestions({
        
         questions: result.data.questions 
@@ -86,7 +88,7 @@ console.log(qAndA);
       
         response:[]
     })
-    const url="http://localhost:8080/QandAResponse"
+    const urlS="http://localhost:8080/QandAResponse"
     const submit = (e) => {
 
       e.preventDefault();
@@ -99,7 +101,7 @@ console.log(qAndA);
        responses: data.response
       }
       console.log(q)
-      axios.post(url, q)
+      axios.post(urlS, q)
            .then(res=>{
               console.log(res.data)
             })
