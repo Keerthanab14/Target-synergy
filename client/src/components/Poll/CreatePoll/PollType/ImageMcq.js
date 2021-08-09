@@ -2,6 +2,8 @@ import React, { useState,useEffect,useContext } from "react";
 import Poll from "react-polls";
 import axios from "axios";
 import { IdContext } from '../../../../IdContext';
+import CardMedia from '@material-ui/core/CardMedia';
+import feedback from '../../../images/feedback_1.png'
 
 // Declaring poll question and answers
  
@@ -18,15 +20,11 @@ const ImageMcq = () => {
       })
     },[])
     const choice=[];
-    textBased.choices.map((post,key) => (
-        console.log(post.text),
-        axios.get(`http://localhost:8080/file/download/${post.text}`),
-       
-          // <img src={'http://localhost:8080/file/download/${post.text}'}/>
-            choice[key]=({option:(`http://localhost:8080/file/download/${post.text}`), votes:0})
-        )
+    textBased.choices.map((post,key) => (  
+        choice[key]=({option:<img src={axios.get(`http://localhost:8080/file/download/${post.text}`)}/>, votes:0})
     
-);
+    ));
+     
 // console.log(choice);
 // console.log(id.id);
 let Answers = [...choice];
@@ -47,6 +45,7 @@ console.log(Answers);
   return (
     <div>
       <Poll question={pollQuestion} answers={Answers} onVote={handleVote} />
+     
     </div>
   );
 };
