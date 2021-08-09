@@ -1,17 +1,14 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import AddIcon from '@material-ui/icons/Add';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import { Typography } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
+import { IdContext } from '../../../../IdContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,40 +66,34 @@ const ContentWordCloud = () => {
       
         question:[]
     })
-   
+    const id = useContext(IdContext);
     const submit = (e) => {
-
       e.preventDefault();
       inputList.map((questione,key)=>{
         data.question[key]=questione.question
       })
   
       const q ={
-        
        questions: data.question
       }
       console.log(q)
       axios.post(url, q)
            .then(res=>{
-              console.log(res.data)
+              id.setId(res.data);
+              console.log(id.id);
             })
 
     }
 
-
-
     return (
       <div >
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
-      
-     
         <h4 className={classes.h}>Please enter the question</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >
 {inputList.map((x, i) => {
         return (
           <div >
-          
             <TextField
             id="outlined-basic"
             variant="outlined" size="small"
@@ -129,7 +120,6 @@ const ContentWordCloud = () => {
         onClick={submit}
       >Submit
       </Button>
-  
         <h4 className={classes.h}>Other Settings</h4>
         <FormGroup row >
         <FormControlLabel
@@ -155,7 +145,6 @@ const ContentWordCloud = () => {
          label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
        />
        </FormGroup>
-       
        </form>
       </div>
       
