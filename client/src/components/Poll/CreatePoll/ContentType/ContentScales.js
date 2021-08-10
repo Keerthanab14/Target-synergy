@@ -10,7 +10,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import { Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentScales = () => {
+const ContentScales = ({data5, setData5}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -75,36 +74,33 @@ const ContentScales = () => {
     
     const classes = useStyles();
     const url="http://localhost:8080/polls"
-    const[data, setData]=useState({
-        question: "",
-        choice:[]
-    })
+   
     const[id, setId]=useState("")
     const submit = (e) => {
 
       e.preventDefault();
       inputList.map((choicee,key)=>{
-        data.choice[key]=choicee.choice
+        data5.choice[key]=choicee.choice
       })
   
       const q ={
-        question: data.question,
-       choices: data.choice
+        question: data5.question,
+       choices: data5.choice
       }
       console.log(q)
       axios.post(url, q)
            .then(res=>{
               console.log(res)
-              setId(res.data);
+              setId(res.data5);
             })
 
     }
 
 
     function handle(e){
-      const newdata={...data}
+      const newdata={...data5}
       newdata[e.target.id]=e.target.value
-      setData(newdata)
+      setData5(newdata)
       console.log(newdata)
 
     }
@@ -115,7 +111,7 @@ const ContentScales = () => {
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '100%'}}/>
+        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data5.question} type="text" style={{width: '100%'}}/>
         <h4 className={classes.h}>Statments</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >

@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentImageChoice = () => {
+const ContentImageChoice = ({setData2, data2}) => {
   let formData = new FormData();
        
   const [inputList, setInputList] = useState([{ choice: "" }]);
@@ -77,7 +77,7 @@ const ContentImageChoice = () => {
         .then(res=>{
           console.log(res)
           
-          images[i]=({option:(res.data)})
+          images[i]=({option:(res.data2)})
           i++
           console.log(images)
 
@@ -112,10 +112,7 @@ const ContentImageChoice = () => {
     
     const classes = useStyles();
      const url="http://localhost:8080/mcq"
-     const[data, setData]=useState({
-        question: "",
-         choice:[]
-  })
+     
   const[id, setId]=useState("")
  
    const submit = (e) => {
@@ -123,27 +120,27 @@ const ContentImageChoice = () => {
    e.preventDefault();
    console.log(images)
       images.map((choicee,key)=>{
-         data.choice[key]=choicee.option
+         data2.choice[key]=choicee.option
        })
   
       const q ={
-         question: data.question,
-        choices: data.choice
+         question: data2.question,
+        choices: data2.choice
    }
        console.log(q)
      axios.post(url, q)
          .then(res=>{
             console.log(res)
-               setId(res.data);
+               setId(res.data2);
              })
 
      }
 
 
     function handle(e){
-      const newdata={...data}
+      const newdata={...data2}
       newdata[e.target.id]=e.target.value
-      setData(newdata)
+      setData2(newdata)
     
 
     }
@@ -154,7 +151,7 @@ const ContentImageChoice = () => {
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '100%'}}/>
+        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data2.question} type="text" style={{width: '100%'}}/>
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >

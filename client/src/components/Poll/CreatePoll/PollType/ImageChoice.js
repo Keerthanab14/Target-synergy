@@ -90,9 +90,10 @@ export const __DATA__ = [
     },
   ];
   
-function ImageChoice () {
+function ImageChoice ({data2}) {
     return(
       <Container>
+        {data2.question}
       <MainContainer>
         {__DATA__.map(({ distance, colors, image }, i) => {
           return (
