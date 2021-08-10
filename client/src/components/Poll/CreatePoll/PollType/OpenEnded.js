@@ -49,7 +49,7 @@ export const box = styled.div`
   height: 1%;
 
 `;
-const OpenEnded = () => {
+const OpenEnded = ({data3}) => {
     const [OpenEndedResponses , setOpenEndedResponses] = useState({responses:[]});
  
     useEffect(async () => {
@@ -68,7 +68,7 @@ console.log(responses_OpenEnd);
     
     return (
         <div >
-            <h1 fontFamily= "Helvetica" justifyContent="left" >What would you like to say?</h1>
+            <h1 fontFamily= "Helvetica" justifyContent="left" >{data3.question}</h1>
            
     {responses_OpenEnd.map((x, i) => {
          var color = randomColor();

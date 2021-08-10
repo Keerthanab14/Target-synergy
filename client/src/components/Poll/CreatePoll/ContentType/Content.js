@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Content = () => {
+const Content = ({setData1,data1}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -76,27 +76,27 @@ const Content = () => {
     
     const classes = useStyles();
     const url="http://localhost:8080/mcq"
-    const[data, setData]=useState({
-        question: "",
-        choice:[]
-    })
+  //  const[data, setData]=useState({
+  //      question: "",
+ //       choice:[]
+ //   })
     const id = useContext(IdContext);
     const submit = (e) => {
 
       e.preventDefault();
       inputList.map((choicee,key)=>{
-        data.choice[key]=choicee.choice
+        data1.choice[key]=choicee.choice
       })
   
       const q ={
-        question: data.question,
-       choices: data.choice
+        question: data1.question,
+       choices: data1.choice
       }
       console.log(q)
       axios.post(url, q)
            .then(res=>{
               console.log(res)
-              id.setId(res.data);
+              id.setId(res.data1);
               console.log(id.id);
             })
 
@@ -104,9 +104,9 @@ const Content = () => {
 
 
     function handle(e){
-      const newdata={...data}
+      const newdata={...data1}
       newdata[e.target.id]=e.target.value
-      setData(newdata)
+      setData1(newdata)
       console.log(newdata)
 
     }
@@ -117,7 +117,7 @@ const Content = () => {
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data.question} type="text" style={{width: '100%'}}/>
+        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data1.question} type="text" style={{width: '100%'}} />
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >

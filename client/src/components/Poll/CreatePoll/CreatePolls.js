@@ -33,13 +33,28 @@ button: {
   const CreatePolls=({setId}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [img,setimg] = useState(null);
+    const[data1, setData1]=useState({
+      question: "",
+      choice:[]
+  })
+     const[data2, setData2]=useState({
+     question: "",
+     choice:[]
+})
+    const[data3, setData3]=useState({
+    question:""
+})
+const[data5, setData5]=useState({
+  question: "",
+  choice:[]
+})
     const [state, setState] = React.useState({
       checkedA: false,
        checkedB: false,
      checkedC: false,
      selectedFile: null
    });
- 
+   
    const onFileChange = (event) => {
       setState({ selectedFile: event.target.files[0] }); 
     };
@@ -48,10 +63,10 @@ button: {
     };
     const [inputList, setInputList] = useState([{ choice: "" }]);
 
-const handleInputChange = (e, index) => {
+const handleInputChange = (e) => {
   const { name, value } = e.target;
   const list = [...inputList];
-  list[index][name] = value;
+  list[name] = value;
   setInputList(list);
 };               
   const togglePopup = () => {
@@ -159,12 +174,13 @@ const handleInputChange = (e, index) => {
   
      <Sidebar color={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
-     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} 
+     setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
+     data3={data3} setData3={setData3} data5={data5} setData5={setData5}
      />
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} opacity={opacity} component={component} img={img} flex='1' />
+     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} flex='1'  />
      
      
     
@@ -188,7 +204,7 @@ const handleInputChange = (e, index) => {
                         name="choice"
                         style={{ width: '190px', position: 'relative', height: '60px', marginTop: '8%', marginLeft: '10%', backgroundColor: "white", color: "black"}}
                         placeholder="Enter choice"value={x.choice}
-                        onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={onFileChange} />
+                        onChange={e => handleInputChange(e)}  ><input type="file" onChange={e => onFileChange(e)} />
                         </Button>
                         <Button className={classes.button}
                             style={{borderRadius: "2em",
@@ -200,6 +216,7 @@ const handleInputChange = (e, index) => {
                                          marginTop: '0px',
                                          width: '8%', background:"white",
                                          color:'black'}}
+                                         
                                          >
                                            Set
                         </Button>

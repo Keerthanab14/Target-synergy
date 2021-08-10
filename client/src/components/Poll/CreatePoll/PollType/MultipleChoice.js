@@ -79,9 +79,10 @@ export const __DATA__ = [
     },
   ];
   
-function MultipleChoice () {
+function MultipleChoice ({data1}) {
     return(
       <Container>
+        <h3>{data1.question}</h3>
       <MainContainer>
         {__DATA__.map(({ distance, colors }, i) => {
           return (

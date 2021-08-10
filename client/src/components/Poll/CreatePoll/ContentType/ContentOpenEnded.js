@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentOpenEnded = () => {
+const ContentOpenEnded = ({setData3, data3}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -52,11 +52,18 @@ const ContentOpenEnded = () => {
 
   // handle input change
   const handleInputChange = (e, index) => {
+    
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
+    
   };
+  const handle =(e) => {
+    const newdata={...data3}
+    newdata[e.target.id]=e.target.value
+    setData3(newdata)
+  }
  
   
       const handleChange = (event) => {
@@ -65,26 +72,23 @@ const ContentOpenEnded = () => {
     
     const classes = useStyles();
     const url="http://localhost:8080/OpenEnded"
-    const[data, setData]=useState({
-      
-        question:[]
-    })
+    
    
     const submit = (e) => {
 
       e.preventDefault();
       inputList.map((questione,key)=>{
-        data.question[key]=questione.question
+        data3.question[key]=questione.question
       })
   
       const q ={
         
-       questions: data.question
+       questions: data3.question
       }
       console.log(q)
       axios.post(url, q)
            .then(res=>{
-              console.log(res.data)
+              console.log(res.data3)
             })
 
     }
@@ -112,7 +116,8 @@ const ContentOpenEnded = () => {
               name="question"
    placeholder="Enter question"
               value={x.question}
-              onChange={e => handleInputChange(e, i)}
+              onChange={(e) => {handle(e);handleInputChange(e, i)}}
+            
             />
             
           </div>

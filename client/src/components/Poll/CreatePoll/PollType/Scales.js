@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
   });
   
-  const Scales =() => {
+  const Scales =({data5}) => {
     const [questions , setQuestions] = useState({questions:[]});
  
     useEffect(async () => {
@@ -84,7 +84,7 @@ console.log(qAndA);
 
     }
     return (
-      <div>
+      <div><h3>{data5.question}</h3>
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
       
 {qAndA.map((x, i) => {

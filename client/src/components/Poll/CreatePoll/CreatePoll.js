@@ -27,9 +27,11 @@ const CreatePoll = () => {
     
     function handleClick(path) {
        history.push(path);
+       setButtonText("Copied!");
    }
 
     const [isCopied, setIsCopied] = useState(false);
+    const [buttontext, setButtonText]=useState("Copy");
 
     const onCopyText = () => {
         setIsCopied(true);
@@ -79,11 +81,12 @@ const CreatePoll = () => {
                                     backgroundColor: "#808080",
                                     color: "white",
                                     float: "right",
-                                    margin: "3px",
+                                    margin: "4px",
+                                    fontSize: '11px'
                                             
                                 }
                                     }
-                                >copy
+                                >{buttontext}
                             </Button>
                                 </div>
                             </CopyToClipboard>

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Presentation = ({color, component, opacity, img}) => {
+const Presentation = ({color, component, opacity, img, data1, data2, data3,data5}) => {
     const classes = useStyles();
 
     return (
@@ -41,12 +41,12 @@ const Presentation = ({color, component, opacity, img}) => {
                     }}
                     >
                    
-        {component === 'imagechoice' && <ImageChoice/>} 
-        {component === 'multiplechoice' && <MultipleChoice/>  }
+        {component === 'imagechoice' && <ImageChoice data2={data2}/>} 
+        {component === 'multiplechoice' && <MultipleChoice data1={data1}/>  }
         {component === 'wordcloud' && <WordCloud/>} 
         {component === 'qanda' && <QandA/>} 
-        {component === 'scales' && <Scales/>} 
-        {component === 'openended' && <OpenEnded/>}
+        {component === 'scales' && <Scales data5={data5}/>} 
+        {component === 'openended' && <OpenEnded data3={data3}/>}
 
                     </Paper>
                     
