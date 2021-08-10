@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Content = ({setData1,data1}) => {
+const Content = ({setData1,data1, setResult, result}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -57,6 +57,7 @@ const Content = ({setData1,data1}) => {
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
+    
   };
  
   // handle click event of the Remove button
@@ -64,11 +65,16 @@ const Content = ({setData1,data1}) => {
     const list = [...inputList];
     list.splice(index, 1);
     setInputList(list);
+    const r = [...result];
+    console.log(result);
+    r.splice(index, 1);
+    setResult(r);
   };
  
   // handle click event of the Add button
   const handleAddClick = () => {
     setInputList([...inputList, { choice: "" }]);
+    setResult([...result, { distance: 0, colors: ["#ffd847", "#e0a106"], text: "" }]);
   };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
@@ -76,10 +82,7 @@ const Content = ({setData1,data1}) => {
     
     const classes = useStyles();
     const url="http://localhost:8080/mcq"
-  //  const[data, setData]=useState({
-  //      question: "",
- //       choice:[]
- //   })
+  
     const id = useContext(IdContext);
     const submit = (e) => {
 

@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
-import React from 'react'
+import React, {useState} from 'react'
+import Button from '@material-ui/core/Button';
+
 
 export const Container = styled.div`
   margin: 0px auto;
@@ -60,35 +62,25 @@ export const BlackLine = styled.div`
   background-color: grey;
 `;
 
-export const __DATA__ = [
-    {
-      distance: 13,
-      colors: ["#ffd847", "#e0a106"]
-    },
-    {
-      distance: 20,
-      colors: ["#ff47ab", "#e0064e"]
-    },
-    {
-      distance: 16,
-      colors: ["#add9c0", "#1da890"]
-    },
-    {
-      distance: 30,
-      colors: ["#cbd9ad", "#7ca81d"]
-    },
-  ];
+
   
-function MultipleChoice ({data1}) {
+  
+function MultipleChoice ({data1, result}) {
+  const distance=result.distance;
+  const colors=result.colors;
+  
+ 
+
     return(
       <Container>
         <h3>{data1.question}</h3>
-      <MainContainer>
-        {__DATA__.map(({ distance, colors }, i) => {
+        <MainContainer>
+        {result.map(({ distance, colors}, i) => {
           return (
             <BarChartContainer key={i}>
               <Number color={colors[1]}>{distance}</Number>
               <MakeBar height={distance * 2} colors={colors} />
+              type1
             </BarChartContainer>
           );
         })}
