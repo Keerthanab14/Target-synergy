@@ -33,6 +33,14 @@ button: {
   const CreatePolls=({setId}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [img,setimg] = useState(null);
+    const [result, setResult] = useState(
+     [ {
+        distance: 5,
+        colors: ["#ffd847", "#e0a106"],
+        label: ""
+      }
+    ]
+    );                          //multiplechoice type
     const[data1, setData1]=useState({
       question: "",
       choice:[]
@@ -175,12 +183,12 @@ const handleInputChange = (e) => {
      <Sidebar color={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
-     data3={data3} setData3={setData3} data5={data5} setData5={setData5}
+     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult}
      />
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} flex='1'  />
+     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result} flex='1'  />
      
      
     
