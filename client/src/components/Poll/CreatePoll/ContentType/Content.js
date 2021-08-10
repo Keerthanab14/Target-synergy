@@ -4,9 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import AddIcon from '@material-ui/icons/Add';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
 import { Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
@@ -160,43 +157,6 @@ const Content = ({setData1,data1, setResult, result}) => {
       >Submit
       </Button>
   
-        <h4 className={classes.h}>Other Settings</h4>
-        <FormGroup row >
-         <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedA}
-             onChange={handleChange}
-             name="checkedA"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">Allow picking more than one options</Typography>}
-       />
-       <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedB}
-             onChange={handleChange}
-             name="checkedB"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">This question has correct answer(s)</Typography>}
-       />
-       <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedC}
-             onChange={handleChange}
-             name="checkedC"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
-       />
-       </FormGroup>
-       
        </form>
       </div>
       

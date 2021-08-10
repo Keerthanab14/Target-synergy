@@ -2,9 +2,6 @@ import React,{useState,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import axios from 'axios'
@@ -120,31 +117,6 @@ const ContentWordCloud = () => {
         onClick={submit}
       >Submit
       </Button>
-        <h4 className={classes.h}>Other Settings</h4>
-        <FormGroup row >
-        <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedA}
-             onChange={handleChange}
-             name="checkedA"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">Allow submitting more than one answers</Typography>}
-       />
-       <FormControlLabel
-         control={
-           <Checkbox
-             checked={state.checkedC}
-             onChange={handleChange}
-             name="checkedC"
-             color="primary"
-           />
-         }
-         label={<Typography className={classes.typography} color="textSecondary">Hide Results</Typography>}
-       />
-       </FormGroup>
        </form>
       </div>
       

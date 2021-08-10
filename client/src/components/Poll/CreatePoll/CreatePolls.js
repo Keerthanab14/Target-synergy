@@ -86,6 +86,7 @@ const handleInputChange = (e) => {
        
    }
    const [color, setColor] = React.useState(''); //for background color change in presentation component
+   const [textcolor, settextcolor] = React.useState('');
    const [opacity, setOpacity]=React.useState(100);
    const [component, setComponent] = React.useState('multiplechoice');
 
@@ -181,14 +182,14 @@ const handleInputChange = (e) => {
 
   
      <Sidebar color={color} parentCallback={setColor}
-     component={component} clickHandler={clickHandler}
+     component={component} clickHandler={clickHandler} changecolor={settextcolor}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
-     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult}
+     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult} textcolor={textcolor}
      />
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result} flex='1'  />
+     } color={color} textcolor={textcolor} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result} flex='1'  />
      
      
     
