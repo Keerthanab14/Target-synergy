@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Presentation = ({color, component, opacity, img, data1, data2, data3,data5, result}) => {
+const Presentation = ({color, textcolor, component, opacity, img, data1, data2, data3,data5, result}) => {
     const classes = useStyles();
 
     return (
@@ -38,6 +38,7 @@ const Presentation = ({color, component, opacity, img, data1, data2, data3,data5
                                 backgroundColor: color,
                                 opacity: opacity/100,
                                 backgroundImage: `url(${img})`,
+                                color: textcolor,
                     }}
                     >
                    

@@ -64,7 +64,7 @@ function a11yProps(index) {
 
 
 
-const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
+const Sidebar = ({ parentCallback, changecolor, color, textcolor, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
 setResult, result }) => {
 
   const theme = useTheme();
@@ -117,7 +117,7 @@ setResult, result }) => {
 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
-          <Background parentCallback={parentCallback} color={color} setOpacity={setOpacity} togglePopup={togglePopup} />
+          <Background changecolor={changecolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} togglePopup={togglePopup} />
         </TabPanel >
       </SwipeableViews>
                 

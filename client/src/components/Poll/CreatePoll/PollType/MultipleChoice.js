@@ -65,7 +65,7 @@ export const BlackLine = styled.div`
 
   
   
-function MultipleChoice ({data1, result}) {
+function MultipleChoice ({data1, result,textcolor}) {
   const distance=result.distance;
   const colors=result.colors;
   
@@ -73,7 +73,7 @@ function MultipleChoice ({data1, result}) {
 
     return(
       <Container>
-        <h3>{data1.question}</h3>
+        <h3 style={{color: textcolor}}>{data1.question}</h3>
         <MainContainer>
         {result.map(({ distance, colors}, i) => {
           return (
