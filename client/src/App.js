@@ -16,12 +16,15 @@ import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
-import { IdContext } from './IdContext';
+//import { IdContext } from './IdContext';
 import GoogleLogin from 'react-google-login';
 import ImageMcq from './components/Poll/CreatePoll/PollType/ImageMcq'
+
+export const IdContext = React.createContext();
 function App() {
   const [ auth, setAuth]=useState(false)
-  const id = useContext(IdContext);
+  const [id, setId] = useState("");
+
   return (
     <div>
     <DesktopBreakpoint>
@@ -33,16 +36,23 @@ function App() {
          <Route path="/polls" component={Poll}/> 
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-          <Route path="/link" component={CreatePoll} /> 
-          <Route path="/create-poll" component={CreatePolls} /> 
+          <IdContext.Provider
+                value={{
+                id,
+                setId
+                }}>
+          <Route path="/link" component={CreatePoll} />
+          <Route path="/create-poll" component={CreatePolls} />  
           <Route
             path="/mcq"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} component={Vote} exact />
+               
+     <Route path={`${url}/:id`} component={Vote} exact />
+                
               </Switch>
             )}
-          />
+          /></IdContext.Provider>
           <Route
             path="/imageChoice"
             render={({ match: { url } }) => (
@@ -81,6 +91,8 @@ function App() {
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
           <Route path="/link" component={CreatePoll}/> 
+           
+
           <Route
             path="/create-poll"
             render={({ match: { url } }) => (
