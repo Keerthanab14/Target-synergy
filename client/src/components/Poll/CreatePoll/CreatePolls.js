@@ -35,7 +35,7 @@ button: {
     const [img,setimg] = useState(null);
     const [result, setResult] = useState(
      [ {
-        distance: 5,
+        distance: 0,
         colors: ["#ffd847", "#e0a106"],
         label: ""
       }
@@ -56,12 +56,7 @@ const[data5, setData5]=useState({
   question: "",
   choice:[]
 })
-    const [state, setState] = React.useState({
-      checkedA: false,
-       checkedB: false,
-     checkedC: false,
-     selectedFile: null
-   });
+    
    
    const onFileChange = (event) => {
       setState({ selectedFile: event.target.files[0] }); 
@@ -70,13 +65,10 @@ const[data5, setData5]=useState({
     const fileData = () => {
     };
     const [inputList, setInputList] = useState([{ choice: "" }]);
+    console.log(inputList.choice)
+    console.log(data1.question)
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  const list = [...inputList];
-  list[name] = value;
-  setInputList(list);
-};               
+              
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -88,7 +80,9 @@ const handleInputChange = (e) => {
    const [color, setColor] = React.useState(''); //for background color change in presentation component
    const [opacity, setOpacity]=React.useState(100);
    const [component, setComponent] = React.useState('multiplechoice');
-
+   const [state, setState] = React.useState({
+   selectedFile: null
+ });
    
 
     const clickHandler=(e)=> {
@@ -183,12 +177,13 @@ const handleInputChange = (e) => {
      <Sidebar color={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
-     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult}
+     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList={inputList} setInputList={setInputList}
      />
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result} flex='1'  />
+     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
+       inputList={inputList} flex='1'  />
      
      
     
@@ -200,9 +195,9 @@ const handleInputChange = (e) => {
         <Grid container spacing={2} style={{margin: "4px"}}>
         <Grid item xs={6} sm={2} >
         <h7 style={{color: "black"}}>Add your own image</h7>
-                      {inputList.map((x, i) => {
-                        return (
-                          <div>
+                     
+                        
+                          
                         {fileData()}
                         <Button 
                         className={classes.button}
@@ -211,8 +206,8 @@ const handleInputChange = (e) => {
                         fullWidth={true}
                         name="choice"
                         style={{ width: '190px', position: 'relative', height: '60px', marginTop: '8%', marginLeft: '10%', backgroundColor: "white", color: "black"}}
-                        placeholder="Enter choice"value={x.choice}
-                        onChange={e => handleInputChange(e)}  ><input type="file" onChange={e => onFileChange(e)} />
+                        placeholder="Enter choice" 
+                          ><input type="file" onChange={e => onFileChange(e)} />
                         </Button>
                         <Button className={classes.button}
                             style={{borderRadius: "2em",
@@ -228,9 +223,8 @@ const handleInputChange = (e) => {
                                          >
                                            Set
                         </Button>
-                        </div>
-        );
-      })}
+                    
+      
                    
             </Grid>
                     <Grid item xs={6} sm={2} >

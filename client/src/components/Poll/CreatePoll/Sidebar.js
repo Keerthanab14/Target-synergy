@@ -65,7 +65,7 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, color, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
-setResult, result }) => {
+setResult, result, inputList, setInputList }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -108,7 +108,7 @@ setResult, result }) => {
           clickHandler={clickHandler} handleChangeIndex={handleChangeIndex} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-        {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result}/>}
+        {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result} inputList={inputList} setInputList={setInputList}/>}
         {component==="qanda" && <ContentQandA />}
         {component==="wordcloud" && <ContentWordCloud />}
         {component==="openended" && <ContentOpenEnded setData3={setData3} data3={data3} />}

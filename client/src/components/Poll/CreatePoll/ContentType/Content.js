@@ -42,23 +42,23 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Content = ({setData1,data1, setResult, result}) => {
+const Content = ({setData1,data1, setResult, result, inputList,setInputList}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
       });
     
-      const [inputList, setInputList] = useState([{ choice: "" }]);
+      
 
   // handle input change
   const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
+    console.log(inputList)
     const list = [...inputList];
-    list[index][name] = value;
+    console.log(inputList)
+    list[index][e.target.name] = e.target.value;
     setInputList(list);
-    
-  };
+   console.log(inputList)};
  
   // handle click event of the Remove button
   const handleRemoveClick = index => {
@@ -74,7 +74,7 @@ const Content = ({setData1,data1, setResult, result}) => {
   // handle click event of the Add button
   const handleAddClick = () => {
     setInputList([...inputList, { choice: "" }]);
-    setResult([...result, { distance: 0, colors: ["#ffd847", "#e0a106"], text: "" }]);
+    setResult([...result, { distance: 0, colors: ["#ffd847", "#e0a106"], }]);
   };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
@@ -85,8 +85,7 @@ const Content = ({setData1,data1, setResult, result}) => {
   
     const id = useContext(IdContext);
     const submit = (e) => {
-
-      e.preventDefault();
+    e.preventDefault();
       inputList.map((choicee,key)=>{
         data1.choice[key]=choicee.choice
       })
@@ -99,7 +98,7 @@ const Content = ({setData1,data1, setResult, result}) => {
       axios.post(url, q)
            .then(res=>{
               console.log(res)
-              id.setId(res.data1);
+              id.setId(res.data);
               console.log(id.id);
             })
 
@@ -126,18 +125,16 @@ const Content = ({setData1,data1, setResult, result}) => {
 >
 {inputList.map((x, i) => {
         return (
-          <div >
-          
+          <div key={i} >
             <TextField
-            id="outlined-basic"
+            id="multiplechoice"
             variant="outlined" size="small"
-            id="outlined-basic"
+            className="ml10"
+            name="choice"
+            label="Enterchoice"
+            value={x.choice}
             style={{width: '100%'}}
-              className="ml10"
-              name="choice"
-   placeholder="Enter choice"
-              value={x.choice}
-              onChange={e => handleInputChange(e, i)}
+            onChange={e => handleInputChange(e, i)}
             />
             <div>
               {inputList.length !== 1 && <DeleteIcon style={{background:"#C0C0C0", color:"white", marginRight:"3px"}}
@@ -146,6 +143,7 @@ const Content = ({setData1,data1, setResult, result}) => {
               {inputList.length - 1 === i && <AddIcon style={{background:"#C0C0C0", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
             </div>
           </div>
+        
         );
       })}
     

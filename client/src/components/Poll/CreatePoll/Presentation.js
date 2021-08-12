@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Presentation = ({color, component, opacity, img, data1, data2, data3,data5, result}) => {
+const Presentation = ({color, component, opacity, img, data1, data2, data3,data5, result, inputList}) => {
     const classes = useStyles();
 
     return (
@@ -42,7 +42,7 @@ const Presentation = ({color, component, opacity, img, data1, data2, data3,data5
                     >
                    
         {component === 'imagechoice' && <ImageChoice data2={data2}/>} 
-        {component === 'multiplechoice' && <MultipleChoice data1={data1} result={result}/>  }
+        {component === 'multiplechoice' && <MultipleChoice data1={data1} result={result} inputList={inputList}/>  }
         {component === 'wordcloud' && <WordCloud/>} 
         {component === 'qanda' && <QandA/>} 
         {component === 'scales' && <Scales data5={data5}/>} 

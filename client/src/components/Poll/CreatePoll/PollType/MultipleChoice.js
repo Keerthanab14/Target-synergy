@@ -65,9 +65,7 @@ export const BlackLine = styled.div`
 
   
   
-function MultipleChoice ({data1, result}) {
-  const distance=result.distance;
-  const colors=result.colors;
+function MultipleChoice ({data1, result, inputList}) {
   
  
 
@@ -75,12 +73,12 @@ function MultipleChoice ({data1, result}) {
       <Container>
         <h3>{data1.question}</h3>
         <MainContainer>
-        {result.map(({ distance, colors}, i) => {
+        {result.map(( result, i) => {
           return (
             <BarChartContainer key={i}>
-              <Number color={colors[1]}>{distance}</Number>
-              <MakeBar height={distance * 2} colors={colors} />
-              type1
+              <Number color={result.colors[1]}>{result.distance}</Number>
+              <MakeBar height={result.distance * 2} colors={result.colors} />
+              {inputList.choice}
             </BarChartContainer>
           );
         })}
