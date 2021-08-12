@@ -65,13 +65,13 @@ export const BlackLine = styled.div`
 
   
   
-function MultipleChoice ({data1, result, inputList}) {
+function MultipleChoice ({data1, result, inputList, textcolor}) {
   
  
 
     return(
       <Container>
-        <h3>{data1.question}</h3>
+        <h3 style={{color: textcolor}}>{data1.question}</h3>
         <MainContainer>
         {result.map(( result, i) => {
           return (

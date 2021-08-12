@@ -65,8 +65,7 @@ const[data5, setData5]=useState({
     const fileData = () => {
     };
     const [inputList, setInputList] = useState([{ choice: "" }]);
-    console.log(inputList.choice)
-    console.log(data1.question)
+    
 
               
   const togglePopup = () => {
@@ -78,6 +77,7 @@ const[data5, setData5]=useState({
        
    }
    const [color, setColor] = React.useState(''); //for background color change in presentation component
+   const [textcolor, settextcolor] = React.useState('');
    const [opacity, setOpacity]=React.useState(100);
    const [component, setComponent] = React.useState('multiplechoice');
    const [state, setState] = React.useState({
@@ -175,14 +175,14 @@ const[data5, setData5]=useState({
 
   
      <Sidebar color={color} parentCallback={setColor}
-     component={component} clickHandler={clickHandler}
+     component={component} clickHandler={clickHandler} changecolor={settextcolor}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
-     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList={inputList} setInputList={setInputList}
+     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList={inputList} setInputList={setInputList} textcolor={textcolor} settextcolor={settextcolor}
      />
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
+     } color={color} textcolor={textcolor} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
        inputList={inputList} flex='1'  />
      
      
