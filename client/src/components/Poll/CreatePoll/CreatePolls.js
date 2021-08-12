@@ -4,7 +4,6 @@ import Presentation from "./Presentation";
 import '../CreatePoll/CreatePolls.css'
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
-import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { Link,useHistory } from 'react-router-dom';
 import { Breadcrumbs, CardActionArea, Paper, Typography } from '@material-ui/core';
@@ -30,7 +29,7 @@ button: {
 }));
 
 
-  const CreatePolls=({setId}) => {
+  const CreatePolls=() => {
     const [isOpen, setIsOpen] = useState(false);
     const [img,setimg] = useState(null);
     const [result, setResult] = useState(

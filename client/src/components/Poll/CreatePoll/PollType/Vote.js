@@ -1,7 +1,7 @@
 import React, { useState,useEffect,useContext } from "react";
 import Poll from "react-polls";
 import axios from "axios";
-import { IdContext } from '../../../../IdContext';
+import { IdContext } from '../../../../App';
 
 // Declaring poll question and answers
  

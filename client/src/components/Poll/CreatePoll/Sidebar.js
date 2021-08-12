@@ -108,7 +108,7 @@ setResult, result, inputList, setInputList, settextcolor }) => {
           clickHandler={clickHandler} handleChangeIndex={handleChangeIndex} style={{flex: '1'}}  />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
-        {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result} inputList={inputList} setInputList={setInputList}/>}
+        {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result} inputList={inputList} setInputList={setInputList} handleChangeIndex={handleChangeIndex}/>}
         {component==="qanda" && <ContentQandA />}
         {component==="wordcloud" && <ContentWordCloud />}
         {component==="openended" && <ContentOpenEnded setData3={setData3} data3={data3} />}

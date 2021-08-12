@@ -8,7 +8,7 @@ import '../CreatePoll/CreatePoll.css';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useState,useContext } from "react";
 import { useHistory } from 'react-router-dom';
-import { IdContext } from '../../../IdContext';
+import { IdContext } from '../../../App';
 
 const useStyles = makeStyles((theme) => ({
   root: {

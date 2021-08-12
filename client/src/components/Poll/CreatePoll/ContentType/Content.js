@@ -2,13 +2,11 @@ import React,{useState, useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import AddIcon from '@material-ui/icons/Add';
 import { Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
-import { IdContext } from '../../../../IdContext';
-import IconButton from '@material-ui/core/IconButton';
+import { IdContext } from '../../../../App';
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Content = ({setData1,data1, setResult, result, inputList,setInputList}) => {
+const Content = ({setData1,data1, setResult, result, inputList,setInputList, handleChangeIndex}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -55,6 +53,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList}) =>
     console.log(inputList)
     list[index][e.target.name] = e.target.value;
     setInputList(list);
+    
    console.log(inputList)};
  
   // handle click event of the Remove button
@@ -151,7 +150,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList}) =>
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={(e)=>{handleChangeIndex(2);submit(e)}}
       >Submit
       </Button>
   
