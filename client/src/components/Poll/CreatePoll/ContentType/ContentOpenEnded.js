@@ -85,7 +85,7 @@ const ContentOpenEnded = ({setData3, data3}) => {
       console.log(q)
       axios.post(url, q)
            .then(res=>{
-              console.log(res.data3)
+              console.log(res.data)
             })
 
     }

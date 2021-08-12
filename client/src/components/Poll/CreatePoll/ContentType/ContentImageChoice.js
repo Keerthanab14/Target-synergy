@@ -74,7 +74,7 @@ const ContentImageChoice = ({setData2, data2}) => {
         .then(res=>{
           console.log(res)
           
-          images[i]=({option:(res.data2)})
+          images[i]=({option:(res.data)})
           i++
           console.log(images)
 
