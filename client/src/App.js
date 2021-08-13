@@ -24,7 +24,8 @@ export const IdContext = React.createContext();
 function App() {
   const [ auth, setAuth]=useState(false)
   const [id, setId] = useState("");
-
+  const [textBased , setTextBased] = useState({question:'', choices:[]})
+  console.log(textBased)
   return (
     <div>
     <DesktopBreakpoint>
@@ -48,7 +49,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                
-     <Route path={`${url}/:id`} component={Vote} exact />
+     <Route exact path={`${url}/:id`} render={(props)=>(<Vote {...props} setTextBased={setTextBased} textBased={textBased} />)} />
                 
               </Switch>
             )}
