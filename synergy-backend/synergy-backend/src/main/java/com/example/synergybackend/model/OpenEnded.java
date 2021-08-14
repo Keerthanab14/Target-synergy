@@ -1,4 +1,5 @@
 package com.example.synergybackend.model;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Document(collection = "QandAResponse")
-public class QandAResponse {
+@Document(collection = "WordCloud")
+public class OpenEnded {
     @Transient
     public static final String SEQUENCE_NUMBER ="user_sequence";
     @Id
     private int id;
-    private ArrayList<Choice> responses ;
+    private String question;
 
     public int getId() {
         return id;
@@ -24,11 +25,11 @@ public class QandAResponse {
         this.id = id;
     }
 
-    public ArrayList<Choice> getResponses() {
-        return responses;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setResponses(ArrayList<Choice> responses) {
-        this.responses = responses;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

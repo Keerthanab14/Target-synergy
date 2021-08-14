@@ -1,5 +1,5 @@
 package com.example.synergybackend.repository;
-import com.example.synergybackend.model.QandAResponse;
+import com.example.synergybackend.model.OpenEnded;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 @Repository
-public interface QandAResponseRepository extends MongoRepository<QandAResponse, Long> {
+public interface OpenEndedRepository extends MongoRepository<OpenEnded,Long> {
 }
