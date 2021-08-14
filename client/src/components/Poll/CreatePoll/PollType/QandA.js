@@ -43,22 +43,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const QandA = () => {
-  
+   
 const id = useContext(IdContext);
 const url = id.id;
   const [questions , setQuestions] = useState({questions:[]});
  
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/QandA/${url}`)
+      var result = await axios.get(`http://localhost:8080/QandA/36`)
       setQuestions({
        
         questions: result.data.questions 
       })
     },[])
-    const qAndA=[];
-    questions.questions.map((post,key) => (
-    qAndA[key]=post.text
-));
+    const qAndA=["a","b","c"];
+//     questions.questions.map((post,key) => (
+//     qAndA[key]=post.text
+// ));
 console.log(qAndA);
 
      const [state, setState] = React.useState({
@@ -145,6 +145,7 @@ console.log(qAndA);
       
     );
 }
+
 
 
 
