@@ -5,8 +5,8 @@ import { IdContext } from '../../../../App';
 
 // Declaring poll question and answers
  
-const Vote = () => {
-  const [textBased , setTextBased] = useState({question:'', choices:[]})
+const Vote = ({setTextBased, textBased}) => {
+  
   const id = useContext(IdContext);
   const url = id.id;
     useEffect(async () => {
