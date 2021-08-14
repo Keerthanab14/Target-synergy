@@ -42,7 +42,7 @@ const ContentWordCloud = () => {
          checkedC: false,
       });
     
-     const [inputList, setInputList] = useState([{ question: "" }]);
+     const [inputList, setInputList] = useState( {question: ""} );
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -53,28 +53,14 @@ const ContentWordCloud = () => {
   };
  
   
-      const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-      };
-    
     const classes = useStyles();
     const url="http://localhost:8080/WordCloud"
-    const[data, setData]=useState({
-      
-        question:[]
-    })
+    
     const id = useContext(IdContext);
     const submit = (e) => {
       e.preventDefault();
-      inputList.map((questione,key)=>{
-        data.question[key]=questione.question
-      })
-  
-      const q ={
-       questions: data.question
-      }
-      console.log(q)
-      axios.post(url, q)
+     
+      axios.post(url, inputList)
            .then(res=>{
               id.setId(res.data);
               console.log(id.id);
@@ -82,32 +68,24 @@ const ContentWordCloud = () => {
 
     }
 
+ 
+    function handle(e){
+      const newdata={...inputList}
+      newdata[e.target.id]=e.target.value
+      setInputList(newdata)
+      console.log(newdata)
+
+    }
+
+
     return (
       <div >
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
         <h4 className={classes.h}>Please enter the question</h4>
-        <Grid container={true}  direction="row"  alignItems="center" 
->
-{inputList.map((x, i) => {
-        return (
-          <div >
-            <TextField
-            id="outlined-basic"
-            variant="outlined" size="small"
-            id="outlined-basic"
-            style={{width: '96%'}}
-              className="ml10"
-              name="question"
-   placeholder="Enter question"
-              value={x.question}
-              onChange={e => handleInputChange(e, i)}
-            />
-            
-          </div>
-        );
-      })}
+        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={inputList.question} type="text" style={{width: '100%'}} />
+
     
-      </Grid>  <Button
+   <Button
         style={{ width: "235px",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
