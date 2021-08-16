@@ -129,7 +129,7 @@ const[data5, setData5]=useState({
   
     return (
         
-        <Container className={classes.root} style={ {marginRight:'0%'}}>
+        <Container className={classes.root} >
   <Container className = 'Navbar' display='flex' flex='1' jutify='space-between' style={{
     overflow: 'hidden', 
     
