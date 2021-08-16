@@ -2,6 +2,12 @@ import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddIcon from '@material-ui/icons/Add';
+import { Typography } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { Grid } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -32,13 +38,35 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentOpenEnded = ({setData3, data3}) => {
+const OpenEndedUser = () => {
   const [OpenEnded,setOpenEnded]=useState({question:""})
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
       });
+    
+     const [inputList, setInputList] = useState([{ question: "" }]);
+
+  // // handle input change
+  // const handleInputChange = (e, index) => {
+    
+  //   const { name, value } = e.target;
+  //   const list = [...inputList];
+  //   list[index][name] = value;
+  //   setInputList(list);
+    
+  // };
+  // const handle =(e) => {
+  //   const newdata={...data3}
+  //   newdata[e.target.id]=e.target.value
+  //   setData3(newdata)
+  // }
+ 
+  
+  //     const handleChange = (event) => {
+  //       setState({ ...state, [event.target.name]: event.target.checked });
+  //     };
     
     const classes = useStyles();
     const url="http://localhost:8080/OpenEnded"
@@ -92,4 +120,4 @@ const ContentOpenEnded = ({setData3, data3}) => {
 
 
 
-export default ContentOpenEnded
+export default OpenEndedUser

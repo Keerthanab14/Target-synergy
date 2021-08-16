@@ -39,114 +39,63 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContentQandA = () => {
-     const [state, setState] = React.useState({
-         checkedA: false,
-         checkedB: false,
-         checkedC: false,
-      });
-    
-      const [inputList, setInputList] = useState([{ question: "" }]);
+  const [OpenEnded,setOpenEnded]=useState({question:""})
+  const [state, setState] = React.useState({
+      checkedA: false,
+      checkedB: false,
+      checkedC: false,
+   });
+ 
+ const classes = useStyles();
+ const url="http://localhost:8080/QandA"
+ 
 
-  // handle input change
-  const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...inputList];
-    list[index][name] = value;
-    setInputList(list);
-  };
- 
-  // handle click event of the Remove button
-  const handleRemoveClick = index => {
-    const list = [...inputList];
-    list.splice(index, 1);
-    setInputList(list);
-  };
- 
-  // handle click event of the Add button
-  const handleAddClick = () => {
-    setInputList([...inputList, { question: "" }]);
-  };
-      const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-      };
-    
-    const classes = useStyles();
-    const url="http://localhost:8080/QandA"
-    const[data, setData]=useState({
-      
-        question:[]
-    })
+ const submit = (e) => {
+
+   e.preventDefault();
    
-    const submit = (e) => {
 
-      e.preventDefault();
-      inputList.map((questione,key)=>{
-        data.question[key]=questione.question
-      })
+   axios.post(url, OpenEnded)
+        .then(res=>{
+           console.log(res.data)
+         })
+
+ }
+ 
+ function handle(e){
+   const newdata={...OpenEnded}
+   newdata[e.target.id]=e.target.value
+   setOpenEnded(newdata)
+   console.log(newdata)
+
+ }
+
+
+ return (
+   <div >
+        <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
+   
   
-      const q ={
-        
-       questions: data.question
-      }
-      console.log(q)
-      axios.post(url, q)
-           .then(res=>{
-              console.log(res.data)
-            })
+   <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={OpenEnded.question} type="text" style={{width: '100%'}} />
+ 
+   
+  <Button
+     style={{ width: "235px",background:"#cc0000", color:"white" }}
+     className={classes.button}
+     variant="contained"
+    // color="primary"
+     size="large"
+     fullWidth={true}
+     onClick={submit}
+   >Submit
+   </Button>
 
-    }
-
-
-
-    return (
-      <div >
-          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
-      
-     
-        <h4 className={classes.h}>Please enter the questions</h4>
-        <Grid container={true}  direction="row"  alignItems="center" 
->
-{inputList.map((x, i) => {
-        return (
-          <div >
-          
-            <TextField
-            id="outlined-basic"
-            variant="outlined" size="small"
-            id="outlined-basic"
-            style={{width: '96%'}}
-              className="ml10"
-              name="question"
-   placeholder="Enter question"
-              value={x.question}
-              onChange={e => handleInputChange(e, i)}
-            />
-            <div>
-              {inputList.length !== 1 && <DeleteIcon style={{background:"#C0C0C0", color:"white", marginRight:"3px"}}
-                className="mr10"
-                onClick={() => handleRemoveClick(i)}/>}
-              {inputList.length - 1 === i && <AddIcon style={{background:"#C0C0C0", color:"white"}} onClick={handleAddClick} className={classes.addicon} />}
-            </div>
-          </div>
-        );
-      })}
-    
-      </Grid>  <Button
-        style={{ width: "235px",background:"#cc0000", color:"white" }}
-        className={classes.button}
-        variant="contained"
-       // color="primary"
-        size="large"
-        fullWidth={true}
-        onClick={submit}
-      >Submit
-      </Button>
-  
-       </form>
-      </div>
-      
-    );
+    </form>
+   </div>
+   
+ );
 }
+
 
 
 

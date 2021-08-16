@@ -1,8 +1,10 @@
 package com.example.synergybackend.controller;
+import com.example.synergybackend.model.OpenEnded;
 import com.example.synergybackend.model.QandA;
 import com.example.synergybackend.repository.QandARepository;
 import com.example.synergybackend.services.SequenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.querydsl.QSort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,11 +32,11 @@ public class QandAController {
     @PostMapping("/QandA")
     public String saveQuestions(@RequestBody QandA quest) {
         QandA qandA=new QandA();
-        qandA.setId(service.getSequence(QandA.SEQUENCE_NUMBER));
-        qandA.setQuestions( quest.getQuestions());
-        qandARepository.save(qandA);
-        System.out.println(quest);
-        return "choices";
+        qandA.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
+        qandA.setQuestion( quest.getQuestion());
+        QandA saved=qandARepository.save(qandA);
+        String url = "/QandA/" + qandA.getId();
+        return url;
     }
 
 }

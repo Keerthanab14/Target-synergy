@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 @Document(collection = "QandA")
 public class QandA {
-    @Transient
-    public static final String SEQUENCE_NUMBER ="user_sequence";
+    
     @Id
     private int id;
-    private ArrayList<Choice> questions ;
+    private String question ;
 
     public int getId() {
         return id;
@@ -22,11 +21,11 @@ public class QandA {
         this.id = id;
     }
 
-    public ArrayList<Choice> getQuestions() {
-        return questions;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setQuestions(ArrayList<Choice> questions) {
-        this.questions = questions;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

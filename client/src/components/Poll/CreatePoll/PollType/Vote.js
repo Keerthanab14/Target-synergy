@@ -2,15 +2,14 @@ import React, { useState,useEffect,useContext } from "react";
 import Poll from "react-polls";
 import axios from "axios";
 import { IdContext } from '../../../../App';
-
-// Declaring poll question and answers
  
-const Vote = ({setTextBased, textBased}) => {
-  
-  const id = useContext(IdContext);
-  const url = id.id;
+const Vote = (props) => {
+  const url =props.match.params.id;
+  const [textBased , setTextBased] = useState({question:'', choices:[]})
+  // const id = useContext(IdContext);
+  // const url = id.id;
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080${url}`)
+      var result = await axios.get(`http://localhost:8080/mcq/${url}`)
       setTextBased({
         question: result.data.question,
         choices: result.data.choices 
@@ -39,6 +38,7 @@ console.log(Answers);
  
   return (
     <div>
+      <h1>Poll Name</h1>
       <Poll question={pollQuestion} answers={Answers} onVote={handleVote} />
     </div>
   );

@@ -133,7 +133,7 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
   
     return (
         
-        <Container className={classes.root} style={ {marginRight:'0%'}}>
+        <Container className={classes.root} >
   <Container className = 'Navbar' display='flex' flex='1' jutify='space-between' style={{
     overflow: 'hidden', 
     
