@@ -1,18 +1,22 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import {useHistory} from 'react-router-dom';
+import {useHistory,Link} from 'react-router-dom';
 
-function Home() {
+function Home({code}) {
+    let url = code.substring(21);
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
        
    }
+   
+   console.log(url)
     return (
         <div>
+            <Link to={url}>
             <Button
                 variant="contained"
-                onClick={() => {/*handleClick('') */}}
+                
                 style={
                     {
                         backgroundColor: "#cc0000",
@@ -24,6 +28,7 @@ function Home() {
                     }
                 }
             >Submit</Button>
+            </Link>
         </div>
     )
 };

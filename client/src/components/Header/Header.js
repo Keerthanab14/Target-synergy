@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Header({setAuth, auth}) {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [code, setCode] = useState("");
     const open = Boolean(anchorEl);
 
     const handleChange = (event) => {
@@ -81,12 +82,7 @@ function Header({setAuth, auth}) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    // // google-login
-    // const responseGoogle = (response) => {
-    //     console.log(response);
-    //     console.log(response.profileObj);
-    // }
-
+ 
     const onSuccess = (res)=>{
         // console.log(res.profileObj);
         const data =  {
@@ -109,7 +105,9 @@ function Header({setAuth, auth}) {
             setAuth(false);
         }
 
-    
+    const handleCode = (e) => {
+        setCode(e.target.value)
+    }
 
     return (
 
@@ -142,10 +140,11 @@ function Header({setAuth, auth}) {
 
                                 }
                             }
+                            onChange = {handleCode}
                         />
                     </div>
                     &nbsp;
-                    <Submit />
+                    <Submit code={code} />
                     &nbsp; &nbsp;
                     
 

@@ -38,6 +38,7 @@ console.log(Answers);
  
   return (
     <div>
+      <h1>Poll Name</h1>
       <Poll question={pollQuestion} answers={Answers} onVote={handleVote} />
     </div>
   );
