@@ -47,10 +47,8 @@ function App() {
           <Route
             path="/mcq"
             render={({ match: { url } }) => (
-             <Switch>
-               
-     <Route exact path={`${url}/:id`} render={(props)=>(<Vote {...props} setTextBased={setTextBased} textBased={textBased} />)} />
-                
+             <Switch> 
+                <Route exact path={`${url}/:id`} component={Vote} />  
               </Switch>
             )}
           /></IdContext.Provider>
