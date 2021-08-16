@@ -25,7 +25,7 @@ function App() {
   const [ auth, setAuth]=useState(false)
   const [id, setId] = useState("");
   const [textBased , setTextBased] = useState({question:'', choices:[]})
-  console.log(textBased)
+  
   return (
     <div>
     <DesktopBreakpoint>
