@@ -47,7 +47,7 @@ const Presentation = ({color, textcolor, component, opacity, img, data1, data2, 
         {component === 'wordcloud' && <WordCloud/>} 
         {component === 'qanda' && <QandA/>} 
         {component === 'scales' && <Scales data5={data5}/>} 
-        {component === 'openended' && <OpenEnded data3={data3}/>}
+        {component === 'openended' && <OpenEnded openEnded={data3}/>}
 
                     </Paper>
                     

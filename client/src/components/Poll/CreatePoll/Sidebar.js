@@ -111,7 +111,7 @@ setResult, result, inputList1, setInputList1, inputList2, setInputList2, inputLi
         {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result} inputList={inputList1} setInputList={setInputList1} handleChangeIndex={handleChangeIndex} contentauth={contentauth}/>}
         {component==="qanda" && <ContentQandA />}
         {component==="wordcloud" && <ContentWordCloud />}
-        {component==="openended" && <ContentOpenEnded setData3={setData3} data3={data3} />}
+        {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} />}
        {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} inputList={inputList2} setInputList={setInputList2}/>} 
        {component==="scales" && <ContentScales data5={data5} setData5={setData5}/>}
 

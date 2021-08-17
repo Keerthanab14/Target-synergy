@@ -32,13 +32,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentOpenEnded = ({setData3, data3}) => {
-  const [OpenEnded,setOpenEnded]=useState({question:""})
-     const [state, setState] = React.useState({
-         checkedA: false,
-         checkedB: false,
-         checkedC: false,
-      });
+const ContentOpenEnded = (props) => {
+ 
+    
     
     const classes = useStyles();
     const url="http://localhost:8080/OpenEnded"
@@ -49,7 +45,7 @@ const ContentOpenEnded = ({setData3, data3}) => {
       e.preventDefault();
       
   
-      axios.post(url, OpenEnded)
+      axios.post(url, props.OpenEnded)
            .then(res=>{
               console.log(res.data)
             })
@@ -57,9 +53,9 @@ const ContentOpenEnded = ({setData3, data3}) => {
     }
     
     function handle(e){
-      const newdata={...OpenEnded}
+      const newdata={...props.OpenEnded}
       newdata[e.target.id]=e.target.value
-      setOpenEnded(newdata)
+      props.setOpenEnded(newdata)
       console.log(newdata)
 
     }
@@ -70,7 +66,7 @@ const ContentOpenEnded = ({setData3, data3}) => {
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-      <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={OpenEnded.question} type="text" style={{width: '100%'}} />
+      <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={props.OpenEnded.question} type="text" style={{width: '100%'}} />
     
       
      <Button
