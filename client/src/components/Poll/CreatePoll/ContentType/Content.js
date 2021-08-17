@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Content = ({setData1,data1, setResult, result, inputList,setInputList, handleChangeIndex}) => {
+const Content = ({setData1,data1, setResult, result, inputList,setInputList, handleChangeIndex,contentauth}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,

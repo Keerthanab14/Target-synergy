@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header({setAuth, auth}) {
+function Header({setAuth, auth, setContentAuth, contentauth}) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const [code, setCode] = useState("");
@@ -91,6 +91,8 @@ function Header({setAuth, auth}) {
             name: res.profileObj.name
             
           }
+          setContentAuth(data.googleId)
+          console.log(contentauth);
           console.log(data);
             axios.post("http://localhost:8080/newUser", data)
             .then(r =>console.log("success"))
