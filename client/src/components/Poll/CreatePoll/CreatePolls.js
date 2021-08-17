@@ -59,6 +59,12 @@ button: {
     const[data3, setData3]=useState({
     question:""
 })
+    const[data6, setData6]=useState({
+    question:""
+    })
+    const[data4, setData4]=useState({
+      question:""
+      })
 const[data5, setData5]=useState({
   question: "",
   choice:[]
@@ -188,14 +194,14 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
      <Sidebar color={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler} changecolor={settextcolor}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
-     data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
+     data3={data3} setData3={setData3} data4={data4} setData4={setData4} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
      inputList2={inputList2} setInputList2={setInputList2} inputList3={inputList3} setInputList3={setInputList3} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
-     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult}/>
+     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6}/>
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
      } color={color} textcolor={textcolor} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
-       inputList1={inputList1} inputList2={inputList2} imgresult={imgresult} flex='1'  />
+       inputList1={inputList1} inputList2={inputList2} imgresult={imgresult} flex='1' data4={data4} data6={data6} />
      
      
     

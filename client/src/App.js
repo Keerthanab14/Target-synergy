@@ -8,7 +8,7 @@ import Feedback from './components/Feedback/Feedback';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
-import Vote from './components/Poll/CreatePoll/PollType/Vote';
+import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
@@ -18,8 +18,8 @@ import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint'
 //import { IdContext } from './IdContext';
 import OpenEnded from './components/Poll/Results/OpenEnded'
 import GoogleLogin from 'react-google-login';
-import ImageMcq from './components/Poll/CreatePoll/PollType/ImageMcq'
-import OpenEndedUser from './components/Poll/CreatePoll/ContentType/OpenEndedUser';
+import ImageMcq from './components/Poll/CreatePoll/ParticipantType/ImageMcq'
+import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 
 export const IdContext = React.createContext();
 function App() {

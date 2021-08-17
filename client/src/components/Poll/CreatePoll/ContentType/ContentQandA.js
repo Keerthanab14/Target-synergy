@@ -38,8 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentQandA = () => {
-  const [OpenEnded,setOpenEnded]=useState({question:""})
+const ContentQandA = ({data6, setData6,handleChangeIndex}) => {
   const [state, setState] = React.useState({
       checkedA: false,
       checkedB: false,
@@ -55,7 +54,7 @@ const ContentQandA = () => {
    e.preventDefault();
    
 
-   axios.post(url, OpenEnded)
+   axios.post(url, data6)
         .then(res=>{
            console.log(res.data)
          })
@@ -63,9 +62,9 @@ const ContentQandA = () => {
  }
  
  function handle(e){
-   const newdata={...OpenEnded}
+   const newdata={...data6}
    newdata[e.target.id]=e.target.value
-   setOpenEnded(newdata)
+   setData6(newdata)
    console.log(newdata)
 
  }
@@ -76,7 +75,7 @@ const ContentQandA = () => {
         <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
    
   
-   <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={OpenEnded.question} type="text" style={{width: '100%'}} />
+   <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data6.question} type="text" style={{width: '100%'}} />
  
    
   <Button
@@ -87,6 +86,7 @@ const ContentQandA = () => {
      size="large"
      fullWidth={true}
      onClick={submit}
+     onClick={(e)=>{handleChangeIndex(2);submit(e)}}
    >Submit
    </Button>
 
