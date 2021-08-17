@@ -12,12 +12,14 @@ import Vote from './components/Poll/CreatePoll/PollType/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
-import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
+//import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 //import { IdContext } from './IdContext';
+import OpenEnded from './components/Poll/Results/OpenEnded'
 import GoogleLogin from 'react-google-login';
 import ImageMcq from './components/Poll/CreatePoll/PollType/ImageMcq'
+import OpenEndedUser from './components/Poll/CreatePoll/ContentType/OpenEndedUser';
 
 export const IdContext = React.createContext();
 function App() {
@@ -44,6 +46,12 @@ function App() {
                 }}>
           <Route path="/link" component={CreatePoll} />
           <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>  
+          <Route path="/66" component={WordCloud}/>
+         <Route path="/36" component={Scales}/>
+         <Route path="/27" component={OpenEndedUser}/>
+         <Route path="/28" component={OpenEnded}/>
+         <Route path="/610fbf5066e210524c8325a5" component={ImageMcq}/>
+
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
@@ -70,16 +78,15 @@ function App() {
           />
 
          {/* <Route path="/27" component={QandA}/> */}
-         <Route path="/66" component={WordCloud}/>
-         <Route path="/36" component={Scales}/>
-         <Route path="/27" component={OpenEnded}/>
-         <Route path="/610fbf5066e210524c8325a5" component={ImageMcq}/>
+        
+         
         </Switch> 
     </div>
     </BrowserRouter>
     </DesktopBreakpoint>
     <PhoneBreakpoint>
     <BrowserRouter>
+   
     <div className="App">
       {/* <button onClick={PollsSubmit}>Submit</button>
       <Vote result = {result}/> */}
