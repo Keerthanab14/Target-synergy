@@ -65,7 +65,7 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, color, textcolor, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
-setResult, result, inputList1, setInputList1, inputList2, setInputList2, inputList3, setInputList3, settextcolor, contentauth }) => {
+setResult, result, inputList1, setInputList1, inputList2, setInputList2, inputList3, setInputList3, settextcolor, contentauth, imgresult, setImgResult }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -112,7 +112,7 @@ setResult, result, inputList1, setInputList1, inputList2, setInputList2, inputLi
         {component==="qanda" && <ContentQandA />}
         {component==="wordcloud" && <ContentWordCloud />}
         {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} />}
-       {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} inputList={inputList2} setInputList={setInputList2}/>} 
+       {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} inputList={inputList2} setInputList={setInputList2} setImgResult={setImgResult} imgresult={imgresult}/>} 
        {component==="scales" && <ContentScales data5={data5} setData5={setData5}/>}
 
         </TabPanel>

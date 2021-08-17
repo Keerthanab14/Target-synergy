@@ -90,18 +90,19 @@ export const __DATA__ = [
     },
   ];
   
-function ImageChoice ({data2, inputList}) {
+function ImageChoice (props) {
+  const imgresult=props.imgresult
     return(
       <Container>
-        {data2.question}
+        <h1>{props.data2.question}</h1>
       <MainContainer>
-        {__DATA__.map(({ distance, colors }, i) => {
+        {imgresult.map((imgresult, i) => {
           return (
             <BarChartContainer key={i}>
               
-             <Number color={colors[1]}  >{distance}</Number>
-              <MakeBar height={distance * 2} colors={colors} />
-              {/*inputList.choice[i]*/}
+             <Number color={imgresult.colors[1]}  >{imgresult.distance}</Number>
+              <MakeBar height={imgresult.distance * 2} colors={imgresult.colors} />
+              
               <Paper width='8%' style={{backgroundImage:`url(${Bgimage1})`}} >
               </Paper>
             </BarChartContainer>

@@ -14,6 +14,7 @@ import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import Bgimage1 from '../../images/bgimage_1.jpg';
 import Bgimage2 from '../../images/bgimage_2.jpg';
 import Bgimage3 from '../../images/bgimage_3.png';
+import randomColor from 'randomcolor'
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -36,10 +37,17 @@ button: {
      [ {
         distance: 0,
         colors: ["#ffd847", "#e0a106"],
-        label: ""
       }
     ]
     );                          //multiplechoice type
+    const [imgresult, setImgResult] = useState(
+      [
+        {
+          distance: 0,
+          colors: ["#ffd847", "#e0a106"],
+        }
+      ]
+    )
     const[data1, setData1]=useState({
       question: "",
       choice:[]
@@ -182,12 +190,12 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
      data3={data3} setData3={setData3} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
      inputList2={inputList2} setInputList2={setInputList2} inputList3={inputList3} setInputList3={setInputList3} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
-     contentauth={props.contentauth}/>
+     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult}/>
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
      } color={color} textcolor={textcolor} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
-       inputList1={inputList1} inputList2={inputList2} flex='1'  />
+       inputList1={inputList1} inputList2={inputList2} imgresult={imgresult} flex='1'  />
      
      
     
