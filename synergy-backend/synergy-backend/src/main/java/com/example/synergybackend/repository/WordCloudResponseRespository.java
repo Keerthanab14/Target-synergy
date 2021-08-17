@@ -1,5 +1,4 @@
 package com.example.synergybackend.repository;
-import com.example.synergybackend.model.QandAResponse;
 import com.example.synergybackend.model.WordCloudResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

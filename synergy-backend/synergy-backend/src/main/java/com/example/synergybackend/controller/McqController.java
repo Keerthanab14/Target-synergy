@@ -14,22 +14,22 @@ public class McqController {
     @Autowired
     private MCQRepository mcqRepo;
 
-    @GetMapping("/mcq")
+    @GetMapping("/MCQ")
     public List<Mcq> getAllMcq(){
         return mcqRepo.findAll();
     }
-    @GetMapping("/mcq/{id}")
+    @GetMapping("/MCQ/{id}")
     public Mcq getMcqById(@PathVariable("id") String id){
         return mcqRepo.findById(id).get();
     }
 
-    @PostMapping("/mcq")
+    @PostMapping("/MCQ")
     public String saveMcq(@RequestBody Mcq quest) {
         Mcq mcq=new Mcq();
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "/mcq/" + savedPoll.getId();
+        String url = "/MCQ/" + savedPoll.getId();
         return url;
     }
 }
