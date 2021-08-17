@@ -15,7 +15,13 @@ public class Mcq {
     private String id;
     private String question;
     private ArrayList<Choice> choices ;
-
+    private String googleId;
+    public String getGoogleId() {
+        return googleId;
+    }
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
+    }
     public String getId() {
         return id;
     }
