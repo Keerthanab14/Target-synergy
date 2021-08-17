@@ -32,7 +32,7 @@ public class QandAController {
     @PostMapping("/QandA")
     public String saveQuestions(@RequestBody QandA quest) {
         QandA qandA=new QandA();
-        qandA.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
+       // qandA.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
         qandA.setQuestion( quest.getQuestion());
         QandA saved=qandARepository.save(qandA);
         String url = "/QandA/" + qandA.getId();

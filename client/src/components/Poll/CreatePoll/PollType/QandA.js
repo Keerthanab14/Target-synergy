@@ -47,6 +47,7 @@ const qAndA=[];
         qAndA[key]=post.text
     ))
     },[]);
+
 console.log(qAndA);
 
      const [state, setState] = React.useState({
@@ -135,6 +136,4 @@ console.log(qAndA);
 }
 
 
-
-
-export default QandA
+export default QandA;

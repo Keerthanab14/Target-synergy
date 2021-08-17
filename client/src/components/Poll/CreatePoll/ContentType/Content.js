@@ -77,20 +77,22 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
       };
     
     const classes = useStyles();
-    const url="http://localhost:8080/mcq"
-  
+    const url="http://localhost:8080/MCQ"
     const id = useContext(IdContext);
     const submit = (e) => {
     e.preventDefault();
       inputList.map((choicee,key)=>{
         data1.choice[key]=choicee.choice
       })
-  
+      const a = contentauth;
+      
       const q ={
         question: data1.question,
-       choices: data1.choice
+        choices: data1.choice,
+        googleId : a
       }
       console.log(q)
+     
       axios.post(url, q)
            .then(res=>{
               console.log(res)
