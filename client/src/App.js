@@ -45,7 +45,7 @@ function App() {
           <Route path="/link" component={CreatePoll} />
           <Route path="/create-poll" component={CreatePolls} />  
           <Route
-            path="/mcq"
+            path="/MCQ"
             render={({ match: { url } }) => (
              <Switch> 
                 <Route exact path={`${url}/:id`} component={Vote} />  
