@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import {useHistory,Link} from 'react-router-dom';
 
 function Home({code}) {
-    let url = code.substring(21);
+    let url = `/${code}`;
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
