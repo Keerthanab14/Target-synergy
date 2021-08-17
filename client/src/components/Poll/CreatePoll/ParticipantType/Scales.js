@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
   });
   
-  const Scales =({data5}) => {
+  const Scales =() => {
     const [questions , setQuestions] = useState({questions:[]});
  
     useEffect(async () => {

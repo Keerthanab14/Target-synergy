@@ -32,6 +32,7 @@ button: {
 
   const CreatePolls=(props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const images=[]; //for imagechoice
     const [img,setimg] = useState(null);
     const [result, setResult] = useState(
      [ {
@@ -71,8 +72,7 @@ const[data5, setData5]=useState({
 })
   
 const [inputList1, setInputList1] = useState([{ choice: "" }]);
-const [inputList2, setInputList2] = useState([{ choice: "" }]);
-const [inputList3, setInputList3] = useState([{ choice: "" }]);
+const [inputListScales, setInputListScales] = useState([{ choice: "" }]);
 const [inputList4, setInputList4] = useState([{ choice: "" }]);
    
    const onFileChange = (event) => {
@@ -195,13 +195,13 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
      component={component} clickHandler={clickHandler} changecolor={settextcolor}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
      data3={data3} setData3={setData3} data4={data4} setData4={setData4} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
-     inputList2={inputList2} setInputList2={setInputList2} inputList3={inputList3} setInputList3={setInputList3} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
-     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6}/>
+    images={images} inputListScales={inputListScales} setInputListScales={setInputListScales} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
+     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state}/>
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} textcolor={textcolor} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
-       inputList1={inputList1} inputList2={inputList2} imgresult={imgresult} flex='1' data4={data4} data6={data6} />
+     } color={color} textcolor={textcolor} images={images} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
+       inputList1={inputList1}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} />
      
      
     

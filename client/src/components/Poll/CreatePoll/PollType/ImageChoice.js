@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import React from 'react'
-import { Paper } from "@material-ui/core";
+import PropTypes from 'prop-types';
+import { CardMedia, Paper, Card } from "@material-ui/core";
 import Bgimage1 from '../../../images/bgimage_1.jpg'
 import Bgimage2 from '../../../images/bgimage_2.jpg'
 import Poll from '../../../images/polling.png'
@@ -66,29 +67,8 @@ export const BlackLine = styled.div`
   background-color: grey;
 `;
 
-export const __DATA__ = [
-    {
-      distance: 13,
-      colors: ["#ffd847", "#e0a106"],
-      image: {Bgimage1}
-    },
-    {
-      distance: 20,
-      colors: ["#ff47ab", "#e0064e"],
-      image: {Bgimage2}
 
-    },
-    {
-      distance: 16,
-      colors: ["#add9c0", "#1da890"],
-      image: {Poll}
-    },
-    {
-      distance: 30,
-      colors: ["#cbd9ad", "#7ca81d"],
-      image: {Bgimage1}
-    },
-  ];
+   
   
 function ImageChoice (props) {
   const imgresult=props.imgresult
@@ -99,12 +79,13 @@ function ImageChoice (props) {
         {imgresult.map((imgresult, i) => {
           return (
             <BarChartContainer key={i}>
-              
+              <Card>
+              <CardMedia image={props.images.selectedFile} />  
+              </Card>
              <Number color={imgresult.colors[1]}  >{imgresult.distance}</Number>
               <MakeBar height={imgresult.distance * 2} colors={imgresult.colors} />
-              
-              <Paper width='8%' style={{backgroundImage:`url(${Bgimage1})`}} >
-              </Paper>
+             
+            
             </BarChartContainer>
           );
         })}

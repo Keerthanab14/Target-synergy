@@ -65,7 +65,7 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, color, textcolor, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
-data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, inputList2, setInputList2, inputList3, setInputList3, settextcolor, contentauth, imgresult, setImgResult }) => {
+data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -112,8 +112,8 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
         {component==="qanda" && <ContentQandA data6={data6} setData6={setData6} handleChangeIndex={handleChangeIndex} />}
         {component==="wordcloud" && <ContentWordCloud data4={data4} setData4={setData4} handleChangeIndex={handleChangeIndex}/>}
         {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>}
-       {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} inputList={inputList2} setInputList={setInputList2} setImgResult={setImgResult} imgresult={imgresult} handleChangeIndex={handleChangeIndex}/>} 
-       {component==="scales" && <ContentScales data5={data5} setData5={setData5} handleChangeIndex={handleChangeIndex}/>}
+       {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} setImgResult={setImgResult} imgresult={imgresult} handleChangeIndex={handleChangeIndex} setState={setState} state={state}/>} 
+       {component==="scales" && <ContentScales data5={data5} setData5={setData5} handleChangeIndex={handleChangeIndex} inputList={inputListScales} setInputList={setInputListScales}/>}
 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
