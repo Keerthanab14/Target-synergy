@@ -28,6 +28,7 @@ public class McqController {
         Mcq mcq=new Mcq();
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
+        mcq.setGoogleId(quest.getGoogleId());
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "/MCQ/" + savedPoll.getId();
         return url;
