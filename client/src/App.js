@@ -10,7 +10,6 @@ import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/PollType/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
-
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
 import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
@@ -23,6 +22,7 @@ import ImageMcq from './components/Poll/CreatePoll/PollType/ImageMcq'
 export const IdContext = React.createContext();
 function App() {
   const [ auth, setAuth]=useState(false)
+  const [ contentauth, setContentAuth ] =useState()
   const [id, setId] = useState("");
   const [textBased , setTextBased] = useState({question:'', choices:[]})
   
@@ -31,7 +31,7 @@ function App() {
     <DesktopBreakpoint>
     <BrowserRouter>
     <div className="App">
-        <Header setAuth={setAuth} auth={auth} />
+        <Header setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>
         <Switch>
           <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} />)} />
          <Route path="/polls" component={Poll}/> 
@@ -43,7 +43,7 @@ function App() {
                 setId
                 }}>
           <Route path="/link" component={CreatePoll} />
-          <Route path="/create-poll" component={CreatePolls} />  
+          <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>  
           <Route
             path="/mcq"
             render={({ match: { url } }) => (
