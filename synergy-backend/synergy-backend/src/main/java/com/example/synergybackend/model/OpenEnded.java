@@ -11,17 +11,17 @@ import java.util.Objects;
 
 @Document(collection = "WordCloud")
 public class OpenEnded {
-    @Transient
-    public static final String SEQUENCE_NUMBER ="user_sequence";
+ /*   @Transient
+    public static final String SEQUENCE_NUMBER ="user_sequence";*/
     @Id
-    private int id;
+    private String id;
     private String question;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
