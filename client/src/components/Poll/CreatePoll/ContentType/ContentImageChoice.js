@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentImageChoice = ({setData2, data2}) => {
+const ContentImageChoice = ({setData2, data2, handleChangeIndex}) => {
   let formData = new FormData();
        
   const [inputList, setInputList] = useState([{ choice: "" }]);
@@ -207,7 +207,7 @@ const ContentImageChoice = ({setData2, data2}) => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={(e)=>{handleChangeIndex(2);submit(e)}}
       >Submit
       </Button>
        
