@@ -13,8 +13,9 @@ import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/Results/WordCloud'
+
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
-//import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
+
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 //import { IdContext } from './IdContext';

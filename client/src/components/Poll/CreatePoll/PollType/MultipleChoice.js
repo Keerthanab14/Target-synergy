@@ -78,7 +78,7 @@ function MultipleChoice ({data1, result, inputList, textcolor}) {
             <BarChartContainer key={i}>
               <Number color={result.colors[1]}>{result.distance}</Number>
               <MakeBar height={result.distance * 2} colors={result.colors} />
-             <b style={{color: textcolor}}>{inputList[i].choice}</b> 
+              <b style={{color: textcolor}}>{inputList[i].choice}</b> 
               
             </BarChartContainer>
           );
