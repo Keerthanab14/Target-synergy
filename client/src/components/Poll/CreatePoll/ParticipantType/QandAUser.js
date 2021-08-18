@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const WordCloudUser = () => {
+const QandAUser = () => {
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/WordCloud/109`).then(res=>{
+  axios.get(`http://localhost:8080/QandA/611cc06c056cc02203b25413`).then(res=>{
         
         setquestion({question:res.data.question})
        
@@ -94,4 +94,4 @@ const WordCloudUser = () => {
 
 
 
-export default WordCloudUser
+export default QandA

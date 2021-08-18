@@ -51,7 +51,7 @@ export const box = styled.div`
 `;
 const OpenEnded = () => {
   const [question,setquestion]=useState({question:""})
-   axios.get(`http://localhost:8080/OpenEnded/611972bf71e57871d4321fe4`)
+   axios.get(`http://localhost:8080/QandA/611cc06c056cc02203b25413`)
    .then(res=>{
         
          setquestion({question:res.data.question})
