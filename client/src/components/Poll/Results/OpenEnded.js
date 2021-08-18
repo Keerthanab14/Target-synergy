@@ -8,15 +8,13 @@ const id=27
 const useStyles = makeStyles((theme) => ({
     root: {
         flex: 1,
-      '& > *': {
         margin: theme.spacing(1),
         width: '100%',
+        justifyContent:'center', alignItems:"center", height:'100%'
       
-      },
-    },
-    h:{
-      fontSize: '15px',
-      marginBottom: '0',
+    
+    
+    
 
     },
     typography: {
@@ -31,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     addicon: {
         color: 'solid white',
     },
+
 }));
 
 export const Container = styled.div`
@@ -76,8 +75,8 @@ const OpenEnded = () => {
     const classes = useStyles();
     
     return (
-        <div >
-            <h1 fontFamily= "Helvetica" justifyContent="left" >{question.question}</h1>
+        <div className={classes.root}  >
+            <h1 style={{fontFamily:"Helvetica",justifyContent:"center"}} >{question.question}</h1>
            
     {OpenEndedResponses.responses.map((x, i) => {
          var color = randomColor();
