@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -8,6 +8,7 @@ import { Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
 import axios from 'axios'
+import { IdContext } from '../../../../App';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
     },
     typography: {
-        // for settings
         fontSize: 12,
       },
     button: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContentScales = ({data5, setData5, setInputList, inputList}) => {
-     const [state, setState] = React.useState({
+     const [state, setState] = useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
@@ -72,7 +72,7 @@ const ContentScales = ({data5, setData5, setInputList, inputList}) => {
     const classes = useStyles();
     const url="http://localhost:8080/polls"
    
-    const[id, setId]=useState("")
+    const id = useContext(IdContext)
     const submit = (e) => {
 
       e.preventDefault();
@@ -88,7 +88,8 @@ const ContentScales = ({data5, setData5, setInputList, inputList}) => {
       axios.post(url, q)
            .then(res=>{
               console.log(res)
-              setId(res.data5);
+              id.setId(res.data);
+              
             })
 
     }
