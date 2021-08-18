@@ -36,4 +36,30 @@ public class OpenEndedController {
     public OpenEnded getOpenEndedquestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
+    @PostMapping("/WordCloud")
+    public String savewcQuestion(@RequestBody OpenEnded quest) {
+        OpenEnded openEnded=new OpenEnded();
+        // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
+        openEnded.setQuestion( quest.getQuestion());
+        OpenEnded saved= openEndedRepository.save(openEnded);
+        String url = "/OpenEnded/" + saved.getId();
+        return url;
+    }
+    @GetMapping("/WordCloud/{id}")
+    public OpenEnded getWcquestion(@PathVariable("id") String id){
+        return openEndedRepository.findById(id).get();
+    }
+    @PostMapping("/QandA")
+    public String saveQandAQuestion(@RequestBody OpenEnded quest) {
+        OpenEnded openEnded=new OpenEnded();
+        // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
+        openEnded.setQuestion( quest.getQuestion());
+        OpenEnded saved= openEndedRepository.save(openEnded);
+        String url = "/QandA/" + saved.getId();
+        return url;
+    }
+    @GetMapping("/QandA/{id}")
+    public OpenEnded getQandAquestion(@PathVariable("id") String id){
+        return openEndedRepository.findById(id).get();
+    }
 }
