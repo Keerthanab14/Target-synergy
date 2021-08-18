@@ -11,7 +11,7 @@ import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
-import WordCloud from './components/Poll/CreatePoll/PollType/WordCloud'
+import WordCloud from './components/Poll/Results/WordCloud'
 //import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
@@ -49,7 +49,7 @@ function App() {
           <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>
          <Route path="/27" component={OpenEndedUser}/>
-         <Route path="/28" component={OpenEnded}/>
+         <Route path="/29" component={WordCloud}/>
          <Route path="/610fbf5066e210524c8325a5" component={ImageMcq}/>
 
           <Route
