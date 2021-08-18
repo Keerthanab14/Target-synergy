@@ -5,7 +5,7 @@ import { IdContext } from '../../../../IdContext';
 
 
 const wcr=[];
-const WordCloud=()=>{
+const WordCloud=({data4,textcolor})=>{
   const id = useContext(IdContext);
   const url = id.id;
 

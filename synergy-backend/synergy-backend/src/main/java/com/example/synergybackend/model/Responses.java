@@ -11,6 +11,7 @@ import java.util.Objects;
 
 @Document(collection = "responses")
 public class Responses {
+
     @Id
     private String id;
     private String latestAnswer;

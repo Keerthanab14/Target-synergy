@@ -37,14 +37,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentScales = ({data5, setData5}) => {
+const ContentScales = ({data5, setData5, setInputList, inputList}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
       });
     
-      const [inputList, setInputList] = useState([{ choice: "" }]);
+
 
   // handle input change
   const handleInputChange = (e, index) => {

@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentWordCloud = () => {
+const ContentWordCloud = ({data4,setData4,handleChangeIndex}) => {
      const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
@@ -60,7 +60,7 @@ const ContentWordCloud = () => {
     const submit = (e) => {
       e.preventDefault();
      
-      axios.post(url, inputList)
+      axios.post(url, data4)
            .then(res=>{
               id.setId(res.data);
               console.log(id.id);
@@ -70,9 +70,9 @@ const ContentWordCloud = () => {
 
  
     function handle(e){
-      const newdata={...inputList}
+      const newdata={...data4}
       newdata[e.target.id]=e.target.value
-      setInputList(newdata)
+      setData4(newdata)
       console.log(newdata)
 
     }
@@ -82,7 +82,7 @@ const ContentWordCloud = () => {
       <div >
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
         <h4 className={classes.h}>Please enter the question</h4>
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={inputList.question} type="text" style={{width: '100%'}} />
+        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data4.question} type="text" style={{width: '100%'}} />
 
     
    <Button
@@ -92,7 +92,7 @@ const ContentWordCloud = () => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={(e)=>{handleChangeIndex(2);submit(e)}}
       >Submit
       </Button>
        </form>

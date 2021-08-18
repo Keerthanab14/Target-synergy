@@ -6,7 +6,7 @@ import MultipleChoice from "./PollType/MultipleChoice";
 import WordCloud from './PollType/WordCloud';
 import ImageChoice from './PollType/ImageChoice';
 import Scales from './PollType/Scales';
-import QandA from './PollType/QandA';
+import QandA from './PollType/QandA'
 import OpenEnded from './PollType/OpenEnded';
 
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Presentation = ({color, textcolor, component, opacity, img, data1, data2, data3,data5, result, inputList1,inputList2}) => {
+const Presentation = ({color, textcolor, component, opacity, img, data1, data2, data3,data5,data4,data6, result, inputList1,state, imgresult, inputListScales}) => {
     const classes = useStyles();
 
     return (
@@ -42,12 +42,12 @@ const Presentation = ({color, textcolor, component, opacity, img, data1, data2, 
                     }}
                     >
                    
-        {component === 'imagechoice' && <ImageChoice data2={data2} inputList={inputList2}/>} 
+        {component === 'imagechoice' && <ImageChoice data2={data2} images={state} imgresult={imgresult} />} 
         {component === 'multiplechoice' && <MultipleChoice data1={data1} result={result} inputList={inputList1}/>  }
-        {component === 'wordcloud' && <WordCloud/>} 
-        {component === 'qanda' && <QandA/>} 
-        {component === 'scales' && <Scales data5={data5}/>} 
-        {component === 'openended' && <OpenEnded data3={data3}/>}
+        {component === 'wordcloud' && <WordCloud data4={data4}/>} 
+        {component === 'qanda' && <QandA data6={data6}/>} 
+        {component === 'scales' && <Scales data5={data5} inputList={inputListScales}/>} 
+        {component === 'openended' && <OpenEnded openEnded={data3}/>}
 
                     </Paper>
                     

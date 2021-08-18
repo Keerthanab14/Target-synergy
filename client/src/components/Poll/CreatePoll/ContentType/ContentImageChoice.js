@@ -39,23 +39,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentImageChoice = ({setData2, data2}) => {
+const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState,setImgResult, imgresult}) => {
   let formData = new FormData();
        
   const [inputList, setInputList] = useState([{ choice: "" }]);
-      const [state, setState] = React.useState({
-        checkedA: false,
-         checkedB: false,
-       checkedC: false,
-       selectedFile: null
-     });
-   const images=[];
+      
+  const images=[]
    let i=0;
       // On file select (from the pop up)
      const onFileChange = (event) => {
       
         // Update the state
         setState({ selectedFile: event.target.files[0] });
+        
       
       };
       
@@ -97,11 +93,16 @@ const ContentImageChoice = ({setData2, data2}) => {
     list.splice(index, 1);
     setInputList(list);
     images[--i]=({})
+    const r = [...imgresult];
+    console.log(imgresult);
+    r.splice(index, 1);
+    setImgResult(r);
  };
  
   // handle click event of the Add button
   const handleAddClick = () => {
     setInputList([...inputList, { choice: "" }]);
+    setImgResult([...imgresult, { distance: 0, colors: ["#ffd847", "#e0a106"], }]);
   };
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
@@ -207,7 +208,7 @@ const ContentImageChoice = ({setData2, data2}) => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={(e)=>{handleChangeIndex(2);submit(e)}}
       >Submit
       </Button>
        
