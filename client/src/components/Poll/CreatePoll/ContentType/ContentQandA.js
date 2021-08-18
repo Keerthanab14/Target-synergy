@@ -1,14 +1,9 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import AddIcon from '@material-ui/icons/Add';
-import { Typography } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { Grid } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
+import { IdContext } from '../../../../App';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContentQandA = ({data6, setData6,handleChangeIndex}) => {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
       checkedA: false,
       checkedB: false,
       checkedC: false,
@@ -47,16 +42,17 @@ const ContentQandA = ({data6, setData6,handleChangeIndex}) => {
  
  const classes = useStyles();
  const url="http://localhost:8080/QandA"
- 
+ const id = useContext(IdContext);
 
  const submit = (e) => {
 
    e.preventDefault();
-   
-
-   axios.post(url, data6)
+  
+     axios.post(url, data6)
         .then(res=>{
-           console.log(res.data)
+           console.log(res.data);
+           id.setId(res.data);
+           console.log(id.id);
          })
 
  }

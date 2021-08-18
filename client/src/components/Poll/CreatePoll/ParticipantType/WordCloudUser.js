@@ -32,18 +32,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const WordCloudUser = () => {
+const WordCloudUser = (props) => {
+  const u =props.match.params.id;
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/WordCloud/109`).then(res=>{
-        
-        setquestion({question:res.data.question})
+  axios.get(`http://localhost:8080/WC/${u}`)
+        .then(res=>{
+              setquestion({question:res.data.question})
        
     })
   const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
      
     
     const classes = useStyles();
-    const url="http://localhost:8080/responses/611ac9536bc994626e4d6beb"
+    const url=`http://localhost:8080/responses/${u}`
     
    
     const submit = (e) => {

@@ -10,16 +10,18 @@ import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/CreatePoll/PollType/QandA';
+import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/Results/WordCloud'
+import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
 //import OpenEnded from './components/Poll/CreatePoll/PollType/OpenEnded'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 //import { IdContext } from './IdContext';
 import OpenEnded from './components/Poll/Results/OpenEnded'
-import GoogleLogin from 'react-google-login';
 import ImageMcq from './components/Poll/CreatePoll/ParticipantType/ImageMcq'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
+import ImageChoice from './components/Poll/CreatePoll/PollType/ImageChoice';
 
 export const IdContext = React.createContext();
 function App() {
@@ -46,11 +48,9 @@ function App() {
                 }}>
           <Route path="/link" component={CreatePoll} />
           <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>  
-          <Route path="/66" component={WordCloud}/>
          <Route path="/36" component={Scales}/>
-         <Route path="/27" component={OpenEndedUser}/>
          <Route path="/29" component={WordCloud}/>
-         <Route path="/610fbf5066e210524c8325a5" component={ImageMcq}/>
+         <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
 
           <Route
             path="/MCQ"
@@ -59,27 +59,40 @@ function App() {
                 <Route exact path={`${url}/:id`} component={Vote} />  
               </Switch>
             )}
-          /></IdContext.Provider>
+          />
+          <Route
+            path="/OE"
+            render={({ match: { url } }) => (
+             <Switch> 
+                <Route exact path={`${url}/:id`} component={OpenEndedUser} />  
+              </Switch>
+            )}
+          />
           <Route
             path="/imageChoice"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} component={Vote} exact />
+                <Route path={`${url}/:id`} component={ImageChoice} exact />
               </Switch>
             )}
           />
           <Route
-            path="/wordCloud"
+            path="/WC"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} component={WordCloud} exact />
+                <Route path={`${url}/:id`} component={WordCloudUser} exact />
               </Switch>
             )}
           />
-
-         {/* <Route path="/27" component={QandA}/> */}
-        
-         
+          <Route
+            path="/QandA"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={QandAUser} exact />
+              </Switch>
+            )}
+          />
+         </IdContext.Provider>
         </Switch> 
     </div>
     </BrowserRouter>
@@ -88,8 +101,6 @@ function App() {
     <BrowserRouter>
    
     <div className="App">
-      {/* <button onClick={PollsSubmit}>Submit</button>
-      <Vote result = {result}/> */}
         <Header />
         <Switch>
           <Route exact path="/" component={Main} />
@@ -97,17 +108,12 @@ function App() {
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
           <Route path="/link" component={CreatePoll}/> 
-           
-
           <Route
             path="/create-poll"
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/`} component={CreatePolls} exact />
-            { /* <Route path={`${url}/type`} component={PollType} />
-                <Route path={`${url}/content`} component={Content} />
-            <Route path={`${url}/background`} component={Background} /> */ }
-                      </Switch>
+              </Switch>
             )}
           />
           <Route path="/231" component={Vote}/>
