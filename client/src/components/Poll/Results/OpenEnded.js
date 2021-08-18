@@ -51,20 +51,14 @@ export const box = styled.div`
 `;
 const OpenEnded = () => {
   const [question,setquestion]=useState({question:""})
-  // axios.get(`http://localhost:8080/OpenEnded/611972bf71e57871d4321fe4`).then(res=>{
+   axios.get(`http://localhost:8080/OpenEnded/611972bf71e57871d4321fe4`)
+   .then(res=>{
         
-  //       setquestion({question:res.data.question})
+         setquestion({question:res.data.question})
        
-  //   })
+    })
     const [OpenEndedResponses , setOpenEndedResponses] = useState({responses:[]});
   
-//     useEffect(async () => {
-//       var result = await axios.get(`http://localhost:8080/responses/611ac9536bc994626e4d6beb`)
-//   setOpenEndedResponses({
-    
-//     OpenEndedResponses: result.data.responses 
-//   })
-// },[])
     axios.get(`http://localhost:8080/responses/611ac9536bc994626e4d6beb`)
     .then(res=>{
       console.log(res)
@@ -75,12 +69,10 @@ const OpenEnded = () => {
     .catch (error=> {
       console.log(error.response);
     })
-    const responses_OpenEnd=[];
+
     console.log(OpenEndedResponses)
-//    OpenEndedResponses.map((post,key) => (
-//      responses_OpenEnd[key]=post.text
-//  ));
-console.log(responses_OpenEnd);
+    console.log(question)
+
     const classes = useStyles();
     
     return (
@@ -93,6 +85,7 @@ console.log(responses_OpenEnd);
        
        <Container marginTop= '10px'>
           <div>
+
                 <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000', marginBottom: '5px', marginRight:"10px"}} >
               {x}
                 </Box>

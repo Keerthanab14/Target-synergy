@@ -1,10 +1,9 @@
-import styled, { css } from "styled-components";
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import randomColor from 'randomcolor'
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import axios from 'axios'
-const id=27
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flex: 1,
@@ -33,73 +32,66 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const Container = styled.div`
-inline-size: 150px;
-overflow-wrap: break-word;
-text-align: center;
-float: left;
-  width: 250px;
-  padding: 3px;
-  margin: 3px;
-
-`;
-
-
-export const box = styled.div`
-  height: 1%;
-
-`;
-const WordCloudUser = ({data3}) => {
-    const [WordCloudQues , setWordCloudQues] = useState({question:""});
- 
-    useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/WordCloud/97`)
-      setWordCloudQues({
-       
-        question: result.data.question
-      })
-
-      
-    function handle(e){
-        const newdata={...inputList}
-        newdata[e.target.id]=e.target.value
-        setInputList(newdata)
-        console.log(newdata)
-  
-      }
-    },[])
-//     const responses_OpenEnd=[];
-//     OpenEndedResponses.responses.map((post,key) => (
-//     responses_OpenEnd[key]=post.text
-// ));
-//console.log(responses_OpenEnd);
-    const classes = useStyles();
-    
-    return (
+const WordCloudUser = () => {
+  const [question,setquestion]=useState({question:""})
+  axios.get(`http://localhost:8080/WordCloud/109`).then(res=>{
         
-              <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
-              <h1 fontFamily= "Helvetica" justifyContent="left" >{WordCloudQues.question}</h1>
-        <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={inputList.question} type="text" style={{width: '100%'}} />
-
-           
-    {/* {responses_OpenEnd.map((x, i) => {
-         var color = randomColor();
-    return(
+        setquestion({question:res.data.question})
        
-       <Container marginTop= '10px'>
-          <div>
-          <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
+    })
+  const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
+     
+    
+    const classes = useStyles();
+    const url="http://localhost:8080/responses/611ac9536bc994626e4d6beb"
+    
+   
+    const submit = (e) => {
 
-          <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={inputList.question} type="text" style={{width: '100%'}} />
-            </form>
-           </div>
-          
-        </Container>
-       
-    )
-    })} */}
-    </form>
+      e.preventDefault();
+      
+  
+      axios.put(url, OpenEndedAnswer)
+           .then(res=>{
+              console.log(res.data)
+            })
+
+    }
+    
+    function handle(e){
+      const newdata={...OpenEndedAnswer}
+      newdata[e.target.id]=e.target.value
+      setOpenEndedAnswer(newdata)
+      console.log(newdata)
+
+    }
+
+
+    return (
+      <div >
+           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>{question.question}</h4>
+      
+     
+      <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={OpenEndedAnswer.latestAnswer} type="text" style={{width: '100%'}} />
+    
+      
+     <Button
+        style={{ width: "235px",background:"#cc0000", color:"white" }}
+        className={classes.button}
+        variant="contained"
+       // color="primary"
+        size="large"
+        fullWidth={true}
+        onClick={submit}
+      >Submit
+      </Button>
+  
+       </form>
+      </div>
+      
     );
 }
+
+
 
 export default WordCloudUser
