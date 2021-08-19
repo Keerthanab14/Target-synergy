@@ -8,28 +8,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Objects;
 //@Document(collection = "choices")
 public class Choice {
-//    @Transient
-//    public static final String SEQUENCE_NUMBER ="user_sequence";
-//    @Id
-//    private int id;
+    @Id
     private String text;
-
+    private int count;
 
     public Choice() {
 
     }
 
-    public Choice(String text) {
+    public Choice(String text,int count) {
         this.text = text;
+        this.count = count;
     }
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public String getText() {
         return text;
@@ -39,25 +29,12 @@ public class Choice {
 
         this.text = text;
     }
+    public int getCount() {
+        return count;
+    }
 
-//    public Poll getPoll() {
-//        return poll;
-//    }
-//
-//    public void setPoll(Poll poll) {
-//        this.poll = poll;
-//    }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Choice choice = (Choice) o;
-//        return Objects.equals(id, choice.id);
-//    }
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
+    public void setCount(int count) {
+        this.count = count;
+    }
 
 }
