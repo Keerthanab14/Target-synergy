@@ -70,7 +70,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
  
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { choice: "" }]);
+    setInputList([...inputList, { choice: "",count: 0 }]);
     setResult([...result, { distance: 0, colors: ["#ffd847", "#e0a106"], }]);
   };
       const handleChange = (event) => {
@@ -84,12 +84,14 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
     e.preventDefault();
       inputList.map((choicee,key)=>{
         data1.choice[key]=choicee.choice
+        data1.count[key]=choicee.count
       })
       const a = contentauth;
       
       const q ={
         question: data1.question,
         choices: data1.choice,
+        count: data1.count,
         googleId : a
       }
       console.log(q)
