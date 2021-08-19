@@ -99,7 +99,8 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
    const [opacity, setOpacity]=React.useState(100);
    const [component, setComponent] = React.useState('multiplechoice');
    const [state, setState] = React.useState({
-   selectedFile: null
+   selectedFile: null,
+   bgurl: null,
  });
  const imagess=[];
 

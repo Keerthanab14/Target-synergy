@@ -48,10 +48,14 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
    let i=0;
       // On file select (from the pop up)
      const onFileChange = (event,i) => {
-     
+      let photos = [];
+
+    photos.push(URL.createObjectURL(event.target.files[i]))
+      
+  
         // Update the state
-      setState({ selectedFile: event.target.files[0]} );
-        
+      setState({ selectedFile: event.target.files, bgurl: photos} );
+     
       
       };
       
@@ -74,7 +78,7 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
           console.log(images)
 
         })
-        //image[i]=URL.createObjectURL(images[i]);
+
       };
       console.log(images)
 
@@ -98,7 +102,7 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
     console.log(imgresult);
     r.splice(index, 1);
     setImgResult(r);
-    const im=[...state];
+    const im=[...state.bgurl];
     im.splice(index,1);
     //set[]
  };
