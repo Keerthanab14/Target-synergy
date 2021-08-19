@@ -33,4 +33,5 @@ public class McqController {
         String url = "/MCQ/" + savedPoll.getId();
         return url;
     }
+
 }
