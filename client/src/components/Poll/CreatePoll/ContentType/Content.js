@@ -70,7 +70,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
  
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { choice: "",count: 0 }]);
+    setInputList([...inputList, { choice:"", count: 0 }]);
     setResult([...result, { distance: 0, colors: ["#ffd847", "#e0a106"], }]);
   };
       const handleChange = (event) => {
@@ -90,11 +90,13 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
       
       const q ={
         question: data1.question,
-        choices: data1.choice,
-        count: data1.count,
+        options:[{choices: data1.choice,
+        count: data1.count}],
         googleId : a
+      
       }
       console.log(q)
+      console.log(q.options)
      
       axios.post(url, q)
            .then(res=>{
