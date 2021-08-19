@@ -25,10 +25,12 @@ public class McqController {
 
     @PostMapping("/MCQ")
     public String saveMcq(@RequestBody Mcq quest) {
+        System.out.println(quest.getChoices());
         Mcq mcq=new Mcq();
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
         mcq.setGoogleId(quest.getGoogleId());
+        System.out.println(mcq.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "/MCQ/" + savedPoll.getId();
         return url;
