@@ -86,7 +86,7 @@ const OpenEnded = () => {
        <Container marginTop= '10px'>
           <div>
 
-                <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000', marginBottom: '5px', marginRight:"10px"}} >
+                <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000'}} >
               {x}
                 </Box>
            </div>
