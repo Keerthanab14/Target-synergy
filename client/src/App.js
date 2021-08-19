@@ -11,7 +11,7 @@ import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/Results/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
-import Scales from './components/Poll/CreatePoll/PollType/Scales'
+import Scales from './components/Poll/Results/Scales'
 import WordCloud from './components/Poll/Results/WordCloud'
 
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
@@ -52,6 +52,7 @@ function App() {
          <Route path="/36" component={Scales}/>
          <Route path="/29" component={WordCloud}/>
         <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
+        
         
 
           <Route
