@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Content = ({setData1,data1, setResult, result, inputList,setInputList, handleChangeIndex,contentauth}) => {
-     const [state, setState] = useState({
+     const [state, setState] = React.useState({
          checkedA: false,
          checkedB: false,
          checkedC: false,
@@ -52,6 +52,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
     const list = [...inputList];
     console.log(inputList)
     list[index][e.target.name] = e.target.value;
+    
     setInputList(list);
     
    console.log(inputList)};
