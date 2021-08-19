@@ -49,6 +49,7 @@ export const box = styled.div`
 
 `;
 const WordCloud = () => {
+    
   const [question,setquestion]=useState({question:""})
    axios.get(`http://localhost:8080/WordCloud/109`)
    .then(res=>{
@@ -56,7 +57,7 @@ const WordCloud = () => {
          setquestion({question:res.data.question})
        
     })
-   
+
 const wcr=[];
 axios.get(`http://localhost:8080/WordCloudResponse/611ac9536bc994626e4d6beb`)
 .then(res=>{
@@ -78,7 +79,7 @@ display: "flex",
 alignItems: "center",
 justifyContent: "center",
 border: "solid 1px #ddd",
-width: '100%',
+width: '95%',
 height: '90%',
 marginTop: '5%'
 };
@@ -108,7 +109,7 @@ const size = [1200, 400];
 
 return (
 <div>
-<h1 fontFamily= "Helvetica" justifyContent="left" >{question.question}</h1>
+<h1 style={{fontFamily: "Helvetica", textAlign: 'center'}} >haha{question.question}</h1>
 
 
   <div style={resizeStyle}>

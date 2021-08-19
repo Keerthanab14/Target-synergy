@@ -11,11 +11,6 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         width: '100%',
         justifyContent:'center', alignItems:"center", height:'100%'
-      
-    
-    
-    
-
     },
     typography: {
         // for settings
@@ -75,26 +70,30 @@ const OpenEnded = () => {
     const classes = useStyles();
     
     return (
-        <div className={classes.root}  >
-            <h1 style={{fontFamily:"Helvetica",justifyContent:"center"}} >{question.question}</h1>
+      <div>
+      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center"}} > {question.question}</h1></div>
+          <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '100%'}} >
+             
+      
+         
+      
+     
+       {OpenEndedResponses.responses.map((x, i) => {
+           var color = randomColor();
+      return(
+         
+         <Container>
            
-    {OpenEndedResponses.responses.map((x, i) => {
-         var color = randomColor();
-    return(
-       
-       <Container marginTop= '10px'>
-          <div>
-
-                <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000', marginBottom: '5px', marginRight:"10px"}} >
-              {x}
-                </Box>
-           </div>
-          
-        </Container>
-       
-    )
-    })}
-    </div>
+  
+                  <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000', width: '100%'}} >
+                {x}
+                  </Box>
+                 </Container>
+         
+      )
+      })}
+      </div>
+      </div>
     );
 }
 
