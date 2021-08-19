@@ -84,18 +84,17 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
     e.preventDefault();
       inputList.map((choicee,key)=>{
         data1.choice[key]=choicee
-
       })
       const a = contentauth;
       
       const q ={
         question: data1.question,
-        options:data1.choice,
+        choices:data1.choice,
         googleId : a
       
       }
       console.log(q)
-      console.log(q.options)
+      // console.log(q.options)
      
       axios.post(url, q)
            .then(res=>{
