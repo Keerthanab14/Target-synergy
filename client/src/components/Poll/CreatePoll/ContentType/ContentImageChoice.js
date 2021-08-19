@@ -49,8 +49,9 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
       // On file select (from the pop up)
      const onFileChange = (event,i) => {
       let photos = [];
-
-    photos.push(URL.createObjectURL(event.target.files[i]))
+    while(i<event.target.files.length)
+    {photos.push(URL.createObjectURL(event.target.files[i]))
+    i++;}
       
   
         // Update the state

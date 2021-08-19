@@ -83,20 +83,18 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
     const submit = (e) => {
     e.preventDefault();
       inputList.map((choicee,key)=>{
-        data1.choice[key]=choicee.choice
-        data1.count[key]=choicee.count
+        data1.choice[key]=choicee
       })
       const a = contentauth;
       
       const q ={
         question: data1.question,
-        options:[{choices: data1.choice,
-        count: data1.count}],
+        choices:data1.choice,
         googleId : a
       
       }
       console.log(q)
-      console.log(q.options)
+      // console.log(q.options)
      
       axios.post(url, q)
            .then(res=>{
