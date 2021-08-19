@@ -73,12 +73,7 @@ const OpenEnded = () => {
       <div>
       <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center"}} > {question.question}</h1></div>
           <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '100%'}} >
-             
-      
-         
-      
-     
-       {OpenEndedResponses.responses.map((x, i) => {
+           {OpenEndedResponses.responses.map((x, i) => {
            var color = randomColor();
       return(
          

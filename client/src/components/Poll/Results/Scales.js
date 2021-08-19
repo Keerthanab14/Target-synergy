@@ -5,6 +5,13 @@ import Slider from '@material-ui/core/Slider';
 import { Container } from '@material-ui/core';
 
 const Scales =() => {
+  const [question,setquestion]=useState({question:""})
+   axios.get(`http://localhost:8080/Scales/`)
+   .then(res=>{
+        
+         setquestion({question:res.data.question})
+       
+    })
     const ScaleSlider = withStyles({
         root: {
           color: '#52af77',
@@ -40,7 +47,7 @@ const Scales =() => {
        
             <Container >
          
-     <ScaleSlider  defaultValue={0}  />
+     <ScaleSlider valueLabelDisplay="auto" defaultValue={0}  />
 </Container>
     
         

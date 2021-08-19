@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const ContentOpenEnded = (props) => {
  
     
-    
+    const handleChangeIndex=props.handleChangeIndex
     const classes = useStyles();
     const url="http://localhost:8080/OE"
     const id = useContext(IdContext);
@@ -75,7 +75,7 @@ const ContentOpenEnded = (props) => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={(e)=>{handleChangeIndex(2);submit(e)}}
       >Submit
       </Button>
   

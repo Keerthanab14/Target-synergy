@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Container } from '@material-ui/core';
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     h:{
-      fontSize: '15px',
+      textAlign: 'center',
       marginBottom: '0',
 
     },
@@ -69,15 +70,15 @@ const WordCloudUser = (props) => {
 
 
     return (
-      <div >
+      <Container  style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', marginTop: '2%' }} >
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>{question.question}</h4>
       
-     
-      <TextField id="outlined-basic" label="Your multiple choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={OpenEndedAnswer.latestAnswer} type="text" style={{width: '100%'}} />
+           <h5>Write Your Answer Here:</h5>
+      <TextField id="outlined-multiline-static" multiline rows={4} label="Your Answer" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={OpenEndedAnswer.latestAnswer} type="text" style={{width: '100%'}} />
     
       
      <Button
-        style={{ width: "235px",background:"#cc0000", color:"white" }}
+        style={{ width: "100%",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
        // color="primary"
@@ -88,7 +89,7 @@ const WordCloudUser = (props) => {
       </Button>
   
        </form>
-      </div>
+      </Container>
       
     );
 }
