@@ -1,8 +1,9 @@
-import React,{useState} from 'react';
+import React,{useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
+import { IdContext } from '../../../../App';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,17 +38,15 @@ const ContentOpenEnded = (props) => {
     
     
     const classes = useStyles();
-    const url="http://localhost:8080/OpenEnded"
-    
-   
+    const url="http://localhost:8080/OE"
+    const id = useContext(IdContext);
     const submit = (e) => {
-
       e.preventDefault();
-      
-  
       axios.post(url, props.OpenEnded)
            .then(res=>{
-              console.log(res.data)
+              console.log(res.data);
+              id.setId(res.data);
+              console.log(id.id);
             })
 
     }

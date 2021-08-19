@@ -35,9 +35,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentOpenEndedAnswerUser = () => {
+const ContentOpenEndedAnswerUser = (props) => {
+  const u = props.match.params.id;
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/OpenEnded/611972bf71e57871d4321fe4`).then(res=>{
+  axios.get(`http://localhost:8080/OE/${u}`).then(res=>{
         
         setquestion({question:res.data.question})
        
@@ -46,7 +47,7 @@ const ContentOpenEndedAnswerUser = () => {
      
     
     const classes = useStyles();
-    const url="http://localhost:8080/responses/611ac9536bc994626e4d6beb"
+    const url=`http://localhost:8080/responses/${u}`
     
    
     const submit = (e) => {

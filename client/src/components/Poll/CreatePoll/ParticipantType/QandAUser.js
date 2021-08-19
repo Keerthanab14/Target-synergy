@@ -32,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const QandAUser = () => {
+const QandAUser = (props) => {
+  const url =props.match.params.id;
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/QandA/611cc06c056cc02203b25413`).then(res=>{
+  axios.get(`http://localhost:8080/QandA/${url}`).then(res=>{
         
         setquestion({question:res.data.question})
        
@@ -43,15 +44,13 @@ const QandAUser = () => {
      
     
     const classes = useStyles();
-    const url="http://localhost:8080/responses/611ac9536bc994626e4d6beb"
+    const uri=`http://localhost:8080/responses/${url}`
     
    
     const submit = (e) => {
 
       e.preventDefault();
-      
-  
-      axios.put(url, OpenEndedAnswer)
+      axios.put(uri, OpenEndedAnswer)
            .then(res=>{
               console.log(res.data)
             })
@@ -65,7 +64,6 @@ const QandAUser = () => {
       console.log(newdata)
 
     }
-
 
     return (
       <div >
@@ -94,4 +92,4 @@ const QandAUser = () => {
 
 
 
-export default QandA
+export default QandAUser

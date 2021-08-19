@@ -17,42 +17,41 @@ public class OpenEndedController {
    /* @Autowired
     private SequenceService service;*/
 
-    @GetMapping("/OpenEnded")
-    public List<OpenEnded> getAllquestion(){
+//    @GetMapping("/OE")
+//    public List<OpenEnded> getAllquestion(){
+//
+//            return openEndedRepository.findAll();
+//        }
 
-            return openEndedRepository.findAll();
-        }
-
-    @PostMapping("/OpenEnded")
+    @PostMapping("/OE")
     public String saveQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
-       // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
         openEnded.setQuestion( quest.getQuestion());
         OpenEnded saved= openEndedRepository.save(openEnded);
-        String url = "/OpenEnded/" + saved.getId();
+        String url = "/OE/" + saved.getId();
         return url;
     }
-    @GetMapping("/OpenEnded/{id}")
+    @GetMapping("/OE/{id}")
     public OpenEnded getOpenEndedquestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
-    @PostMapping("/WordCloud")
+    @PostMapping("/WC")
     public String savewcQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
         // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
         openEnded.setQuestion( quest.getQuestion());
         OpenEnded saved= openEndedRepository.save(openEnded);
-        String url = "/OpenEnded/" + saved.getId();
+        String url = "/WC/" + saved.getId();
         return url;
     }
-    @GetMapping("/WordCloud/{id}")
-    public OpenEnded getWcquestion(@PathVariable("id") String id){
+    @GetMapping("/WC/{id}")
+    public OpenEnded getWcQuestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
+
     @PostMapping("/QandA")
     public String saveQandAQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
-        // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
         openEnded.setQuestion( quest.getQuestion());
         OpenEnded saved= openEndedRepository.save(openEnded);
         String url = "/QandA/" + saved.getId();
@@ -60,6 +59,7 @@ public class OpenEndedController {
     }
     @GetMapping("/QandA/{id}")
     public OpenEnded getQandAquestion(@PathVariable("id") String id){
+
         return openEndedRepository.findById(id).get();
     }
 }

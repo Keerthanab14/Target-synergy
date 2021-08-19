@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -8,6 +8,7 @@ import { Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
 import { ImageRounded } from '@material-ui/icons';
+import { IdContext } from '../../../../App';
 
 import axios from 'axios'
 
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState,setImgResult, imgresult}) => {
   let formData = new FormData();
-       
+  const id = useContext(IdContext);    
   const [inputList, setInputList] = useState([{ choice: "" }]);
       
   const images=[]
@@ -69,7 +70,6 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
         axios.post("http://localhost:8080/file/upload", formData,{headers:{"Content-Type" : "application/json"}})
         .then(res=>{
           console.log(res)
-          
           images[i]=({option:(res.data)})
           i++
           console.log(images)
@@ -109,11 +109,8 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
       };
     
     const classes = useStyles();
-     const url="http://localhost:8080/mcq"
-     
-  const[id, setId]=useState("")
- 
-   const submit = (e) => {
+    const url="http://localhost:8080/mcq"
+    const submit = (e) => {
 
    e.preventDefault();
    console.log(images)
@@ -129,7 +126,8 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
      axios.post(url, q)
          .then(res=>{
             console.log(res)
-               setId(res.data2);
+            id.setId(res.data);
+            console.log(id.id);
              })
 
      }

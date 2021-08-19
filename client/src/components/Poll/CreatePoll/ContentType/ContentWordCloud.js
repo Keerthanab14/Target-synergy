@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import axios from 'axios'
-import { IdContext } from '../../../../IdContext';
+import { IdContext } from '../../../../App';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,12 +54,11 @@ const ContentWordCloud = ({data4,setData4,handleChangeIndex}) => {
  
   
     const classes = useStyles();
-    const url="http://localhost:8080/WordCloud"
+    const url="http://localhost:8080/WC"
     
     const id = useContext(IdContext);
     const submit = (e) => {
       e.preventDefault();
-     
       axios.post(url, data4)
            .then(res=>{
               id.setId(res.data);
