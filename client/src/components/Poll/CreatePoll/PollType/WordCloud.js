@@ -58,7 +58,8 @@ const resizeStyle = {
   const size = [1200, 400];
 
     return (
-
+      <div>
+        <h1 style={{color: textcolor}}>{data4.question}</h1>
         <div style={resizeStyle}>
       <ReactWordcloud
         callbacks={callbacks}
@@ -66,6 +67,7 @@ const resizeStyle = {
         size={size}
         words={wcr}
       />
+      </div>
       </div>
     );
   }

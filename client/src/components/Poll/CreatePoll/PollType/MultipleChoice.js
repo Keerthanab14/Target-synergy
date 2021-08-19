@@ -71,7 +71,7 @@ function MultipleChoice ({data1, result, inputList, textcolor}) {
 
     return(
       <Container>
-        <h3 style={{color: textcolor}}>{data1.question}</h3>
+        <h2 style={{color: textcolor}}>{data1.question}</h2>
         <MainContainer>
         {result.map(( result, i) => {
           return (
