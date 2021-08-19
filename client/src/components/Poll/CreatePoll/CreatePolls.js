@@ -76,7 +76,7 @@ const [inputListScales, setInputListScales] = useState([{ choice: "" }]);
 const [inputList4, setInputList4] = useState([{ choice: "" }]);
    
    const onFileChange = (event) => {
-      setState({ selectedFile: event.target.files[0] }); 
+    //  setStateBg({ selectedFile: event.target.files[0] }); 
     };
 
     const fileData = () => {
@@ -98,7 +98,8 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
    const [opacity, setOpacity]=React.useState(100);
    const [component, setComponent] = React.useState('multiplechoice');
    const [state, setState] = React.useState({
-   selectedFile: null
+   selectedFile: null,
+   bgurl: null
  });
    
 

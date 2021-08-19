@@ -1,17 +1,18 @@
-import React from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import { Container } from '@material-ui/core';
 
+
 const Scales =() => {
-  const [question,setquestion]=useState({question:""})
-   axios.get(`http://localhost:8080/Scales/`)
-   .then(res=>{
+ // const [question,setquestion]=useState({question:""})
+ //  axios.get(`http://localhost:8080/Scales/`)
+  // .then(res=>{
         
-         setquestion({question:res.data.question})
+  //       setquestion({question:res.data.question})
        
-    })
+ //   })
     const ScaleSlider = withStyles({
         root: {
           color: '#52af77',

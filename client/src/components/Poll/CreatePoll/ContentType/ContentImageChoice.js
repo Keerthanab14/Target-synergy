@@ -51,7 +51,8 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
      const onFileChange = (event) => {
       
         // Update the state
-        setState({ selectedFile: event.target.files[0] });
+        setState({ selectedFile: event.target.files[0],
+        bgurl: URL.createObjectURL(event.target.files[0]) });
         
       
       };
@@ -147,7 +148,7 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
       
      
-        <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data2.question} type="text" style={{width: '100%'}}/>
+        <TextField id="outlined-basic" label="Your image choice question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data2.question} type="text" style={{width: '100%'}}/>
         <h4 className={classes.h}>Options</h4>
         <Grid container={true}  direction="row"  alignItems="center" 
 >

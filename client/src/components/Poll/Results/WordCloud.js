@@ -79,8 +79,8 @@ display: "flex",
 alignItems: "center",
 justifyContent: "center",
 border: "solid 1px #ddd",
-width: '95%',
-height: '90%',
+width: '97%%',
+height: '100%',
 marginTop: '5%'
 };
 const callbacks = {
@@ -108,8 +108,8 @@ transitionDuration: 1000
 const size = [1200, 400];
 
 return (
-<div>
-<h1 style={{fontFamily: "Helvetica", textAlign: 'center'}} >haha{question.question}</h1>
+<div >
+<h1 style={{fontFamily: "Helvetica", textAlign: 'center'}} >{question.question}</h1>
 
 
   <div style={resizeStyle}>
