@@ -83,7 +83,7 @@ const ImageChoice =(props)=> {
           return (
             <BarChartContainer key={i}>
              <div><img src={props.images.bgurl}/></div>
-             <Number color={imgresult.colors[1]}  >{imgresult.distance}</Number>
+             <Number color={imgresult.colors}  >{imgresult.distance}</Number>
               <MakeBar height={imgresult.distance * 2} colors={imgresult.colors} />
              
             
