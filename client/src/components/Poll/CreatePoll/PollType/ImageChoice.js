@@ -70,11 +70,11 @@ export const BlackLine = styled.div`
 
    
   
-function ImageChoice (props) {
+const ImageChoice =(props)=> {
   const imgresult=props.imgresult
   const imagemcq=props.images.selectedFile
-  //const URL.createObjectUrl(imagemcq)
-  
+ // const bgurl=URL.createObjectUrl(imagemcq)
+ // console.log(bgurl)
   
     return(
       <Container>
@@ -83,10 +83,10 @@ function ImageChoice (props) {
         {imgresult.map((imgresult, i) => {
           return (
             <BarChartContainer key={i}>
-             {/* <Card>
-              <CardMedia image={bgurl}  />  
+             { <Card>
+              <CardMedia   />  
           {    console.log(props.images.selectedFile)}
-             </Card> */ }
+             </Card>  }
              <Number color={imgresult.colors[1]}  >{imgresult.distance}</Number>
               <MakeBar height={imgresult.distance * 2} colors={imgresult.colors} />
              

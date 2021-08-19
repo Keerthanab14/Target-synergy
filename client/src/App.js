@@ -9,7 +9,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import CreatePoll from './components/Poll/CreatePoll/CreatePoll';
 import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
-import QandA from './components/Poll/CreatePoll/PollType/QandA';
+import QandA from './components/Poll/Results/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
 import Scales from './components/Poll/CreatePoll/PollType/Scales'
 import WordCloud from './components/Poll/Results/WordCloud'
@@ -51,7 +51,8 @@ function App() {
           <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>  
          <Route path="/36" component={Scales}/>
          <Route path="/29" component={WordCloud}/>
-         <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
+        <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
+        
 
           <Route
             path="/MCQ"
