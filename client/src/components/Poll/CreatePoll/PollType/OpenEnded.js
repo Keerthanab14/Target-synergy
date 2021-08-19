@@ -52,40 +52,14 @@ export const box = styled.div`
 const OpenEnded = (props) => {
     const [OpenEndedResponses , setOpenEndedResponses] = useState({responses:[]});
   console.log("hi")
-    useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/QandA/36`)
-      console.log(result.data)
-      setOpenEndedResponses({
-       
-        responses: result.data.questions 
-      })
-    },[])
-    const responses_OpenEnd=["a","b"];
-//     OpenEndedResponses.responses.map((post,key) => (
-//     responses_OpenEnd[key]=post.text
-// ));
-console.log(responses_OpenEnd);
+   
     const classes = useStyles();
     
     return (
         <div >
             <h1 fontFamily= "Helvetica" justifyContent="left" >{props.openEnded.question}</h1>
-           
-    {responses_OpenEnd.map((x, i) => {
-         var color = randomColor();
-    return(
+
        
-       <Container marginTop= '10px'>
-          <div>
-                <Box color="white" bgcolor={color} p={1} fontFamily= "Helvetica" style={{ marginBottom: '5px', marginRight:"10px"}}>
-              {responses_OpenEnd[i]}
-                </Box>
-           </div>
-          
-        </Container>
-       
-    )
-    })}
     </div>
     );
 }

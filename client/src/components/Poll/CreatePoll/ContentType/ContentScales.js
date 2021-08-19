@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentScales = ({data5, setData5, setInputList, inputList}) => {
+const ContentScales = ({data5, setData5, setInputList, inputList, handleChangeIndex}) => {
      const [state, setState] = useState({
          checkedA: false,
          checkedB: false,
@@ -145,7 +145,7 @@ const ContentScales = ({data5, setData5, setInputList, inputList}) => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={(e)=>{handleChangeIndex(2);submit(e)}}
       >Submit
       </Button>
        </form>

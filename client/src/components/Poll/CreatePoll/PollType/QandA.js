@@ -42,7 +42,7 @@ export const Number = styled.span`
 function QandA ({data6, result, textcolor}) {
     return(
       <Container>
-        <h3 style={{color: textcolor}}>{data6.question}</h3>
+        <h1 style={{color: textcolor}}>{data6.question}</h1>
         <MainContainer>
       </MainContainer>
     </Container>
