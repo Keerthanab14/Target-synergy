@@ -51,8 +51,8 @@ button: {
     )
     const[data1, setData1]=useState({
       question: "",
-      choice:[],
-      count: []
+      choice:[{text: ""},{count: 0}],
+      
   })
      const[data2, setData2]=useState({
      question: "",
@@ -100,7 +100,7 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
    const [component, setComponent] = React.useState('multiplechoice');
    const [state, setState] = React.useState({
    selectedFile: null,
-   bgurl: null,
+   bgurl:[],
  });
  const imagess=[];
 
