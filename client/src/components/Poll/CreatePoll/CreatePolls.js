@@ -51,7 +51,7 @@ button: {
     )
     const[data1, setData1]=useState({
       question: "",
-      choice:[{text: ""},{count: 0}],
+      option:[{text: ""},{votes: 0}],
       
   })
      const[data2, setData2]=useState({
