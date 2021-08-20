@@ -9,33 +9,27 @@ import java.util.Objects;
 //@Document(collection = "choices")
 public class Choice {
 
-    private String choice;
-    private int count;
+    private String option;
+    private int votes;
 
-
-
-    public Choice() {
-
+    public Choice(String option, int votes) {
+        this.option = option;
+        this.votes = votes;
     }
 
-    public Choice(String choice,int count) {
-        this.choice = choice;
-        this.count = count;
+    public String getOption() {
+        return option;
     }
 
-    public String getChoice() {
-        return choice;
+    public void setOption(String option) {
+        this.option = option;
     }
 
-    public void setChoice(String choice) {
-
-        this.choice = choice;
-    }
-    public int getCount() {
-        return count;
+    public int getVotes() {
+        return votes;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
 }
