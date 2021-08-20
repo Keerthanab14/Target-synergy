@@ -27,6 +27,7 @@ const Vote = (props) => {
   // const url = id.id;
     useEffect(async () => {
       var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
+      
       setTextBased({
         question: result.data.question,
         choices: result.data.choices 
@@ -34,12 +35,11 @@ const Vote = (props) => {
     },[])
     const choice=[];
     textBased.choices.map((post,key) => (
-    choice[key]=({option:(post.text), votes:0})
+    choice[key]=({option:(post.option), votes:post.votes})
 ));
-// console.log(choice);
-// console.log(id.id);
+
 let Answers = [...choice];
-console.log(Answers);
+// console.log(Answers);
   const pollQuestion = textBased.question;
   const handleVote = (voteAnswer) => {
     const newAnswers = Answers.map((answer) => {
@@ -51,7 +51,19 @@ console.log(Answers);
       
     });
     Answers= newAnswers;
+    
   };
+  const handleClick = () =>{
+    const q ={
+      question: pollQuestion,
+      choices:Answers
+    }
+    console.log(q)
+    axios.put(`http://localhost:8080/MCQ/${url}`, q)
+           .then(res=>{
+              console.log(res)
+            })
+  }
  
   return (
     <div >
@@ -62,7 +74,7 @@ console.log(Answers);
         style={{ width: "20%",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
-       // color="primary"
+        onClick = {()=>handleClick()}
         size="large"
         fullWidth={true}
       >Submit

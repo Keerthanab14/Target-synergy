@@ -70,7 +70,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
  
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { choice:"", count: 0 }]);
+    setInputList([...inputList, { option:"", votes: 0 }]);
     setResult([...result, { distance: 0, colors: ["#ffd847", "#e0a106"], }]);
   };
       const handleChange = (event) => {
@@ -83,13 +83,13 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
     const submit = (e) => {
     e.preventDefault();
       inputList.map((choicee,key)=>{
-        data1.choice[key]=choicee
+        data1.option[key]=choicee
       })
       const a = contentauth;
       
       const q ={
         question: data1.question,
-        choices:data1.choice,
+        choices:data1.option,
         googleId : a
       
       }
@@ -131,9 +131,9 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
             id="multiplechoice"
             variant="outlined" size="small"
             className="ml10"
-            name="choice"
+            name="option"
             label="Enterchoice"
-            value={x.choice}
+            value={x.option}
             style={{width: '100%'}}
             onChange={e => handleInputChange(e, i)}
             />
