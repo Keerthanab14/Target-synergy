@@ -13,7 +13,7 @@ import QandA from './components/Poll/Results/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
 import Scales from './components/Poll/Results/Scales'
 import WordCloud from './components/Poll/Results/WordCloud'
-
+import MCQ from './components/Poll/Results/MCQ'
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
 
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
@@ -23,6 +23,7 @@ import OpenEnded from './components/Poll/Results/OpenEnded'
 import ImageMcq from './components/Poll/CreatePoll/ParticipantType/ImageMcq'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import ImageChoice from './components/Poll/CreatePoll/PollType/ImageChoice';
+import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
 
 export const IdContext = React.createContext();
 function App() {
@@ -50,16 +51,14 @@ function App() {
           <Route path="/link" component={CreatePoll} />
           <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>  
          <Route path="/36" component={Scales}/>
-         <Route path="/29" component={WordCloud}/>
+         {/* <Route path="/29" component={MultipleChoice}/> */}
         <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
-        
-        
-
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
              <Switch> 
                 <Route exact path={`${url}/:id`} component={Vote} />  
+                <Route exact path={`${url}/:id/results`} component={MCQ} />  
               </Switch>
             )}
           />

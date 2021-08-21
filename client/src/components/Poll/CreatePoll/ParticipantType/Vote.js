@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Poll from "react-polls";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import { IdContext } from '../../../../App';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,10 +22,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Vote = (props) => {
   const classes=useStyles();
+  const history = useHistory();
   const url =props.match.params.id;
   const [textBased , setTextBased] = useState({question:'', choices:[]})
-  // const id = useContext(IdContext);
-  // const url = id.id;
     useEffect(async () => {
       var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
       
@@ -53,6 +53,10 @@ let Answers = [...choice];
     Answers= newAnswers;
     
   };
+  const uri = `/MCQ/${url}/results`
+  function handleResult(path) {
+    history.push(path);
+}
   const handleClick = () =>{
     const q ={
       question: pollQuestion,
@@ -83,7 +87,7 @@ let Answers = [...choice];
         style={{ width: "20%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
-       // color="primary"
+        onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
       </Button></div>
