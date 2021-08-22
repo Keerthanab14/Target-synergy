@@ -24,16 +24,16 @@ const Vote = (props) => {
   const classes=useStyles();
   const history = useHistory();
   const url =props.match.params.id;
-  const [textBased , setTextBased] = useState({question:'', choices:[]})
+  const [textBased , setTextBased] = useState({question:'', choices:[],})
     useEffect(async () => {
       var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
-      
+   
       setTextBased({
         question: result.data.question,
-        choices: result.data.choices,
-        count: result.data.count,
+        choices: result.data.choices
+        
       })
-    },[url]);
+    },[])
     const choice=[];
     textBased.choices.map((post,key) => (
     choice[key]=({option:(post.option), votes:post.votes})

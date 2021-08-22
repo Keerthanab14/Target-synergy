@@ -90,12 +90,12 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
       
       const q ={
         question: data1.question,
-        options:data1.option,
+        choices:data1.option,
         googleId : a
       
       }
       console.log(q)
-      console.log(q.options)
+      console.log(q)
      
       axios.post(url, q)
            .then(res=>{
