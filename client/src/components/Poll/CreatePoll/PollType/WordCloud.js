@@ -24,15 +24,7 @@ console.log(wcr)
 let wcrs=[...wcr]
 console.log(wcrs)
 
-const resizeStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "solid 1px #ddd",
-    width: '100%',
-    height: '90%',
-    marginTop: '5%'
-  };
+
   const callbacks = {
     getWordColor: word => word.value > 50 ? "blue" : "red",
     onWordClick: console.log,
@@ -55,12 +47,12 @@ const resizeStyle = {
     spiral: "archimedean",
     transitionDuration: 1000
   };
-  const size = [1200, 400];
+  const size = [600, 200];
 
     return (
       <div>
         <h1 style={{color: textcolor}}>{data4.question}</h1>
-        <div style={resizeStyle}>
+        <div style={{display: 'flex',width: '50%'}}>
       <ReactWordcloud
         callbacks={callbacks}
         options={options}
