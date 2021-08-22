@@ -29,9 +29,10 @@ const Vote = (props) => {
       var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
       setTextBased({
         question: result.data.question,
-        choices: result.data.choices 
+        choices: result.data.choices,
+        count: result.data.count,
       })
-    },[])
+    },[]);
     const choice=[];
     textBased.choices.map((post,key) => (
     choice[key]=({option:(post.text), votes:0})
@@ -43,6 +44,9 @@ console.log(Answers);
   const pollQuestion = textBased.question;
   const handleVote = (voteAnswer) => {
     const newAnswers = Answers.map((answer) => {
+
+
+      
       if (answer.option === voteAnswer) {
           answer.votes++;
       }
