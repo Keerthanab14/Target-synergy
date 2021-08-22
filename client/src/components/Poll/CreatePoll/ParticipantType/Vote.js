@@ -33,7 +33,7 @@ const Vote = (props) => {
         choices: result.data.choices,
         count: result.data.count,
       })
-    },[]);
+    },[url]);
     const choice=[];
     textBased.choices.map((post,key) => (
     choice[key]=({option:(post.option), votes:post.votes})
