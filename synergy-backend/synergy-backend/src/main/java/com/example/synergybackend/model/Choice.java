@@ -8,33 +8,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Objects;
 //@Document(collection = "choices")
 public class Choice {
-    @Id
-    private String text;
-    private int count;
 
-    public Choice() {
+    private String option;
+    private int votes;
 
+    public Choice(String option, int votes) {
+        this.option = option;
+        this.votes = votes;
     }
 
-    public Choice(String text,int count) {
-        this.text = text;
-        this.count = count;
+    public String getOption() {
+        return option;
     }
 
-    public String getText() {
-        return text;
+    public void setOption(String option) {
+        this.option = option;
     }
 
-    public void setText(String text) {
-
-        this.text = text;
-    }
-    public int getCount() {
-        return count;
+    public int getVotes() {
+        return votes;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
-
 }

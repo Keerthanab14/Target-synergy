@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Poll from "react-polls";
 import axios from "axios";
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import { IdContext } from '../../../../App';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Vote = (props) => {
   const classes=useStyles();
+  const history = useHistory();
   const url =props.match.params.id;
   const [textBased , setTextBased] = useState({question:'', choices:[]})
-  // const id = useContext(IdContext);
-  // const url = id.id;
     useEffect(async () => {
       var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
+      
       setTextBased({
         question: result.data.question,
         choices: result.data.choices,
@@ -35,12 +36,11 @@ const Vote = (props) => {
     },[]);
     const choice=[];
     textBased.choices.map((post,key) => (
-    choice[key]=({option:(post.text), votes:0})
+    choice[key]=({option:(post.option), votes:post.votes})
 ));
-// console.log(choice);
-// console.log(id.id);
+
 let Answers = [...choice];
-console.log(Answers);
+// console.log(Answers);
   const pollQuestion = textBased.question;
   const handleVote = (voteAnswer) => {
     const newAnswers = Answers.map((answer) => {
@@ -55,7 +55,23 @@ console.log(Answers);
       
     });
     Answers= newAnswers;
+    
   };
+  const uri = `/MCQ/${url}/results`
+  function handleResult(path) {
+    history.push(path);
+}
+  const handleClick = () =>{
+    const q ={
+      question: pollQuestion,
+      choices:Answers
+    }
+    console.log(q)
+    axios.put(`http://localhost:8080/MCQ/${url}`, q)
+           .then(res=>{
+              console.log(res)
+            })
+  }
  
   return (
     <div >
@@ -66,7 +82,7 @@ console.log(Answers);
         style={{ width: "20%",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
-       // color="primary"
+        onClick = {()=>handleClick()}
         size="large"
         fullWidth={true}
       >Submit
@@ -75,7 +91,7 @@ console.log(Answers);
         style={{ width: "20%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
-       // color="primary"
+        onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
       </Button></div>
