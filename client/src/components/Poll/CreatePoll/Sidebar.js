@@ -65,7 +65,7 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, color, textcolor, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
-data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult, img }) => {
+data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult, img, setUri }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -112,7 +112,7 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
         {component==="qanda" && <ContentQandA data6={data6} setData6={setData6} handleChangeIndex={handleChangeIndex} />}
         {component==="wordcloud" && <ContentWordCloud data4={data4} setData4={setData4} handleChangeIndex={handleChangeIndex}/>}
         {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>}
-       {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} setImgResult={setImgResult} imgresult={imgresult} handleChangeIndex={handleChangeIndex} setState={setState} state={state} image={img}/>} 
+       {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} setImgResult={setImgResult} imgresult={imgresult} handleChangeIndex={handleChangeIndex} setState={setState} state={state} image={img} setUri={setUri}/>} 
        {component==="scales" && <ContentScales data5={data5} setData5={setData5} handleChangeIndex={handleChangeIndex} inputList={inputListScales} setInputList={setInputListScales}/>}
 
         </TabPanel>

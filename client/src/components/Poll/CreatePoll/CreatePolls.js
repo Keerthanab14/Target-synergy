@@ -100,9 +100,9 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
    const [component, setComponent] = React.useState('multiplechoice');
    const [state, setState] = React.useState({
    selectedFile: null,
-   bgurl:[],
+   bgurl: ''
  });
- const imagess=[];
+ const [uri, setUri]=React.useState([{bgurl:''}]);
 
     const clickHandler=(e)=> {
         switch (e) {
@@ -198,12 +198,12 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
      data3={data3} setData3={setData3} data4={data4} setData4={setData4} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
     images={images} inputListScales={inputListScales} setInputListScales={setInputListScales} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
-     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state} img={imagess}/>
+     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state} img={uri} setUri={setUri}/>
      
      <Presentation style={
          { float: "right", overflow: "hidden", position: "fixed"}
      } color={color} textcolor={textcolor} images={images} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
-       inputList1={inputList1}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} img={imagess}/>
+       inputList1={inputList1}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} img={uri}/>
      
      
     
