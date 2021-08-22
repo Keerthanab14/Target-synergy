@@ -39,27 +39,29 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState,setImgResult, imgresult, image}) => {
+const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState,setImgResult, imgresult, image, setUri}) => {
   let formData = new FormData();
   const id = useContext(IdContext);    
   const [inputList, setInputList] = useState([{ choice: "" }]);
-  const images=[];    
-  
+     
+  const images=[];
    let i=0;
       // On file select (from the pop up)
      const onFileChange = (event,i) => {
-      let photos = [];
-    while(i<event.target.files.length)
-    {photos.push(URL.createObjectURL(event.target.files[i]))
-    i++;}
+      //let photos = [];
+    //while(i<event.target.files.length)
+   // {photos.push(URL.createObjectURL(event.target.files[i]))
+   // i++;}
       
   
         // Update the state
-      setState({ selectedFile: event.target.files, bgurl: photos} );
-     
+      setState({ selectedFile: event.target.files[0],
+      
+      })
       
       };
       
+        
       const onFileUpload = () => {
       
        formData.append(
@@ -103,8 +105,7 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
     console.log(imgresult);
     r.splice(index, 1);
     setImgResult(r);
-    const im=[...state.bgurl];
-    im.splice(index,1);
+    
     //set[]
  };
  
@@ -120,7 +121,7 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
     const classes = useStyles();
     const url="http://localhost:8080/mcq"
     const submit = (e) => {
-
+      
    e.preventDefault();
    console.log(images)
       images.map((choicee,key)=>{
@@ -146,11 +147,8 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
       const newdata={...data2}
       newdata[e.target.id]=e.target.value
       setData2(newdata)
-    
-
     }
-
-
+    
     return (
       <div >
           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>Your Question</h4>
@@ -180,6 +178,7 @@ const ContentImageChoice = ({setData2, data2, handleChangeIndex, state, setState
               value={x.choice}
               onChange={e => handleInputChange(e, i)}  ><input type="file" onChange={e => onFileChange(e,i)} />
               </Button>
+              <div id="preview"></div>
               <div>
                 
                 <Button className={classes.button}

@@ -13,10 +13,10 @@ function Home({code}) {
    console.log(url)
     return (
         <div>
-            <Link to={url}>
+           
             <Button
                 variant="contained"
-                
+                onClick={() => {handleClick(`${url}`)}}
                 style={
                     {
                         backgroundColor: "#cc0000",
@@ -28,7 +28,7 @@ function Home({code}) {
                     }
                 }
             >Submit</Button>
-            </Link>
+           
         </div>
     )
 };

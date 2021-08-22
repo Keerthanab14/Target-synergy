@@ -19,9 +19,8 @@ import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
 root:{
-    flexGrow: 1,
-    flexBasis: 0,
-    flexShrink: 1
+    flex: 1,
+
 },
 button: {
   margin: theme.spacing(1),
@@ -38,6 +37,7 @@ button: {
      [ {
         distance: 0,
         colors: ["#ffd847", "#e0a106"],
+        choices: ""
       }
     ]
     );                          //multiplechoice type
@@ -72,7 +72,7 @@ const[data5, setData5]=useState({
   choice:[]
 })
   
-const [inputList1, setInputList1] = useState([{ choice: "", count: 0 }]);
+const [inputList1, setInputList1] = useState([{ option: "", votes: 0 }]);
 const [inputListScales, setInputListScales] = useState([{ choice: "" }]);
 const [inputList4, setInputList4] = useState([{ choice: "" }]);
    
@@ -100,9 +100,9 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
    const [component, setComponent] = React.useState('multiplechoice');
    const [state, setState] = React.useState({
    selectedFile: null,
-   bgurl:[],
+   bgurl: ''
  });
- const imagess=[];
+ const [uri, setUri]=React.useState([{bgurl:''}]);
 
     const clickHandler=(e)=> {
         switch (e) {
@@ -149,12 +149,12 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
   
     return (
         
-        <Container className={classes.root} >
-  <Container className = 'Navbar' display='flex' flex='1' jutify='space-between' style={{
-    overflow: 'hidden', 
+        <Container className={classes.root} style={{width: '100%',height: '100%', display: "flex", justifyContent: "space-between", alignItems: "space-between", flexDirection: 'column'}}>
+  <Container  style={{
+   display: "flex", justifyContent: "space-between", alignItems: "space-between", height: '100%', flexDirection:'row',  width: '100%' }}
     
-  }}> 
-        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" style={{float: 'left' , margin: "10px" }}>
+> 
+        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" >
             <Link to="/" style={{color:"black", textDecoration:"none" }} >
             <Typography style={{fontSize:"12px"}}> Services</Typography>
             </Link>
@@ -175,7 +175,7 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
                                             float: "right",
                                             border: "1px solid white",
                                             margin: "1% 0%",
-                                            marginRight: "-2%"
+                                           // marginRight: "-2%"
                                         }
                                     }
                                 >Create Link
@@ -183,13 +183,8 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
                             </Container> 
      
        
-                            <Container
-
- flex='1'
-  spacing={0}
-  Flexdirection="row"
-  display="flex"
-  style={{ minHeight: '80vh', maxWidth: '2000px' }}
+                            <Container style={{ 
+    display: "flex", justifyContent: "space-between", alignItems: "space-between", height: '100%', flexDirection:'row',  width: '100%' }}
 >
 
   
@@ -198,12 +193,10 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
      data3={data3} setData3={setData3} data4={data4} setData4={setData4} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
     images={images} inputListScales={inputListScales} setInputListScales={setInputListScales} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
-     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state} img={imagess}/>
+     contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state} img={uri} setUri={setUri}/>
      
-     <Presentation style={
-         { float: "right", overflow: "hidden", position: "fixed"}
-     } color={color} textcolor={textcolor} images={images} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
-       inputList1={inputList1}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} img={imagess}/>
+     <Presentation color={color} textcolor={textcolor} images={images} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
+       inputList1={inputList1}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} img={uri}/>
      
      
     
