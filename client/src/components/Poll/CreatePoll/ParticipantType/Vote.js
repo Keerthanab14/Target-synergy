@@ -73,10 +73,15 @@ let Answers = [...choice];
             })
   }
  
+ 
   return (
     <div >
-      <h1>Poll Name</h1>
-      <Poll question={pollQuestion} answers={Answers} onVote={handleVote} />
+      
+      <div style={{width:"50%", margin:"auto", paddingTop:"5%"}}>
+          <h1 style={{textAlign:"center"}}>{pollQuestion}</h1>
+          <Poll  answers={Answers} onVote={handleVote} />
+      </div>
+      
       <div style={{display: 'flex',flexDirection: 'column', width: '100%', justifyContent: 'space-evenly',alignItems: "center"}}>
      <Button
         style={{ width: "20%",background:"#cc0000", color:"white" }}
