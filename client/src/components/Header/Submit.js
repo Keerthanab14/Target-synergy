@@ -7,6 +7,7 @@ function Home({code}) {
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
+      
        
    }
    
@@ -16,7 +17,7 @@ function Home({code}) {
            
             <Button
                 variant="contained"
-                onClick={() => {handleClick(`${url}`)}}
+                onClick={() => {handleClick( `${url}`)}}
                 style={
                     {
                         backgroundColor: "#cc0000",
