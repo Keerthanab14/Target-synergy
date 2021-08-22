@@ -66,7 +66,8 @@ function App() {
             path="/OE"
             render={({ match: { url } }) => (
              <Switch> 
-                <Route exact path={`${url}/:id`} component={OpenEndedUser} />  
+                <Route exact path={`${url}/:id`} component={OpenEndedUser} />
+                <Route exact path={`${url}/:id/results`} component={OpenEnded} />  
               </Switch>
             )}
           />
