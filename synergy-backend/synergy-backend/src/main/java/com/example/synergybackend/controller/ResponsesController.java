@@ -34,7 +34,8 @@ public class ResponsesController {
         {
             responsesRepository.findById(id).get();
             Responses responses = responsesRepository.findById(id).get();
-            Responses resp = new Responses();
+            responses.setQuestion(quest.getQuestion());
+            responses.setGoogleId(quest.getGoogleId());
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
@@ -49,6 +50,8 @@ public class ResponsesController {
     @PostMapping("/responses")
     public String saveNewResponses(@RequestBody Responses quest) {
         Responses responses = new Responses();
+        responses.setQuestion(quest.getQuestion());
+        responses.setGoogleId(quest.getGoogleId());
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);
@@ -62,6 +65,8 @@ public class ResponsesController {
             responsesRepository.findById(id).get();
             Responses responses = responsesRepository.findById(id).get();
             Responses resp = new Responses();
+            responses.setQuestion(quest.getQuestion());
+            responses.setGoogleId(quest.getGoogleId());
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
@@ -75,6 +80,8 @@ public class ResponsesController {
     @PostMapping("/WordCloudresponses")
     public String saveNewWcResponses(@RequestBody Responses quest) {
         Responses responses = new Responses();
+        responses.setQuestion(quest.getQuestion());
+        responses.setGoogleId(quest.getGoogleId());
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);
