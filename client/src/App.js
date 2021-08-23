@@ -119,7 +119,7 @@ function App() {
               </Switch>
             )}
           />
-          <Route path="/231" component={Vote}/>
+          <Route path="/231" component={OpenEndedUser}/>
         </Switch> 
     </div>
     </BrowserRouter>

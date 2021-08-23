@@ -53,9 +53,14 @@ const ContentOpenEndedAnswerUser = (props) => {
     const submit = (e) => {
 
       e.preventDefault();
+      const q ={
+        question: u,
+        latestAnswer: OpenEndedAnswer.latestAnswer,
+        googleId : "123"
       
+      }
   
-      axios.put(url, OpenEndedAnswer)
+      axios.put(url, q)
            .then(res=>{
               console.log(res.data)
             })
