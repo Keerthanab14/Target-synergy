@@ -14,7 +14,9 @@ public class Responses {
 
     @Id
     private String id;
+    private String question;
     private String latestAnswer;
+    private String googleId;
     private ArrayList<String> responses=new ArrayList<>();
 
     public String getId() {
@@ -45,4 +47,19 @@ public class Responses {
         responses.add(latestAnswer) ;
     }
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getGoogleId() {
+        return googleId;
+    }
+
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
+    }
 }
