@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -37,33 +37,69 @@ const useStyles = makeStyles((theme) => ({
 
 const ContentOpenEndedAnswerUser = (props) => {
   const u = props.match.params.id;
+  const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
   axios.get(`http://localhost:8080/OE/${u}`).then(res=>{
         
         setquestion({question:res.data.question})
        
     })
+    useEffect(() => {
+      axios.get(`http://localhost:8080/quest/${u}`)
+            .then(r => {
+                      
+                      setResUrl(r.data);
+                      
+                      // if(resUrl === ""){
+                      //   axios.post(url, q)
+                      //        .then(res=>{
+                      //           console.log(res.data)
+                      //         })
+                      // }
+                      // else{
+                      //   axios.put(`${url}/${resUrl}`, q)
+                      //   .then(res=>{
+                      //       console.log(res.data)
+                      //     })
+                      // }
+            })
+    }, [])
   const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
      
     
     const classes = useStyles();
-    const url=`http://localhost:8080/responses/${u}`
+    const url=`http://localhost:8080/responses`
     
-   
-    const submit = (e) => {
+    const submit = () => {
 
-      e.preventDefault();
+      
       const q ={
         question: u,
-        latestAnswer: OpenEndedAnswer.latestAnswer,
-        googleId : "123"
+        latestAnswer: OpenEndedAnswer.latestAnswer
+        // googleId : "123"
       
       }
-  
-      axios.put(url, q)
-           .then(res=>{
-              console.log(res.data)
-            })
+      console.log(resUrl)
+      
+                      if(resUrl === ""){
+                        axios.post(url, q)
+                             .then(res=>{
+                                console.log(res.data)
+                              })
+                      }
+                      else{
+                        axios.put(`${url}/${resUrl}`, q)
+                        .then(res=>{
+                            console.log(res.data)
+                          })
+                      }
+            // })
+
+
+      // axios.post(url, q)
+      //      .then(res=>{
+      //         console.log(res.data)
+      //       })
 
     }
     
@@ -91,7 +127,7 @@ const ContentOpenEndedAnswerUser = (props) => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={()=>submit()}
       >Submit
       </Button>
       <Button
