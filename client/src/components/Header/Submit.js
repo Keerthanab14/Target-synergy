@@ -7,7 +7,10 @@ function Home({code}) {
     let history = useHistory();
     function handleClick(path) {
        history.push(path);
-      
+       window.location.reload();
+       
+
+    
        
    }
    
