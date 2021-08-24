@@ -33,10 +33,10 @@ const useStyles = makeStyles({
         questions: result.data.questions 
       })
     },[])
-    const qAndA=[1,2,3];
-  // questions.questions.map((post,key) => (
-  //  qAndA[key]=post.text
-//));
+    const qAndA=[];
+  questions.questions.map((post,key) => (
+  qAndA[key]=post.text
+));
 console.log(qAndA);
     const classes = useStyles();
     let a=new Array(qAndA.length).fill(0)
