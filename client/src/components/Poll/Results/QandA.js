@@ -53,15 +53,15 @@ const QandA = (props) => {
   const [resUrl, setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
 
+  axios.get(`http://localhost:8080/QandA/${url}`)
+  .then(res=>{
+        setquestion({question:res.data.question})
+   })
+   .catch((error)=>{
+    console.log(error)
+  })
+  
   useEffect(async ()=>{
-    axios.get(`http://localhost:8080/QandA/${url}`)
-    .then(res=>{
-          setquestion({question:res.data.question})
-     })
-     .catch((error)=>{
-      console.log(error)
-    })
- 
     await axios.get(`http://localhost:8080/quest/${url}`)
         .then(result => {
           setResUrl(result.data);

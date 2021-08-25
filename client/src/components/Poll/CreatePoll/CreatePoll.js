@@ -71,7 +71,7 @@ const CreatePoll = () => {
                     <div className='accessCode'>
                         <h2>Access Code</h2>
                         <div className={classes.search}>
-                            <CopyToClipboard text={text} onCopy={onCopyText} style={{float: 'right'}}>
+                            <CopyToClipboard text={uri} onCopy={onCopyText} style={{float: 'right'}}>
                                 <div className="copy-area">
                                 <Button
                                 variant="contained"
