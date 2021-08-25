@@ -41,13 +41,18 @@ const ContentOpenEndedAnswerUser = (props) => {
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  
+  axios.get(`http://localhost:8080/OE/${u}`)
+  .then(res=>{
+        setquestion({question:res.data.question})
+   })
+   .catch((error)=>{
+    console.log(error)
+  })
     useEffect(() => {
       axios.get(`http://localhost:8080/quest/${u}`)
             .then(res => {  
               console.log(res.data)
                       setResUrl(res.data);
-                      setquestion({question:res.data.question})
             })
     }, [])
   const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
@@ -92,10 +97,11 @@ const ContentOpenEndedAnswerUser = (props) => {
     }
 
     return (
-      <Container className={classes.root} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', marginTop: '2%', width: '50%' }} >
-           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h1 className={classes.h}>{question.question}</h1>
+      <Container className={classes.root} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', marginTop: '10%', width: '50%' }} >
+           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
+             <h1 className={classes.h} style={{fontSize:"30px"}}>{question.question}</h1>
       
-     <h5>Write Your Answer Here:</h5>
+     <h4>Write Your Answer Here:</h4>
       <TextField id="outlined-multiline-static" multiline rows={4} label="Your Answer" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={OpenEndedAnswer.latestAnswer} type="text" style={{width: '100%'}} />
     
       <div style={{display: 'flex',flexDirection: 'row', width: '100%', justifyContent: 'center',alignItems: "center"}}>

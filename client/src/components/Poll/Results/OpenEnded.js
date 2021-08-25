@@ -89,7 +89,7 @@ const OpenEnded = (props) => {
         {choice.map((post,key) => {
   console.log(post);
 })}
-      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center"}} > hh</h1></div>
+      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center", fontSize:"10px"}} > {question.question} </h1></div>
           <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '60%'}} >
            {choice.map((x, i) => {
            const color = randomColor({count:1});

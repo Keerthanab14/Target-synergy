@@ -40,7 +40,13 @@ const QandAUser = (props) => {
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  
+  axios.get(`http://localhost:8080/QandA/${u}`)
+  .then(res=>{
+        setquestion({question:res.data.question})
+   })
+   .catch((error)=>{
+    console.log(error)
+  })
     useEffect(() => {
       axios.get(`http://localhost:8080/quest/${u}`)
             .then(res => {  
@@ -91,7 +97,7 @@ const QandAUser = (props) => {
 
     return (
       <Container className={classes.root}  style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', marginTop: '2%', width: '50%' }} >
-           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>blabla{question.question}</h4>
+           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>{question.question}</h4>
       
       <h5>Write Your Answer Here:</h5>
       <TextField id="outlined-multiline-static" multiline rows={4} label="Your Answers" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={QandAAnswer.latestAnswer} type="text" style={{width: '100%'}} />
