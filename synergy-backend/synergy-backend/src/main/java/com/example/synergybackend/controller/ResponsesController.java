@@ -44,7 +44,7 @@ public class ResponsesController {
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
-            String url = "/responses/" + savedResponse.getId();
+            String url = "responses/" + savedResponse.getId();
             return url;
 
         } catch (Exception e) {
@@ -60,7 +60,7 @@ public class ResponsesController {
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);
-        String url = "/responses/" + savedResponse.getId();
+        String url = "responses/" + savedResponse.getId();
         return url;
 
     }
@@ -73,7 +73,7 @@ public class ResponsesController {
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
-            String url = "/WordCloudResponse/" + savedResponse.getId();
+            String url = "WC/" + savedResponse.getId();
             return url;
 
         } catch (Exception e) {
@@ -87,7 +87,7 @@ public class ResponsesController {
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);
-        String url = "/WordCloudResponse/" + savedResponse.getId();
+        String url = "WC/" + savedResponse.getId();
         return url;
 
     }
