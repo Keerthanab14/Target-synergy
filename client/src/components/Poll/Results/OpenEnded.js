@@ -74,8 +74,6 @@ const OpenEnded = (props) => {
         axios.get(`http://localhost:8080/responses/${resUrl}`)
         .then ((res) => {
           setOpenEndedResponses({responses: res.data.responses})
-          setquestion({question: res.data.question})
-          // console.log(res.data.responses)
         })
         .catch(error => console.log(error))
       }
@@ -86,10 +84,10 @@ const OpenEnded = (props) => {
     
     return (
       <div>
-        {choice.map((post,key) => {
+        {/* {choice.map((post,key) => {
   console.log(post);
-})}
-      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center", fontSize:"10px"}} > {question.question} </h1></div>
+})} */}
+      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center", fontSize:"10px"}} >{question.question} </h1></div>
           <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '60%'}} >
            {choice.map((x, i) => {
            const color = randomColor({count:1});

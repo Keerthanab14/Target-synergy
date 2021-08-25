@@ -59,9 +59,7 @@ const QandAUser = (props) => {
 
     const classes = useStyles();
     const url=`http://localhost:8080/responses`
-    const submit = (e) => {
-
-      e.preventDefault();
+    const submit = () => {
       const q ={
         question: u,
         latestAnswer:QandAAnswer.latestAnswer
