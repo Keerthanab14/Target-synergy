@@ -28,14 +28,19 @@ public class ResponsesController {
         return responsesRepository.findById(id).get();
     }
 
+    @GetMapping("/quest/{id}")
+    public String getQuestionById(@PathVariable("id") String id){
+        Responses response = responsesRepository.findByQuestion(id);
+        String url = response.getId();
+        return url;
+    }
+
     @PutMapping("/responses/{id}")
     public String saveResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try
         {
             responsesRepository.findById(id).get();
             Responses responses = responsesRepository.findById(id).get();
-            responses.setQuestion(quest.getQuestion());
-            responses.setGoogleId(quest.getGoogleId());
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
@@ -51,7 +56,7 @@ public class ResponsesController {
     public String saveNewResponses(@RequestBody Responses quest) {
         Responses responses = new Responses();
         responses.setQuestion(quest.getQuestion());
-        responses.setGoogleId(quest.getGoogleId());
+//        responses.setGoogleId(quest.getGoogleId());
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);
@@ -59,14 +64,12 @@ public class ResponsesController {
         return url;
 
     }
-    @PutMapping("/WordCloudResponse")
+    @PutMapping("/WordCloudResponse/{id}")
     public String saveWCResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try {
             responsesRepository.findById(id).get();
             Responses responses = responsesRepository.findById(id).get();
             Responses resp = new Responses();
-            responses.setQuestion(quest.getQuestion());
-            responses.setGoogleId(quest.getGoogleId());
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
@@ -81,7 +84,6 @@ public class ResponsesController {
     public String saveNewWcResponses(@RequestBody Responses quest) {
         Responses responses = new Responses();
         responses.setQuestion(quest.getQuestion());
-        responses.setGoogleId(quest.getGoogleId());
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);

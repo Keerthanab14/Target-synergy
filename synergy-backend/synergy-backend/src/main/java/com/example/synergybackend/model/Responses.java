@@ -16,7 +16,6 @@ public class Responses {
     private String id;
     private String question;
     private String latestAnswer;
-    private String googleId;
     private ArrayList<String> responses=new ArrayList<>();
 
     public String getId() {
@@ -55,11 +54,4 @@ public class Responses {
         this.question = question;
     }
 
-    public String getGoogleId() {
-        return googleId;
-    }
-
-    public void setGoogleId(String googleId) {
-        this.googleId = googleId;
-    }
 }
