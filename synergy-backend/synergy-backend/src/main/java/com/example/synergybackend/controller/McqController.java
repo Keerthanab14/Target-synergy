@@ -34,7 +34,7 @@ public class McqController {
         mcq.setGoogleId(quest.getGoogleId());
 //        System.out.println(mcq.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "/MCQ/" + savedPoll.getId();
+        String url = "MCQ/" + savedPoll.getId();
         return url;
     }
     @PutMapping("/MCQ/{id}")
