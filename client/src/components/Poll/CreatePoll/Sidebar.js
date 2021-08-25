@@ -9,7 +9,8 @@ import ContentImageChoice from './ContentType/ContentImageChoice';
 import ContentOpenEnded from './ContentType/ContentOpenEnded';
 import Content from './ContentType/Content'
 import ContentScales from './ContentType/ContentScales';
-import Background from '../CreatePoll/Background'
+import Background from './Background/Background'
+import Backgroundqna from './Background/Backgroundqna'
 import '../CreatePoll/CreatePolls.css'
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -65,7 +66,7 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, color, textcolor, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
-data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult, img, setUri }) => {
+data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult, img, setUri,opacity }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -118,7 +119,12 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
-          <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} togglePopup={togglePopup} />
+         {component==="multiplechoice" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
+         {component==="qanda" && <Backgroundqna changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
+         {component==="wordcloud" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
+         {component==="wordcloud" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
+         {component==="openended" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
+         {component==="scales" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
         </TabPanel >
       </SwipeableViews>
                 

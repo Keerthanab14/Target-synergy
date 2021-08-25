@@ -4,27 +4,8 @@ import axios from 'axios'
 import { IdContext } from '../../../../IdContext';
 
 
-const wcr=[];
+const wcr=['Word', 'Cloud', 'Red', 'White', 'Polling', 'Live'];
 const WordCloud=({data4,textcolor})=>{
-  const id = useContext(IdContext);
-  const url = id.id;
-
-    useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080${url}`)
-      console.log(result.data)
-
-    let i=0
-    Object.entries(result.data).forEach(([key, value]) => {
-  result.value = true;
-  wcr[i]=({text:`${key}`, value:`${value}`})
-  i++
-})
-console.log(wcr)
-},[]);
-let wcrs=[...wcr]
-console.log(wcrs)
-
-
   const callbacks = {
     getWordColor: word => word.value > 50 ? "blue" : "red",
     onWordClick: console.log,

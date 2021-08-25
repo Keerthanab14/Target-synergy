@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/Input';
 import randomColor from 'randomcolor'
+import { ChatVoice } from 'styled-icons/remix-line';
+import { List } from '@material-ui/core';
 const id=36
 
 const useStyles = makeStyles({
@@ -32,25 +34,30 @@ const useStyles = makeStyles({
       })
     },[])
     const qAndA=[];
-    questions.questions.map((post,key) => (
-    qAndA[key]=post.text
+  questions.questions.map((post,key) => (
+  qAndA[key]=post.text
 ));
 console.log(qAndA);
     const classes = useStyles();
+    let a=new Array(qAndA.length).fill(0)
+   // console.log(a)
     
+
     //const [inputList, setInputList] = useState([{value}]);
-    const [value, setValue] = React.useState();
+    const [value, setValue] = React.useState(a);
     const [inputList, setInputList] = useState([{ choice: "" }]);
-    const handleSliderChange = (event, newValue) => {
-      setValue(newValue);
+    const handleSliderChange =(index)=>(event, newValue) => {
+      const list=[...value]
+  
+      list[index]=newValue
+      setValue(list);
+      console.log(list)
     };
   
     const handleInputChange = (event,index) => {
-      setValue(event.target.value === '' ? '' : Number(event.target.value));
-      const { name, value } = value;
-      const list = [...inputList];
-      list[index][name] = value;
-      setInputList(list);
+     setValue(event.target.value === '' ?  '' : Number(event.target.value));
+    
+      
     };
   
     const handleBlur = () => {
@@ -68,9 +75,7 @@ console.log(qAndA);
     const submit = (e) => {
 
       e.preventDefault();
-    //   inputList.map((resp,key)=>{
-    //     data.response[key]=resp.response
-    //   })
+    
   
       const q ={
         
@@ -84,51 +89,35 @@ console.log(qAndA);
 
     }
     return (
-      <div><h3 fontFamily= "Helvetica">{data5.question}</h3>
+      <div  style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%'}}><h3 fontFamily= "Helvetica">{questions.questions}</h3>
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
       
 {qAndA.map((x, i) => {
-  var colors=randomColor();
+ 
     return(
-        <div>
-        <Typography id="input-slider" gutterBottom>
-          {qAndA[i]}
-        </Typography>
-        <Grid container spacing={2} alignItems="center">
-          
-          <Grid item xs>
+        <div style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '95%', margin: '2%' }}>
+      
+          <h5>{x}</h5>
+     
             <Slider
-              value={typeof value === 'number' ? value : 0}
-              onChange={handleSliderChange}
+              value={value[i]}
+              onChange={handleSliderChange(i)}
               aria-labelledby="input-slider"
+              valueLabelDisplay="on"
+           
             
             />
-          </Grid>
-          <Grid item>
-            <Input
-              className={classes.input}
-              value={qAndA[i]}
-              margin="dense"
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-              inputProps={{
-                step: 10,
-                min: 0,
-                max: 100,
-                type: 'number',
-                'aria-labelledby': 'input-slider',
-        }}
-            />
-
-          </Grid>
-        </Grid>
+       
+          
+</div>
+        
            
-        </div>
+
         );
       })}
-    
+    <div style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', }}>
         <Button
-        style={{ width: "248px",background:"#cc0000", color:"white" }}
+        style={{ width: "20%",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
        // color="primary"
@@ -136,7 +125,7 @@ console.log(qAndA);
         fullWidth={true}
         onClick={submit}
       >Submit
-      </Button>
+      </Button></div>
   
        
        
