@@ -15,7 +15,8 @@ import Scales from './components/Poll/CreatePoll/ParticipantType/Scales'
 import WordCloud from './components/Poll/Results/WordCloud'
 import MCQ from './components/Poll/Results/MCQ'
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
-
+import CreateFeedback from './components/Feedback/CreateFeedback';
+import CreateOpinions from './components/Opinions/CreateOpinions';
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 //import { IdContext } from './IdContext';
@@ -52,7 +53,9 @@ function App() {
                 setId
                 }}>
           <Route path="/link" component={CreatePoll} />
-          <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>  
+          <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>
+          <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
+          <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
          <Route path="/36" component={Scales}/>
          {/* <Route path="/29" component={MultipleChoice}/> */}
         <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
@@ -121,6 +124,22 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/`} component={CreatePolls} exact />
+              </Switch>
+            )}
+          />
+          <Route
+            path="/create-feedback"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/`} component={CreateFeedback} exact />
+              </Switch>
+            )}
+          />
+          <Route
+            path="/create-opinions"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/`} component={CreateOpinions} exact />
               </Switch>
             )}
           />

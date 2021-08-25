@@ -48,7 +48,7 @@ const CreatePoll = () => {
             <div className={classes.root}>
                 <Grid item xs={12}>
                 <Paper className={classes.paper} style={{border: "1px solid black" , textAlign: 'left', color:"black"}}>
-                    <h1>Create New Poll</h1>
+                    <h1>Create New</h1>
                     {/* <h2>Poll Name</h2>
                     <div className={classes.search}>
                         <InputBase
@@ -94,7 +94,7 @@ const CreatePoll = () => {
                             <InputBase
                                 type="text"
                                 value={uri}
-                                placeholder="https://targetsynergy.com/CODE"
+                                placeholder="CODE"
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
