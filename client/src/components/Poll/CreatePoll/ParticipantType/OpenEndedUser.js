@@ -41,16 +41,13 @@ const ContentOpenEndedAnswerUser = (props) => {
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/OE/${u}`).then(res=>{
-        
-        setquestion({question:res.data.question})
-       
-    })
+  
     useEffect(() => {
       axios.get(`http://localhost:8080/quest/${u}`)
             .then(res => {  
               console.log(res.data)
                       setResUrl(res.data);
+                      setquestion({question:res.data.question})
             })
     }, [])
   const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
@@ -59,14 +56,12 @@ const ContentOpenEndedAnswerUser = (props) => {
     const classes = useStyles();
     const url=`http://localhost:8080/responses`
     
-    const submit = () => {
-
+    const submit = (e) => {
+      e.preventDefault();
       
       const q ={
         question: u,
         latestAnswer: OpenEndedAnswer.latestAnswer
-        // googleId : "123"
-      
       }
       console.log(resUrl)
       
@@ -82,14 +77,6 @@ const ContentOpenEndedAnswerUser = (props) => {
                             console.log(res.data)
                           })
                       }
-            // })
-
-
-      // axios.post(url, q)
-      //      .then(res=>{
-      //         console.log(res.data)
-      //       })
-
     }
     
     function handle(e){

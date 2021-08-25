@@ -70,6 +70,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch> 
                 <Route exact path={`${url}/:id`} component={OpenEndedUser} />  
+                <Route exact path={`${url}/:id/results`} component={OpenEnded} /> 
               </Switch>
             )}
           />
@@ -86,6 +87,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={WordCloudUser} exact />
+                <Route exact path={`${url}/:id/results`} component={OpenEnded} /> 
               </Switch>
             )}
           />
@@ -94,6 +96,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={QandAUser} exact />
+                <Route exact path={`${url}/:id/results`} component={QandA} /> 
               </Switch>
             )}
           />
