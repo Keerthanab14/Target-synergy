@@ -41,7 +41,7 @@ const CreatePoll = () => {
     };
     const id = useContext(IdContext);
     const uri = id.id;
-    const text = `http://localhost:3000${uri}`
+    const text = `/${uri}`
     return (
         <div className='bx'>
             
@@ -49,7 +49,7 @@ const CreatePoll = () => {
                 <Grid item xs={12}>
                 <Paper className={classes.paper} style={{border: "1px solid black" , textAlign: 'left', color:"black"}}>
                     <h1>Create New Poll</h1>
-                    <h2>Poll Name</h2>
+                    {/* <h2>Poll Name</h2>
                     <div className={classes.search}>
                         <InputBase
                             placeholder="Enter Poll Name"
@@ -67,7 +67,7 @@ const CreatePoll = () => {
                                 }
                             }
                         />
-                    </div>
+                    </div> */}
                     <div className='accessCode'>
                         <h2>Access Code</h2>
                         <div className={classes.search}>
@@ -81,8 +81,8 @@ const CreatePoll = () => {
                                     backgroundColor: "#808080",
                                     color: "white",
                                     float: "right",
-                                    margin: "4px",
-                                    fontSize: '11px'
+                                    margin: "5px",
+                                    fontSize: '13px'
                                             
                                 }
                                     }
@@ -93,7 +93,7 @@ const CreatePoll = () => {
 
                             <InputBase
                                 type="text"
-                                value={text}
+                                value={uri}
                                 placeholder="https://targetsynergy.com/CODE"
                                 classes={{
                                     root: classes.inputRoot,
@@ -117,7 +117,7 @@ const CreatePoll = () => {
                     <div className='btnn'>
                             <Button
                                     variant="contained"
-                                    onClick={() => {handleClick(`${uri}`)}}
+                                    onClick={() => {handleClick(`${text}`)}}
                                     style={
                                         {
                                             backgroundColor: "#cc0000",
