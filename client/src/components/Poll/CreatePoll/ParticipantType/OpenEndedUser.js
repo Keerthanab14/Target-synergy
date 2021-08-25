@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core';
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContentOpenEndedAnswerUser = (props) => {
+  const history = useHistory();
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
@@ -46,22 +48,9 @@ const ContentOpenEndedAnswerUser = (props) => {
     })
     useEffect(() => {
       axios.get(`http://localhost:8080/quest/${u}`)
-            .then(r => {
-                      
-                      setResUrl(r.data);
-                      
-                      // if(resUrl === ""){
-                      //   axios.post(url, q)
-                      //        .then(res=>{
-                      //           console.log(res.data)
-                      //         })
-                      // }
-                      // else{
-                      //   axios.put(`${url}/${resUrl}`, q)
-                      //   .then(res=>{
-                      //       console.log(res.data)
-                      //     })
-                      // }
+            .then(res => {  
+              console.log(res.data)
+                      setResUrl(res.data);
             })
     }, [])
   const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
@@ -110,7 +99,10 @@ const ContentOpenEndedAnswerUser = (props) => {
       console.log(newdata)
 
     }
-
+    const uri = `/OE/${u}/results`
+    function handleResult(path) {
+        history.push(path);
+    }
 
     return (
       <Container className={classes.root} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', marginTop: '2%', width: '50%' }} >
@@ -134,7 +126,7 @@ const ContentOpenEndedAnswerUser = (props) => {
         style={{ width: "40%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
-       // color="primary"
+        onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
       </Button></div>

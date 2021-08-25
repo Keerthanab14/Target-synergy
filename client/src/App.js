@@ -31,7 +31,7 @@ function App() {
   const [ contentauth, setContentAuth ] =useState()
   const [id, setId] = useState("");
   const [textBased , setTextBased] = useState({question:'', choices:[]})
-  
+  const [resUrl,setRestUrl] = useState("");
   return (
     <div>
     <DesktopBreakpoint>
