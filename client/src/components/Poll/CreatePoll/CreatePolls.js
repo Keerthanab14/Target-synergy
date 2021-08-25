@@ -82,10 +82,7 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
 
     const fileData = () => {
     };
-
-    
-
-              
+            
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -150,10 +147,7 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
     return (
         
         <Container className={classes.root} style={{width: '100%',height: '100%', display: "flex", justifyContent: "space-between", alignItems: "space-between", flexDirection: 'column'}}>
-  <Container  style={{
-   display: "flex", justifyContent: "space-between", alignItems: "space-between", height: '100%', flexDirection:'row',  width: '100%' }}
-    
-> 
+        <Container  style={{ display: "flex", justifyContent: "space-between", alignItems: "space-between", height: '100%', flexDirection:'row',  width: '100%' }}> 
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" >
             <Link to="/" style={{color:"black", textDecoration:"none" }} >
             <Typography style={{fontSize:"12px"}}> Services</Typography>
@@ -183,9 +177,7 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
                             </Container> 
      
        
-                            <Container style={{ 
-    display: "flex", justifyContent: "space-between", alignItems: "space-between", height: '100%', flexDirection:'row',  width: '100%' }}
->
+                            <Container style={{ display: "flex", justifyContent: "space-between", alignItems: "space-between", height: '100%', flexDirection:'row',  width: '100%' }}>
 
   
      <Sidebar color={color} parentCallback={setColor}

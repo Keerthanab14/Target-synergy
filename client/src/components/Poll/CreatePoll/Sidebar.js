@@ -111,7 +111,7 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}style={{flex: '1'}}>
         {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result} inputList={inputList1} setInputList={setInputList1} handleChangeIndex={handleChangeIndex} contentauth={contentauth}/>}
-        {component==="qanda" && <ContentQandA data6={data6} setData6={setData6} handleChangeIndex={handleChangeIndex} />}
+        {component==="qanda" && <ContentQandA QandA={data6} setQandA={setData6} handleChangeIndex={handleChangeIndex} />}
         {component==="wordcloud" && <ContentWordCloud data4={data4} setData4={setData4} handleChangeIndex={handleChangeIndex}/>}
         {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>}
        {component==="imagechoice" && <ContentImageChoice setData2={setData2} data2={data2} setImgResult={setImgResult} imgresult={imgresult} handleChangeIndex={handleChangeIndex} setState={setState} state={state} image={img} setUri={setUri}/>} 
@@ -120,7 +120,7 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}style={{flex: '1'}}>
          {component==="multiplechoice" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
-         {component==="qanda" && <Backgroundqna changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
+         {component==="qanda" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
          {component==="wordcloud" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
          {component==="wordcloud" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}
          {component==="openended" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} />}

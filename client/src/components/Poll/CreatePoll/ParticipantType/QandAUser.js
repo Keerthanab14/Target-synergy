@@ -1,9 +1,10 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core';
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,36 +36,57 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const QandAUser = (props) => {
-  const url =props.match.params.id;
+  const history = useHistory();
+  const u = props.match.params.id;
+  const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/QandA/${url}`).then(res=>{
-        
-        setquestion({question:res.data.question})
-       
-    })
-  const [OpenEndedAnswer,setOpenEndedAnswer]=useState({latestAnswer:""})
-     
-    
+  
+    useEffect(() => {
+      axios.get(`http://localhost:8080/quest/${u}`)
+            .then(res => {  
+              console.log(res.data)
+                      setResUrl(res.data);
+                      setquestion({question:res.data.question})
+            })
+    }, [])
+  const [QandAAnswer,setQandAAnswer]=useState({latestAnswer:""})
+
     const classes = useStyles();
-    const uri=`http://localhost:8080/responses/${url}`
-    
-   
+    const url=`http://localhost:8080/responses`
     const submit = (e) => {
 
       e.preventDefault();
-      axios.put(uri, OpenEndedAnswer)
-           .then(res=>{
-              console.log(res.data)
-            })
+      const q ={
+        question: u,
+        latestAnswer:QandAAnswer.latestAnswer
+      }
+      console.log(resUrl)
+      
+                      if(resUrl === ""){
+                        axios.post(url, q)
+                             .then(res=>{
+                                console.log(res.data)
+                              })
+                      }
+                      else{
+                        axios.put(`${url}/${resUrl}`, q)
+                        .then(res=>{
+                            console.log(res.data)
+                          })
+                      }
 
     }
     
     function handle(e){
-      const newdata={...OpenEndedAnswer}
+      const newdata={...QandAAnswer}
       newdata[e.target.id]=e.target.value
-      setOpenEndedAnswer(newdata)
+      setQandAAnswer(newdata)
       console.log(newdata)
 
+    }
+    const uri = `/QandA/${u}/results`
+    function handleResult(path) {
+        history.push(path);
     }
 
     return (
@@ -72,7 +94,7 @@ const QandAUser = (props) => {
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h4 className={classes.h}>blabla{question.question}</h4>
       
       <h5>Write Your Answer Here:</h5>
-      <TextField id="outlined-multiline-static" multiline rows={4} label="Your Answers" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={OpenEndedAnswer.latestAnswer} type="text" style={{width: '100%'}} />
+      <TextField id="outlined-multiline-static" multiline rows={4} label="Your Answers" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={QandAAnswer.latestAnswer} type="text" style={{width: '100%'}} />
     <div style={{display: 'flex',flexDirection: 'row', width: '100%', justifyContent: 'center',alignItems: "center"}}>
      <Button
         style={{ width: "40%",background:"#cc0000", color:"white" }}
@@ -81,14 +103,14 @@ const QandAUser = (props) => {
        // color="primary"
         size="large"
         fullWidth={true}
-        onClick={submit}
+        onClick={()=>submit()}
       >Submit
       </Button>
       <Button
         style={{ width: "40%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
-       // color="primary"
+        onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
       </Button></div>
