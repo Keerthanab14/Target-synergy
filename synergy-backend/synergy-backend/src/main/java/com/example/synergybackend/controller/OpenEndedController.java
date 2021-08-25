@@ -17,18 +17,18 @@ public class OpenEndedController {
    /* @Autowired
     private SequenceService service;*/
 
-//    @GetMapping("/OE")
-//    public List<OpenEnded> getAllquestion(){
-//
-//            return openEndedRepository.findAll();
-//        }
+    @GetMapping("/OE")
+    public List<OpenEnded> getAllquestion(){
+
+            return openEndedRepository.findAll();
+        }
 
     @PostMapping("/OE")
     public String saveQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
         openEnded.setQuestion( quest.getQuestion());
         OpenEnded saved= openEndedRepository.save(openEnded);
-        String url = "/OE/" + saved.getId();
+        String url = "OE/" + saved.getId();
         return url;
     }
     @GetMapping("/OE/{id}")
@@ -41,7 +41,7 @@ public class OpenEndedController {
         // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
         openEnded.setQuestion( quest.getQuestion());
         OpenEnded saved= openEndedRepository.save(openEnded);
-        String url = "/WC/" + saved.getId();
+        String url = "WC/" + saved.getId();
         return url;
     }
     @GetMapping("/WC/{id}")
@@ -49,12 +49,17 @@ public class OpenEndedController {
         return openEndedRepository.findById(id).get();
     }
 
+
+    @GetMapping("/QandA")
+    public List<OpenEnded> getAllQandA(){
+        return openEndedRepository.findAll();
+    }
     @PostMapping("/QandA")
     public String saveQandAQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
         openEnded.setQuestion( quest.getQuestion());
         OpenEnded saved= openEndedRepository.save(openEnded);
-        String url = "/QandA/" + saved.getId();
+        String url = "QandA/" + saved.getId();
         return url;
     }
     @GetMapping("/QandA/{id}")

@@ -49,14 +49,14 @@ const OpenEnded = (props) => {
   const [resUrl, setResUrl] = useState("");
   const [question,setquestion]=useState({question:"tgyh"})
 
-  // axios.get(`http://localhost:8080/OE/${url}`)
-  //  .then(res=>{
-  //        setquestion({question:res.data.question})
-  //        console.log(question);
-  //   })
-  //   .catch((error)=>{
-  //     console.log(error)
-  //   })
+  axios.get(`http://localhost:8080/OE/${url}`)
+   .then(res=>{
+         setquestion({question:res.data.question})
+         console.log(question);
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
 
     
       useEffect(async ()=>{
@@ -74,7 +74,7 @@ const OpenEnded = (props) => {
         axios.get(`http://localhost:8080/responses/${resUrl}`)
         .then ((res) => {
           setOpenEndedResponses({responses: res.data.responses})
-          setquestion(res.data.question)
+          setquestion({question: res.data.question})
           // console.log(res.data.responses)
         })
         .catch(error => console.log(error))
@@ -89,19 +89,17 @@ const OpenEnded = (props) => {
         {choice.map((post,key) => {
   console.log(post);
 })}
-      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center"}} > hh</h1></div>
-          <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '100%'}} >
+      <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center", fontSize:"10px"}} > {question.question} </h1></div>
+          <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '60%'}} >
            {choice.map((x, i) => {
            const color = randomColor({count:1});
       return(
          
          <Container>
-           
-  
-                  <Box color="white" bgcolor={color} p={1} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
+            <Box color="white" bgcolor={color} p={1} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
                     {x}
-                  </Box>
-                 </Container>
+            </Box>
+          </Container>
          
       )
       })} 
