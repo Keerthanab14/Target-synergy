@@ -45,14 +45,13 @@ button: {
       [
         {
           distance: 0,
-          colors: ["#ffd847", "#e0a106"],
+          colors: ["#ffd847", "#e0a106"]
         }
       ]
     )
     const[data1, setData1]=useState({
       question: "",
-      option:[{text: ""},{votes: 0}],
-      
+      option:[{text: ""},{votes: 0}]  
   })
      const[data2, setData2]=useState({
      question: "",
