@@ -31,7 +31,7 @@ button: {
 
   const CreatePolls=(props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const images=[]; //for imagechoice
+    const images=[]; //for ranking
     const [img,setimg] = useState(null);
     const [result, setResult] = useState(
      [ {
@@ -103,8 +103,8 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
 
     const clickHandler=(e)=> {
         switch (e) {
-          case "imagechoice":
-                setComponent("imagechoice")
+          case "ranking":
+                setComponent("ranking")
                 console.log(component)
                 break
             case "multiplechoice":

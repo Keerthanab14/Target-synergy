@@ -41,7 +41,7 @@ const Presentation = ({color, textcolor, component, opacity, img, data1, data2, 
                     }}
                     >
                    
-        {component === 'imagechoice' && <ImageChoice data2={data2} images={state} imgresult={imgresult} img={images} />} 
+        {component === 'ranking' && <ImageChoice data2={data2} images={state} imgresult={imgresult} img={images} />} 
         {component === 'multiplechoice' && <MultipleChoice data1={data1} result={result} inputList={inputList1}/>  }
         {component === 'wordcloud' && <WordCloud data4={data4}/>} 
         {component === 'qanda' && <QandA data6={data6}/>} 

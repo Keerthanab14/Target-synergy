@@ -7,6 +7,7 @@ import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import CloudIcon from '@material-ui/icons/Cloud';
 import TuneIcon from '@material-ui/icons/Tune';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import SortIcon from '@material-ui/icons/Sort';
 import { Button } from '@material-ui/core';
 
 
@@ -67,8 +68,8 @@ const PollType = ({clickHandler, handleChangeIndex}) => {
             <EqualizerIcon fontSize="large" className={classes.icon} /><h5>Multiple Choice</h5>
             </Button>
          
-          <Button value="ic" aria-label="imagechoice" className={classes.togglebtn} onClick={()=>{clickHandler("imagechoice");handleChangeIndex(1)}}>
-            <PhotoLibraryIcon fontSize="large" className={classes.icon}/><h5>Image Choice</h5>
+          <Button value="ic" aria-label="ranking" className={classes.togglebtn} onClick={()=>{clickHandler("ranking");handleChangeIndex(1)}}>
+            <SortIcon fontSize="large" className={classes.icon}/><h5>RANKING</h5>
             </Button>
             
             </ButtonGroup>
