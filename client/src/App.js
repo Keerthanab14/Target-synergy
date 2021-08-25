@@ -30,8 +30,11 @@ function App() {
   const [ auth, setAuth]=useState(false)
   const [ contentauth, setContentAuth ] =useState()
   const [id, setId] = useState("");
+
+  const [textBased , setTextBased] = useState({question:'', choices:[]})
  
   
+
   return (
     <div>
     <DesktopBreakpoint>
