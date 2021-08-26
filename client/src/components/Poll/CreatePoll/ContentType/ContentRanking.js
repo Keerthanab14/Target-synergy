@@ -112,7 +112,7 @@ return (
  
 
    <TextField id="outlined-basic" label="Your question" variant="outlined" size="small" onChange={(e)=>handle(e)} id="question" value={data2.question} type="text" style={{width: '100%'}}/>
-   <h4 className={classes.h}>Statments</h4>
+   <h4 className={classes.h}>Categories</h4>
    <Grid container={true}  direction="row"  alignItems="center" 
 >
 {inputList.map((x, i) => {
@@ -126,7 +126,7 @@ return (
        style={{width: '100%'}}
          className="ml10"
          name="choice"
-placeholder="Enter Statement"
+         placeholder="Enter Category"
          value={x.choice}
          onChange={e => handleInputChange(e, i)}
        />

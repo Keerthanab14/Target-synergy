@@ -69,7 +69,7 @@ function a11yProps(index) {
 
 
 const Sidebar = ({ parentCallback, color, textcolor, clickHandler, setOpacity, togglePopup, component, setData1, data1, data2, setData2, data3, setData3, setData5, data5, 
-data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult, img, setUri,opacity, BackgroundImage }) => {
+data6, setData6, data4, setData4, setResult, result, inputList1, inputList2,setInputList2, setInputList1, setState, state, inputListScales, setInputListScales, settextcolor, contentauth, imgresult, setImgResult, img, setUri,opacity, BackgroundImage }) => {
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -117,7 +117,7 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
         {component==="qanda" && <ContentQandA QandA={data6} setQandA={setData6} handleChangeIndex={handleChangeIndex} />}
         {component==="wordcloud" && <ContentWordCloud data4={data4} setData4={setData4} handleChangeIndex={handleChangeIndex}/>}
         {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>}
-       {component==="ranking" && <ContentRanking setData2={setData2} data2={data2} setImgResult={setImgResult} imgresult={imgresult} handleChangeIndex={handleChangeIndex} setState={setState} state={state} image={img} setUri={setUri}/>} 
+       {component==="ranking" && <ContentRanking setData2={setData2} data2={data2} inputList={inputList2} setInputList={setInputList2} handleChangeIndex={handleChangeIndex} setState={setState} state={state} image={img} setUri={setUri}/>} 
        {component==="scales" && <ContentScales data5={data5} setData5={setData5} setResult={setResult} result={result} inputList={inputList1} setInputList={setInputList1} handleChangeIndex={handleChangeIndex} contentauth={contentauth}/>}
 
         </TabPanel>
@@ -125,7 +125,7 @@ data6, setData6, data4, setData4, setResult, result, inputList1, setInputList1, 
          {component==="multiplechoice" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="qanda" && <Backgroundqna changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="wordcloud" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
-         {component==="wordcloud" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
+         {component==="ranking" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="openended" && <BgOpenended changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="scales" && <BackgroundScales changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
         </TabPanel >
