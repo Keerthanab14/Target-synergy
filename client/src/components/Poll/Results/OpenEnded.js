@@ -47,7 +47,7 @@ const OpenEnded = (props) => {
   const url = props.match.params.id;
   const [OpenEndedResponses , setOpenEndedResponses] =useState({responses:[]});
   const [resUrl, setResUrl] = useState("");
-  const [question,setquestion]=useState({question:"tgyh"})
+  const [question,setquestion]=useState({question:""})
 
   axios.get(`http://localhost:8080/OE/${url}`)
    .then(res=>{

@@ -12,10 +12,9 @@ import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/Results/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
 import Scales from './components/Poll/CreatePoll/ParticipantType/Scales'
-import WordCloud from './components/Poll/Results/WordCloud'
 import MCQ from './components/Poll/Results/MCQ'
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
-
+import WordCloud from './components/Poll/Results/WordCloud'
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 //import { IdContext } from './IdContext';
@@ -32,9 +31,6 @@ function App() {
   const [id, setId] = useState("");
 
   const [textBased , setTextBased] = useState({question:'', choices:[]})
- 
-  
-
   return (
     <div>
     <DesktopBreakpoint>
@@ -87,7 +83,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={WordCloudUser} exact />
-                <Route exact path={`${url}/:id/results`} component={OpenEnded} /> 
+                <Route exact path={`${url}/:id/results`} component={WordCloud} /> 
               </Switch>
             )}
           />
