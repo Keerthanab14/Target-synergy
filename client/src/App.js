@@ -11,7 +11,7 @@ import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/Results/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
-import Scales from './components/Poll/CreatePoll/ParticipantType/Scales'
+import ScalesUser from './components/Poll/CreatePoll/ParticipantType/ScalesUser'
 import WordCloud from './components/Poll/Results/WordCloud'
 import MCQ from './components/Poll/Results/MCQ'
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
@@ -21,7 +21,7 @@ import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpo
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
 //import { IdContext } from './IdContext';
 import OpenEnded from './components/Poll/Results/OpenEnded'
-import ImageMcq from './components/Poll/CreatePoll/ParticipantType/ImageMcq'
+import Scales from './components/Poll/Results/Scales'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
 import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
@@ -56,7 +56,7 @@ function App() {
           <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>
           <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
-         <Route path="/36" component={Scales}/>
+        
           
         <Route path="/610fbf5066e210524c8325a5" component={Ranking}/>
           <Route
@@ -100,6 +100,15 @@ function App() {
              <Switch>
                 <Route path={`${url}/:id`} component={QandAUser} exact />
                 <Route exact path={`${url}/:id/results`} component={QandA} /> 
+              </Switch>
+            )}
+          />
+          <Route
+            path="/SC"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={ScalesUser} exact />
+                <Route exact path={`${url}/:id/results`} component={Scales} /> 
               </Switch>
             )}
           />

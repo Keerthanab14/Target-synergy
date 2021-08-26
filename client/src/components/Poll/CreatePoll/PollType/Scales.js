@@ -40,7 +40,7 @@ const Scales =({data5,inputList, textcolor}) => {
         {inputList.map((x,i)=>{
             return(
             <Container key={i}>
-        <b style={{textAlign: 'left'}}>{inputList[i].choice}</b>  
+        <b style={{textAlign: 'left'}}>{inputList[i].option}</b>  
      <ScaleSlider  defaultValue={0}  />
 </Container>)
         })}
