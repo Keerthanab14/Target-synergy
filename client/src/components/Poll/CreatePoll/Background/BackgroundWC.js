@@ -12,7 +12,7 @@ import { IdContext } from '../../../../App';
 import axios from 'axios'
 
 
-const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor, BackgroundImage}) => {
+const BackgroundWC=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor, BackgroundImage}) => {
   
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
@@ -55,7 +55,7 @@ const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, tex
           setOpacity(100);
         }
       };
-     const url="http://localhost:8080/OE"
+     const url="http://localhost:8080/WC"
       const id = useContext(IdContext);
     const submit=(e)=>{
       e.preventDefault();
@@ -148,4 +148,4 @@ const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, tex
     )
 }
 
-export default BgOpenended
+export default BackgroundWC

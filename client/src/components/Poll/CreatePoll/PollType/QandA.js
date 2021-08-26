@@ -18,8 +18,8 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  height: 100%;
-  min-height: inherit;
+  height: 30%;
+  flex-direction: 'row'
 `;
 
 export const Chart = css`
@@ -43,15 +43,15 @@ export const Number = styled.span`
 function QandA ({data6, result, textcolor}) {
   const answer=['Question 1', 'Question 2','Question 3']
     return(
-      <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '40%', alignItems: 'center'}}>
+      <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '100%', alignItems: 'center',height:'100%',flexDirection:'column'}}>
         <h1 style={{color: textcolor}}>{data6.question}</h1>
        { answer.map((x,i)=>{
           return(
-          <MainContainer>
-        <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000', width: '30%'}} >
+         
+        <Box color="white" bgcolor="#cc0000" p={1} fontFamily= "Helvetica" style={{ backgroundColor:'#cc0000', width: '20%',height:'4%'}} >
           {x}
         </Box>
-      </MainContainer>)
+     )
         })}
         
     </div>

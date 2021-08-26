@@ -47,4 +47,32 @@ public class McqController {
         return savedPoll;
     }
 
+    //scales
+    @PostMapping("/SC")
+    public String saveSC(@RequestBody Mcq quest) {
+        System.out.println(quest.getChoices());
+        Mcq mcq=new Mcq();
+        mcq.setQuestion(String.valueOf(quest.getQuestion()));
+        mcq.setChoices( quest.getChoices());
+        mcq.setGoogleId(quest.getGoogleId());
+//        System.out.println(mcq.getChoices());
+        Mcq savedPoll = mcqRepo.save(mcq);
+        String url = "SC/" + savedPoll.getId();
+        return url;
+    }
+    @PutMapping("/SC/{id}")
+    public Mcq updateSC(@PathVariable("id") String id,@RequestBody Mcq quest) {
+        Mcq mcq=mcqRepo.findById(id).get();
+//        System.out.println(mcq.getChoices());
+        mcq.setChoices(quest.getChoices());
+        System.out.println(mcq.getChoices());
+        Mcq savedPoll = mcqRepo.save(mcq);
+        return savedPoll;
+    }
+
+    @GetMapping("/SC/{id}")
+    public Mcq getSC(@PathVariable("id") String id){
+        return mcqRepo.findById(id).get();
+    }
+
 }
