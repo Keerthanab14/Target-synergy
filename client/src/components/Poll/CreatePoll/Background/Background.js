@@ -12,7 +12,7 @@ import { IdContext } from '../../../../App';
 import axios from 'axios'
 
 
-const Background=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor}) => {
+const Background=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor, BackgroundImage}) => {
   
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
@@ -62,7 +62,8 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
      const q={
        bgcolor: color,
        textcolor: textcolor,
-       opacity: opacity/100
+       opacity: opacity/100,
+       bgimagekey: BackgroundImage.key
      }
       axios.put(url, q)
          .then(res=>{

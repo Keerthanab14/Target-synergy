@@ -32,7 +32,7 @@ button: {
   const CreatePolls=(props) => {
     const [isOpen, setIsOpen] = useState(false);
     const images=[]; //for ranking
-    const [img,setimg] = useState(null);
+    const [img,setimg] = useState({bg:null,key:0});
     const [result, setResult] = useState(
      [ {
         distance: 0,
@@ -71,17 +71,26 @@ const[data5, setData5]=useState({
   option:[{text: ""},{votes: 0}]  
 })
   
-const [inputList1, setInputList1] = useState([{ option: "", votes: 0 }]);
+const [inputListMC, setInputListMC] = useState([{ option: "", votes: 0 }]);
 const [inputListScales, setInputListScales] = useState([{ choice: "" }]);
 const [inputList4, setInputList4] = useState([{ choice: "" }]);
-const [inputList2, setInputList2] = useState([{ choice: "" }]);
+const [inputListRanking, setInputListRanking] = useState([{ choice: "" }]);
    
-   const onFileChange = (event) => {
-    //  setStateBg({ selectedFile: event.target.files[0] }); 
-    };
-
-    const fileData = () => {
-    };
+  const handleBgImage=(newValue)=>{
+    setimg({bg:newValue});
+    if(newValue==Bgimage1){
+      setimg({key:1})
+    }
+    else if(newValue==Bgimage2){
+      setimg({key:2})
+    }
+    else if(newValue==Bgimage3){
+      setimg({key:3})
+    }
+    else{
+      setimg({key:4})
+    }
+  }
             
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -183,12 +192,12 @@ const [inputList2, setInputList2] = useState([{ choice: "" }]);
      <Sidebar color={color} parentCallback={setColor}
      component={component} clickHandler={clickHandler} changecolor={settextcolor}
      setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} setData1={setData1} data1={data1} data2={data2} setData2={setData2} 
-     data3={data3} setData3={setData3} data4={data4} setData4={setData4} data5={data5} setData5={setData5} result={result} setResult={setResult} inputList1={inputList1} setInputList1={setInputList1}
+     data3={data3} setData3={setData3} data4={data4} setData4={setData4} data5={data5} setData5={setData5} result={result} setResult={setResult} inputListMC={inputListMC} setInputListMC={setInputListMC}
     images={images} inputListScales={inputListScales} setInputListScales={setInputListScales} inputList4={inputList4} setInputList4={setInputList4} textcolor={textcolor} settextcolor={settextcolor}
-    inputList2={inputList2} setInputList2={setInputList2} contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state} img={uri} setUri={setUri}/>
+    inputListRanking={inputListRanking} setInputListRanking={setInputListRanking} contentauth={props.contentauth} imgresult={imgresult} setImgResult={setImgResult} data6={data6} setData6={setData6} setState={setState} state={state} img={uri} setUri={setUri} BackgroundImage={img}/>
      
      <Presentation color={color} textcolor={textcolor} images={images} opacity={opacity} component={component} img={img} data1={data1} data2={data2} data3={data3} data5={data5} result={result}
-      inputList2={inputList2} inputList1={inputList1}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} img={uri}/>
+      inputListRanking={inputListRanking} inputListMC={inputListMC}  inputListScales={inputListScales}  imgresult={imgresult} flex='1' data4={data4} data6={data6} state={state} img={uri}/>
      
      
     
@@ -203,7 +212,7 @@ const [inputList2, setInputList2] = useState([{ choice: "" }]);
                      
                         
                           
-                        {fileData()}
+                        
                         <Button 
                         className={classes.button}
                         size="small"
@@ -212,7 +221,7 @@ const [inputList2, setInputList2] = useState([{ choice: "" }]);
                         name="choice"
                         style={{ width: '190px', position: 'relative', height: '60px', marginTop: '8%', marginLeft: '10%', backgroundColor: "white", color: "black"}}
                         placeholder="Enter choice" 
-                          ><input type="file" onChange={e => onFileChange(e)} />
+                          ><input type="file"  />
                         </Button>
                         <Button className={classes.button}
                             style={{borderRadius: "2em",
