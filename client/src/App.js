@@ -57,7 +57,7 @@ function App() {
           <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
          <Route path="/36" component={Scales}/>
-         {/* <Route path="/29" component={MultipleChoice}/> */}
+          
         <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
           <Route
             path="/MCQ"
