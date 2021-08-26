@@ -68,7 +68,7 @@ button: {
       })
 const[data5, setData5]=useState({
   question: "",
-  choice:[]
+  option:[{text: ""},{votes: 0}]  
 })
   
 const [inputList1, setInputList1] = useState([{ option: "", votes: 0 }]);
