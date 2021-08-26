@@ -36,7 +36,7 @@ const Presentation = ({color, textcolor, component, opacity, img, data1, data2, 
                                 minHeight: '400px',
                                backgroundColor: color,
                                 opacity: opacity/100,
-                                backgroundImage: `url(${img})`,
+                                backgroundImage: `url(${img.bg})`,
                                 color: textcolor,
                     }}
                     >
