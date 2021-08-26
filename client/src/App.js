@@ -23,7 +23,7 @@ import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint'
 import OpenEnded from './components/Poll/Results/OpenEnded'
 import ImageMcq from './components/Poll/CreatePoll/ParticipantType/ImageMcq'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
-import ImageChoice from './components/Poll/CreatePoll/PollType/ImageChoice';
+import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
 import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
 
 export const IdContext = React.createContext();
@@ -58,7 +58,7 @@ function App() {
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
          <Route path="/36" component={Scales}/>
           
-        <Route path="/610fbf5066e210524c8325a5" component={ImageChoice}/>
+        <Route path="/610fbf5066e210524c8325a5" component={Ranking}/>
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
@@ -78,10 +78,10 @@ function App() {
             )}
           />
           <Route
-            path="/imageChoice"
+            path="/Ranking"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} component={ImageChoice} exact />
+                <Route path={`${url}/:id`} component={Ranking} exact />
               </Switch>
             )}
           />
