@@ -3,7 +3,8 @@ import React,{useState,useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import ReactWordcloud from 'react-wordcloud';
 import axios from 'axios'
-const id=27
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flex: 1,
@@ -133,45 +134,6 @@ if(resUrl !== ""){
       transitionDuration: 1000
   };
   const size = [1200, 400];
-
-return (
-<div >
-<h1 style={{fontFamily: "Helvetica", textAlign: 'center'}} >{question.question} </h1>
-=======
-
-const resizeStyle = {
-display: "flex",
-alignItems: "center",
-justifyContent: "center",
-border: "solid 1px #ddd",
-width: '80%',
-height: '100%',
-
-
-};
-const callbacks = {
-//getWordColor: word => word.value > 50 ? "blue" : "red",
-onWordClick: console.log,
-onWordMouseOver: console.log,
-//getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "" : ""}]`,
-}
-
-const options = {
-colors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"],
-enableTooltip: true,
-deterministic: false,
-fontFamily: "helvetica",
-fontSizes: [ 20, 90],
-fontStyle: "normal",
-fontWeight: "normal",
-padding: 1,
-rotations: 2,
-rotationAngles: [0],
-scale: "sqrt",
-spiral: "archimedean",
-transitionDuration: 1000
-};
-//const size = [1200, 400];
 
 return (
 <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'100%',width:'100%'}} >
