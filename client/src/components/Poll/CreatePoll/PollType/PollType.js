@@ -7,7 +7,7 @@ import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 import CloudIcon from '@material-ui/icons/Cloud';
 import TuneIcon from '@material-ui/icons/Tune';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
-import SortIcon from '@material-ui/icons/Sort';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Button } from '@material-ui/core';
 
 
@@ -69,7 +69,7 @@ const PollType = ({clickHandler, handleChangeIndex}) => {
             </Button>
          
           <Button value="ic" aria-label="ranking" className={classes.togglebtn} onClick={()=>{clickHandler("ranking");handleChangeIndex(1)}}>
-            <SortIcon fontSize="large" className={classes.icon}/><h5>RANKING</h5>
+            <StarBorderIcon fontSize="large" className={classes.icon}/><h5>RATING</h5>
             </Button>
             
             </ButtonGroup>
