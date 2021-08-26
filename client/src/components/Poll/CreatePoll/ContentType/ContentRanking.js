@@ -39,13 +39,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ContentRanking = ({setData2, data2, handleChangeIndex, state, setState}) => {
+const ContentRanking = ({setData2, data2, handleChangeIndex, state, setState,inputList,setInputList}) => {
 //   const [state, setState] = useState({
 //     checkedA: false,
 //     checkedB: false,
 //     checkedC: false,
 //  });
-const[inputList, setInputList]=useState([{choice:""}])
+
 
 
 // handle input change
