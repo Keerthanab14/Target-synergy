@@ -166,4 +166,4 @@ const ContentScales = ({data5, setData5, setInputList, inputList, handleChangeIn
 
 
 
-export default ContentScales
+export default ContentScales;
