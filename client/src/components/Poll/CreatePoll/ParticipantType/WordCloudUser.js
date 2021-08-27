@@ -53,7 +53,7 @@ const WordCloudUser = (props) => {
                 console.log(res.data)
                         setResUrl(res.data);
               })
-      }, [])
+      }, u)
 
 
     const [WCAnswer,setWCAnswer]=useState({latestAnswer:""})
