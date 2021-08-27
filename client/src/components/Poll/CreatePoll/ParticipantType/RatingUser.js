@@ -56,7 +56,6 @@ console.log(textBased.question)
 
     //const [inputList, setInputList] = useState([{value}]);
     const [value, setValue] = React.useState(a);
-    console.log(value)
     const [inputList, setInputList] = useState([{ choice: "" }]);
     const handleSliderChange =(index)=>(event, newValue) => {
       const list=[...value]
@@ -110,7 +109,6 @@ console.log(textBased.question)
           <h5>{x}</h5>
      
           <Rating
-          name="customized-empty"
           value={value[i]}
           onChange={handleSliderChange(i)}
           precision={0.5}
