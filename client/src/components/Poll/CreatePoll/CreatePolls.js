@@ -67,7 +67,7 @@ const[data5, setData5]=useState({
 const [inputListMC, setInputListMC] = useState([{ option: "", votes: 0 }]);
 const [inputListScales, setInputListScales] = useState([{ choice: "" }]);
 const [inputList4, setInputList4] = useState([{ choice: "" }]);
-const [inputListRanking, setInputListRanking] = useState([{ choice: "" }]);
+const [inputListRanking, setInputListRanking] = useState([{option:"", votes: 0}]);
    
   const handleBgImage=(e)=>{
     switch (e) {
