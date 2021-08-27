@@ -118,7 +118,8 @@ data6, setData6, data4, setData4, setResult, result, inputListMC, inputListRanki
         {component==="qanda" && <ContentQandA QandA={data6} setQandA={setData6} handleChangeIndex={handleChangeIndex} />}
         {component==="wordcloud" && <ContentWordCloud WC={data4} setWC={setData4} handleChangeIndex={handleChangeIndex}/>}
         {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>}
-       {component==="ranking" && <ContentRanking setData2={setData2} data2={data2} inputList={inputListRanking} setInputList={setInputListRanking} handleChangeIndex={handleChangeIndex} />} 
+       {component==="rating" && <ContentRanking setData2={setData2} data2={data2} inputList={inputListRanking} setInputList={setInputListRanking} handleChangeIndex={handleChangeIndex} setState={setState} state={state} image={img} setUri={setUri}/>} 
+
        {component==="scales" && <ContentScales data5={data5} setData5={setData5} setResult={setResult} result={result} inputList={inputListScales} setInputList={setInputListScales} handleChangeIndex={handleChangeIndex} contentauth={contentauth}/>}
 
         </TabPanel>
@@ -126,7 +127,7 @@ data6, setData6, data4, setData4, setResult, result, inputListMC, inputListRanki
          {component==="multiplechoice" && <Background changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="qanda" && <Backgroundqna changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="wordcloud" && <BackgroundWC changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
-         {component==="ranking" && <BackgroundRanking changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
+         {component==="rating" && <BackgroundRanking changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="openended" && <BgOpenended changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
          {component==="scales" && <BackgroundScales changecolor={settextcolor} parentCallback={parentCallback} textcolor={textcolor} color={color} setOpacity={setOpacity} opacity={opacity} togglePopup={togglePopup} BackgroundImage={BackgroundImage}/>}
         </TabPanel >
