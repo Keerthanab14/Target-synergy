@@ -49,34 +49,34 @@ const OpenEnded = (props) => {
   const [resUrl, setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
 
-  axios.get(`http://localhost:8080/OE/${url}`)
-   .then(res=>{
-         setquestion({question:res.data.question})
-         console.log(question);
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+  
 
     
       useEffect(async ()=>{
-        
+        await axios.get(`http://localhost:8080/OE/${url}`)
+                    .then(res=>{
+                      setquestion({question:res.data.question})
+                       console.log(question);
+                   })
+                  .catch((error)=>{
+                    console.log(error)
+                  })
         await axios.get(`http://localhost:8080/quest/${url}`)
       .then(result => {
         setResUrl(result.data);
-      // console.log(resUrl);
+        if(resUrl !== ""){
+          axios.get(`http://localhost:8080/responses/${resUrl}`)
+          .then ((res) => {
+            setOpenEndedResponses({responses: res.data.responses})
+          })
+          .catch(error => console.log(error))
+        }
       })
       .catch(error => console.log(error))
-   
-    },[])
+ 
+    },[url,resUrl])
         
-      if(resUrl !== ""){
-        axios.get(`http://localhost:8080/responses/${resUrl}`)
-        .then ((res) => {
-          setOpenEndedResponses({responses: res.data.responses})
-        })
-        .catch(error => console.log(error))
-      }
+      
     
     
     const choice=OpenEndedResponses.responses;
@@ -88,12 +88,12 @@ const OpenEnded = (props) => {
   console.log(post);
 })} */}
       <div> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
-          <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '60%'}} >
+     <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '70%',margin:"auto"}} >
            {choice.map((x, i) => {
-           const color = randomColor({luminosity:"bright",count:1});
+           const color = randomColor({luminosity:"bright"});
       return(
          
-         <Container>
+         <Container style={{padding:"1%"}}>
             <Box color="white" bgcolor={color} p={2} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
                     {x}
             </Box>
