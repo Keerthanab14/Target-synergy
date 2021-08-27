@@ -117,9 +117,8 @@ data6, setData6, data4, setData4, setResult, result, inputListMC, inputListRanki
         {component==="multiplechoice" && <Content setData1={setData1} data1={data1} setResult={setResult} result={result} inputList={inputListMC} setInputList={setInputListMC} handleChangeIndex={handleChangeIndex} contentauth={contentauth}/>}
         {component==="qanda" && <ContentQandA QandA={data6} setQandA={setData6} handleChangeIndex={handleChangeIndex} />}
         {component==="wordcloud" && <ContentWordCloud WC={data4} setWC={setData4} handleChangeIndex={handleChangeIndex}/>}
-        {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>}
+        {component==="openended" && <ContentOpenEnded setOpenEnded={setData3} OpenEnded={data3} handleChangeIndex={handleChangeIndex}/>
        {component==="rating" && <ContentRanking setData2={setData2} data2={data2} inputList={inputListRanking} setInputList={setInputListRanking} handleChangeIndex={handleChangeIndex} setState={setState} state={state}/>} 
-
        {component==="scales" && <ContentScales data5={data5} setData5={setData5} setResult={setResult} result={result} inputList={inputListScales} setInputList={setInputListScales} handleChangeIndex={handleChangeIndex} contentauth={contentauth}/>}
 
         </TabPanel>
