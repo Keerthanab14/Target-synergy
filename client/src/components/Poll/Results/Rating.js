@@ -47,7 +47,7 @@ console.log(result)
  return(
      <div style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '95%', margin: '2%' }}>
    
-       <h5>{x}</h5>
+       <h4>{x}</h4>
   
        <Rating
        name="customized-empty"
