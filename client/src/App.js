@@ -24,6 +24,9 @@ import OpenEnded from './components/Poll/Results/OpenEnded'
 import Scales from './components/Poll/Results/Scales'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
+import RatingUser from './components/Poll/CreatePoll/ParticipantType/RatingUser'
+import Rating from './components/Poll/Results/Rating'
+
 import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
 
 export const IdContext = React.createContext();
@@ -75,14 +78,6 @@ function App() {
             )}
           />
           <Route
-            path="/Ranking"
-            render={({ match: { url } }) => (
-             <Switch>
-                <Route path={`${url}/:id`} component={Ranking} exact />
-              </Switch>
-            )}
-          />
-          <Route
             path="/WC"
             render={({ match: { url } }) => (
              <Switch>
@@ -106,6 +101,15 @@ function App() {
              <Switch>
                 <Route path={`${url}/:id`} component={ScalesUser} exact />
                 <Route exact path={`${url}/:id/results`} component={Scales} /> 
+              </Switch>
+            )}
+          />
+           <Route
+            path="/RT"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={RatingUser} exact />
+                <Route exact path={`${url}/:id/results`} component={Rating} /> 
               </Switch>
             )}
           />
