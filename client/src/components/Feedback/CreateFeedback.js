@@ -102,8 +102,8 @@ const [inputList4, setInputList4] = useState([{ choice: "" }]);
 
     const clickHandler=(e)=> {
         switch (e) {
-          case "ranking":
-                setComponent("ranking")
+          case "rating":
+                setComponent("rating")
                 console.log(component)
                 break
             case "multiplechoice":

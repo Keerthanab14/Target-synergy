@@ -102,8 +102,8 @@ const useStyles = makeStyles((theme) => ({
     
         const clickHandler=(e)=> {
             switch (e) {
-              case "ranking":
-                    setComponent("ranking")
+              case "rating":
+                    setComponent("rating")
                     console.log(component)
                     break
                 case "multiplechoice":
