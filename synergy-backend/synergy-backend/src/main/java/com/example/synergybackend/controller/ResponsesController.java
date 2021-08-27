@@ -103,11 +103,11 @@ public class ResponsesController {
         }
 
         // displaying the occurrence of elements in the arraylist
-        for (Map.Entry<String, Integer> val : hm.entrySet()) {
-            System.out.println("Element " + val.getKey() + " "
-                    + "occurs"
-                    + ": " + val.getValue() + " times");
-        }
+//        for (Map.Entry<String, Integer> val : hm.entrySet()) {
+//            System.out.println("Element " + val.getKey() + " "
+//                    + "occurs"
+//                    + ": " + val.getValue() + " times");
+//        }
         return hm;
     }
 
