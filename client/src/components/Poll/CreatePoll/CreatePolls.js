@@ -48,8 +48,8 @@ button: {
   })
      const[data2, setData2]=useState({
      question: "",
-     choice:[]
-})
+     option:[{text: ""},{votes: 0}]  
+    })
     const[data3, setData3]=useState({
     question:""
 })
@@ -118,8 +118,8 @@ const [inputListRanking, setInputListRanking] = useState([{ choice: "" }]);
 
     const clickHandler=(e)=> {
         switch (e) {
-          case "ranking":
-                setComponent("ranking")
+          case "rating":
+                setComponent("rating")
                 console.log(component)
                 break
             case "multiplechoice":
