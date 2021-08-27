@@ -90,11 +90,11 @@ const OpenEnded = (props) => {
       <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center", fontSize:"10px"}} >{question.question} </h1></div>
           <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '60%'}} >
            {choice.map((x, i) => {
-           const color = randomColor({count:1});
+           const color = randomColor({luminosity:"bright",count:1});
       return(
          
          <Container>
-            <Box color="white" bgcolor={color} p={1} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
+            <Box color="white" bgcolor={color} p={2} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
                     {x}
             </Box>
           </Container>

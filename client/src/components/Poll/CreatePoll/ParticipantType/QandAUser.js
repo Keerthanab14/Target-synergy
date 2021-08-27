@@ -94,7 +94,7 @@ const QandAUser = (props) => {
     }
 
     return (
-      <Container className={classes.root}  style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', marginTop: '2%', width: '50%' }} >
+      <Container className={classes.root}  style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', paddingTop: '5%', width: '50%' }} >
            <form onSubmit={submit} className={classes.root} noValidate autoComplete="off"><h1 className={classes.h}>{question.question}</h1>
       
       <h3>Write Your Answer Here:</h3>

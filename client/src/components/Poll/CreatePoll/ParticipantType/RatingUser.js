@@ -125,14 +125,14 @@ console.log(textBased.question)
 
         );
       })}
-      <div style={{display: 'flex',flexDirection: 'column', width: '100%', justifyContent: 'space-evenly',alignItems: "center"}}>
-        <Button
-         style={{ width: "20%",background:"#cc0000", color:"white" }}
-         className={classes.button}
-         variant="contained"
-         onClick = {()=>handleClick()}
-         size="large"
-         fullWidth={true}
+      <div style={{display: 'flex',flexDirection: 'column', width: '100%', justifyContent: 'space-evenly',alignItems: "center",paddingTop:"1%"}}>
+     <Button
+        style={{ width: "20%",background:"#cc0000", color:"white" }}
+        className={classes.button}
+        variant="contained"
+        onClick = {()=>handleClick()}
+        size="large"
+        fullWidth={true}
       >Submit
       </Button>
       <Button
@@ -142,9 +142,8 @@ console.log(textBased.question)
         onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
-      </Button>
-      </div>
-  
+      </Button></div>
+    
        
        
        </form>
