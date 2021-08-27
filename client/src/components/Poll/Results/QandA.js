@@ -80,16 +80,16 @@ const QandA = (props) => {
          const classes = useStyles();
     
     return ( <div>
-    <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center"}} > {question.question}</h1></div>
+    <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center",paddingTop:"5%"}} > {question.question}</h1></div>
         <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '100%'}} >
            {choice.map((x, i) => {
-         const color = randomColor({count:1});
+         const color = randomColor({count:1,luminosity: 'bright'});
     return(
        
        <Container>
          
 
-         <Box color="white" bgcolor={color} p={1} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
+         <Box color="white" bgcolor={color} p={2} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
               {x}
                 </Box>
                </Container>
