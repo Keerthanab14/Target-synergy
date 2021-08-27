@@ -11,13 +11,10 @@ import CreatePolls from './components/Poll/CreatePoll/CreatePolls';
 import Vote from './components/Poll/CreatePoll/ParticipantType/Vote';
 import QandA from './components/Poll/Results/QandA';
 import QandAUser from './components/Poll/CreatePoll/ParticipantType/QandAUser';
-import Scales from './components/Poll/CreatePoll/ParticipantType/Scales'
-import MCQ from './components/Poll/Results/MCQ'
-import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
-import WordCloud from './components/Poll/Results/WordCloud'
 import ScalesUser from './components/Poll/CreatePoll/ParticipantType/ScalesUser'
 import MCQ from './components/Poll/Results/MCQ'
 import WordCloudUser from './components/Poll/CreatePoll/ParticipantType/WordCloudUser'
+import WordCloud from './components/Poll/Results/WordCloud'
 import CreateFeedback from './components/Feedback/CreateFeedback';
 import CreateOpinions from './components/Opinions/CreateOpinions';
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
