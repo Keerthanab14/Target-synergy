@@ -25,7 +25,7 @@ import Scales from './components/Poll/Results/Scales'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
 import RatingUser from './components/Poll/CreatePoll/ParticipantType/RatingUser'
-import Rating from './components/Poll/Results/Rating'
+import RatingResult from './components/Poll/Results/Rating'
 
 import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
 
@@ -109,7 +109,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={RatingUser} exact />
-                <Route exact path={`${url}/:id/results`} component={Rating} /> 
+                <Route exact path={`${url}/:id/results`} component={RatingResult} /> 
               </Switch>
             )}
           />
