@@ -17,6 +17,17 @@ public class Mcq {
     private ArrayList<Choice> choices ;
     private String googleId;
 
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
     public String getGoogleId() {
         return googleId;
     }

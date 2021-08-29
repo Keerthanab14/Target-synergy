@@ -89,11 +89,9 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
             googleId: res.profileObj.googleId,
             email: res.profileObj.email,
             name: res.profileObj.name
-            
           }
           setContentAuth(data.googleId)
-          console.log(contentauth);
-          console.log(data);
+          console.log(data.googleId)
             axios.post("http://localhost:8080/newUser", data)
             .then(r =>console.log("success"))
             .catch(err => { 
@@ -123,7 +121,7 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
                     &nbsp;&nbsp;
                     <Typography className={classes.title} variant="h6" noWrap >
 
-                        <Service setAuth={setAuth}  auth={auth}/>
+                        <Service setAuth={setAuth} auth={auth} contentauth={contentauth} setContentAuth={setContentAuth}/>
 
                     </Typography>
                     <div className={classes.search}>

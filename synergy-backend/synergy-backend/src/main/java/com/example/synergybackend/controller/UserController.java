@@ -1,11 +1,11 @@
 package com.example.synergybackend.controller;
 
-
 import com.example.synergybackend.model.User;
 import com.example.synergybackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -14,6 +14,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/user")
+    public List<User> getAllUser(){
+        return userRepository.findAll();
+    }
     @PostMapping("/newUser")
     public String saveBook(@RequestBody Map<String, Object> user) {
         User userr = new User();
