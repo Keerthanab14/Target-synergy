@@ -2,7 +2,6 @@ package com.example.synergybackend.controller;
 
 
 import com.example.synergybackend.model.Responses;
-import com.example.synergybackend.model.WordCloudResponse;
 import com.example.synergybackend.repository.ResponsesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
