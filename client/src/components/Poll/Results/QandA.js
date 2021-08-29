@@ -50,43 +50,45 @@ const QandA = (props) => {
   const [QandAResponses , setQandAResponses] =useState({responses:[]});
   const [resUrl, setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/QandA/${url}`)
-   .then(res=>{
-        setquestion({question:res.data.question})
-       })
-    .catch((error)=>{
-      console.log(error)
-    })
+ 
   
       useEffect(async ()=>{
+        await axios.get(`http://localhost:8080/QandA/${url}`)
+        .then(res=>{
+             setquestion({question:res.data.question})
+            })
+         .catch((error)=>{
+           console.log(error)
+         })
         await axios.get(`http://localhost:8080/quest/${url}`)
             .then(result => {
               setResUrl(result.data);
             // console.log(resUrl);
+            if(resUrl !== ""){
+              axios.get(`http://localhost:8080/responses/${resUrl}`)
+              .then ((res) => {
+                setQandAResponses({responses: res.data.responses})
+                // console.log(res.data.responses)
+              })
+              .catch(error => console.log(error))
+            }
             })
             .catch(error => console.log(error))
     
-          },[])
+          },[url,resUrl])
     
-          if(resUrl !== ""){
-            axios.get(`http://localhost:8080/responses/${resUrl}`)
-            .then ((res) => {
-              setQandAResponses({responses: res.data.responses})
-              // console.log(res.data.responses)
-            })
-            .catch(error => console.log(error))
-          }
+          
           const choice=QandAResponses.responses;
          const classes = useStyles();
     
     return ( <div>
-    <div> <h1 style={{fontFamily:"Helvetica",  textAlign:"center",paddingTop:"5%"}} > {question.question}</h1></div>
-        <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '100%'}} >
+     <div> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
+     <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '70%',margin:"auto"}} >
            {choice.map((x, i) => {
-         const color = randomColor({count:1,luminosity: 'bright'});
+         const color = randomColor({luminosity:"bright"});
     return(
        
-       <Container>
+       <Container style={{padding:"1%"}}>
          
 
          <Box color="white" bgcolor={color} p={2} fontFamily= "Helvetica" style={{ backgroundColor:{color}, width: '100%'}} >
