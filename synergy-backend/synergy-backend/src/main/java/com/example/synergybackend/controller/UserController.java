@@ -4,10 +4,7 @@ package com.example.synergybackend.controller;
 import com.example.synergybackend.model.User;
 import com.example.synergybackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -27,5 +24,7 @@ public class UserController {
         System.out.println(user.get("googleId"));
         return (String)user.get("data");
     }
+
+
 
 }
