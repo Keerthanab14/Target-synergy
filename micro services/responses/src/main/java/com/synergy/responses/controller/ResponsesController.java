@@ -1,7 +1,7 @@
-package com.example.synergybackend.controller;
+package com.synergy.responses.controller;
 
-import com.example.synergybackend.model.Responses;
-import com.example.synergybackend.repository.ResponsesRepository;
+import com.synergy.responses.model.Responses;
+import com.synergy.responses.repository.ResponsesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,15 +99,9 @@ public class ResponsesController {
             Integer j = hm.get(i);
             hm.put(String.valueOf(i), (j == null) ? 1 : j + 1);
         }
-
-        // displaying the occurrence of elements in the arraylist
-//        for (Map.Entry<String, Integer> val : hm.entrySet()) {
-//            System.out.println("Element " + val.getKey() + " "
-//                    + "occurs"
-//                    + ": " + val.getValue() + " times");
-//        }
         return hm;
     }
 
 
 }
+
