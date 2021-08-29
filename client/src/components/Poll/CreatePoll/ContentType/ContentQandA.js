@@ -41,8 +41,16 @@ const ContentQandA = (props) => {
     const url="http://localhost:8080/QandA"
     const id = useContext(IdContext);
     const submit = (e) => {
+      const a = props.contentauth;
+      
+      const q ={
+        question: props.QandA.question,
+        googleId : a,
+        type: "QandA"
+      }
+      console.log(q)
       e.preventDefault();
-      axios.post(url, props.QandA)
+      axios.post(url, q)
            .then(res=>{
               console.log(res.data);
               id.setId(res.data);

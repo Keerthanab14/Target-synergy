@@ -1,6 +1,5 @@
 package com.example.synergybackend.controller;
 
-
 import com.example.synergybackend.model.Responses;
 import com.example.synergybackend.repository.ResponsesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
