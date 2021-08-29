@@ -1,0 +1,301 @@
+package com.synergy.mcq.controller;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
+import com.synergy.mcq.model.Choice;
+import com.synergy.mcq.model.Mcq;
+import com.synergy.mcq.repository.MCQRepository;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+class McqControllerTest {
+
+    @Mock
+    private MCQRepository mockMcqRepo;
+
+    @InjectMocks
+    private McqController mcqControllerUnderTest;
+
+
+    @Test
+    void testGetAllMcq() {
+        // Setup
+
+        // Configure MCQRepository.findAll(...).
+        final Mcq mcq = new Mcq();
+        mcq.setGoogleId("googleId");
+        mcq.setId("id");
+        mcq.setQuestion("question");
+        mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        final List<Mcq> mcqs = List.of(mcq);
+        when(mockMcqRepo.findAll()).thenReturn(mcqs);
+        System.out.println(mcq);
+        // Run the test
+        final List<Mcq> result = mcqControllerUnderTest.getAllMcq();
+
+        // Verify the results
+        for(Mcq i :result)
+        System.out.println(i);
+    }
+
+    @Test
+    void testGetAllMcq_MCQRepositoryReturnsNoItems() {
+        // Setup
+        when(mockMcqRepo.findAll()).thenReturn(Collections.emptyList());
+
+        // Run the test
+        final List<Mcq> result = mcqControllerUnderTest.getAllMcq();
+
+        // Verify the results
+        System.out.println(result);
+    }
+
+    @Test
+    void testGetMcqById() {
+        // Setup
+
+        // Configure MCQRepository.findById(...).
+        MockitoAnnotations.openMocks(this);
+        final Mcq mcq1 = new Mcq();
+        mcq1.setGoogleId("googleId");
+        mcq1.setId("id");
+        mcq1.setQuestion("question");
+        mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mockMcqRepo.save(any(Mcq.class));
+
+
+        final Optional<Mcq> mcq = Optional.of(mcq1);
+        when(mockMcqRepo.findById("id")).thenReturn(mcq);
+
+        // Run the test
+        final Mcq result = mcqControllerUnderTest.getMcqById("id");
+        System.out.println(result);
+
+    }
+
+    @Test
+    void testSaveMcq() {
+        // Setup
+        final Mcq quest = new Mcq();
+        quest.setGoogleId("googleId");
+        quest.setId("id");
+        quest.setQuestion("question");
+        quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+
+        // Configure MCQRepository.save(...).
+        final Mcq mcq = new Mcq();
+        mcq.setGoogleId("googleId");
+        mcq.setId("id");
+        mcq.setQuestion("question");
+        mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq);
+
+        // Run the test
+        final String result = mcqControllerUnderTest.saveMcq(quest);
+    System.out.println(result);
+        // Verify the results
+        assertEquals("MCQ/id", result);
+    }
+
+    @Test
+    void testUpdateMcq() {
+        // Setup
+        final Mcq quest = new Mcq();
+        quest.setGoogleId("googleId");
+        quest.setId("id");
+        quest.setQuestion("question");
+        quest.setChoices(new ArrayList<>(List.of(new Choice("option", 2))));
+
+        // Configure MCQRepository.findById(...).
+        final Mcq mcq1 = new Mcq();
+        mcq1.setGoogleId("googleId");
+        mcq1.setId("id");
+        mcq1.setQuestion("question");
+        mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        final Optional<Mcq> mcq = Optional.of(mcq1);
+        when(mockMcqRepo.findById("id")).thenReturn(mcq);
+
+        // Configure MCQRepository.save(...).
+        final Mcq mcq2 = new Mcq();
+        mcq2.setGoogleId("googleId");
+        mcq2.setId("id");
+        mcq2.setQuestion("question");
+        mcq2.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq2);
+
+        // Run the test
+        final Mcq result = mcqControllerUnderTest.updateMcq("id", quest);
+        ArrayList<Choice> c=result.getChoices();
+        for(Choice i:c)
+            System.out.println(i.getVotes());
+
+        // Verify the results
+    }
+
+    @Test
+    void testSaveSC() {
+        // Setup
+        final Mcq quest = new Mcq();
+        quest.setGoogleId("googleId");
+        quest.setId("id");
+        quest.setQuestion("question");
+        quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+
+        // Configure MCQRepository.save(...).
+        final Mcq mcq = new Mcq();
+        mcq.setGoogleId("googleId");
+        mcq.setId("id");
+        mcq.setQuestion("question");
+        mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq);
+
+        // Run the test
+        final String result = mcqControllerUnderTest.saveSC(quest);
+
+        // Verify the results
+        assertEquals("SC/id", result);
+    }
+
+    @Test
+    void testUpdateSC() {
+        // Setup
+        final Mcq quest = new Mcq();
+        quest.setGoogleId("googleId");
+        quest.setId("id");
+        quest.setQuestion("question");
+        quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+
+        // Configure MCQRepository.findById(...).
+        final Mcq mcq1 = new Mcq();
+        mcq1.setGoogleId("googleId");
+        mcq1.setId("id");
+        mcq1.setQuestion("question");
+        mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        final Optional<Mcq> mcq = Optional.of(mcq1);
+        when(mockMcqRepo.findById("id")).thenReturn(mcq);
+
+        // Configure MCQRepository.save(...).
+        final Mcq mcq2 = new Mcq();
+        mcq2.setGoogleId("googleId");
+        mcq2.setId("id");
+        mcq2.setQuestion("question");
+        mcq2.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq2);
+
+        // Run the test
+        final Mcq result = mcqControllerUnderTest.updateSC("id", quest);
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetSC() {
+        // Setup
+
+        // Configure MCQRepository.findById(...).
+        final Mcq mcq1 = new Mcq();
+        mcq1.setGoogleId("googleId");
+        mcq1.setId("id");
+        mcq1.setQuestion("question");
+        mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        final Optional<Mcq> mcq = Optional.of(mcq1);
+        when(mockMcqRepo.findById("id")).thenReturn(mcq);
+
+        // Run the test
+        final Mcq result = mcqControllerUnderTest.getSC("id");
+
+        // Verify the results
+    }
+
+    @Test
+    void testSaveRT() {
+        // Setup
+        final Mcq quest = new Mcq();
+        quest.setGoogleId("googleId");
+        quest.setId("id");
+        quest.setQuestion("question");
+        quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+
+        // Configure MCQRepository.save(...).
+        final Mcq mcq = new Mcq();
+        mcq.setGoogleId("googleId");
+        mcq.setId("id");
+        mcq.setQuestion("question");
+        mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq);
+
+        // Run the test
+        final String result = mcqControllerUnderTest.saveRT(quest);
+
+        // Verify the results
+        assertEquals("RT/id", result);
+    }
+
+    @Test
+    void testUpdateRT() {
+        // Setup
+        final Mcq quest = new Mcq();
+        quest.setGoogleId("googleId");
+        quest.setId("id");
+        quest.setQuestion("question");
+        quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+
+        // Configure MCQRepository.findById(...).
+        final Mcq mcq1 = new Mcq();
+        mcq1.setGoogleId("googleId");
+        mcq1.setId("id");
+        mcq1.setQuestion("question");
+        mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        final Optional<Mcq> mcq = Optional.of(mcq1);
+        when(mockMcqRepo.findById("id")).thenReturn(mcq);
+
+        // Configure MCQRepository.save(...).
+        final Mcq mcq2 = new Mcq();
+        mcq2.setGoogleId("googleId");
+        mcq2.setId("id");
+        mcq2.setQuestion("question");
+        mcq2.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq2);
+
+        // Run the test
+        final Mcq result = mcqControllerUnderTest.updateRT("id", quest);
+
+        // Verify the results
+    }
+
+    @Test
+    void testGetRT() {
+        // Setup
+
+        // Configure MCQRepository.findById(...).
+        final Mcq mcq1 = new Mcq();
+        mcq1.setGoogleId("googleId");
+        mcq1.setId("id");
+        mcq1.setQuestion("question");
+        mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        final Optional<Mcq> mcq = Optional.of(mcq1);
+        when(mockMcqRepo.findById("id")).thenReturn(mcq);
+
+        // Run the test
+        final Mcq result = mcqControllerUnderTest.getRT("id");
+
+        // Verify the results
+    }
+
+}
