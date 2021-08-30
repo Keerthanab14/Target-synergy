@@ -55,7 +55,7 @@ const Backgroundqna=({parentCallback, color, setOpacity, opacity, togglePopup, t
           setOpacity(100);
         }
       };
-     const url="http://localhost:8080/QandA"
+     const url="http://localhost:8083/QandA"
       const id = useContext(IdContext);
     const submit=(e)=>{
       e.preventDefault();
