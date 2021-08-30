@@ -128,6 +128,10 @@ console.log(textBased.question)
              .then(res=>{
                 console.log(res)
               })
+              if (window.confirm('Your response has been successfully submitted. You will now be redirected to the homepage.   To submit another response, click Cancel ')) 
+              {
+              window.location.href='https://targetsynergy.herokuapp.com';
+              };
     }
     const uri = `/SC/${u}/results`
   function handleResult(path) {
