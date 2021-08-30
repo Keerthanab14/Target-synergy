@@ -32,7 +32,12 @@ public class McqController {
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
         mcq.setGoogleId(quest.getGoogleId());
-//        System.out.println(mcq.getChoices());
+        mcq.setBgcolor(quest.getBgcolor());
+        mcq.setTextcolor(quest.getTextcolor());
+        mcq.setOpacity(quest.getOpacity());
+        mcq.setBgimagekey(quest.getBgimagekey());
+//       System.out.println(mcq.getChoices());
+
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "MCQ/" + savedPoll.getId();
         return url;
