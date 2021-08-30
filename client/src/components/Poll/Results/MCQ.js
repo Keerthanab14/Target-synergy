@@ -54,7 +54,7 @@ const MCQ = (props) => {
   };
   
   useEffect(async () => {
-    let result = await axios.get(`http://localhost:8080/MCQ/${url}`)
+    let result = await axios.get(`http://localhost:8082/MCQ/${url}`)
     setQuestion(result.data.question)
     setChoices(result.data.choices)
   },[])

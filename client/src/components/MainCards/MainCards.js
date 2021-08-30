@@ -36,7 +36,7 @@ function MainCards({setAuth,auth,setContentAuth,contentauth}) {
       setContentAuth(data.googleId)
       console.log(contentauth)
 
-        axios.post("http://localhost:8080/newUser", data)
+        axios.post("http://localhost:8081/user", data)
         .then(r =>console.log("success"))
         .catch(err => { 
         console.error(err);
