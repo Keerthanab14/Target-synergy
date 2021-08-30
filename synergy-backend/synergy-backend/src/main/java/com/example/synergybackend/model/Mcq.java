@@ -16,6 +16,16 @@ public class Mcq {
     private String question;
     private ArrayList<Choice> choices ;
     private String googleId;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String type;
     private String bgcolor;
     private String textcolor;
     private int opacity;
