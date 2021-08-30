@@ -38,7 +38,7 @@ const ContentQandA = (props) => {
     
     const handleChangeIndex=props.handleChangeIndex
     const classes = useStyles();
-    const url="http://localhost:8080/QandA"
+    const url="http://localhost:8083/QandA"
     const id = useContext(IdContext);
     const submit = (e) => {
       const a = props.contentauth;

@@ -53,7 +53,7 @@ const OpenEnded = (props) => {
 
     
       useEffect(async ()=>{
-        await axios.get(`http://localhost:8080/OE/${url}`)
+        await axios.get(`http://localhost:8083/OE/${url}`)
                     .then(res=>{
                       setquestion({question:res.data.question})
                        console.log(question);
@@ -61,11 +61,11 @@ const OpenEnded = (props) => {
                   .catch((error)=>{
                     console.log(error)
                   })
-        await axios.get(`http://localhost:8080/quest/${url}`)
+        await axios.get(`http://localhost:8083/quest/${url}`)
       .then(result => {
         setResUrl(result.data);
         if(resUrl !== ""){
-          axios.get(`http://localhost:8080/responses/${resUrl}`)
+          axios.get(`http://localhost:8084/responses/${resUrl}`)
           .then ((res) => {
             setOpenEndedResponses({responses: res.data.responses})
           })
