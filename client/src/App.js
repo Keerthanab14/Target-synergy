@@ -25,14 +25,14 @@ import Scales from './components/Poll/Results/Scales'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
 import RatingUser from './components/Poll/CreatePoll/ParticipantType/RatingUser'
-import Rating from './components/Poll/Results/Rating'
+import RatingResult from './components/Poll/Results/Rating'
 
 import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
 
 export const IdContext = React.createContext();
 function App() {
   const [ auth, setAuth]=useState(false)
-  const [ contentauth, setContentAuth ] =useState()
+  const [ contentauth, setContentAuth ] =useState("")
   const [id, setId] = useState("");
 
   const [textBased , setTextBased] = useState({question:'', choices:[]})
@@ -43,7 +43,7 @@ function App() {
     <div className="App">
         <Header setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>
         <Switch>
-          <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} />)} />
+          <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>)} />
          <Route path="/polls" component={Poll}/> 
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
@@ -57,8 +57,6 @@ function App() {
           <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
           
-          
-        <Route path="/610fbf5066e210524c8325a5" component={Ranking}/>
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
@@ -109,7 +107,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={RatingUser} exact />
-                <Route exact path={`${url}/:id/results`} component={Rating} /> 
+                <Route exact path={`${url}/:id/results`} component={RatingResult} /> 
               </Switch>
             )}
           />
@@ -120,40 +118,78 @@ function App() {
     </DesktopBreakpoint>
     <PhoneBreakpoint>
     <BrowserRouter>
-   
     <div className="App">
-        <Header />
+        <Header setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>
         <Switch>
-          <Route exact path="/" component={Main} />
-          <Route path="/polls" component={Poll}/>
+          <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>)} />
+         <Route path="/polls" component={Poll}/> 
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
-          <Route path="/link" component={CreatePoll}/> 
+          <IdContext.Provider
+                value={{
+                id,
+                setId
+                }}>
+          <Route path="/link" component={CreatePoll} />
+          <Route path="/create-poll" render={(props)=>(<CreatePolls {...props}  contentauth={contentauth}/>)}/>
+          <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
+          <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
+          
           <Route
-            path="/create-poll"
+            path="/MCQ"
             render={({ match: { url } }) => (
-             <Switch>
-                <Route path={`${url}/`} component={CreatePolls} exact />
+             <Switch> 
+                <Route exact path={`${url}/:id`} component={Vote} />  
+                <Route exact path={`${url}/:id/results`} component={MCQ} />  
               </Switch>
             )}
           />
           <Route
-            path="/create-feedback"
+            path="/OE"
             render={({ match: { url } }) => (
-             <Switch>
-                <Route path={`${url}/`} component={CreateFeedback} exact />
+             <Switch> 
+                <Route exact path={`${url}/:id`} component={OpenEndedUser} />  
+                <Route exact path={`${url}/:id/results`} component={OpenEnded} /> 
               </Switch>
             )}
           />
           <Route
-            path="/create-opinions"
+            path="/WC"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/`} component={CreateOpinions} exact />
+                <Route path={`${url}/:id`} component={WordCloudUser} exact />
+                <Route exact path={`${url}/:id/results`} component={WordCloud} /> 
               </Switch>
             )}
           />
-          <Route path="/231" component={OpenEndedUser}/>
+          <Route
+            path="/QandA"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={QandAUser} exact />
+                <Route exact path={`${url}/:id/results`} component={QandA} /> 
+              </Switch>
+            )}
+          />
+          <Route
+            path="/SC"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={ScalesUser} exact />
+                <Route exact path={`${url}/:id/results`} component={Scales} /> 
+              </Switch>
+            )}
+          />
+           <Route
+            path="/RT"
+            render={({ match: { url } }) => (
+             <Switch>
+                <Route path={`${url}/:id`} component={RatingUser} exact />
+                <Route exact path={`${url}/:id/results`} component={RatingResult} /> 
+              </Switch>
+            )}
+          />
+         </IdContext.Provider>
         </Switch> 
     </div>
     </BrowserRouter>

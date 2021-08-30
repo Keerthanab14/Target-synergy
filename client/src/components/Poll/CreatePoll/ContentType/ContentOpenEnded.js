@@ -38,11 +38,19 @@ const ContentOpenEnded = (props) => {
     
     const handleChangeIndex=props.handleChangeIndex
     const classes = useStyles();
-    const url="http://localhost:8080/OE"
+    const url="http://localhost:8083/OE"
     const id = useContext(IdContext);
     const submit = (e) => {
       e.preventDefault();
-      axios.post(url, props.OpenEnded)
+      const a = props.contentauth;
+      
+      const q ={
+        question: props.OpenEnded.question,
+        googleId : a,
+        type: "OE"
+      }
+      console.log(q)
+      axios.post(url, q)
            .then(res=>{
               console.log(res.data);
               id.setId(res.data);

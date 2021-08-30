@@ -44,6 +44,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
          checkedC: false,
       });
     
+  console.log(contentauth)
       
 
   // handle input change
@@ -78,7 +79,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
       };
     const [errorMessage, setErrorMessage] = useState(0);
     const classes = useStyles();
-    const url="http://localhost:8080/MCQ"
+    const url="http://localhost:8082/MCQ"
     const id = useContext(IdContext);
     const submit = (e) => {
     e.preventDefault();
@@ -100,10 +101,9 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
       const q ={
         question: data1.question,
         choices:data1.option,
-        googleId : a
-      
+        googleId : a,
+        type: "MCQ"
       }
-      console.log(q)
       console.log(q)
      
       axios.post(url, q)

@@ -11,6 +11,7 @@ import Input from '@material-ui/core/Input';
 import { ChatVoice } from 'styled-icons/remix-line';
 import { List } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import randomColor from 'randomcolor';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +28,36 @@ const useStyles = makeStyles((theme) => ({
       
     },
   }));
+  const PrettoSlider = withStyles({
+    root: {
+      color: randomColor(),
+      height: 8,
+    },
+    thumb: {
+      height: 24,
+      width: 24,
+      backgroundColor: '#fff',
+      border: '2px solid currentColor',
+      marginTop: -8,
+      marginLeft: -12,
+      '&:focus, &:hover, &$active': {
+        boxShadow: 'inherit',
+      },
+    },
+    active: {},
+    valueLabel: {
+      left: 'calc(-50% + 4px)',
+    },
+    track: {
+      height: 8,
+      borderRadius: 4,
+    },
+    rail: {
+      height: 8,
+      borderRadius: 4,
+    },
+  })(Slider);
+ 
   
   const Scales =(props) => {
     const history = useHistory();
@@ -34,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     const [textBased , setTextBased] = useState({question:'', choices:[]})
   const [Bg, setBg]=useState({bgcolor:'',textcolor:'',opacity:1})
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8080/SC/${u}`)
+      var result = await axios.get(`http://localhost:8082/SC/${u}`)
       setTextBased({
         question: result.data.question,
        choices: result.data.choices
@@ -93,7 +124,7 @@ console.log(textBased.question)
         data5.choices[i]={option:(x), votes:((textBased.choices[i].votes + value[i])/2)}
       })
       console.log(data5)
-      axios.put(`http://localhost:8080/SC/${u}`, data5)
+      axios.put(`http://localhost:8082/SC/${u}`, data5)
              .then(res=>{
                 console.log(res)
               })
@@ -113,7 +144,7 @@ console.log(textBased.question)
       
           <h3>{x}</h3>
      
-            <Slider
+            <PrettoSlider
               value={value[i]}
               onChange={handleSliderChange(i)}
               aria-labelledby="input-slider"

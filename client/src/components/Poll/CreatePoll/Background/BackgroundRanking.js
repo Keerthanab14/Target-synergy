@@ -55,7 +55,7 @@ const BackgroundRanking=({parentCallback, color, setOpacity, opacity, togglePopu
           setOpacity(100);
         }
       };
-    const url="http://localhost:8080/"
+    const url="http://localhost:8082/RT"
       const id = useContext(IdContext);
     const submit=(e)=>{
       e.preventDefault();

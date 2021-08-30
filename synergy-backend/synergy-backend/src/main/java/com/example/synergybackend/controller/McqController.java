@@ -1,20 +1,36 @@
 package com.example.synergybackend.controller;
 
 
-import com.example.synergybackend.model.Choice;
 import com.example.synergybackend.model.Mcq;
+<<<<<<< HEAD
+import com.example.synergybackend.repository.*;
+=======
+import com.example.synergybackend.model.Responses;
 import com.example.synergybackend.repository.MCQRepository;
+>>>>>>> 5048b93294c2074950f7ed36b18fd1e5c240a372
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
+import java.util.HashMap;
+=======
+>>>>>>> 5048b93294c2074950f7ed36b18fd1e5c240a372
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-public class McqController {
+public abstract class McqController {
     @Autowired
     private MCQRepository mcqRepo;
+
+    @GetMapping("/{id}/MCQ")
+    public List<Mcq> getMcqByUser(@PathVariable("id") String id){
+        return mcqRepo.findAllByGoogleId(id);
+    }
 
     @GetMapping("/MCQ")
     public List<Mcq> getAllMcq(){
@@ -32,12 +48,7 @@ public class McqController {
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
         mcq.setGoogleId(quest.getGoogleId());
-        mcq.setBgcolor(quest.getBgcolor());
-        mcq.setTextcolor(quest.getTextcolor());
-        mcq.setOpacity(quest.getOpacity());
-        mcq.setBgimagekey(quest.getBgimagekey());
-//       System.out.println(mcq.getChoices());
-
+        mcq.setType((quest.getType()));
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "MCQ/" + savedPoll.getId();
         return url;
@@ -107,5 +118,10 @@ public class McqController {
     public Mcq getRT(@PathVariable("id") String id){
         return mcqRepo.findById(id).get();
     }
+
+
+
+
+
 
 }
