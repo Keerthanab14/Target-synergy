@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     borderSpacing: 2
   },
 });
-function MainCards({setAuth,auth}) {
+function MainCards({setAuth,auth,setContentAuth,contentauth}) {
   const classes = useStyles();
   
   const onSuccess = (res)=>{
@@ -33,7 +33,9 @@ function MainCards({setAuth,auth}) {
         name: res.profileObj.name
         
       }
-      console.log(data);
+      setContentAuth(data.googleId)
+      console.log(contentauth)
+
         axios.post("http://localhost:8080/newUser", data)
         .then(r =>console.log("success"))
         .catch(err => { 

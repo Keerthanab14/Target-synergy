@@ -36,11 +36,18 @@ const MCQ = (props) => {
   };
   const options = {
     scales: {
+      xAxes: [{
+        gridLines: {
+          display:false
+      }
+    }],
       yAxes: [
         {
           ticks: {
             beginAtZero: true,
           },
+          gridLines: {
+            display:false        },   
         },
       ],
     },

@@ -1,5 +1,4 @@
 package com.example.synergybackend.controller;
-import com.example.synergybackend.model.Mcq;
 import com.example.synergybackend.model.OpenEnded;
 import com.example.synergybackend.repository.OpenEndedRepository;
 import com.example.synergybackend.services.SequenceService;

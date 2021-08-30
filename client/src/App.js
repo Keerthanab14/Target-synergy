@@ -25,14 +25,14 @@ import Scales from './components/Poll/Results/Scales'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
 import RatingUser from './components/Poll/CreatePoll/ParticipantType/RatingUser'
-import Rating from './components/Poll/Results/Rating'
+import RatingResult from './components/Poll/Results/Rating'
 
 import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
 
 export const IdContext = React.createContext();
 function App() {
   const [ auth, setAuth]=useState(false)
-  const [ contentauth, setContentAuth ] =useState()
+  const [ contentauth, setContentAuth ] =useState("")
   const [id, setId] = useState("");
 
   const [textBased , setTextBased] = useState({question:'', choices:[]})
@@ -43,7 +43,7 @@ function App() {
     <div className="App">
         <Header setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>
         <Switch>
-          <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} />)} />
+          <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>)} />
          <Route path="/polls" component={Poll}/> 
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
@@ -109,7 +109,7 @@ function App() {
             render={({ match: { url } }) => (
              <Switch>
                 <Route path={`${url}/:id`} component={RatingUser} exact />
-                <Route exact path={`${url}/:id/results`} component={Rating} /> 
+                <Route exact path={`${url}/:id/results`} component={RatingResult} /> 
               </Switch>
             )}
           />

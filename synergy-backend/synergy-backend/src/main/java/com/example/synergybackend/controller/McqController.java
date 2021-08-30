@@ -2,16 +2,28 @@ package com.example.synergybackend.controller;
 
 
 import com.example.synergybackend.model.Mcq;
+<<<<<<< HEAD
+import com.example.synergybackend.repository.*;
+=======
 import com.example.synergybackend.model.Responses;
 import com.example.synergybackend.repository.MCQRepository;
+>>>>>>> 5048b93294c2074950f7ed36b18fd1e5c240a372
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.HashMap;
+=======
+>>>>>>> 5048b93294c2074950f7ed36b18fd1e5c240a372
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-public class McqController {
+public abstract class McqController {
     @Autowired
     private MCQRepository mcqRepo;
 
@@ -106,5 +118,10 @@ public class McqController {
     public Mcq getRT(@PathVariable("id") String id){
         return mcqRepo.findById(id).get();
     }
+
+
+
+
+
 
 }
