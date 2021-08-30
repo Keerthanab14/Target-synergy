@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const QandAUser = (props) => {
+  const auth = props.auth;
   const history = useHistory();
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
@@ -109,14 +110,14 @@ const QandAUser = (props) => {
         fullWidth={true}
       >Submit
       </Button>
-      <Button
+      {auth && <Button
         style={{ width: "40%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
         onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
-      </Button>
+      </Button> }
       </div>
     
   

@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContentOpenEndedAnswerUser = (props) => {
+  const auth = props.auth;
   const history = useHistory();
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
@@ -112,7 +113,7 @@ const ContentOpenEndedAnswerUser = (props) => {
         onClick={()=>submit()}
       >Submit
       </Button>
-      <Button
+      { auth && <Button
         style={{ width: "40%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
@@ -120,7 +121,7 @@ const ContentOpenEndedAnswerUser = (props) => {
         size="large"
       
        >View Result
-      </Button></div>
+      </Button> } </div>
   
        </form>
       </Container>

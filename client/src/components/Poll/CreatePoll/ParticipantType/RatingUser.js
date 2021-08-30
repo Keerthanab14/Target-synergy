@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }));
   
   const RatingUser =(props) => {
+    const auth = props.auth;
     const history = useHistory();
     const u = props.match.params.id;
     const [textBased , setTextBased] = useState({question:'', choices:[]})
@@ -133,14 +134,14 @@ console.log(textBased.question)
         fullWidth={true}
       >Submit
       </Button>
-      <Button
+      {auth && <Button
         style={{ width: "20%",background:"#cc0000", color:"white"}}
         className={classes.button}
         variant="contained"
         onClick={() => {handleResult(`${uri}`)}}
         size="large"
        >View Result
-      </Button></div>
+      </Button>}</div>
     
        
        
