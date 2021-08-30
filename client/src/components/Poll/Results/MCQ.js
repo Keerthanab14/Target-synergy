@@ -7,6 +7,12 @@ const MCQ = (props) => {
   const url =props.match.params.id;
   const [choices,setChoices] =useState([])
   const [question,setQuestion] =useState("")
+  const [Background, setBackground]=useState({
+    bgcolor: 'white',
+    textcolor: 'black',
+    opacity: 100,
+    bgimagekey: null
+  })
   
   const data = {
     labels: [],
@@ -54,9 +60,16 @@ const MCQ = (props) => {
   };
   
   useEffect(async () => {
-    let result = await axios.get(`http://localhost:8080/MCQ/${url}`)
+    let result = await axios.get(`http://localhost:8082/MCQ/${url}`)
     setQuestion(result.data.question)
     setChoices(result.data.choices)
+    const update={...Background, 
+      bgcolor: result.data.bgcolor,
+       textcolor: result.data.textcolor,
+       opacity: result.data.opacity,
+       bgimagekey: result.data.bgimagekey
+    }
+    setBackground(update)
   },[])
   
   choices.map((post,key) => (data.labels[key]=(post.option)))
@@ -65,7 +78,12 @@ const MCQ = (props) => {
   
   return (
     <div>
-        <div className='header' >
+        <div className='header' style={{
+          backgroundColor: Background.bgcolor,
+          opacity: Background.opacity/100,
+          color: Background.textcolor
+
+        }}>
           <h1 className='title'>{question}</h1>
           <div className='links'>
           </div>

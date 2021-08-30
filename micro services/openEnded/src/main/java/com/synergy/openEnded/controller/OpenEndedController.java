@@ -13,6 +13,11 @@ public class OpenEndedController {
     @Autowired
     private OpenEndedRepository openEndedRepository;
 
+    @GetMapping("/{id}/OE")
+    public List<OpenEnded> getMcqByUser(@PathVariable("id") String id){
+        return openEndedRepository.findAllByGoogleId(id);
+    }
+
     @GetMapping("/OE")
     public List<OpenEnded> getAllquestion(){
         return openEndedRepository.findAll();
@@ -20,8 +25,11 @@ public class OpenEndedController {
 
     @PostMapping("/OE")
     public String saveQuestion(@RequestBody OpenEnded quest) {
+        System.out.println(quest.getGoogleId());
         OpenEnded openEnded=new OpenEnded();
         openEnded.setQuestion( quest.getQuestion());
+        openEnded.setGoogleId((quest.getGoogleId()));
+        openEnded.setType(quest.getType());
         OpenEnded saved= openEndedRepository.save(openEnded);
         String url = "OE/" + saved.getId();
         return url;
@@ -33,8 +41,9 @@ public class OpenEndedController {
     @PostMapping("/WC")
     public String savewcQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
-        // openEnded.setId(service.getSequence(OpenEnded.SEQUENCE_NUMBER));
+        openEnded.setGoogleId((quest.getGoogleId()));
         openEnded.setQuestion( quest.getQuestion());
+        openEnded.setType(quest.getType());
         OpenEnded saved= openEndedRepository.save(openEnded);
         String url = "WC/" + saved.getId();
         return url;
@@ -53,12 +62,16 @@ public class OpenEndedController {
     public String saveQandAQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
         openEnded.setQuestion( quest.getQuestion());
+        openEnded.setGoogleId((quest.getGoogleId()));
+        openEnded.setType(quest.getType());
         OpenEnded saved= openEndedRepository.save(openEnded);
         String url = "QandA/" + saved.getId();
         return url;
     }
     @GetMapping("/QandA/{id}")
     public OpenEnded getQandAquestion(@PathVariable("id") String id){
+
         return openEndedRepository.findById(id).get();
     }
 }
+

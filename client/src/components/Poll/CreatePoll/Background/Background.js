@@ -55,14 +55,15 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
           setOpacity(100);
         }
       };
-     const url="http://localhost:8080/MCQ"
+     const url="http://localhost:8082/MCQ"
       const id = useContext(IdContext);
+      console.log(id)
     const submit=(e)=>{
       e.preventDefault();
      const q={
        bgcolor: color,
        textcolor: textcolor,
-       opacity: opacity/100,
+       opacity: opacity,
        bgimagekey: BackgroundImage.key
      }
       axios.put(url, q)
@@ -143,7 +144,7 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
           />%
         </Grid>
         </Grid>
-        <Button >Submit</Button>
+        <Button onClick={submit} >Submit</Button>
         </div>
     )
 }

@@ -12,11 +12,15 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
         margin: theme.spacing(1),
         width: '100%',
+      
       },
     },
     h:{
+      
       marginBottom: '0',
       textAlign: 'center'
+      
+
     },
     typography: {
         // for settings
@@ -37,17 +41,23 @@ const ContentOpenEndedAnswerUser = (props) => {
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/OE/${u}`)
+  axios.get(`http://localhost:8083/OE/${u}`)
   .then(res=>{
-        setquestion({question:res.data.question})
-   })
-   .catch((error)=>{
-    console.log(error)
-  })
+        
+        setquestion({question:res.data.question})})
+        .catch((error)=>{
+          console.log(error)
+    })
     useEffect(() => {
+<<<<<<< HEAD
       axios.get(`http://localhost:8080/quest/${u}`)
+            .then(res => {
+              console.log(res.data)  
+=======
+      axios.get(`http://localhost:8084/quest/${u}`)
             .then(res => {  
               console.log(res.data)
+>>>>>>> 4dcb1e42cf288050307c5a9b1925e7ccf0d1bfa7
                       setResUrl(res.data);
             })
     }, [])
@@ -55,10 +65,10 @@ const ContentOpenEndedAnswerUser = (props) => {
      
     
     const classes = useStyles();
-    const url=`http://localhost:8080/responses`
+    const url=`http://localhost:8084/responses`
     
-    const submit = () => { 
-      const q ={
+    const submit = () => {
+     const q ={
         question: u,
         latestAnswer: OpenEndedAnswer.latestAnswer
       }
@@ -76,6 +86,7 @@ const ContentOpenEndedAnswerUser = (props) => {
                             console.log(res.data)
                           })
                       }
+           
     }
     
     function handle(e){
@@ -89,11 +100,10 @@ const ContentOpenEndedAnswerUser = (props) => {
     function handleResult(path) {
         history.push(path);
     }
-
     return (
       <Container className={classes.root} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100%', flexDirection:'column', paddingTop: '5%', width: '50%' }} >
-           <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
-             <h1 className={classes.h} style={{fontSize:"30px"}}>{question.question}</h1>
+      <form onSubmit={submit} className={classes.root} noValidate autoComplete="off">
+        <h1 className={classes.h} style={{fontSize:"30px"}}>{question.question}</h1>
       
      <h3>Write Your Answer Here:</h3>
       <TextField id="outlined-multiline-static" multiline rows={4} label="Your Answer" variant="outlined" size="small" onChange={(e)=>handle(e)} id="latestAnswer" value={OpenEndedAnswer.latestAnswer} type="text" style={{width: '100%'}} />
@@ -103,9 +113,9 @@ const ContentOpenEndedAnswerUser = (props) => {
         style={{ width: "40%",background:"#cc0000", color:"white" }}
         className={classes.button}
         variant="contained"
-        onClick = {()=>submit()}
-        size="large"
+       size="large"
         fullWidth={true}
+        onClick={()=>submit()}
       >Submit
       </Button>
       <Button
@@ -114,16 +124,15 @@ const ContentOpenEndedAnswerUser = (props) => {
         variant="contained"
         onClick={() => {handleResult(`${uri}`)}}
         size="large"
+      
        >View Result
-      </Button>
-      </div>
+      </Button></div>
   
        </form>
       </Container>
       
     );
-}
-
+};
 
 
 export default ContentOpenEndedAnswerUser

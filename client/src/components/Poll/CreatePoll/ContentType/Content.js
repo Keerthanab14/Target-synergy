@@ -79,7 +79,7 @@ const Content = ({setData1,data1, setResult, result, inputList,setInputList, han
       };
     const [errorMessage, setErrorMessage] = useState(0);
     const classes = useStyles();
-    const url="http://localhost:8080/MCQ"
+    const url="http://localhost:8082/MCQ"
     const id = useContext(IdContext);
     const submit = (e) => {
     e.preventDefault();

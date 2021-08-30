@@ -5,6 +5,7 @@ import com.synergy.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -14,9 +15,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/user/{id}")
-    public Optional<User> getUser(@PathVariable("id") String id){
-        return userRepository.findById(id);
+    @GetMapping("/user")
+    public List<User> getAllUser(){
+        return userRepository.findAll();
     }
     @PostMapping("/user")
     public String saveUser(@RequestBody Map<String, Object> user) {
