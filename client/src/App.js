@@ -19,16 +19,12 @@ import CreateFeedback from './components/Feedback/CreateFeedback';
 import CreateOpinions from './components/Opinions/CreateOpinions';
 import DesktopBreakpoint from './components/responsive_utilities/desktop_breakpoint';
 import PhoneBreakpoint from './components/responsive_utilities/phone_breakpoint';
-//import { IdContext } from './IdContext';
 import OpenEnded from './components/Poll/Results/OpenEnded'
 import Scales from './components/Poll/Results/Scales'
 import OpenEndedUser from './components/Poll/CreatePoll/ParticipantType/OpenEndedUser';
 import Ranking from './components/Poll/CreatePoll/PollType/Ranking';
 import RatingUser from './components/Poll/CreatePoll/ParticipantType/RatingUser'
 import RatingResult from './components/Poll/Results/Rating'
-
-import MultipleChoice from './components/Poll/CreatePoll/PollType/MultipleChoice';
-
 export const IdContext = React.createContext();
 function App() {
   const [ auth, setAuth]=useState(false)
@@ -57,6 +53,8 @@ function App() {
           <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
           
+          
+        <Route path="/610fbf5066e210524c8325a5" component={Ranking}/>
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
@@ -118,6 +116,7 @@ function App() {
     </DesktopBreakpoint>
     <PhoneBreakpoint>
     <BrowserRouter>
+   
     <div className="App">
         <Header setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>
         <Switch>
@@ -135,6 +134,8 @@ function App() {
           <Route path="/create-feedback" render={(props)=>(<CreateFeedback {...props}  contentauth={contentauth}/>)}/>
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
           
+          
+        <Route path="/610fbf5066e210524c8325a5" component={Ranking}/>
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
