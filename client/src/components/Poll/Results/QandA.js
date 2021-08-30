@@ -60,7 +60,7 @@ const QandA = (props) => {
          .catch((error)=>{
            console.log(error)
          })
-        await axios.get(`http://localhost:8083/quest/${url}`)
+        await axios.get(`http://localhost:8084/quest/${url}`)
             .then(result => {
               setResUrl(result.data);
             // console.log(resUrl);

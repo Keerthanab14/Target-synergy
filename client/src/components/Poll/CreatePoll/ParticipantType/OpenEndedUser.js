@@ -45,7 +45,7 @@ const ContentOpenEndedAnswerUser = (props) => {
     console.log(error)
   })
     useEffect(() => {
-      axios.get(`http://localhost:8083/quest/${u}`)
+      axios.get(`http://localhost:8084/quest/${u}`)
             .then(res => {  
               console.log(res.data)
                       setResUrl(res.data);

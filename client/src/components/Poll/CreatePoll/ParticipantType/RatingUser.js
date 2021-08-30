@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     const [textBased , setTextBased] = useState({question:'', choices:[]})
   const [Bg, setBg]=useState({bgcolor:'',textcolor:'',opacity:1})
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:808/RT/${u}`)
+      var result = await axios.get(`http://localhost:8082/RT/${u}`)
       setTextBased({
         question: result.data.question,
        choices: result.data.choices
