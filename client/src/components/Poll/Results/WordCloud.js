@@ -57,7 +57,7 @@ const WordCloud = (props) => {
     const [question,setquestion]=useState({question:""})
     
     useEffect(async ()=>{
-      await axios.get(`http://localhost:8080/WC/${url}`)
+      await axios.get(`http://localhost:8083/WC/${url}`)
    .then(res=>{
          setquestion({question:res.data.question})
         //  console.log(question);
@@ -65,12 +65,12 @@ const WordCloud = (props) => {
     .catch((error)=>{
       console.log(error)
     })
-    await axios.get(`http://localhost:8080/quest/${url}`)
+    await axios.get(`http://localhost:8084/quest/${url}`)
     .then(result => {
       setResUrl(result.data);
       // console.log(result.data);
       if(resUrl !== ""){
-        axios.get(`http://localhost:8080/WordCloudResponse/${resUrl}`)
+        axios.get(`http://localhost:8084/WordCloudResponse/${resUrl}`)
           .then(res=>{
         // console.log(res.data)
         setWCResponses(res.data)

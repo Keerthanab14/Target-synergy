@@ -55,7 +55,7 @@ const BackgroundScales=({parentCallback, color, setOpacity, opacity, togglePopup
           setOpacity(100);
         }
       };
-     const url="http://localhost:8080/polls"
+     const url="http://localhost:8082/SC"
       const id = useContext(IdContext);
     const submit=(e)=>{
       e.preventDefault();

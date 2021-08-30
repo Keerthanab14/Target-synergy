@@ -40,7 +40,7 @@ const QandAUser = (props) => {
   const u = props.match.params.id;
   const [resUrl,setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
-  axios.get(`http://localhost:8080/QandA/${u}`)
+  axios.get(`http://localhost:8083/QandA/${u}`)
   .then(res=>{
         setquestion({question:res.data.question})
    })
@@ -48,7 +48,7 @@ const QandAUser = (props) => {
     console.log(error)
   })
     useEffect(() => {
-      axios.get(`http://localhost:8080/quest/${u}`)
+      axios.get(`http://localhost:8084/quest/${u}`)
             .then(res => {  
               console.log(res.data)
                       setResUrl(res.data);
@@ -58,7 +58,7 @@ const QandAUser = (props) => {
   const [QandAAnswer,setQandAAnswer]=useState({latestAnswer:""})
 
     const classes = useStyles();
-    const url=`http://localhost:8080/responses`
+    const url=`http://localhost:8084/responses`
     const submit = () => {
       const q ={
         question: u,
