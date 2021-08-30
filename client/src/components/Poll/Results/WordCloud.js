@@ -109,7 +109,7 @@ const wcr=[];
       getWordColor: word => word.value > 50 ? randomColor({luminosity: 'bright'}) : randomColor({luminosity: 'bright'}),
       onWordClick: console.log,
       onWordMouseOver: console.log,
-      getWordTooltip: word => `${word.text} (${word.value}) [${word.value > 50 ? "" : ""}]`
+      getWordTooltip: word => `Total entries = ${word.value} `
   }
 
   const options = {
