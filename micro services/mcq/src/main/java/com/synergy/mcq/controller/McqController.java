@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class McqController {
     @Autowired
     private MCQRepository mcqRepo;
+
+    @GetMapping("/{id}/MCQ")
+    public List<Mcq> getMcqByUser(@PathVariable("id") String id){
+        return mcqRepo.findAllByGoogleId(id);
+    }
 
     @GetMapping("/MCQ")
     public List<Mcq> getAllMcq(){
@@ -30,6 +34,7 @@ public class McqController {
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
         mcq.setGoogleId(quest.getGoogleId());
+        mcq.setType((quest.getType()));
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "MCQ/" + savedPoll.getId();
         return url;
@@ -37,6 +42,7 @@ public class McqController {
     @PutMapping("/MCQ/{id}")
     public Mcq updateMcq(@PathVariable("id") String id,@RequestBody Mcq quest) {
         Mcq mcq=mcqRepo.findById(id).get();
+//        System.out.println(mcq.getChoices());
         mcq.setChoices(quest.getChoices());
         System.out.println(mcq.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);
@@ -51,6 +57,7 @@ public class McqController {
         mcq.setQuestion(String.valueOf(quest.getQuestion()));
         mcq.setChoices( quest.getChoices());
         mcq.setGoogleId(quest.getGoogleId());
+//        System.out.println(mcq.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "SC/" + savedPoll.getId();
         return url;
@@ -58,6 +65,7 @@ public class McqController {
     @PutMapping("/SC/{id}")
     public Mcq updateSC(@PathVariable("id") String id,@RequestBody Mcq quest) {
         Mcq mcq=mcqRepo.findById(id).get();
+//        System.out.println(mcq.getChoices());
         mcq.setChoices(quest.getChoices());
         System.out.println(mcq.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);

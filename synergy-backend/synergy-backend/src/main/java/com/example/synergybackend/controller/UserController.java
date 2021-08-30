@@ -18,7 +18,7 @@ public class UserController {
     public List<User> getAllUser(){
         return userRepository.findAll();
     }
-    @PostMapping("/newUser")
+    @PostMapping("/user")
     public String saveBook(@RequestBody Map<String, Object> user) {
         User userr = new User();
         userr.setEmail(String.valueOf(user.get("email")));
