@@ -49,15 +49,9 @@ const ContentOpenEndedAnswerUser = (props) => {
           console.log(error)
     })
     useEffect(() => {
-<<<<<<< HEAD
-      axios.get(`http://localhost:8080/quest/${u}`)
-            .then(res => {
-              console.log(res.data)  
-=======
       axios.get(`http://localhost:8084/quest/${u}`)
             .then(res => {  
               console.log(res.data)
->>>>>>> 4dcb1e42cf288050307c5a9b1925e7ccf0d1bfa7
                       setResUrl(res.data);
             })
     }, [])
