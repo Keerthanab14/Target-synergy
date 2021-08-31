@@ -36,7 +36,7 @@ console.log(a);
     const choice=[];
     const [polls,setpolls]=useState({polls:[]})
     useEffect(async () => {
-        await axios.get(`http://localhost:8080/${a}/MCQ`)
+        await axios.get(`http://localhost:8080/${a}/OE`)
         .then(res=>{
             // console.log(res.data)
                 setpolls({polls:res.data});
