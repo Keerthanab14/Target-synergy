@@ -16,6 +16,7 @@ public class Mcq {
     private String question;
     private ArrayList<Choice> choices ;
     private String googleId;
+    private String type;
 
     public String getType() {
         return type;
@@ -25,43 +26,43 @@ public class Mcq {
         this.type = type;
     }
 
-    private String type;
-    private String bgcolor;
-    private String textcolor;
-    private int opacity;
-    private int bgimagekey;
 
-    public String getBgcolor() {
-        return bgcolor;
-    }
+//    private String bgcolor;
+//    private String textcolor;
+//    private int opacity;
+//    private int bgimagekey;
 
-    public void setBgcolor(String bgcolor) {
-        this.bgcolor = bgcolor;
-    }
-
-    public String getTextcolor() {
-        return textcolor;
-    }
-
-    public void setTextcolor(String textcolor) {
-        this.textcolor = textcolor;
-    }
-
-    public int getOpacity() {
-        return opacity;
-    }
-
-    public void setOpacity(int opacity) {
-        this.opacity = opacity;
-    }
-
-    public int getBgimagekey() {
-        return bgimagekey;
-    }
-
-    public void setBgimagekey(int bgimagekey) {
-        this.bgimagekey = bgimagekey;
-    }
+//    public String getBgcolor() {
+//        return bgcolor;
+//    }
+//
+//    public void setBgcolor(String bgcolor) {
+//        this.bgcolor = bgcolor;
+//    }
+//
+//    public String getTextcolor() {
+//        return textcolor;
+//    }
+//
+//    public void setTextcolor(String textcolor) {
+//        this.textcolor = textcolor;
+//    }
+//
+//    public int getOpacity() {
+//        return opacity;
+//    }
+//
+//    public void setOpacity(int opacity) {
+//        this.opacity = opacity;
+//    }
+//
+//    public int getBgimagekey() {
+//        return bgimagekey;
+//    }
+//
+//    public void setBgimagekey(int bgimagekey) {
+//        this.bgimagekey = bgimagekey;
+//    }
 
 
     public String getGoogleId() {
