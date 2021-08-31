@@ -10,7 +10,7 @@ import axios from 'axios'
 import "../Poll/Poll.css";
 import { Link } from 'react-router-dom';
 import TouchAppIcon from '@material-ui/icons/TouchApp';
-import pollimage from '../images/polling.png'
+import pollimage from '../images/bgimage_2.jpg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -92,7 +92,10 @@ console.log(a);
                                 border: "1px solid black",
                                 width: "250px",
                                 height: "150px",
-                                background: "#e6e5e1",
+                                backgroundImage: `url(${pollimage})`,
+                                backgroundPosition: 'center', 
+                                backgroundRepeat: 'no-repeat',
+                                backgroundSize: 'cover'
                                 
                     }}>
                         <h2>{x.type}</h2>
