@@ -7,10 +7,10 @@ import { Breadcrumbs, Typography } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
-import ImageButton from 'react-image-button';
 import "../Poll/Poll.css";
 import { Link } from 'react-router-dom';
 import TouchAppIcon from '@material-ui/icons/TouchApp';
+import pollimage from '../images/polling.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Poll = (props) => {
     const classes = useStyles();
-    console.log(props);
+    // console.log(props);
     const a = props.contentauth;
 console.log(a);
     const auth = props.auth;
@@ -34,23 +34,28 @@ console.log(a);
     const u = props.match.params.id;
     const [textBased , setTextBased] = useState({id:[], type:[]})
     const choice=[];
-    const [question,setquestion]=useState({question:""})
+    const [polls,setpolls]=useState({polls:[]})
     useEffect(async () => {
-        await axios.get(`http://localhost:8080/${a}/OE`)
+        await axios.get(`http://localhost:8080/${a}/MCQ`)
         .then(res=>{
-                res.data.map((post,key)=>(
-                    choice[key]=({id:(post.id),type:post.type})
-                ))
+            // console.log(res.data)
+                setpolls({polls:res.data});
+                console.log(polls.polls);
+                // res.data.map((post,key)=>(
+                //     choice[key]=({id:(post.id),type:post.type})
+                // ))
         })
-        console.log(choice)
-  
-      },[])
-    let ans=[{id:(1),type:'wc'},{id:2,type:'oe'}]
- console.log(ans)
+        // console.log(choice)
+      },[a])
+      polls.polls.map((post,key)=>(
+            choice[key]=({id:(post.id),type:post.type})
+        ))
+    let ans=[...choice]
+    console.log(ans)
 
 
     return (
-        <div className="polls">
+        
             <div className={classes.root}>
 
 
@@ -79,14 +84,19 @@ console.log(a);
                     </Grid>
                     {ans.map((x,i)=>{
                          return (
+                             
                              <Grid item xs={6} sm={3}>
-                    <Paper className={classes.paper} 
+                                 
+                            <Paper className={classes.paper} 
                             style={{
                                 border: "1px solid black",
                                 width: "250px",
-                                height: "150px"
+                                height: "150px",
+                                background: "#e6e5e1",
+                                
                     }}>
-                        <Link to={`/${x.type}/${x.id}`}><TouchAppIcon style={{fontSize:"3rem" , margin:"50px"}}/></Link>
+                        <h2>{x.type}</h2>
+                        <Link to={`/${x.type}/${x.id}`}><TouchAppIcon style={{fontSize:"3rem" }}/></Link>
                     </Paper>
                     </Grid>
                           
@@ -95,7 +105,7 @@ console.log(a);
 })}
                 </Grid>
             </div>
-        </div>
+       
         
     )
 }
