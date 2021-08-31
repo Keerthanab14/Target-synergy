@@ -31,16 +31,13 @@ const Vote = (props) => {
       var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
       setTextBased({
         question: result.data.question,
-        choices: result.data.choices
-        
+        choices: result.data.choices 
       })
-      
-
     },[])
     const choice=[];
     textBased.choices.map((post,key) => (
     choice[key]=({option:(post.option), votes:post.votes})
-));
+    ));
 
 let Answers = [...choice];
 // console.log(Answers);

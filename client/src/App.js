@@ -40,7 +40,7 @@ function App() {
         <Header setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>
         <Switch>
           <Route exact path="/" render={(props)=>(<Main {...props} setAuth={setAuth} auth={auth} setContentAuth={setContentAuth} contentauth={contentauth}/>)} />
-         <Route path="/polls" component={Poll}/> 
+         <Route path="/polls" render={(props)=>(<Poll {...props}  contentauth={contentauth}/>)}/> 
           <Route path="/opinions" component={Opinions}/>
           <Route path="/feedback" component={Feedback}/>
           <IdContext.Provider
