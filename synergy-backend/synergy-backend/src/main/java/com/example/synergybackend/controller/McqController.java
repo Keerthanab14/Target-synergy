@@ -11,15 +11,13 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-public abstract class McqController {
+public class McqController {
     @Autowired
     private MCQRepository mcqRepo;
 
