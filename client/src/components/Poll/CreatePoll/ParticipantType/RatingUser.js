@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     const [textBased , setTextBased] = useState({question:'', choices:[]})
   const [Bg, setBg]=useState({bgcolor:'',textcolor:'',opacity:1})
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8082/RT/${u}`)
+      var result = await axios.get(`http://localhost:8080/RT/${u}`)
       setTextBased({
         question: result.data.question,
        choices: result.data.choices
@@ -88,7 +88,7 @@ console.log(textBased.question)
         data5.choices[i]={option:(x), votes:((textBased.choices[i].votes + value[i])/2)}
       })
       console.log(data5)
-      axios.put(`http://localhost:8082/RT/${u}`, data5)
+      axios.put(`http://localhost:8080/RT/${u}`, data5)
              .then(res=>{
                 console.log(res)
               })

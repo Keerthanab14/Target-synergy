@@ -53,19 +53,19 @@ const QandA = (props) => {
  
   
       useEffect(async ()=>{
-        await axios.get(`http://localhost:8083/QandA/${url}`)
+        await axios.get(`http://localhost:8080/QandA/${url}`)
         .then(res=>{
              setquestion({question:res.data.question})
             })
          .catch((error)=>{
            console.log(error)
          })
-        await axios.get(`http://localhost:8084/quest/${url}`)
+        await axios.get(`http://localhost:8080/quest/${url}`)
             .then(result => {
               setResUrl(result.data);
             // console.log(resUrl);
             if(resUrl !== ""){
-              axios.get(`http://localhost:8084/responses/${resUrl}`)
+              axios.get(`http://localhost:8080/responses/${resUrl}`)
               .then ((res) => {
                 setQandAResponses({responses: res.data.responses})
                 // console.log(res.data.responses)

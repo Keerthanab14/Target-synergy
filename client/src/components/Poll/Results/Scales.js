@@ -30,7 +30,7 @@ const Scales =(props) => {
   const url =props.match.params.id;
   const [textBased , setTextBased] = useState({question:'', choices:[]})
   useEffect(async () => {
-    var result = await axios.get(`http://localhost:8082/SC/${url}`)
+    var result = await axios.get(`http://localhost:8080/SC/${url}`)
     setTextBased({
       question: result.data.question,
      choices: result.data.choices

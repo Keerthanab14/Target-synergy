@@ -40,7 +40,7 @@ const WordCloudUser = (props) => {
     const u = props.match.params.id;
     const [resUrl,setResUrl] = useState("");
     const [question,setquestion]=useState({question:""})
-    axios.get(`http://localhost:8083/WC/${u}`)
+    axios.get(`http://localhost:8080/WC/${u}`)
           .then(res=>{
                 setquestion({question:res.data.question})
       })
@@ -49,7 +49,7 @@ const WordCloudUser = (props) => {
       })
 
       useEffect(() => {
-        axios.get(`http://localhost:8084/quest/${u}`)
+        axios.get(`http://localhost:8080/quest/${u}`)
               .then(res => {  
                 console.log(res.data)
                         setResUrl(res.data);
@@ -60,7 +60,7 @@ const WordCloudUser = (props) => {
     const [WCAnswer,setWCAnswer]=useState({latestAnswer:""})
 
     const classes = useStyles();
-    const url=`http://localhost:8084/responses`
+    const url=`http://localhost:8080/responses`
     
     const submit = () => {
 
@@ -83,10 +83,10 @@ const WordCloudUser = (props) => {
                           })
                       }
                       
-                      if (window.confirm('Your response has been successfully submitted. You will now be redirected to the homepage.   To submit another response, click Cancel ')) 
-{
-window.location.href='https://targetsynergy.herokuapp.com';
-};
+//                       if (window.confirm('Your response has been successfully submitted. You will now be redirected to the homepage.   To submit another response, click Cancel ')) 
+// {
+// window.location.href='https://targetsynergy.herokuapp.com';
+// };
 
     }
     

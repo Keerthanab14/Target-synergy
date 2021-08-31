@@ -54,7 +54,7 @@ function App() {
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
           
           
-        <Route path="/610fbf5066e210524c8325a5" component={Ranking}/>
+        <Route path="/hu" component={WordCloud}/>
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
@@ -77,7 +77,7 @@ function App() {
             path="/WC"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} render={(props)=>(<WordCloudUser {...props}  auth={auth}/>)}  />
+                <Route path={`${url}/:id`} component={WordCloudUser}  />
                 <Route exact path={`${url}/:id/results`} component={WordCloud} /> 
               </Switch>
             )}
@@ -114,7 +114,7 @@ function App() {
     </div>
     </BrowserRouter>
     </DesktopBreakpoint>
-    <PhoneBreakpoint>
+    {/* <PhoneBreakpoint>
     <BrowserRouter>
    
     <div className="App">
@@ -194,7 +194,7 @@ function App() {
         </Switch> 
     </div>
     </BrowserRouter>
-    </PhoneBreakpoint>
+    </PhoneBreakpoint> */}
     </div>
   );
 }

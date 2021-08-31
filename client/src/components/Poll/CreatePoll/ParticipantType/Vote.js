@@ -28,7 +28,7 @@ const Vote = (props) => {
   const [textBased , setTextBased] = useState({question:'', choices:[]})
   const [Bg, setBg]=useState({bgcolor:'',textcolor:'',opacity:1})
     useEffect(async () => {
-      var result = await axios.get(`http://localhost:8082/MCQ/${url}`)
+      var result = await axios.get(`http://localhost:8080/MCQ/${url}`)
       setTextBased({
         question: result.data.question,
         choices: result.data.choices
@@ -70,7 +70,7 @@ let Answers = [...choice];
       choices:Answers
     }
     console.log(q)
-    axios.put(`http://localhost:8082/MCQ/${url}`, q)
+    axios.put(`http://localhost:8080/MCQ/${url}`, q)
            .then(res=>{
               console.log(res)
             })

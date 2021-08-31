@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 const ContentWordCloud = (props) => {
   const handleChangeIndex=props.handleChangeIndex
   const classes = useStyles();
-  const url="http://localhost:8083/WC"
+  const url="http://localhost:8080/WC"
   const id = useContext(IdContext);
   const submit = (e) => {
     e.preventDefault();

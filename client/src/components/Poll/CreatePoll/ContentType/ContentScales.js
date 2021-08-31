@@ -75,7 +75,7 @@ const ContentScales = ({data5, setData5, setInputList, inputList, handleChangeIn
       };
     
     const classes = useStyles();
-    const url="http://localhost:8082/SC"
+    const url="http://localhost:8080/SC"
    
     const id = useContext(IdContext)
     const submit = (e) => {

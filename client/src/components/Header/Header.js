@@ -92,7 +92,7 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
           }
           setContentAuth(data.googleId)
           console.log(data.googleId)
-            axios.post("http://localhost:8081/user", data)
+            axios.post("http://localhost:8080/user", data)
             .then(r =>console.log("success"))
             .catch(err => { 
             console.error(err);
