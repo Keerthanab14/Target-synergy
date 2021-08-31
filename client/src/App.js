@@ -54,12 +54,12 @@ function App() {
           <Route path="/create-opinions" render={(props)=>(<CreateOpinions {...props}  contentauth={contentauth}/>)}/>  
           
           
-        <Route path="/hu" component={WordCloud}/>
+        
           <Route
             path="/MCQ"
             render={({ match: { url } }) => (
              <Switch> 
-                <Route exact path={`${url}/:id`} render={(props)=>(<Vote {...props}  auth={auth}/>)} />  
+                <Route path={`${url}/:id`} render={(props)=>(<Vote {...props}  auth={auth}/>)} exact />  
                 <Route exact path={`${url}/:id/results`} component={MCQ} />  
               </Switch>
             )}
@@ -68,7 +68,7 @@ function App() {
             path="/OE"
             render={({ match: { url } }) => (
              <Switch> 
-                <Route exact path={`${url}/:id`} render={(props)=>(<OpenEndedUser {...props}  auth={auth}/>)} />  
+                <Route path={`${url}/:id`} render={(props)=>(<OpenEndedUser {...props}  auth={auth}/>)} exact/>  
                 <Route exact path={`${url}/:id/results`} component={OpenEnded} /> 
               </Switch>
             )}
@@ -77,7 +77,7 @@ function App() {
             path="/WC"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} component={WordCloudUser}  />
+                <Route path={`${url}/:id`}  render={(props)=>(<WordCloudUser {...props}  auth={auth}/>)} exact  />
                 <Route exact path={`${url}/:id/results`} component={WordCloud} /> 
               </Switch>
             )}
@@ -86,7 +86,7 @@ function App() {
             path="/QandA"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} render={(props)=>(<QandAUser {...props}  auth={auth}/>)}  />
+                <Route path={`${url}/:id`} render={(props)=>(<QandAUser {...props}  auth={auth}/>)} exact />
                 <Route exact path={`${url}/:id/results`} component={QandA} /> 
               </Switch>
             )}
@@ -95,7 +95,7 @@ function App() {
             path="/SC"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} render={(props)=>(<ScalesUser {...props}  auth={auth}/>)}  />
+                <Route path={`${url}/:id`} render={(props)=>(<ScalesUser {...props}  auth={auth}/>)} exact />
                 <Route exact path={`${url}/:id/results`} component={Scales} /> 
               </Switch>
             )}
@@ -104,7 +104,7 @@ function App() {
             path="/RT"
             render={({ match: { url } }) => (
              <Switch>
-                <Route path={`${url}/:id`} render={(props)=>(<RatingUser {...props}  auth={auth}/>)}  />
+                <Route path={`${url}/:id`} render={(props)=>(<RatingUser {...props}  auth={auth}/>)} exact />
                 <Route exact path={`${url}/:id/results`} component={RatingResult} /> 
               </Switch>
             )}
@@ -114,7 +114,7 @@ function App() {
     </div>
     </BrowserRouter>
     </DesktopBreakpoint>
-    {/* <PhoneBreakpoint>
+    <PhoneBreakpoint>
     <BrowserRouter>
    
     <div className="App">
@@ -194,7 +194,7 @@ function App() {
         </Switch> 
     </div>
     </BrowserRouter>
-    </PhoneBreakpoint> */}
+    </PhoneBreakpoint>
     </div>
   );
 }
