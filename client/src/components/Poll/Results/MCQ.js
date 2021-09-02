@@ -11,7 +11,6 @@ const MCQ = (props) => {
     bgcolor: 'white',
     textcolor: 'black',
     opacity: 100,
-    bgimagekey: null
   })
   
   const data = {
@@ -64,10 +63,9 @@ const MCQ = (props) => {
     setQuestion(result.data.question)
     setChoices(result.data.choices)
     const update={...Background, 
-      bgcolor: result.data.bgcolor,
-       textcolor: result.data.textcolor,
-       opacity: result.data.opacity,
-       bgimagekey: result.data.bgimagekey
+      bgcolor: result.data.bg.bgColor,
+       textcolor: result.data.bg.textColor,
+       opacity: result.data.opacity
     }
     setBackground(update)
   },[])
@@ -78,21 +76,20 @@ const MCQ = (props) => {
   
   return (
     <div>
-        <div className='header' style={{
+       
+       <div style={{
           backgroundColor: Background.bgcolor,
           opacity: Background.opacity/100,
-          color: Background.textcolor
-
-        }}>
+          color: Background.textcolor,
+          width: '100%',
+          height:'100%'}}>
           <h1 className='title'>{question}</h1>
-          <div className='links'>
-          </div>
-        </div>
-        <div style={{width : "50%" , margin:"auto"}}>
+        <div>
         <Bar data={data} options={options} />
         </div>
-        
-    </div>
+        </div>
+      
+        </div>
   )
 }
 

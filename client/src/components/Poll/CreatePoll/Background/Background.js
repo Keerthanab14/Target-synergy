@@ -8,11 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { SliderPicker } from 'react-color'
 import { IdContext } from '../../../../App';
+import { useHistory } from 'react-router';
 
 import axios from 'axios'
 
 
-const Background=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor, BackgroundImage}) => {
+const Background=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor}) => {
   
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
@@ -55,22 +56,31 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
           setOpacity(100);
         }
       };
-     const url="http://localhost:8080/MCQ"
+    // const url=`http://localhost:8080/MCQbg/{u}`
       const id = useContext(IdContext);
       console.log(id)
+      
     const submit=(e)=>{
       e.preventDefault();
+      console.log(id.id)
+      const url=`http://localhost:8080/${id.id}/bg`
      const q={
-       bgcolor: color,
-       textcolor: textcolor,
-       opacity: opacity,
-       bgimagekey: BackgroundImage.key
-     }
-      axios.put(url, q)
+       bgColor: color,
+       textColor: textcolor,
+       opacity: opacity
+           }
+    console.log((q))
+  
+
+
+    axios.put(url, q)
          .then(res=>{
             console.log(res.data);
             id.setId(res.data);
             console.log(id.id);
+          })
+          .catch(err=>{
+            console.log(err.response)
           })
     }
 
