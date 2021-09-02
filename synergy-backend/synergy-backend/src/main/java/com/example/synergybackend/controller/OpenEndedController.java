@@ -1,4 +1,6 @@
 package com.example.synergybackend.controller;
+import com.example.synergybackend.model.Background;
+import com.example.synergybackend.model.Mcq;
 import com.example.synergybackend.model.OpenEnded;
 import com.example.synergybackend.repository.OpenEndedRepository;
 import com.example.synergybackend.services.SequenceService;
@@ -35,6 +37,14 @@ public class OpenEndedController {
         String url = "OE/" + saved.getId();
         return url;
     }
+    @PutMapping("/OE/{id}/bg")
+    public String saveWithBg(@PathVariable("id") String id,@RequestBody Background quest) {
+        OpenEnded OE=openEndedRepository.findById(id).get();
+        OE.setBg(quest);
+        OpenEnded savedPoll = openEndedRepository.save(OE);
+        String url = "OE/" + savedPoll.getId();
+        return url;
+    }
     @GetMapping("/OE/{id}")
     public OpenEnded getOpenEndedquestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
@@ -53,7 +63,14 @@ public class OpenEndedController {
     public OpenEnded getWcQuestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
-
+    @PutMapping("/WC/{id}/bg")
+    public String saveWCBg(@PathVariable("id") String id,@RequestBody Background quest) {
+        OpenEnded OE=openEndedRepository.findById(id).get();
+        OE.setBg(quest);
+        OpenEnded savedPoll = openEndedRepository.save(OE);
+        String url = "WC/" + savedPoll.getId();
+        return url;
+    }
 
     @GetMapping("/QandA")
     public List<OpenEnded> getAllQandA(){
@@ -71,7 +88,14 @@ public class OpenEndedController {
     }
     @GetMapping("/QandA/{id}")
     public OpenEnded getQandAquestion(@PathVariable("id") String id){
-
         return openEndedRepository.findById(id).get();
+    }
+    @PutMapping("/QandA/{id}/bg")
+    public String saveBg(@PathVariable("id") String id,@RequestBody Background quest) {
+        OpenEnded OE=openEndedRepository.findById(id).get();
+        OE.setBg(quest);
+        OpenEnded savedPoll = openEndedRepository.save(OE);
+        String url = "QandA/" + savedPoll.getId();
+        return url;
     }
 }
