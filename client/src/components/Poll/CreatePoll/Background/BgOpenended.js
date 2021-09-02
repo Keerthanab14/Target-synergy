@@ -8,12 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { SliderPicker } from 'react-color'
 import { IdContext } from '../../../../App';
-
+import { useHistory } from 'react-router';
 import axios from 'axios'
 
 
-const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor, BackgroundImage}) => {
-  
+const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor}) => {
+ 
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
     const useStyles = makeStyles((theme) => ({
@@ -56,20 +56,25 @@ const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, tex
         }
       };
      const url="http://localhost:8080/OE"
-      const id = useContext(IdContext);
+     const id = useContext(IdContext);
+     console.log(id)
     const submit=(e)=>{
       e.preventDefault();
-     const q={
+      console.log(id.id)
+      const url=`http://localhost:8080/${id.id}/bg`
+      const q={
        bgcolor: color,
        textcolor: textcolor,
-       opacity: opacity/100,
-       bgimagekey: BackgroundImage.key
+       opacity: opacity
      }
-      axios.put(url, q)
+     axios.put(url, q)
          .then(res=>{
             console.log(res.data);
             id.setId(res.data);
             console.log(id.id);
+          })
+          .catch(err=>{
+            console.log(err.response)
           })
     }
 
@@ -143,7 +148,7 @@ const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, tex
           />%
         </Grid>
         </Grid>
-        <Button >Submit</Button>
+        <Button onClick={submit} >Submit</Button>
         </div>
     )
 }
