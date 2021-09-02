@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.web.bind.annotation.*;
-
+import com.example.synergybackend.model.Background;
 
 
 import java.util.List;
@@ -47,6 +47,16 @@ public class McqController {
         String url = "MCQ/" + savedPoll.getId();
         return url;
     }
+    @PutMapping("/MCQ/{id}/bg")
+    public String saveWithBg(@PathVariable("id") String id,@RequestBody Background quest) {
+        Mcq mcq=mcqRepo.findById(id).get();
+
+        mcq.setBg(quest);
+
+        Mcq savedPoll = mcqRepo.save(mcq);
+        String url = "MCQ/" + savedPoll.getId();
+        return url;
+    }
     @PutMapping("/MCQ/{id}")
     public Mcq updateMcq(@PathVariable("id") String id,@RequestBody Mcq quest) {
         Mcq mcq=mcqRepo.findById(id).get();
@@ -80,6 +90,17 @@ public class McqController {
         return savedPoll;
     }
 
+    @PutMapping("/SC/{id}/bg")
+    public String saveWithB(@PathVariable("id") String id,@RequestBody Background quest) {
+        Mcq mcq=mcqRepo.findById(id).get();
+
+        mcq.setBg(quest);
+
+        Mcq savedPoll = mcqRepo.save(mcq);
+        String url = "SC/" + savedPoll.getId();
+        return url;
+    }
+
     @GetMapping("/SC/{id}")
     public Mcq getSC(@PathVariable("id") String id){
         return mcqRepo.findById(id).get();
@@ -106,6 +127,16 @@ public class McqController {
         System.out.println(mcq.getChoices());
         Mcq savedPoll = mcqRepo.save(mcq);
         return savedPoll;
+    }
+
+    @PutMapping("/RT/{id}/bg")
+    public String saveBg(@PathVariable("id") String id,@RequestBody Background quest) {
+        Mcq mcq=mcqRepo.findById(id).get();
+        mcq.setBg(quest);
+
+        Mcq savedPoll = mcqRepo.save(mcq);
+        String url = "RT/" + savedPoll.getId();
+        return url;
     }
 
     @GetMapping("/RT/{id}")
