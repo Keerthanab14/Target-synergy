@@ -48,15 +48,23 @@ const OpenEnded = (props) => {
   const [OpenEndedResponses , setOpenEndedResponses] =useState({responses:[]});
   const [resUrl, setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
+  const [Background, setBackground]=useState({
+    bgcolor: 'white',
+    textcolor: 'black',
+    opacity: 100,
+  })
 
-  
-
-    
       useEffect(async ()=>{
         await axios.get(`http://localhost:8080/OE/${url}`)
                     .then(res=>{
                       setquestion({question:res.data.question})
-                       console.log(question);
+                       console.log(res.data);
+                       const update={...Background, 
+                        bgcolor: res.data.bg.bgColor,
+                         textcolor: res.data.bg.textColor,
+                         opacity: res.data.opacity
+                      }
+                      setBackground(update)
                    })
                   .catch((error)=>{
                     console.log(error)
@@ -76,9 +84,7 @@ const OpenEnded = (props) => {
  
     },[url,resUrl])
         
-      
-    
-    
+
     const choice=OpenEndedResponses.responses;
     const classes = useStyles();
     
@@ -87,7 +93,12 @@ const OpenEnded = (props) => {
         {/* {choice.map((post,key) => {
   console.log(post);
 })} */}
-      <div> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
+      <div style={{
+          backgroundColor: Background.bgcolor,
+          opacity: Background.opacity/100,
+          color: Background.textcolor,
+          width: '100%',
+          height:'100%'}}> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
      <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '70%',margin:"auto"}} >
            {choice.map((x, i) => {
            const color = randomColor({luminosity:"bright"});

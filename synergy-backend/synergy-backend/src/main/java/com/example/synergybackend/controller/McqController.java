@@ -50,9 +50,7 @@ public class McqController {
     @PutMapping("/MCQ/{id}/bg")
     public String saveWithBg(@PathVariable("id") String id,@RequestBody Background quest) {
         Mcq mcq=mcqRepo.findById(id).get();
-
         mcq.setBg(quest);
-
         Mcq savedPoll = mcqRepo.save(mcq);
         String url = "MCQ/" + savedPoll.getId();
         return url;

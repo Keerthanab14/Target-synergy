@@ -16,6 +16,15 @@ public class OpenEnded {
     private String question;
     private String googleId;
     private String type;
+    private Background bg;
+
+    public Background getBg() {
+        return bg;
+    }
+
+    public void setBg(Background bg) {
+        this.bg = bg;
+    }
 
     public String getType() {
         return type;
