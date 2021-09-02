@@ -44,7 +44,7 @@ const Scales =(props) => {
     const update={...Background, 
       bgcolor: result.data.bg.bgColor,
        textcolor: result.data.bg.textColor,
-       opacity: result.data.opacity
+       opacity: (result.data.bg.opacity/10)*0.1
     }
     setBackground(update)
   },[])

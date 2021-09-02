@@ -36,19 +36,20 @@ const RatingResult =(props) => {
        choices: result.data.choices
         
       })
+      console.log(result.data.bg)
       const update={...Background, 
         bgcolor: result.data.bg.bgColor,
          textcolor: result.data.bg.textColor,
-         opacity: result.data.opacity
+         opacity: (result.data.bg.opacity/10)*0.1
       }
       setBackground(update)
     },[])
-    
+    console.log(Background.opacity)
     return (
       <div>
          <div style={{
           backgroundColor: Background.bgcolor,
-          opacity: Background.opacity/100,
+          opacity: Background.opacity,
           color: Background.textcolor,
           width: '100%',
           height:'100%'}}>

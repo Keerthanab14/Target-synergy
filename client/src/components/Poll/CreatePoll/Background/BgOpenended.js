@@ -63,8 +63,8 @@ const BgOpenended=({parentCallback, color, setOpacity, opacity, togglePopup, tex
       console.log(id.id)
       const url=`http://localhost:8080/${id.id}/bg`
       const q={
-       bgcolor: color,
-       textcolor: textcolor,
+       bgColor: color,
+       textColor: textcolor,
        opacity: opacity
      }
      axios.put(url, q)

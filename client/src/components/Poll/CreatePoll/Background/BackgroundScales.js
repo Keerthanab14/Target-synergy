@@ -63,7 +63,7 @@ const BackgroundScales=({parentCallback, color, setOpacity, opacity, togglePopup
      const q={
        bgColor: color,
        textColor: textcolor,
-       opacity: opacity,
+       opacity: opacity
        
      }
      console.log(q)

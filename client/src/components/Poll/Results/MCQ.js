@@ -62,10 +62,12 @@ const MCQ = (props) => {
     let result = await axios.get(`http://localhost:8080/MCQ/${url}`)
     setQuestion(result.data.question)
     setChoices(result.data.choices)
+    console.log(result.data.bg)
+
     const update={...Background, 
       bgcolor: result.data.bg.bgColor,
        textcolor: result.data.bg.textColor,
-       opacity: result.data.opacity
+       opacity:  (result.data.bg.opacity/10)*0.1
     }
     setBackground(update)
   },[])
@@ -73,13 +75,14 @@ const MCQ = (props) => {
   choices.map((post,key) => (data.labels[key]=(post.option)))
   choices.map((post,key) => (data.datasets[0].data[key]=(post.votes)))
   
-  
+  console.log(Background.opacity)
+
   return (
     <div>
        
        <div style={{
           backgroundColor: Background.bgcolor,
-          opacity: Background.opacity/100,
+          opacity: Background.opacity,
           color: Background.textcolor,
           width: '100%',
           height:'100%'}}>
