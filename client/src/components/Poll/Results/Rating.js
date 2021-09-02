@@ -22,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
 
 const RatingResult =(props) => {
   const classes = useStyles();
-
+  const [Background, setBackground]=useState({
+    bgcolor: 'white',
+    textcolor: 'black',
+    opacity: 100,
+  })
   const url =props.match.params.id;
   const [textBased , setTextBased] = useState({question:'', choices:[]})
     useEffect(async () => {
@@ -32,9 +36,22 @@ const RatingResult =(props) => {
        choices: result.data.choices
         
       })
+      const update={...Background, 
+        bgcolor: result.data.bg.bgColor,
+         textcolor: result.data.bg.textColor,
+         opacity: result.data.opacity
+      }
+      setBackground(update)
     },[])
     
     return (
+      <div>
+         <div style={{
+          backgroundColor: Background.bgcolor,
+          opacity: Background.opacity/100,
+          color: Background.textcolor,
+          width: '100%',
+          height:'100%'}}>
       <div  style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%',paddingTop:"5%"}}  className={classes.root}><h1 fontFamily= "Helvetica">{textBased.question}</h1>
            
       
@@ -61,6 +78,8 @@ const RatingResult =(props) => {
 
         );
       })}
+      </div>
+      </div>
       </div>
     );
   }

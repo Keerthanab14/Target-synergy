@@ -13,12 +13,12 @@ const useStyles = makeStyles((theme) => ({
     color: randomColor({luminosity: 'bright'})
   },
   root: {
-    width: 300 + theme.spacing(3) * 2,
+    width: '100%',
     
   },
 
   margin: {
-    height: theme.spacing(3),
+    height: theme.spacing('100%'),
   },
 
 }));
@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Scales =(props) => {
   const classes = useStyles();
+  const [Background, setBackground]=useState({
+    bgcolor: 'white',
+    textcolor: 'black',
+    opacity: 100,
+  })
   const url =props.match.params.id;
   const [textBased , setTextBased] = useState({question:'', choices:[]})
   useEffect(async () => {
@@ -36,9 +41,22 @@ const Scales =(props) => {
      choices: result.data.choices
       
     })
+    const update={...Background, 
+      bgcolor: result.data.bg.bgColor,
+       textcolor: result.data.bg.textColor,
+       opacity: result.data.opacity
+    }
+    setBackground(update)
   },[])
 
   return (
+    <div>
+    <div style={{
+     backgroundColor: Background.bgcolor,
+     opacity:  Background.opacity,
+     color: Background.textcolor,
+     width: '100%',
+     height:'100%'}}>
     <div  style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%',paddingTop:"5%"}} ><h1 fontFamily= "Helvetica">{textBased.question}</h1>
            
       
@@ -88,6 +106,8 @@ const Scales =(props) => {
 
         );
       })}
+      </div>
+      </div>
       </div>
     );
   }

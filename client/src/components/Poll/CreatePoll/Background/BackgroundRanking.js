@@ -13,7 +13,7 @@ import axios from 'axios'
 
 
 const BackgroundRanking=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor, BackgroundImage}) => {
-  
+  console.log("entered")
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
     const useStyles = makeStyles((theme) => ({
@@ -55,21 +55,25 @@ const BackgroundRanking=({parentCallback, color, setOpacity, opacity, togglePopu
           setOpacity(100);
         }
       };
-    const url="http://localhost:8080/RT"
       const id = useContext(IdContext);
+      const url=`http://localhost:8080/${id.id}/bg`
+
     const submit=(e)=>{
       e.preventDefault();
      const q={
-       bgcolor: color,
-       textcolor: textcolor,
-       opacity: opacity/100,
-       bgimagekey: BackgroundImage.key
+       bgColor: color,
+       textColor: textcolor,
+       opacity: opacity/100
      }
+     console.log(q)
       axios.put(url, q)
          .then(res=>{
             console.log(res.data);
             id.setId(res.data);
             console.log(id.id);
+          })
+          .catch(err=>{
+            console.log(err.rsesponse)
           })
     }
 
@@ -143,7 +147,7 @@ const BackgroundRanking=({parentCallback, color, setOpacity, opacity, togglePopu
           />%
         </Grid>
         </Grid>
-        <Button >Submit</Button>
+        <Button onClick={submit} >Submit</Button>
         </div>
     )
 }
