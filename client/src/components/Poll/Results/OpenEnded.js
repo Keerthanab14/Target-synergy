@@ -62,7 +62,7 @@ const OpenEnded = (props) => {
                        const update={...Background, 
                         bgcolor: res.data.bg.bgColor,
                          textcolor: res.data.bg.textColor,
-                         opacity: res.data.opacity
+                         opacity: (res.data.bg.opacity/10)*0.1
                       }
                       setBackground(update)
                    })
@@ -89,16 +89,14 @@ const OpenEnded = (props) => {
     const classes = useStyles();
     
     return (
-      <div>
-        {/* {choice.map((post,key) => {
-  console.log(post);
-})} */}
-      <div style={{
-          backgroundColor: Background.bgcolor,
-          opacity: Background.opacity/100,
-          color: Background.textcolor,
-          width: '100%',
-          height:'100%'}}> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
+      <div  style={{
+        backgroundColor: Background.bgcolor,
+        opacity: Background.opacity,
+        color: Background.textcolor,
+        width: '100%',
+        height:'100%'}}>
+       
+      <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1>
      <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '70%',margin:"auto"}} >
            {choice.map((x, i) => {
            const color = randomColor({luminosity:"bright"});

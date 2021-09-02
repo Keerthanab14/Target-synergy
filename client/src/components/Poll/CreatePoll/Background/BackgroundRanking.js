@@ -63,7 +63,7 @@ const BackgroundRanking=({parentCallback, color, setOpacity, opacity, togglePopu
      const q={
        bgColor: color,
        textColor: textcolor,
-       opacity: opacity/100
+       opacity: opacity
      }
      console.log(q)
       axios.put(url, q)

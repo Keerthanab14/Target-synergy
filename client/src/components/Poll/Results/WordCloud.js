@@ -55,11 +55,22 @@ const WordCloud = (props) => {
     const [WCResponses , setWCResponses] =useState({});
     const [resUrl, setResUrl] = useState("");
     const [question,setquestion]=useState({question:""})
+    const [Background, setBackground]=useState({
+      bgcolor: 'white',
+      textcolor: 'black',
+      opacity: 100,
+    })
     
     useEffect(async ()=>{
       await axios.get(`http://localhost:8080/WC/${url}`)
    .then(res=>{
          setquestion({question:res.data.question})
+         const update={...Background, 
+          bgcolor: res.data.bg.bgColor,
+           textcolor: res.data.bg.textColor,
+           opacity: (res.data.bg.opacity/10)*0.1
+        }
+        setBackground(update)
         //  console.log(question);
     })
     .catch((error)=>{
@@ -74,6 +85,7 @@ const WordCloud = (props) => {
           .then(res=>{
         // console.log(res.data)
         setWCResponses(res.data)
+       
         })
         
     }
@@ -129,8 +141,17 @@ const wcr=[];
   const size = [1200, 400,300, 200];
 
 return (
+  <div>
+    <div style={{
+          backgroundColor: Background.bgcolor,
+          opacity: Background.opacity,
+          color: Background.textcolor,
+          width: '100%',
+          height:'100%'}}>
 <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'100%',width:'100%',paddingTop:"3%"}} >
+
 <h1 style={{fontFamily: "Helvetica", textAlign: 'center'}} >{question.question}</h1>
+
 
   <div style={resizeStyle}>
   <ReactWordcloud
@@ -140,6 +161,8 @@ return (
   size={size}
   words={wcr}
   />
+</div>
+</div>
 </div>
 </div>
 );

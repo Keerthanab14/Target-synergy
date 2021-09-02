@@ -55,14 +55,13 @@ const Backgroundqna=({parentCallback, color, setOpacity, opacity, togglePopup, t
           setOpacity(100);
         }
       };
-     const url="http://localhost:8080/QandA"
       const id = useContext(IdContext);
       console.log(id)
     const submit=(e)=>{
       e.preventDefault();
      const q={
-       bgcolor: color,
-       textcolor: textcolor,
+       bgColor: color,
+       textColor: textcolor,
        opacity: opacity
      }
      const url=`http://localhost:8080/${id.id}/bg`
