@@ -51,10 +51,20 @@ const QandA = (props) => {
   const [resUrl, setResUrl] = useState("");
   const [question,setquestion]=useState({question:""})
  
-  
+  const [Background, setBackground]=useState({
+    bgcolor: 'white',
+    textcolor: 'black',
+    opacity: 100,
+  })  
       useEffect(async ()=>{
         await axios.get(`http://localhost:8080/QandA/${url}`)
         .then(res=>{
+          const update={...Background, 
+            bgcolor: res.data.bg.bgColor,
+             textcolor: res.data.bg.textColor,
+             opacity: res.data.opacity
+          }
+          setBackground(update)
              setquestion({question:res.data.question})
             })
          .catch((error)=>{
@@ -82,7 +92,12 @@ const QandA = (props) => {
          const classes = useStyles();
     
     return ( <div>
-     <div> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
+     <div style={{
+          backgroundColor: Background.bgcolor,
+          opacity: Background.opacity/100,
+          color: Background.textcolor,
+          width: '100%',
+          height:'100%'}}> <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1></div>
      <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '70%',margin:"auto"}} >
            {choice.map((x, i) => {
          const color = randomColor({luminosity:"bright"});

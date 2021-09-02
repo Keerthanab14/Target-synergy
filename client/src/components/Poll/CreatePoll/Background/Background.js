@@ -14,7 +14,7 @@ import axios from 'axios'
 
 
 const Background=({parentCallback, color, setOpacity, opacity, togglePopup, textcolor, changecolor}) => {
-  
+  console.log("hhh")
   const [showColorPicker, setShowColorPicker] = useState(false)    
   
     const useStyles = makeStyles((theme) => ({
@@ -42,7 +42,6 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
    // const [value, setValue] = React.useState(100);
 
     const handleSliderChange = (event, newValue) => {
-      
       setOpacity(newValue);
     };
     
@@ -56,7 +55,6 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
           setOpacity(100);
         }
       };
-    // const url=`http://localhost:8080/MCQbg/{u}`
       const id = useContext(IdContext);
       console.log(id)
       
@@ -70,9 +68,7 @@ const Background=({parentCallback, color, setOpacity, opacity, togglePopup, text
        opacity: opacity
            }
     console.log((q))
-  
-
-
+ 
     axios.put(url, q)
          .then(res=>{
             console.log(res.data);

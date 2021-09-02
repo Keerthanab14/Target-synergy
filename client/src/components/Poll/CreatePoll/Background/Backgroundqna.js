@@ -57,19 +57,24 @@ const Backgroundqna=({parentCallback, color, setOpacity, opacity, togglePopup, t
       };
      const url="http://localhost:8080/QandA"
       const id = useContext(IdContext);
+      console.log(id)
     const submit=(e)=>{
       e.preventDefault();
      const q={
        bgcolor: color,
        textcolor: textcolor,
-       opacity: opacity/100,
-       bgimagekey: BackgroundImage.key
+       opacity: opacity
      }
+     const url=`http://localhost:8080/${id.id}/bg`
+     console.log(url)
       axios.put(url, q)
          .then(res=>{
             console.log(res.data);
             id.setId(res.data);
             console.log(id.id);
+          })
+          .catch(err=>{
+            console.log(err.response)
           })
     }
 
@@ -143,7 +148,7 @@ const Backgroundqna=({parentCallback, color, setOpacity, opacity, togglePopup, t
           />%
         </Grid>
         </Grid>
-        <Button >Submit</Button>
+        <Button onClick={submit}>Submit</Button>
         </div>
     )
 }
