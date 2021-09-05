@@ -114,11 +114,14 @@ const wcr=[];
     border: "solid 1px #ddd",
     width: '90%',
     height: '30em',
-    marginTop: '2%',
-    padding: "1%"
+    marginTop: '1%',
+    padding: "1%",
+    backgroundColor: Background.bgcolor,
+    opacity:  Background.opacity,
+    color: Background.textcolor
   };
   const callbacks = {
-      getWordColor: word => word.value > 50 ? randomColor({luminosity: 'bright'}) : randomColor({luminosity: 'bright'}),
+      getWordColor: word => word.value > 50 ? randomColor({luminosity: 'dark'}) : randomColor({luminosity: 'dark'}),
       onWordClick: console.log,
       onWordMouseOver: console.log,
       getWordTooltip: word => `Total entries = ${word.value} `
@@ -142,18 +145,13 @@ const wcr=[];
 
 return (
   <div>
-    <div style={{
-          backgroundColor: Background.bgcolor,
-          opacity: Background.opacity,
-          color: Background.textcolor,
-          width: '100%',
-          height:'100%'}}>
-<div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'100%',width:'100%',paddingTop:"3%"}} >
+    <div >
+<div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'100%',width:'100%',paddingTop:"1em"}} >
 
-<h1 style={{fontFamily: "Helvetica", textAlign: 'center'}} >{question.question}</h1>
+<h1 style={{fontFamily: "Helvetica", textAlign: 'center',fontSize:"3em"}} >{question.question}</h1>
 
 
-  <div style={resizeStyle}>
+  <div style={resizeStyle} >
   <ReactWordcloud
   callbacks={callbacks}
   options={options}

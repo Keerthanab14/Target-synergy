@@ -50,21 +50,20 @@ const Scales =(props) => {
   },[])
 
   return (
-    <div>
     <div style={{
-     backgroundColor: Background.bgcolor,
-     opacity:  Background.opacity,
-     color: Background.textcolor,
-     width: '60%',
-     height:'100%',
-     margin:"auto"}}>
-    <div  style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '60vh',paddingTop:"5%"}} ><h1 fontFamily= "Helvetica">{textBased.question}</h1>
+      backgroundColor: Background.bgcolor,
+      opacity:  Background.opacity,
+      color: Background.textcolor,
+      width: '100%',
+      height:'100%'}}>
+    <div>
+    <div  style={{display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center',margin:"auto", width: '60%', height: '40em', paddingTop:"1.5em"}} ><h1 fontFamily= "Helvetica">{textBased.question}</h1>
            
       
 {textBased.choices.map((x, i) => {
   const PrettoSlider = withStyles({
     root: {
-      color: randomColor(),
+      color: randomColor({luminosity: 'dark'}),
       height: 8,
     },
     thumb: {
@@ -102,9 +101,6 @@ const Scales =(props) => {
        
           
 </div>
-
-           
-
         );
       })}
       </div>
