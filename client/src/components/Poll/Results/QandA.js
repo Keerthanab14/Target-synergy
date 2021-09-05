@@ -91,14 +91,17 @@ const QandA = (props) => {
           const choice=QandAResponses.responses;
          const classes = useStyles();
     
-    return ( <div style={{
-      backgroundColor: Background.bgcolor,
-      opacity: Background.opacity,
-      color: Background.textcolor,
-      width: '100%',
-      height:'100%'}}>
-    <h1 style={{ marginTop:"50px", fontFamily:"Helvetica",  textAlign:"center", fontSize:"30px"}} >{question.question} </h1>
-     <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap', width: '70%',margin:"auto"}} >
+    return ( 
+      <div style={{
+        backgroundColor: Background.bgcolor,
+        opacity:  Background.opacity,
+        color: Background.textcolor,
+        width: '100%',
+        height:'100%'}}>
+      <div>
+      <div  style={{display: "flex", flexDirection: 'column', alignItems: 'center',margin:"auto", width: '60%', height: '40em',paddingTop:"2em"}} >
+        <h1 fontFamily= "Helvetica">{question.question}</h1>
+     <div style={{justifyContent: 'space-evenly',display: 'flex', flexWrap: 'wrap'}} >
            {choice.map((x, i) => {
          const color = randomColor({luminosity:"bright"});
     return(
@@ -112,6 +115,8 @@ const QandA = (props) => {
                </Container>
     )
     })}
+    </div>
+    </div>
     </div>
     </div>
     );
