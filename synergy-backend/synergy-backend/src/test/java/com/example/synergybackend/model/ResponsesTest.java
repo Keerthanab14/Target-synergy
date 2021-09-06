@@ -14,14 +14,5 @@ class ResponsesTest {
         responsesUnderTest = new Responses();
     }
 
-    @Test
-    void testSetLatestAnswer() {
-        // Setup
 
-        // Run the test
-        final String result = responsesUnderTest.setLatestAnswer("latestAnswer");
-
-        // Verify the results
-        assertEquals("result", result);
-    }
 }

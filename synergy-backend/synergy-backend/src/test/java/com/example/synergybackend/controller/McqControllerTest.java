@@ -3,6 +3,7 @@ package com.example.synergybackend.controller;
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.synergybackend.model.Choice;
 import com.example.synergybackend.model.Mcq;
+import com.example.synergybackend.model.Background;
 import com.example.synergybackend.repository.MCQRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,7 @@ class McqControllerTest {
         mcq.setId("id");
         mcq.setQuestion("question");
         mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq.setBg(new Background(1,"white","black"));
         final List<Mcq> mcqs = List.of(mcq);
         when(mockMcqRepo.findAll()).thenReturn(mcqs);
         System.out.println(mcq);
@@ -76,6 +78,8 @@ class McqControllerTest {
         mcq1.setId("id");
         mcq1.setQuestion("question");
         mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq1.setBg(new Background(1,"white","black"));
+
         mockMcqRepo.save(any(Mcq.class));
 
 
@@ -96,6 +100,8 @@ class McqControllerTest {
         quest.setId("id");
         quest.setQuestion("question");
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        quest.setBg(new Background(1,"white","black"));
+
 
         // Configure MCQRepository.save(...).
         final Mcq mcq = new Mcq();
@@ -103,6 +109,8 @@ class McqControllerTest {
         mcq.setId("id");
         mcq.setQuestion("question");
         mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq.setBg(new Background(1,"white","black"));
+
         when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq);
 
         // Run the test
@@ -120,6 +128,8 @@ class McqControllerTest {
         quest.setId("id");
         quest.setQuestion("question");
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 2))));
+        quest.setBg(new Background(1,"white","black"));
+
 
         // Configure MCQRepository.findById(...).
         final Mcq mcq1 = new Mcq();
@@ -127,6 +137,8 @@ class McqControllerTest {
         mcq1.setId("id");
         mcq1.setQuestion("question");
         mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq1.setBg(new Background(1,"white","black"));
+
         final Optional<Mcq> mcq = Optional.of(mcq1);
         when(mockMcqRepo.findById("id")).thenReturn(mcq);
 
@@ -136,6 +148,8 @@ class McqControllerTest {
         mcq2.setId("id");
         mcq2.setQuestion("question");
         mcq2.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq2.setBg(new Background(1,"white","black"));
+
         when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq2);
 
         // Run the test
@@ -155,6 +169,8 @@ class McqControllerTest {
         quest.setId("id");
         quest.setQuestion("question");
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        quest.setBg(new Background(1,"white","black"));
+
 
         // Configure MCQRepository.save(...).
         final Mcq mcq = new Mcq();
@@ -162,6 +178,8 @@ class McqControllerTest {
         mcq.setId("id");
         mcq.setQuestion("question");
         mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq.setBg(new Background(1,"white","black"));
+
         when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq);
 
         // Run the test
@@ -179,6 +197,8 @@ class McqControllerTest {
         quest.setId("id");
         quest.setQuestion("question");
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        quest.setBg(new Background(1,"white","black"));
+
 
         // Configure MCQRepository.findById(...).
         final Mcq mcq1 = new Mcq();
@@ -186,6 +206,8 @@ class McqControllerTest {
         mcq1.setId("id");
         mcq1.setQuestion("question");
         mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq1.setBg(new Background(1,"white","black"));
+
         final Optional<Mcq> mcq = Optional.of(mcq1);
         when(mockMcqRepo.findById("id")).thenReturn(mcq);
 
@@ -195,6 +217,8 @@ class McqControllerTest {
         mcq2.setId("id");
         mcq2.setQuestion("question");
         mcq2.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq2.setBg(new Background(1,"white","black"));
+
         when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq2);
 
         // Run the test
@@ -213,6 +237,8 @@ class McqControllerTest {
         mcq1.setId("id");
         mcq1.setQuestion("question");
         mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq1.setBg(new Background(1,"white","black"));
+
         final Optional<Mcq> mcq = Optional.of(mcq1);
         when(mockMcqRepo.findById("id")).thenReturn(mcq);
 
@@ -230,6 +256,7 @@ class McqControllerTest {
         quest.setId("id");
         quest.setQuestion("question");
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        quest.setBg(new Background(1,"white","black"));
 
         // Configure MCQRepository.save(...).
         final Mcq mcq = new Mcq();
@@ -237,6 +264,8 @@ class McqControllerTest {
         mcq.setId("id");
         mcq.setQuestion("question");
         mcq.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq.setBg(new Background(1,"white","black"));
+
         when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq);
 
         // Run the test
@@ -254,6 +283,8 @@ class McqControllerTest {
         quest.setId("id");
         quest.setQuestion("question");
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        quest.setBg(new Background(1,"white","black"));
+
 
         // Configure MCQRepository.findById(...).
         final Mcq mcq1 = new Mcq();
@@ -261,6 +292,8 @@ class McqControllerTest {
         mcq1.setId("id");
         mcq1.setQuestion("question");
         mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq1.setBg(new Background(1,"white","black"));
+
         final Optional<Mcq> mcq = Optional.of(mcq1);
         when(mockMcqRepo.findById("id")).thenReturn(mcq);
 
@@ -270,6 +303,8 @@ class McqControllerTest {
         mcq2.setId("id");
         mcq2.setQuestion("question");
         mcq2.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq2.setBg(new Background(1,"white","black"));
+
         when(mockMcqRepo.save(any(Mcq.class))).thenReturn(mcq2);
 
         // Run the test
@@ -288,6 +323,8 @@ class McqControllerTest {
         mcq1.setId("id");
         mcq1.setQuestion("question");
         mcq1.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
+        mcq1.setBg(new Background(1,"white","black"));
+
         final Optional<Mcq> mcq = Optional.of(mcq1);
         when(mockMcqRepo.findById("id")).thenReturn(mcq);
 
