@@ -1,5 +1,6 @@
 package com.example.synergybackend.controller;
 
+import com.example.synergybackend.model.Background;
 import com.example.synergybackend.model.OpenEnded;
 import com.example.synergybackend.repository.OpenEndedRepository;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,7 @@ class OpenEndedControllerTest {
         final OpenEnded openEnded = new OpenEnded();
         openEnded.setId("id");
         openEnded.setQuestion("question");
+        openEnded.setBg(new Background(20,"blue","black"));
         final List<OpenEnded> openEndeds = Arrays.asList(openEnded);
         when(mockOpenEndedRepository.findAll()).thenReturn(openEndeds);
 
@@ -60,11 +62,15 @@ class OpenEndedControllerTest {
         final OpenEnded quest = new OpenEnded();
         quest.setId("id");
         quest.setQuestion("question");
+        quest.setBg(new Background(20,"blue","black"));
+
 
         // Configure OpenEndedRepository.save(...).
         final OpenEnded openEnded = new OpenEnded();
         openEnded.setId("id");
         openEnded.setQuestion("question");
+        openEnded.setBg(new Background(20,"blue","black"));
+
         when(mockOpenEndedRepository.save(any(OpenEnded.class))).thenReturn(openEnded);
 
         // Run the test
@@ -82,6 +88,8 @@ class OpenEndedControllerTest {
         final OpenEnded openEnded1 = new OpenEnded();
         openEnded1.setId("id");
         openEnded1.setQuestion("question");
+        openEnded1.setBg(new Background(20,"blue","black"));
+
         final Optional<OpenEnded> openEnded = Optional.of(openEnded1);
         when(mockOpenEndedRepository.findById("id")).thenReturn(openEnded);
 
@@ -98,11 +106,15 @@ class OpenEndedControllerTest {
         final OpenEnded quest = new OpenEnded();
         quest.setId("id");
         quest.setQuestion("question");
+        quest.setBg(new Background(20,"blue","black"));
+
 
         // Configure OpenEndedRepository.save(...).
         final OpenEnded openEnded = new OpenEnded();
         openEnded.setId("id");
         openEnded.setQuestion("question");
+        openEnded.setBg(new Background(20,"blue","black"));
+
         when(mockOpenEndedRepository.save(any(OpenEnded.class))).thenReturn(openEnded);
 
         // Run the test
@@ -120,6 +132,8 @@ class OpenEndedControllerTest {
         final OpenEnded openEnded1 = new OpenEnded();
         openEnded1.setId("id");
         openEnded1.setQuestion("question");
+        openEnded1.setBg(new Background(20,"blue","black"));
+
         final Optional<OpenEnded> openEnded = Optional.of(openEnded1);
         when(mockOpenEndedRepository.findById("id")).thenReturn(openEnded);
 
@@ -138,6 +152,8 @@ class OpenEndedControllerTest {
         final OpenEnded openEnded = new OpenEnded();
         openEnded.setId("id");
         openEnded.setQuestion("question");
+        openEnded.setBg(new Background(20,"blue","black"));
+
         final List<OpenEnded> openEndeds = Arrays.asList(openEnded);
         when(mockOpenEndedRepository.findAll()).thenReturn(openEndeds);
 
@@ -164,11 +180,15 @@ class OpenEndedControllerTest {
         final OpenEnded quest = new OpenEnded();
         quest.setId("id");
         quest.setQuestion("question");
+        quest.setBg(new Background(20,"blue","black"));
+
 
         // Configure OpenEndedRepository.save(...).
         final OpenEnded openEnded = new OpenEnded();
         openEnded.setId("id");
         openEnded.setQuestion("question");
+        openEnded.setBg(new Background(20,"blue","black"));
+
         when(mockOpenEndedRepository.save(any(OpenEnded.class))).thenReturn(openEnded);
 
         // Run the test
@@ -186,6 +206,8 @@ class OpenEndedControllerTest {
         final OpenEnded openEnded1 = new OpenEnded();
         openEnded1.setId("id");
         openEnded1.setQuestion("question");
+        openEnded1.setBg(new Background(20,"blue","black"));
+
         final Optional<OpenEnded> openEnded = Optional.of(openEnded1);
         when(mockOpenEndedRepository.findById("id")).thenReturn(openEnded);
 

@@ -53,23 +53,5 @@ class UserControllerTest {
         // Verify the results
     }
 
-    @Test
-    void testSaveBook() {
-        // Setup
-        final Map<String, Object> user = new HashMap<>();
 
-        // Configure UserRepository.save(...).
-        final User user1 = new User();
-        user1.setGoogleId("googleId");
-        user1.setEmail("email");
-        user1.setName("name");
-        when(mockUserRepository.save(any(User.class))).thenReturn(user1);
-
-        // Run the test
-        final String result = userControllerUnderTest.saveBook(user);
-
-        // Verify the results
-        assertEquals("result", result);
-        verify(mockUserRepository).save(any(User.class));
-    }
 }
