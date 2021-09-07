@@ -92,7 +92,13 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
             name: res.profileObj.name
           }
           setContentAuth(data.googleId)
-          setName(data.name)
+          axios.get(`http://localhost:8080/user/${data.googleId}`)
+            .then(res=>{
+                console.log(res.data)
+                setName(res.data.name)
+            })
+          
+          console.log(name)
          
             axios.post("http://localhost:8080/user", data)
             .then(r =>console.log("success"))
@@ -101,6 +107,7 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
           });
           setAuth(true);
           console.log(auth);
+          
     }
     console.log(name)
     const onFailure = (res)=>{
@@ -178,7 +185,7 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
                                      </IconButton>
                                      }
                                      
-                                     { auth && <User setAuth={setAuth} />}
+                                     { auth && <User setAuth={setAuth} setName={setName} />}
                                      
 
                                     {/* <GoogleLogout
