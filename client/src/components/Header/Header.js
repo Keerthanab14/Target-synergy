@@ -69,6 +69,7 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const [code, setCode] = useState("");
+    const [name, setName] = useState("");
     const open = Boolean(anchorEl);
 
     const handleChange = (event) => {
@@ -91,15 +92,17 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
             name: res.profileObj.name
           }
           setContentAuth(data.googleId)
-          console.log(data.googleId)
+          setName(data.name)
+         
             axios.post("http://localhost:8080/user", data)
             .then(r =>console.log("success"))
             .catch(err => { 
             console.error(err);
           });
           setAuth(true);
-          console.log(auth)
+          console.log(auth);
     }
+    console.log(name)
     const onFailure = (res)=>{
             console.log('login failed', res);
             setAuth(false);
@@ -146,7 +149,7 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
                     &nbsp;
                     <Submit code={code} />
                     &nbsp; &nbsp;
-                    
+                    <div style={{fontFamily:"Helvetica", fontSize:"1.1em"}}>{name}</div>
 
                         <div>
                             { !auth &&<IconButton
@@ -174,7 +177,9 @@ function Header({setAuth, auth, setContentAuth, contentauth}) {
                                     </GoogleLogin>
                                      </IconButton>
                                      }
+                                     
                                      { auth && <User setAuth={setAuth} />}
+                                     
 
                                     {/* <GoogleLogout
                                         clientId="4565827063-vh8t8cgckg74git2dh3ulfq7fvd02gai.apps.googleusercontent.com"
