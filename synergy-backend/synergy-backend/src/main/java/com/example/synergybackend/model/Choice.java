@@ -1,12 +1,6 @@
 package com.example.synergybackend.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-
-import java.util.Objects;
-//@Document(collection = "choices")
 public class Choice {
 
     private String option;

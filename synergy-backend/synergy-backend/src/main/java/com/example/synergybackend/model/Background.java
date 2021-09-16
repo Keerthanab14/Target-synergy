@@ -1,5 +1,6 @@
 package com.example.synergybackend.model;
 
+
 public class Background {
     private int opacity;
     private String bgColor;

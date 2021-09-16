@@ -14,14 +14,19 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    //get all user
     @GetMapping("/user")
     public List<User> getAllUser(){
         return userRepository.findAll();
     }
+
+    //get user by ID
     @GetMapping("/user/{googleId}")
     public User getUser(@PathVariable("googleId") String googleId){
         return userRepository.findByGoogleId(googleId);
     }
+
+    //post new User
     @PostMapping("/user")
     public String saveBook(@RequestBody Map<String, Object> user) {
         User userr = new User();
