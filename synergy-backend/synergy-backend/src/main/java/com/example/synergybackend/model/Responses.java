@@ -40,9 +40,8 @@ public class Responses {
     }
 
     public void setResponses(ArrayList<String> responses) {
-        this.latestAnswer = latestAnswer;
+//        this.latestAnswer = latestAnswer;
         this.responses=responses;
-
         responses.add(latestAnswer) ;
     }
 

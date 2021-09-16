@@ -16,16 +16,19 @@ public class ResponsesController {
     @Autowired
     private ResponsesRepository responsesRepository;
 
+    //get responses
     @GetMapping("/responses")
     public List<Responses> getAllResponses() {
         return responsesRepository.findAll();
     }
 
+    //get responses by ID
     @GetMapping("/responses/{id}")
     public Responses getResponsesById(@PathVariable("id") String id) {
         return responsesRepository.findById(id).get();
     }
 
+    //get by Question ID
     @GetMapping("/quest/{id}")
     public String getQuestionById(@PathVariable("id") String id){
         Responses response = responsesRepository.findByQuestion(id);
@@ -33,6 +36,7 @@ public class ResponsesController {
         return url;
     }
 
+    //add responses
     @PutMapping("/responses/{id}")
     public String saveResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try
@@ -50,11 +54,11 @@ public class ResponsesController {
         }
     }
 
+    //post response
     @PostMapping("/responses")
     public String saveNewResponses(@RequestBody Responses quest) {
         Responses responses = new Responses();
         responses.setQuestion(quest.getQuestion());
-//        responses.setGoogleId(quest.getGoogleId());
         responses.setLatestAnswer(quest.getLatestAnswer());
         responses.setResponses(quest.getResponses());
         Responses savedResponse = responsesRepository.save(responses);
@@ -62,12 +66,13 @@ public class ResponsesController {
         return url;
 
     }
+
+    //put WC response
     @PutMapping("/WordCloudResponse/{id}")
     public String saveWCResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try {
             responsesRepository.findById(id).get();
             Responses responses = responsesRepository.findById(id).get();
-            Responses resp = new Responses();
             responses.setLatestAnswer(quest.getLatestAnswer());
             responses.setResponses(responses.getResponses());
             Responses savedResponse = responsesRepository.save(responses);
@@ -78,6 +83,8 @@ public class ResponsesController {
             return saveNewWcResponses(quest);
         }
     }
+
+    //post WC response
     @PostMapping("/WordCloudresponses")
     public String saveNewWcResponses(@RequestBody Responses quest) {
         Responses responses = new Responses();
@@ -89,23 +96,17 @@ public class ResponsesController {
         return url;
 
     }
+
+    //get Wc response
     @GetMapping("/WordCloudResponse/{id}")
     public Map getquestionsById(@PathVariable("id") String id) {
         Responses responses = responsesRepository.findById(id).get();
         ArrayList<String> resp = responses.getResponses();
         Map<String, Integer> hm = new HashMap<String, Integer>();
-
         for (String i : resp) {
             Integer j = hm.get(i);
             hm.put(String.valueOf(i), (j == null) ? 1 : j + 1);
         }
-
-        // displaying the occurrence of elements in the arraylist
-//        for (Map.Entry<String, Integer> val : hm.entrySet()) {
-//            System.out.println("Element " + val.getKey() + " "
-//                    + "occurs"
-//                    + ": " + val.getValue() + " times");
-//        }
         return hm;
     }
 

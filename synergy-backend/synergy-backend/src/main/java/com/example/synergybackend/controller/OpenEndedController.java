@@ -1,12 +1,9 @@
 package com.example.synergybackend.controller;
 import com.example.synergybackend.model.Background;
-import com.example.synergybackend.model.Mcq;
 import com.example.synergybackend.model.OpenEnded;
 import com.example.synergybackend.repository.OpenEndedRepository;
-import com.example.synergybackend.services.SequenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.synergybackend.model.OpenEnded;
 
 import java.util.List;
 
@@ -16,19 +13,21 @@ public class OpenEndedController {
     @Autowired
     private OpenEndedRepository openEndedRepository;
 
+    //get by user
     @GetMapping("/{id}/OE")
-    public List<OpenEnded> getMcqByUser(@PathVariable("id") String id){
+    public List<OpenEnded> getByUser(@PathVariable("id") String id){
         return openEndedRepository.findAllByGoogleId(id);
     }
 
+    //get All
     @GetMapping("/OE")
     public List<OpenEnded> getAllquestion(){
             return openEndedRepository.findAll();
         }
 
+    //post OE
     @PostMapping("/OE")
     public String saveQuestion(@RequestBody OpenEnded quest) {
-        System.out.println(quest.getGoogleId());
         OpenEnded openEnded=new OpenEnded();
         openEnded.setQuestion( quest.getQuestion());
         openEnded.setGoogleId((quest.getGoogleId()));
@@ -37,6 +36,8 @@ public class OpenEndedController {
         String url = "OE/" + saved.getId();
         return url;
     }
+
+    //bg for OE
     @PutMapping("/OE/{id}/bg")
     public String saveWithBg(@PathVariable("id") String id,@RequestBody Background quest) {
         OpenEnded OE=openEndedRepository.findById(id).get();
@@ -45,10 +46,14 @@ public class OpenEndedController {
         String url = "OE/" + savedPoll.getId();
         return url;
     }
+
+    //get OE by ID
     @GetMapping("/OE/{id}")
     public OpenEnded getOpenEndedquestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
+
+    //post WC
     @PostMapping("/WC")
     public String savewcQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
@@ -59,10 +64,14 @@ public class OpenEndedController {
         String url = "WC/" + saved.getId();
         return url;
     }
+
+    //get WC by ID
     @GetMapping("/WC/{id}")
     public OpenEnded getWcQuestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
+
+    //bg for WC
     @PutMapping("/WC/{id}/bg")
     public String saveWCBg(@PathVariable("id") String id,@RequestBody Background quest) {
         OpenEnded OE=openEndedRepository.findById(id).get();
@@ -72,10 +81,13 @@ public class OpenEndedController {
         return url;
     }
 
+    //get QandA
     @GetMapping("/QandA")
     public List<OpenEnded> getAllQandA(){
         return openEndedRepository.findAll();
     }
+
+    //post QandA
     @PostMapping("/QandA")
     public String saveQandAQuestion(@RequestBody OpenEnded quest) {
         OpenEnded openEnded=new OpenEnded();
@@ -86,10 +98,14 @@ public class OpenEndedController {
         String url = "QandA/" + saved.getId();
         return url;
     }
+
+    //get QandA by ID
     @GetMapping("/QandA/{id}")
     public OpenEnded getQandAquestion(@PathVariable("id") String id){
         return openEndedRepository.findById(id).get();
     }
+
+    //bg for QandA
     @PutMapping("/QandA/{id}/bg")
     public String saveBg(@PathVariable("id") String id,@RequestBody Background quest) {
         OpenEnded OE=openEndedRepository.findById(id).get();
