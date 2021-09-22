@@ -37,7 +37,7 @@ class McqControllerTest {
     void testGetAllMcq() {
         // Setup
 
-        // Configure MCQRepository.findAll(...).
+     
         final Mcq mcq = new Mcq();
         mcq.setGoogleId("googleId");
         mcq.setId("id");
@@ -71,7 +71,7 @@ class McqControllerTest {
     void testGetMcqById() {
         // Setup
 
-        // Configure MCQRepository.findById(...).
+        
         MockitoAnnotations.openMocks(this);
         final Mcq mcq1 = new Mcq();
         mcq1.setGoogleId("googleId");
@@ -158,7 +158,7 @@ class McqControllerTest {
         for(Choice i:c)
             System.out.println(i.getVotes());
 
-        // Verify the results
+        
     }
 
     @Test
@@ -200,7 +200,7 @@ class McqControllerTest {
         quest.setBg(new Background(1,"white","black"));
 
 
-        // Configure MCQRepository.findById(...).
+    
         final Mcq mcq1 = new Mcq();
         mcq1.setGoogleId("googleId");
         mcq1.setId("id");
@@ -211,7 +211,6 @@ class McqControllerTest {
         final Optional<Mcq> mcq = Optional.of(mcq1);
         when(mockMcqRepo.findById("id")).thenReturn(mcq);
 
-        // Configure MCQRepository.save(...).
         final Mcq mcq2 = new Mcq();
         mcq2.setGoogleId("googleId");
         mcq2.setId("id");
@@ -231,7 +230,7 @@ class McqControllerTest {
     void testGetSC() {
         // Setup
 
-        // Configure MCQRepository.findById(...).
+     
         final Mcq mcq1 = new Mcq();
         mcq1.setGoogleId("googleId");
         mcq1.setId("id");
@@ -245,7 +244,6 @@ class McqControllerTest {
         // Run the test
         final Mcq result = mcqControllerUnderTest.getSC("id");
 
-        // Verify the results
     }
 
     @Test
@@ -258,7 +256,7 @@ class McqControllerTest {
         quest.setChoices(new ArrayList<>(List.of(new Choice("option", 0))));
         quest.setBg(new Background(1,"white","black"));
 
-        // Configure MCQRepository.save(...).
+      
         final Mcq mcq = new Mcq();
         mcq.setGoogleId("googleId");
         mcq.setId("id");
@@ -286,7 +284,7 @@ class McqControllerTest {
         quest.setBg(new Background(1,"white","black"));
 
 
-        // Configure MCQRepository.findById(...).
+
         final Mcq mcq1 = new Mcq();
         mcq1.setGoogleId("googleId");
         mcq1.setId("id");
@@ -310,14 +308,13 @@ class McqControllerTest {
         // Run the test
         final Mcq result = mcqControllerUnderTest.updateRT("id", quest);
 
-        // Verify the results
     }
 
     @Test
     void testGetRT() {
         // Setup
 
-        // Configure MCQRepository.findById(...).
+    
         final Mcq mcq1 = new Mcq();
         mcq1.setGoogleId("googleId");
         mcq1.setId("id");
@@ -331,7 +328,6 @@ class McqControllerTest {
         // Run the test
         final Mcq result = mcqControllerUnderTest.getRT("id");
 
-        // Verify the results
     }
 
 }

@@ -31,7 +31,7 @@ class OpenEndedControllerTest {
     void testGetAllquestion() {
         // Setup
 
-        // Configure OpenEndedRepository.findAll(...).
+        
         final OpenEnded openEnded = new OpenEnded();
         openEnded.setId("id");
         openEnded.setQuestion("question");
@@ -42,7 +42,6 @@ class OpenEndedControllerTest {
         // Run the test
         final List<OpenEnded> result = openEndedControllerUnderTest.getAllquestion();
 
-        // Verify the results
     }
 
     @Test
@@ -53,7 +52,6 @@ class OpenEndedControllerTest {
         // Run the test
         final List<OpenEnded> result = openEndedControllerUnderTest.getAllquestion();
 
-        // Verify the results
     }
 
     @Test
@@ -82,7 +80,7 @@ class OpenEndedControllerTest {
 
     @Test
     void testGetOpenEndedquestion() {
-        // Setup
+    
 
         // Configure OpenEndedRepository.findById(...).
         final OpenEnded openEnded1 = new OpenEnded();
@@ -96,7 +94,7 @@ class OpenEndedControllerTest {
         // Run the test
         final OpenEnded result = openEndedControllerUnderTest.getOpenEndedquestion("id");
 
-        // Verify the results
+  
     }
 
 
@@ -140,7 +138,7 @@ class OpenEndedControllerTest {
         // Run the test
         final OpenEnded result = openEndedControllerUnderTest.getWcQuestion("id");
 
-        // Verify the results
+      
     }
 
 
@@ -160,7 +158,7 @@ class OpenEndedControllerTest {
         // Run the test
         final List<OpenEnded> result = openEndedControllerUnderTest.getAllQandA();
 
-        // Verify the results
+    
     }
 
     @Test
@@ -214,7 +212,6 @@ class OpenEndedControllerTest {
         // Run the test
         final OpenEnded result = openEndedControllerUnderTest.getQandAquestion("id");
 
-        // Verify the results
     }
 
 
