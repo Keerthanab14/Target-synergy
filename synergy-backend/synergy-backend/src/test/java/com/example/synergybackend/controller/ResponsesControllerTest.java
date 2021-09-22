@@ -38,7 +38,7 @@ class ResponsesControllerTest {
         // Run the test
         final List<Responses> result = responsesControllerUnderTest.getAllResponses();
 
-        // Verify the results
+
     }
 
     @Test
@@ -49,7 +49,7 @@ class ResponsesControllerTest {
         // Run the test
         final List<Responses> result = responsesControllerUnderTest.getAllResponses();
 
-        // Verify the results
+     
     }
 
     @Test
@@ -67,7 +67,7 @@ class ResponsesControllerTest {
         // Run the test
         final Responses result = responsesControllerUnderTest.getResponsesById("id");
 
-        // Verify the results
+   
     }
 
 
@@ -196,9 +196,8 @@ class ResponsesControllerTest {
 
     @Test
     void testGetquestionsById() {
-        // Setup
-
-        // Configure ResponsesRepository.findById(...).
+      
+  
         final Responses responses1 = new Responses();
         responses1.setId("id");
         responses1.setResponses(new ArrayList<>(Arrays.asList("value")));
@@ -209,7 +208,6 @@ class ResponsesControllerTest {
         // Run the test
         final Map result = responsesControllerUnderTest.getquestionsById("id");
 
-        // Verify the results
     }
 
 

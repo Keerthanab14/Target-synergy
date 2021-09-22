@@ -26,9 +26,7 @@ class UserControllerTest {
 
     @Test
     void testGetAllUser() {
-        // Setup
-
-        // Configure UserRepository.findAll(...).
+       
         final User user = new User();
         user.setGoogleId("googleId");
         user.setEmail("email");
@@ -39,7 +37,7 @@ class UserControllerTest {
         // Run the test
         final List<User> result = userControllerUnderTest.getAllUser();
 
-        // Verify the results
+     
     }
 
     @Test
@@ -50,7 +48,6 @@ class UserControllerTest {
         // Run the test
         final List<User> result = userControllerUnderTest.getAllUser();
 
-        // Verify the results
     }
 
 
