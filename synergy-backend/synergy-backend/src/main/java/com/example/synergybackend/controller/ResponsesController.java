@@ -2,6 +2,7 @@ package com.example.synergybackend.controller;
 
 import com.example.synergybackend.model.Responses;
 import com.example.synergybackend.repository.ResponsesRepository;
+import com.example.synergybackend.service.ResponsesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,56 +15,58 @@ import java.util.Map;
 @RestController
 public class ResponsesController {
     @Autowired
-    private ResponsesRepository responsesRepository;
+    private ResponsesService responsesService;
 
     //get responses
     @GetMapping("/responses")
     public List<Responses> getAllResponses() {
-        return responsesRepository.findAll();
+        return responsesService.getAllResponses();
     }
 
     //get responses by ID
     @GetMapping("/responses/{id}")
     public Responses getResponsesById(@PathVariable("id") String id) {
-        return responsesRepository.findById(id).get();
+        return responsesService.getResponsesById(id);
     }
 
     //get by Question ID
     @GetMapping("/quest/{id}")
     public String getQuestionById(@PathVariable("id") String id){
-        Responses response = responsesRepository.findByQuestion(id);
-        String url = response.getId();
-        return url;
+         return responsesService.getQuestionById(id);
     }
+
+
+    //post response
+    @PostMapping("/responses")
+    public String saveNewResponses(@RequestBody Responses quest) {
+        return responsesService.saveNewResponses(quest);
+
+    }
+
 
     //add responses
     @PutMapping("/responses/{id}")
     public String saveResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try
         {
-            responsesRepository.findById(id).get();
-            Responses responses = responsesRepository.findById(id).get();
-            responses.setLatestAnswer(quest.getLatestAnswer());
-            responses.setResponses(responses.getResponses());
-            Responses savedResponse = responsesRepository.save(responses);
-            String url = "responses/" + savedResponse.getId();
-            return url;
+            return responsesService.saveResponses(quest, id);
 
         } catch (Exception e) {
-            return saveNewResponses(quest);
+            return responsesService.saveNewResponses(quest);
         }
     }
 
-    //post response
-    @PostMapping("/responses")
-    public String saveNewResponses(@RequestBody Responses quest) {
-        Responses responses = new Responses();
-        responses.setQuestion(quest.getQuestion());
-        responses.setLatestAnswer(quest.getLatestAnswer());
-        responses.setResponses(quest.getResponses());
-        Responses savedResponse = responsesRepository.save(responses);
-        String url = "responses/" + savedResponse.getId();
-        return url;
+
+    //get Wc response
+    @GetMapping("/WordCloudResponse/{id}")
+    public Map getquestionsById(@PathVariable("id") String id) {
+        return responsesService.getWCResponse(id);
+    }
+
+    //post WC response
+    @PostMapping("/WordCloudresponses")
+    public String saveNewWcResponses(@RequestBody Responses quest) {
+        return responsesService.saveNewWcResponses(quest);
 
     }
 
@@ -71,44 +74,15 @@ public class ResponsesController {
     @PutMapping("/WordCloudResponse/{id}")
     public String saveWCResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try {
-            responsesRepository.findById(id).get();
-            Responses responses = responsesRepository.findById(id).get();
-            responses.setLatestAnswer(quest.getLatestAnswer());
-            responses.setResponses(responses.getResponses());
-            Responses savedResponse = responsesRepository.save(responses);
-            String url = "WC/" + savedResponse.getId();
-            return url;
+            return responsesService.saveWCResponses(quest,id);
 
         } catch (Exception e) {
-            return saveNewWcResponses(quest);
+            return responsesService.saveNewWcResponses(quest);
         }
     }
 
-    //post WC response
-    @PostMapping("/WordCloudresponses")
-    public String saveNewWcResponses(@RequestBody Responses quest) {
-        Responses responses = new Responses();
-        responses.setQuestion(quest.getQuestion());
-        responses.setLatestAnswer(quest.getLatestAnswer());
-        responses.setResponses(quest.getResponses());
-        Responses savedResponse = responsesRepository.save(responses);
-        String url = "WC/" + savedResponse.getId();
-        return url;
 
-    }
 
-    //get Wc response
-    @GetMapping("/WordCloudResponse/{id}")
-    public Map getquestionsById(@PathVariable("id") String id) {
-        Responses responses = responsesRepository.findById(id).get();
-        ArrayList<String> resp = responses.getResponses();
-        Map<String, Integer> hm = new HashMap<String, Integer>();
-        for (String i : resp) {
-            Integer j = hm.get(i);
-            hm.put(String.valueOf(i), (j == null) ? 1 : j + 1);
-        }
-        return hm;
-    }
 
 
 }

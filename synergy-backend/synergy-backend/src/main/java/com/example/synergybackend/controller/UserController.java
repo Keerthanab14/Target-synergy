@@ -2,6 +2,7 @@ package com.example.synergybackend.controller;
 
 import com.example.synergybackend.model.User;
 import com.example.synergybackend.repository.UserRepository;
+import com.example.synergybackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,30 +13,24 @@ import java.util.Map;
 @RestController
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     //get all user
     @GetMapping("/user")
     public List<User> getAllUser(){
-        return userRepository.findAll();
+        return userService.getAllUser();
     }
 
     //get user by ID
     @GetMapping("/user/{googleId}")
     public User getUser(@PathVariable("googleId") String googleId){
-        return userRepository.findByGoogleId(googleId);
+        return userService.getUser(googleId);
     }
 
     //post new User
     @PostMapping("/user")
-    public String saveBook(@RequestBody Map<String, Object> user) {
-        User userr = new User();
-        userr.setEmail(String.valueOf(user.get("email")));
-        userr.setGoogleId(String.valueOf(user.get("googleId")));
-        userr.setName(String.valueOf(user.get("name")));
-        userRepository.save(userr);
-        System.out.println(user.get("googleId"));
-        return (String)user.get("data");
+    public String saveUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 
 

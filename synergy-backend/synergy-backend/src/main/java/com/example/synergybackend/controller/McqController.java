@@ -3,6 +3,7 @@ package com.example.synergybackend.controller;
 
 import com.example.synergybackend.model.Mcq;
 import com.example.synergybackend.repository.MCQRepository;
+import com.example.synergybackend.service.McqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.synergybackend.model.Background;
@@ -13,97 +14,67 @@ import java.util.List;
 @RestController
 public class McqController {
     @Autowired
-    private MCQRepository mcqRepo;
+    private McqService mcqService;
 
     //get mcq by user id
     @GetMapping("/{id}/MCQ")
     public List<Mcq> getMcqByUser(@PathVariable("id") String id){
-        return mcqRepo.findAllByGoogleId(id);
+        return mcqService.getMcqByUser(id);
     }
 
     //get mcq by id
     @GetMapping("/MCQ/{id}")
     public Mcq getMcqById(@PathVariable("id") String id){
-        return mcqRepo.findById(id).get();
+        return mcqService.getMcqById(id);
     }
 
     //get all mcq
     @GetMapping("/MCQ")
     public List<Mcq> getAllMcq(){
-        return mcqRepo.findAll();
+        return mcqService.getAllMcq();
     }
 
     //post mcq
     @PostMapping("/MCQ")
     public String saveMcq(@RequestBody Mcq quest) {
-        System.out.println(quest.getChoices());
-        Mcq mcq=new Mcq();
-        mcq.setQuestion(String.valueOf(quest.getQuestion()));
-        mcq.setChoices( quest.getChoices());
-        mcq.setGoogleId(quest.getGoogleId());
-        mcq.setType((quest.getType()));
-        Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "MCQ/" + savedPoll.getId();
-        return url;
+        return mcqService.saveMcq(quest);
     }
 
     //bg for mcq
     @PutMapping("/MCQ/{id}/bg")
     public String saveWithBg(@PathVariable("id") String id,@RequestBody Background quest) {
-        Mcq mcq=mcqRepo.findById(id).get();
-        mcq.setBg(quest);
-        Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "MCQ/" + savedPoll.getId();
-        return url;
+        return mcqService.saveWithBg(id,quest);
     }
 
     //update votes
     @PutMapping("/MCQ/{id}")
     public Mcq updateMcq(@PathVariable("id") String id,@RequestBody Mcq quest) {
-        Mcq mcq=mcqRepo.findById(id).get();
-        mcq.setChoices(quest.getChoices());
-        Mcq savedPoll = mcqRepo.save(mcq);
-        return savedPoll;
+        return mcqService.updateMcq(id,quest);
     }
 
     //****SCALES****
     //post scales
     @PostMapping("/SC")
     public String saveSC(@RequestBody Mcq quest) {
-        Mcq mcq=new Mcq();
-        mcq.setQuestion(String.valueOf(quest.getQuestion()));
-        mcq.setChoices( quest.getChoices());
-        mcq.setGoogleId(quest.getGoogleId());
-        Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "SC/" + savedPoll.getId();
-        return url;
+        return mcqService.saveSC(quest);
     }
 
     //responses for scales
     @PutMapping("/SC/{id}")
     public Mcq updateSC(@PathVariable("id") String id,@RequestBody Mcq quest) {
-        Mcq mcq=mcqRepo.findById(id).get();
-        mcq.setChoices(quest.getChoices());
-        Mcq savedPoll = mcqRepo.save(mcq);
-        return savedPoll;
+        return mcqService.updateSC(id,quest);
     }
 
     //bg for scales
     @PutMapping("/SC/{id}/bg")
     public String saveWithB(@PathVariable("id") String id,@RequestBody Background quest) {
-        Mcq mcq=mcqRepo.findById(id).get();
-
-        mcq.setBg(quest);
-
-        Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "SC/" + savedPoll.getId();
-        return url;
+        return mcqService.saveWithB(id,quest);
     }
 
     //get scales by id
     @GetMapping("/SC/{id}")
     public Mcq getSC(@PathVariable("id") String id){
-        return mcqRepo.findById(id).get();
+        return mcqService.getSC(id);
     }
 
 
@@ -112,38 +83,25 @@ public class McqController {
     //post rating question
     @PostMapping("/RT")
     public String saveRT(@RequestBody Mcq quest) {
-        Mcq mcq=new Mcq();
-        mcq.setQuestion(String.valueOf(quest.getQuestion()));
-        mcq.setChoices( quest.getChoices());
-        mcq.setGoogleId(quest.getGoogleId());
-        Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "RT/" + savedPoll.getId();
-        return url;
+        return mcqService.saveRT(quest);
     }
 
     //response for rating
     @PutMapping("/RT/{id}")
     public Mcq updateRT(@PathVariable("id") String id,@RequestBody Mcq quest) {
-        Mcq mcq=mcqRepo.findById(id).get();
-        mcq.setChoices(quest.getChoices());
-        Mcq savedPoll = mcqRepo.save(mcq);
-        return savedPoll;
+        return mcqService.updateRT(id,quest);
     }
 
     //bg for rating
     @PutMapping("/RT/{id}/bg")
     public String saveBg(@PathVariable("id") String id,@RequestBody Background quest) {
-        Mcq mcq=mcqRepo.findById(id).get();
-        mcq.setBg(quest);
-        Mcq savedPoll = mcqRepo.save(mcq);
-        String url = "RT/" + savedPoll.getId();
-        return url;
+        return mcqService.saveBg(id,quest);
     }
 
     //get rating by id
     @GetMapping("/RT/{id}")
     public Mcq getRT(@PathVariable("id") String id){
-        return mcqRepo.findById(id).get();
+        return mcqService.getRT(id);
     }
 
 }
