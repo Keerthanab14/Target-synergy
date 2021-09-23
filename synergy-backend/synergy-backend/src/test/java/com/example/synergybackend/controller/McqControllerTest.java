@@ -1,11 +1,9 @@
 package com.example.synergybackend.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.synergybackend.model.Choice;
 import com.example.synergybackend.model.Mcq;
 import com.example.synergybackend.model.Background;
 import com.example.synergybackend.repository.MCQRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,9 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
@@ -37,7 +33,6 @@ class McqControllerTest {
     void testGetAllMcq() {
         // Setup
 
-     
         final Mcq mcq = new Mcq();
         mcq.setGoogleId("googleId");
         mcq.setId("id");
