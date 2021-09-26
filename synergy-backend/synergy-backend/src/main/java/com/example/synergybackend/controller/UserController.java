@@ -17,18 +17,21 @@ public class UserController {
 
     //get all user
     @GetMapping("/user")
+    @ResponseBody
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
 
     //get user by ID
     @GetMapping("/user/{googleId}")
+    @ResponseBody
     public User getUser(@PathVariable("googleId") String googleId){
         return userService.getUser(googleId);
     }
 
     //post new User
     @PostMapping("/user")
+    @ResponseBody
     public String saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }

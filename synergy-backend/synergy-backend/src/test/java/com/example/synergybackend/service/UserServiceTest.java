@@ -1,6 +1,7 @@
-package com.example.synergybackend.controller;
+package com.example.synergybackend.service;
 
 import com.example.synergybackend.model.User;
+import com.example.synergybackend.repository.UserRepository;
 import com.example.synergybackend.service.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,16 +14,17 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
-class UserControllerTest {
+class UserServiceTest {
 
     @Mock
-    private UserService mockUserService;
+    private UserRepository mockUserRepository;
 
     @InjectMocks
-    private UserController userControllerUnderTest;
+    private UserService userServiceUnderTest;
 
     private AutoCloseable mockitoCloseable;
 
@@ -40,34 +42,33 @@ class UserControllerTest {
     void testGetAllUser() {
         // Setup
 
-        // Configure UserService.getAllUser(...).
+        // Configure UserRepository.findAll(...).
         final User user = new User();
         user.setGoogleId("googleId");
         user.setEmail("email");
         user.setName("name");
         final List<User> users = List.of(user);
-        when(mockUserService.getAllUser()).thenReturn(users);
+        when(mockUserRepository.findAll()).thenReturn(users);
 
         // Run the test
-        final List<User> result = userControllerUnderTest.getAllUser();
+        final List<User> result = userServiceUnderTest.getAllUser();
 
         // Verify the results
     }
-
 
     @Test
     void testGetUser() {
         // Setup
 
-        // Configure UserService.getUser(...).
+        // Configure UserRepository.findByGoogleId(...).
         final User user = new User();
         user.setGoogleId("googleId");
         user.setEmail("email");
         user.setName("name");
-        when(mockUserService.getUser("googleId")).thenReturn(user);
+        when(mockUserRepository.findByGoogleId("googleId")).thenReturn(user);
 
         // Run the test
-        final User result = userControllerUnderTest.getUser("googleId");
+        final User result = userServiceUnderTest.getUser("googleId");
 
         // Verify the results
     }
@@ -80,12 +81,18 @@ class UserControllerTest {
         user.setEmail("email");
         user.setName("name");
 
-        when(mockUserService.saveUser(any(User.class))).thenReturn("result");
+        // Configure UserRepository.save(...).
+        final User user1 = new User();
+        user1.setGoogleId("googleId");
+        user1.setEmail("email");
+        user1.setName("name");
+        when(mockUserRepository.save(any(User.class))).thenReturn(user1);
 
         // Run the test
-        final String result = userControllerUnderTest.saveUser(user);
+        final String result = userServiceUnderTest.saveUser(user);
 
         // Verify the results
-        assertThat(result).isEqualTo("result");
+        assertThat(result).isEqualTo("new user saved");
+        verify(mockUserRepository).save(any(User.class));
     }
 }

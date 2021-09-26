@@ -3,13 +3,14 @@ package com.example.synergybackend.service;
 import com.example.synergybackend.model.User;
 import com.example.synergybackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-
 @CrossOrigin(origins = "http://localhost:3000/")
+@Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;

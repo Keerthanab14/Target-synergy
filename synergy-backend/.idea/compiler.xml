@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="synergy-backend" target="1.8" />
+      <module name="synergy-backend" target="9" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -19,18 +19,21 @@ public class ResponsesController {
 
     //get responses
     @GetMapping("/responses")
+    @ResponseBody
     public List<Responses> getAllResponses() {
         return responsesService.getAllResponses();
     }
 
     //get responses by ID
     @GetMapping("/responses/{id}")
+    @ResponseBody
     public Responses getResponsesById(@PathVariable("id") String id) {
         return responsesService.getResponsesById(id);
     }
 
     //get by Question ID
     @GetMapping("/quest/{id}")
+    @ResponseBody
     public String getQuestionById(@PathVariable("id") String id){
          return responsesService.getQuestionById(id);
     }
@@ -38,6 +41,7 @@ public class ResponsesController {
 
     //post response
     @PostMapping("/responses")
+    @ResponseBody
     public String saveNewResponses(@RequestBody Responses quest) {
         return responsesService.saveNewResponses(quest);
 
@@ -46,6 +50,7 @@ public class ResponsesController {
 
     //add responses
     @PutMapping("/responses/{id}")
+    @ResponseBody
     public String saveResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try
         {
@@ -59,12 +64,14 @@ public class ResponsesController {
 
     //get Wc response
     @GetMapping("/WordCloudResponse/{id}")
+    @ResponseBody
     public Map getquestionsById(@PathVariable("id") String id) {
         return responsesService.getWCResponse(id);
     }
 
     //post WC response
     @PostMapping("/WordCloudresponses")
+    @ResponseBody
     public String saveNewWcResponses(@RequestBody Responses quest) {
         return responsesService.saveNewWcResponses(quest);
 
@@ -72,6 +79,7 @@ public class ResponsesController {
 
     //put WC response
     @PutMapping("/WordCloudResponse/{id}")
+    @ResponseBody
     public String saveWCResponses(@RequestBody Responses quest, @PathVariable("id") String id) {
         try {
             return responsesService.saveWCResponses(quest,id);
