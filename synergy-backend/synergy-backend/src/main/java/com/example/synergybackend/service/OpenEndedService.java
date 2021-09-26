@@ -4,11 +4,12 @@ import com.example.synergybackend.model.Background;
 import com.example.synergybackend.model.OpenEnded;
 import com.example.synergybackend.repository.OpenEndedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @CrossOrigin(origins = "http://localhost:3000/")
+@Service
 public class OpenEndedService {
     @Autowired
     private OpenEndedRepository openEndedRepository;

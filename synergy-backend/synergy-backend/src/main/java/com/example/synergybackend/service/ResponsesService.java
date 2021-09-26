@@ -3,14 +3,15 @@ package com.example.synergybackend.service;
 import com.example.synergybackend.model.Responses;
 import com.example.synergybackend.repository.ResponsesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @CrossOrigin(origins = "http://localhost:3000/")
+@Service
 public class ResponsesService {
     @Autowired
     private ResponsesRepository responsesRepository;
